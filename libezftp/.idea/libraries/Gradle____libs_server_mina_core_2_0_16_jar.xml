@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./libs/server/mina-core-2.0.16.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/server/mina-core-2.0.16.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:foreground="@drawable/drawable_highlight7"
+    android:background="?attr/background1"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="?attr/normalTextColor"
+        android:text="Preview"/>
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="?attr/dividerColor"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/divider"
+        android:id="@+id/fileList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:saveEnabled="true"
+        style="@style/scrollbar2"/>
+</RelativeLayout>

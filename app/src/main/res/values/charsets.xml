@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="char_sets">
+        <item>Western Europe(ISO-8859-1)</item>
+        <item>Japanese(EUC-JP)</item>
+        <item>Japanese(Shift_JIS)</item>
+        <item>Unicode(UTF-8)</item>
+        <item>US-ASCII</item>
+        <item>Simplified Chinese(GBK)</item>
+        <item>Cyrillic(Windows-1251)</item>
+        <item>Cyrillic(Windows-1252)</item>
+        <item>Cyrillic(Windows-1253)</item>
+        <item>Cyrillic(Windows-1254)</item>
+        <item>Cyrillic(Windows-1255)</item>
+        <item>Cyrillic(Windows-1256)</item>
+        <item>Cyrillic(Windows-1257)</item>
+        <item>Cyrillic(Windows-1258)</item>
+        <item>ISO-8859-2</item>
+        <item>ISO-8859-3</item>
+        <item>ISO-8859-4</item>
+        <item>Arabic(ISO-8859-6)</item>
+        <item>Greek(ISO-8859-7)</item>
+        <item>Hebrew(ISO-8859-8)</item>
+        <item>ISO-8859-13</item>
+        <item>ISO-8859-14</item>
+        <item>ISO-8859-15</item>
+        <item>ISO-8859-16</item>
+        <item>ANSI(ASCII)</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory android:title="Theme">
+<ListPreference
+    android:key="theme"
+    android:persistent="true"
+    android:title="Theme style"
+    android:entries="@array/themes"
+    android:entryValues="@array/themes"
+    android:defaultValue="@string/defaultTheme"
+    android:summary="@string/summaryTheme"
+    android:dialogTitle="Choose Theme"/>
+</PreferenceCategory>
+  <PreferenceCategory android:title="Display">
+ <SwitchPreference
+      android:key="hidden"
+      android:persistent="true"
+      android:title="Show Hidden Files"
+      android:defaultValue="true"/>
+      <SwitchPreference
+          android:key="thumbnail"
+          android:persistent="true"
+          android:title="Show Thumbnails"
+          android:defaultValue="true"/>
+      <ListPreference
+          android:key="thumbRatio"
+          android:persistent="true"
+          android:title="Thumbnail Ratio"
+          android:entries="@array/thumb_size"
+          android:entryValues="@array/thumb_size"
+          android:defaultValue="64x64"
+          android:summary="64x64"
+          android:dialogTitle="Aspect Ratio"/>
+  </PreferenceCategory>
+    <PreferenceCategory android:title="Background Tasks">
+        <ListPreference
+            android:key="copy"
+            android:persistent="true"
+            android:title="Copy"
+            android:entries="@array/copy"
+            android:entryValues="@array/copy"
+            android:defaultValue="Ask me Always"
+            android:summary="Ask me Always"
+            android:dialogTitle="Copy"/>
+        <ListPreference
+            android:key="zip"
+            android:persistent="true"
+            android:title="Zip"
+            android:entries="@array/copy"
+            android:entryValues="@array/copy"
+            android:defaultValue="Ask me Always"
+            android:summary="Ask me Always"
+            android:dialogTitle="Zip"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Open With">
+        <SwitchPreference
+            android:key="zipFileOpen"
+            android:persistent="true"
+            android:title="open zip"
+            android:summary="open zip files with this app"
+            android:defaultValue="true"/>
+        <SwitchPreference
+            android:key="imageFileOpen"
+            android:persistent="true"
+            android:title="open image"
+            android:summary="open image files with this app"
+            android:defaultValue="true"/>
+        <SwitchPreference
+            android:key="videoFileOpen"
+            android:persistent="true"
+            android:title="open video"
+            android:summary="open video files with this app"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Security">
+        <SwitchPreference
+            android:key="fingerPrint"
+            android:persistent="true"
+            android:title="Enable Authentication"
+            android:defaultValue="false"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Others">
+        <SwitchPreference
+            android:key="bookmarks"
+            android:persistent="true"
+            android:title="Show Bookmarks"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="About">
+    <Preference
+        android:key="version"
+        android:persistent="true"
+        android:title="Version"
+        android:summary="0.9.1" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

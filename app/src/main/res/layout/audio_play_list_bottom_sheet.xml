@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawable_highlight11"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout
+        android:id="@+id/navLayout"
+        android:visibility="visible"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="Music(0)"
+            android:textSize="12dp"
+            android:maxLines="1"
+            android:maxWidth="150dp"
+            android:gravity="bottom"
+            android:textStyle="bold"
+            android:textColor="#FFF"/>
+
+        <View
+            android:id="@id/divide"
+            android:layout_below="@id/count"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/dividerColor"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <RadioGroup
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/firstPage"
+                android:button="@drawable/toggle_btn7"
+                android:checked="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <RadioButton
+                android:id="@+id/secondPage"
+                android:button="@drawable/toggle_btn7"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RadioGroup>
+        <ImageView
+            android:id="@+id/close"
+            android:layout_above="@+id/divide"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/selectLayout"
+        android:layout_margin="15dp"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/exitSelect"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back_light"/>
+
+        <TextView
+            android:id="@+id/selectText"
+            android:layout_toRightOf="@+id/exitSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:text="SELECTED ITEMS(0/0)"
+            android:textSize="12dp"
+            android:maxLines="1"
+            android:maxWidth="150dp"
+            android:gravity="bottom"
+            android:textStyle="bold"
+            android:textColor="#FFF"/>
+
+        <View
+            android:id="@id/divide"
+            android:layout_below="@id/selectText"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?attr/dividerColor"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_options"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="?attr/dividerColor"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    <Button
+        android:id="@+id/addToPlayList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="Add To PlayList"
+        android:enabled="false"
+        android:background="@drawable/drawable_highlight3"
+        android:textColor="?attr/normalTextColor" />
+
+    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_above="@+id/bottom_options"
+        android:nestedScrollingEnabled="true"
+        android:layout_below="@+id/navLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="st">
+        <attr name="colorPrimary" format="color"/>
+        <attr name="colorPrimaryLight" format="color"/>
+        <attr name="colorAccent" format="color"/>
+        <attr name="lightGrey" format="color"/>
+        <attr name="searchHighlight" format="color"/>
+        <attr name="transparent" format="color"/>
+        <attr name="iconColor1" format="color"/>
+        <attr name="iconColor2" format="color"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="colorProgress" format="color"/>
+        <attr name="textTitle" format="color"/>
+        <attr name="normalTextColor" format="color"/>
+        <attr name="checkBoxBlank" format="color"/>
+        <attr name="background1" format="color"/>
+        <attr name="background2" format="color"/>
+        <attr name="background3" format="color"/>
+    </declare-styleable>
+    <string-array name="themes">
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+    <string name="defaultTheme">Light</string>
+    <string name="summaryTheme">Light</string>
+
+    <string-array name="copy">
+        <item>Background Always</item>
+        <item>Foreground Always</item>
+        <item>Ask me Always</item>
+    </string-array>
+    <string-array name="thumb_size">
+        <item>64x64</item>
+        <item>128x128</item>
+        <item>256x256</item>
+        <item>512x512</item>
+    </string-array>
+
+</resources>

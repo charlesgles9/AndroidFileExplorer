@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#B3579FD8</color>
+    <color name="colorPrimaryLight">#57ADCF</color>
+    <color name="colorAccent">#03DA39</color>
+    <color name="lightGrey">#B4DBDCDC</color>
+    <color name="searchHighlight">#B3579FD8</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="searchColor">#FFF</color>
+    <color name="darkRed">#5E1818</color>
+    <color name="darkStatusBar">#272727</color>
+
+</resources>

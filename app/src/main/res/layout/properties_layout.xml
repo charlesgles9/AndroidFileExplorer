@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/drawable_highlight7"
+    android:foreground="@drawable/drawable_highlight7"
+    android:backgroundTint="?attr/background1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content">
+<LinearLayout
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_information_314866"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginLeft="5dp"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="?attr/normalTextColor"
+        android:text="Details"/>
+
+</LinearLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/layout"
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_marginRight="5dp"
+        android:saveEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_unknown"/>
+            <Button
+                android:id="@+id/okay"
+                android:layout_gravity="end"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:textColor="?attr/normalTextColor"
+                android:background="@drawable/drawable_highlight2"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+     </RelativeLayout>

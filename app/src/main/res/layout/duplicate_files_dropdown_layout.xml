@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dropLayout"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/background1"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ToggleButton
+        android:id="@+id/dropdownToggle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/toggle_btn"
+        android:checked="false"
+        android:clickable="false"
+        android:textOff=""
+        android:textOn="" />
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_toRightOf="@id/dropdownToggle"
+            android:src="@drawable/ic_unknown"
+            android:layout_margin="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_toRightOf="@id/thumbnail"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:maxWidth="150dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="?attr/normalTextColor"
+            android:text="FileName"
+            android:textSize="12dp"/>
+        <TextView
+            android:id="@+id/path"
+            android:layout_toRightOf="@id/thumbnail"
+            android:layout_below="@id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:maxWidth="150dp"
+            android:layout_gravity="center"
+            android:textColor="?attr/normalTextColor"
+            android:text="path"
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:maxLines="1"
+            android:text="0 items"
+            android:textColor="?attr/normalTextColor"
+            android:textSize="12dp" />
+        <TextView
+            android:id="@+id/date"
+            android:layout_below="@+id/count"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:maxLines="1"
+            android:text="date"
+            android:textColor="?attr/normalTextColor"
+            android:textSize="10dp" />
+        <View
+            android:layout_below="@+id/thumbnail"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/dividerColor"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dropDownList"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:saveEnabled="true"
+        style="@style/scrollbar2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

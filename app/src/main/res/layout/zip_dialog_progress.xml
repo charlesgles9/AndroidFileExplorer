@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/drawable_highlight7"
+    android:foreground="@drawable/drawable_highlight7"
+    android:backgroundTint="?attr/background1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:background="?attr/background1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Extracting..."
+                android:textColor="?attr/normalTextColor"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/source"
+                android:text="From:"
+                android:textColor="?attr/normalTextColor"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="10dp"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/destination"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:text="To:"
+                android:textColor="?attr/normalTextColor"
+                android:layout_width="wrap_content"
+                android:textSize="10dp"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"
+                android:layout_height="wrap_content"/>
+
+
+            <TextView
+                android:id="@+id/percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="(100%)"
+                android:textColor="?attr/normalTextColor"
+                android:textSize="8dp" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/progress_drawable"
+                android:clickable="false"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/writeSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignParentRight="true"
+                    android:text="Rs"
+                    android:textColor="?attr/normalTextColor"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/remainingTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="elapsed"
+                    android:textColor="?attr/normalTextColor"
+                    android:textSize="10dp" />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_margin="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:textColor="?attr/normalTextColor"
+                    android:background="@drawable/drawable_highlight2"/>
+            </RelativeLayout>
+        </LinearLayout>
+</RelativeLayout>

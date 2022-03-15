@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="none">
+
+       <item
+            android:id="@+id/COPY"
+            android:icon="@drawable/ic_file_copy_24"
+            app:showAsAction="ifRoom"
+            android:checkable="false"
+
+            android:title="Copy"/>
+        <item
+            android:id="@+id/CUT"
+            android:icon="@drawable/ic_cut"
+            app:showAsAction="ifRoom"
+            android:title="Cut" />
+        <item
+            android:id="@+id/DELETE"
+            android:icon="@drawable/ic_delete"
+            app:showAsAction="ifRoom"
+            android:title="Delete" />
+         <item
+            android:id="@+id/RENAME"
+            android:icon="@drawable/ic_edit"
+             app:showAsAction="ifRoom"
+            android:title="Rename" />
+         <item
+            android:id="@+id/MORE"
+            android:icon="@drawable/ic_more"
+             app:showAsAction="ifRoom"
+            android:title="More" />
+    </group>
+</menu>

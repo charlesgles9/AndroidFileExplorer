@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/IC_WINDOW"
+        android:orderInCategory="100"
+        android:title="Window"
+        android:visible="true"
+        android:icon="@drawable/ic_window"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/REFRESH"
+        android:orderInCategory="200"
+        android:title="Refresh"
+        android:visible="true"
+        android:icon="@drawable/ic_refresh_24"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/ACTION_SETTINGS"
+        android:orderInCategory="300"
+        android:icon="@drawable/ic_more"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+</menu>

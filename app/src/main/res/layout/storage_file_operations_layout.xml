@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RadioGroup
+        android:visibility="gone"
+        android:id="@+id/FILE_HANDLE_OPTIONS1"
+        android:background="?attr/colorPrimaryLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/COPY"
+                android:layout_marginRight="20dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableTop="@drawable/ic_file_copy_24"
+                android:checked="true"
+                android:gravity="center"
+                android:textColor="#BFDFDFDF"
+                android:textSize="9dp"
+                android:text="Copy"/>
+            <RadioButton
+                android:id="@+id/DELETE"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="20dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableTop="@drawable/ic_delete"
+                android:gravity="center"
+                android:textColor="#BFDFDFDF"
+                android:textSize="9dp"
+                android:text="Delete"/>
+            <RadioButton
+                android:layout_toLeftOf="@id/DELETE"
+                android:layout_marginRight="20dp"
+                android:id="@+id/CUT"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableTop="@drawable/ic_cut"
+                android:gravity="center"
+                android:textColor="#BFDFDFDF"
+                android:textSize="9dp"
+                android:text="Cut"/>
+
+            <RadioButton
+                android:layout_toRightOf="@+id/DELETE"
+                android:id="@+id/RENAME"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableTop="@drawable/ic_edit"
+                android:gravity="center"
+                android:textColor="#BFDFDFDF"
+                android:textSize="9dp"
+                android:text="Rename"/>
+            <RadioButton
+                android:layout_alignParentEnd="true"
+                android:id="@+id/MORE"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableTop="@drawable/ic_more"
+                android:gravity="center"
+                android:textColor="#BFDFDFDF"
+                android:textSize="9dp"
+                android:text="More"/>
+
+        </RelativeLayout>
+    </RadioGroup>
+
+</LinearLayout>

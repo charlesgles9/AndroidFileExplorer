@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="end"
+        android:text="Music.mp3"
+        android:textStyle="bold"
+        android:maxLines="1"
+        style="@style/TextAppearance.Compat.Notification.Title"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/artist"
+        android:layout_below="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="end"
+        android:text="unknown"
+        android:textStyle="bold"
+        android:maxWidth="50dp"
+        android:maxLines="1"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/prev"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_skip_prev"/>
+        <ImageView
+            android:layout_toRightOf="@+id/prev"
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_pause_clip"/>
+        <ImageView
+            android:layout_toRightOf="@id/play"
+            android:id="@+id/next"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_skip_next"/>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/close"
+        android:layout_below="@+id/title"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_close"/>
+</RelativeLayout>

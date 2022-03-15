@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/thumbnail"
+        android:src="@drawable/ic_audio_icon_home"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="?attr/normalTextColor"
+        android:text="FileName"
+        android:textSize="10dp"/>
+    <ToggleButton
+        android:id="@+id/selected"
+        android:visibility="invisible"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/toggle_btn2"
+        android:checked="false"
+        android:clickable="false"
+        android:textOff=""
+        android:textOn="" />
+    <View
+        android:layout_below="@id/thumbnail"
+        android:layout_margin="1dp"
+        android:background="?attr/dividerColor"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+</RelativeLayout>

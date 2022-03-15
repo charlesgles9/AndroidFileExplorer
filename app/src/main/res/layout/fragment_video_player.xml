@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:backgroundTint="#090909"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <VideoView
+        android:id="@+id/video"
+        android:backgroundTint="#090909"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ToggleButton
+        android:id="@+id/play"
+        android:background="@drawable/toggle_btn5"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textOff=""
+        android:textOn=""
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <Button
+        android:id="@+id/rotate"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_screen_rotation"/>
+    <RelativeLayout
+        android:id="@+id/controller"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <TextView
+           android:id="@+id/currentTime"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="#FFF"
+           android:textSize="11dp"
+           android:layout_marginRight="5dp"
+           android:layout_marginLeft="5dp"
+           android:text="0:00"/>
+        <TextView
+            android:id="@+id/endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="#FFF"
+            android:textSize="11dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="0:00"/>
+        <SeekBar
+            android:layout_toRightOf="@id/currentTime"
+            android:layout_toLeftOf="@id/endTime"
+            android:id="@+id/seekTo"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:splitTrack="false"
+            android:thumbOffset="0dp"
+            android:progressDrawable="@drawable/progress_drawable"
+            android:thumb="@drawable/seek_thumb_blue"
+            android:clickable="false"/>
+
+    </RelativeLayout>
+</RelativeLayout>

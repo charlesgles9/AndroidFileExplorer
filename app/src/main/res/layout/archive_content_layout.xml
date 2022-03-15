@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_highlight7"
+        android:foreground="@drawable/drawable_highlight7"
+        android:backgroundTint="?attr/background1"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Archive"
+            android:textColor="?attr/normalTextColor"
+            android:textSize="28dp" />
+    <TextView
+        android:id="@+id/name"
+        android:layout_below="@id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="FileName"
+        android:maxLines="1"
+        android:textColor="?attr/normalTextColor"
+        android:textSize="11dp" />
+
+        <View
+            android:layout_below="@+id/name"
+            android:layout_marginTop="5dp"
+            android:background="?attr/dividerColor"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pathList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="1dp"/>
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_below="@+id/top_layout"
+            android:background="@drawable/drawable_highlight3"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Go Back..."
+                android:gravity="center"
+                android:textColor="?attr/normalTextColor"
+                android:textSize="11dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+            <ImageView
+                android:src="@drawable/ic_keyboard_return"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
+
+        </LinearLayout>
+    <FrameLayout
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fileList"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="130dp"
+            android:saveEnabled="true"
+            style="@style/scrollbar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RelativeLayout
+
+            android:gravity="bottom"
+            android:padding="5dp"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <Button
+                android:id="@+id/extract"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Extract"
+                android:textColor="?attr/normalTextColor"
+                android:background="@drawable/drawable_highlight9"/>
+            <Button
+                android:id="@+id/cancel"
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Cancel"
+                android:textColor="?attr/normalTextColor"
+                android:background="@drawable/drawable_highlight9"/>
+            </LinearLayout>
+                <View
+                    android:layout_below="@+id/date"
+                    android:layout_toRightOf="@id/thumbnail"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="?attr/dividerColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <Button
+                    android:id="@+id/extractTo"
+                    android:layout_marginLeft="10dp"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Choose Folder: "
+                    android:textColor="?attr/normalTextColor"
+                    android:textSize="11dp"
+                    android:background="@drawable/drawable_highlight9"/>
+                    <TextView
+                        android:id="@+id/path"
+                        android:padding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/storage/emulated/0"
+                        android:textColor="@color/colorPrimary"
+                        android:maxLines="1"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/drawable_highlight9"
+                    android:foreground="@drawable/drawable_highlight7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="CharSet"
+                        android:gravity="center"
+                        android:textColor="@color/colorPrimaryLight"
+                        android:textSize="10dp" />
+                <Spinner
+                    android:id="@+id/charSet"
+                    android:background="@drawable/spinner_background"
+                    android:theme="@style/SpinnerScrollbar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/indeterminateProgressStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:max="100"
+        android:progress="80"
+        android:indeterminateTint="@color/colorPrimaryLight"
+        android:clickable="false"/>
+
+</RelativeLayout>

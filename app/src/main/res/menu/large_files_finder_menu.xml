@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/SELECTED"
+        android:orderInCategory="100"
+        android:title="0/0"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+<item
+        android:id="@+id/ACTION_SETTINGS"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_more"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+</menu>

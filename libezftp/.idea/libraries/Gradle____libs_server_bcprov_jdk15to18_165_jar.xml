@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./libs/server/bcprov-jdk15to18-165.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/server/bcprov-jdk15to18-165.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

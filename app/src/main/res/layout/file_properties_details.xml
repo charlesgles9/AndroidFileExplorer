@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/drawable_highlight2"
+    android:longClickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/title"
+    android:textSize="13dp"
+    android:text="Path"
+    android:gravity="top"
+    android:textStyle="bold"
+    android:layout_marginLeft="5dp"
+    android:padding="2dp"
+    android:textColor="@color/colorPrimaryLight"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/details"
+        android:textSize="11dp"
+        android:gravity="top"
+        android:layout_marginLeft="5dp"
+        android:padding="2dp"
+        android:text="Details"
+        android:textColor="?attr/iconColor1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

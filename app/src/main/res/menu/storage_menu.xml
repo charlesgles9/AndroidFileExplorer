@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Internal"
+        android:title="Internal"/>
+    <item
+        android:id="@+id/External"
+        android:title="External"/>
+    <item
+        android:id="@+id/Root"
+        android:title="Root"/>
+</menu>

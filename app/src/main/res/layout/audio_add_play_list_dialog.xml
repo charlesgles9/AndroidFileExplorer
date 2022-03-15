@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="400dp"
+    android:background="@drawable/drawable_highlight7"
+    android:foreground="@drawable/drawable_highlight7"
+    android:backgroundTint="?attr/background1">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:text="No PlayList Available"/>
+
+<RelativeLayout
+    android:id="@+id/options"
+    android:paddingLeft="5dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/addPlayList"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="Create New PlayList"
+        android:textSize="11dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/drawable_highlight9"
+        android:textColor="?attr/normalTextColor"/>
+    <Button
+        android:id="@+id/okay"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="Okay"
+        android:textSize="11dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/drawable_highlight9"
+        android:textColor="?attr/normalTextColor"/>
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="cancel"
+        android:textSize="11dp"
+        android:layout_toLeftOf="@+id/okay"
+        android:background="@drawable/drawable_highlight9"
+        android:textColor="?attr/normalTextColor"/>
+
+</RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/playList"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"/>
+</RelativeLayout>

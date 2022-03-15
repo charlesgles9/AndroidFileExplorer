@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/drawable_highlight7"
+    android:foreground="@drawable/drawable_highlight7"
+    android:backgroundTint="?attr/background1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/indeterminateProgressStyle"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_toLeftOf="@+id/thumbnail"
+        android:max="100"
+        android:progress="80"
+        android:indeterminateTint="@color/colorPrimaryLight"
+        android:clickable="false"/>
+
+</RelativeLayout>

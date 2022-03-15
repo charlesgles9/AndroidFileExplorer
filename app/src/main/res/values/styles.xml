@@ -1,0 +1,133 @@
+<resources>
+    <!-- Light mode theme. -->
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#B3579FD8</item>
+        <item name="colorPrimaryLight">#57ADCF</item>
+        <item name="colorProgress">#57ADCF</item>
+        <item name="colorAccent">#B3579FD8</item>
+        <item name="lightGrey">#B4DBDCDC</item>
+        <item name="searchHighlight">#B3579FD8</item>
+        <item name="transparent">#00FFFFFF</item>
+        <item name="iconColor1">#C8232323</item>
+        <item name="iconColor2">?attr/colorPrimaryLight</item>
+        <item name="dividerColor">#C3202020</item>
+        <item name="textTitle">#B40E0E0E</item>
+        <item name="normalTextColor">#C8232323</item>
+        <item name="checkBoxBlank">#C8232323</item>
+        <item name="background1">#F3F3F3</item>
+        <item name="background2">#F3F3F3</item>
+        <item name="background3">#BDBDBD</item>
+        <item name="actionMenuTextColor">#F3F3F3</item>
+        <item name="bottomSheetDialogTheme">@style/sheetDialogStyle</item>
+        <item name="dialogTheme">@style/dialogStyle</item>
+    </style>
+    <!-- Dark mode theme. -->
+    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#C8232323</item>
+        <item name="colorPrimaryLight">#272727</item>
+        <item name="colorProgress">#57ADCF</item>
+        <item name="colorAccent">#B3579FD8</item>
+        <item name="lightGrey">#B4DBDCDC</item>
+        <item name="transparent">#00FFFFFF</item>
+        <item name="iconColor1">#C8E8E8E8</item>
+        <item name="iconColor2">#A3F4F2F2</item>
+        <item name="dividerColor">#B7DCD8D8</item>
+        <item name="textTitle">#C8E8E8E8</item>
+        <item name="normalTextColor">#CFCDCD</item>
+        <item name="checkBoxBlank">#C8C3C3C3</item>
+        <item name="background1">#272727</item>
+        <item name="background2">#353535</item>
+        <item name="background3">#353535</item>
+        <item name="actionMenuTextColor">#F3F3F3</item>
+        <item name="rippleColor">@color/colorPrimaryLight</item>
+        <item name="bottomSheetDialogTheme">@style/sheetDialogStyle</item>
+        <item name="dialogTheme">@style/dialogStyle</item>
+    </style>
+
+    <style name="PreferenceThemeDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="colorAccent">#5ECAF4</item>
+        <item name="android:listViewStyle">@style/listViewPrefsDark</item>
+        <item name="android:textColorSecondary">#AEAEAF</item>
+        <item name="android:textColorAlertDialogListItem">#F3F3F3</item>
+    </style>
+
+    <style name="PreferenceThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">#131313</item>
+        <item name="colorAccent">#5ECAF4</item>
+        <item name="android:listViewStyle">@style/listViewPrefsLight</item>
+        <item name="android:textColorSecondary">#434242</item>
+        <item name="android:textColorAlertDialogListItem">@color/darkStatusBar</item>
+    </style>
+
+    <style name="listViewPrefsDark" parent="Widget.AppCompat.ListView">
+        <item name="android:cacheColorHint">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="listViewPrefsLight" parent="Widget.AppCompat.ListView">
+        <item name="android:cacheColorHint">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="sheetDialogStyle" parent="Theme.Design.BottomSheetDialog">
+        <item name="windowMinWidthMajor">97%</item>
+        <item name="windowMinWidthMinor">97%</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+    <style name="dialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="windowMinWidthMajor">97%</item>
+        <item name="windowMinWidthMinor">97%</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+    <style name="SpinnerTheme" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/ic_drop_down_24</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<style name="SpinnerScrollbar" parent="Widget.AppCompat.ListView.DropDown">
+    <item name="android:scrollbarThumbVertical">?attr/iconColor1</item>
+</style>
+    <style name="SpinnerScrollbar2" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:scrollbarThumbVertical">?attr/iconColor1</item>
+    </style>
+<style name="scrollbar1">
+    <item name="android:scrollbarThumbVertical">@drawable/scroll_thumb1</item>
+    <item name="android:scrollbarTrackVertical">@drawable/scroll_track1</item>
+    <item name="android:scrollbars">vertical</item>
+    <item name="android:fadeScrollbars">false</item>
+    <item name="android:scrollbarSize">8dp</item>
+    <item name="android:scrollbarAlwaysDrawVerticalTrack">false</item>
+    <item name="android:scrollbarStyle">outsideOverlay</item>
+</style>
+    <style name="scrollbar2">
+        <item name="android:scrollbarThumbVertical">@drawable/scroll_thumb1</item>
+        <item name="android:scrollbarTrackVertical">@drawable/scroll_track1</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbarSize">5dp</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">false</item>
+        <item name="android:scrollbarStyle">insideOverlay</item>
+    </style>
+    <style name="scrollbar3">
+        <item name="android:scrollbarThumbHorizontal">@drawable/scroll_thumb1</item>
+        <item name="android:scrollbarTrackHorizontal">@drawable/scroll_track1</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
+        <item name="android:scrollbarSize">8dp</item>
+        <item name="android:scrollbarAlwaysDrawHorizontalTrack">false</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <style name="Divider">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/lightGrey</item>
+    </style>
+
+    <style name="AppThemeLight.LightBlue">
+        <item name="android:colorAccent">@color/colorPrimary</item>
+    </style>
+</resources>

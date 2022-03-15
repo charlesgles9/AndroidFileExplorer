@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="?attr/background2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_marginTop="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:textStyle="bold"
+        android:text="#1"
+        android:textSize="11dp"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/speed"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:textStyle="bold"
+        android:text="1.75 Mbps"
+        android:textSize="11dp"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/bytes"
+        android:layout_below="@id/title"
+        android:layout_marginTop="1dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:textStyle="bold"
+        android:text="50.75/300Mb"
+        android:textSize="11dp"
+        android:padding="5dp" />
+    <TextView
+        android:id="@+id/percent"
+        android:layout_below="@id/title"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:textStyle="bold"
+        android:text="(0%)"
+        android:textSize="11dp"
+        android:padding="5dp" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_below="@+id/bytes"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_drawable"
+        android:clickable="false"/>
+    <View
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/progress"
+        android:background="?attr/dividerColor"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+</RelativeLayout>

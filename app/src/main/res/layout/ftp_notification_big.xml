@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="end"
+        android:text="FTP Server"
+        android:textStyle="bold"
+        android:maxWidth="150dp"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/statusLabel"
+        android:layout_below="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:text="Status:"
+        android:textStyle="normal"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/status"
+        android:layout_below="@+id/title"
+        android:layout_toRightOf="@id/statusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Running"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/serverIPLabel"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statusLabel"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:text="Server IP:"
+        android:textSize="10dp"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/serverIP"
+        android:layout_below="@+id/status"
+        android:layout_toRightOf="@id/serverIPLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="10.40.65.51"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/portLabel"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/serverIPLabel"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:text="Port:"
+        android:textSize="10dp"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/port"
+        android:layout_below="@+id/serverIPLabel"
+        android:layout_toRightOf="@id/portLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="10.40.65.51"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/passwordLabel"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/portLabel"
+        android:layout_marginLeft="5dp"
+        android:gravity="left"
+        android:text="Password:"
+        android:textSize="10dp"
+        android:textStyle="normal" />
+    <TextView
+        android:id="@+id/password"
+        android:layout_below="@+id/port"
+        android:layout_toRightOf="@id/passwordLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="test1"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="10dp" />
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_below="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/drawable_highlight2"
+        android:layout_centerHorizontal="true"
+        android:text="STOP SERVER"
+        android:textStyle="normal"
+        style="@style/TextAppearance.Compat.Notification.Info"
+        android:textSize="12dp" />
+</RelativeLayout>

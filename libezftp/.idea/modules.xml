@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1711796021/My_Application.iml" filepath="$PROJECT_DIR$/.idea/modules/-1711796021/My_Application.iml" group="My_Application" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-894203171/app.iml" filepath="$PROJECT_DIR$/.idea/modules/-894203171/app.iml" group="My Application/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/libezftp.iml" filepath="$PROJECT_DIR$/.idea/modules/libezftp.iml" group="My Application/libezftp" />
+    </modules>
+  </component>
+</project>

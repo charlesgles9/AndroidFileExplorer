@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Paste"
+        android:icon="@drawable/ic_paste"
+        android:title="Paste" />
+    <item
+        android:id="@+id/ItemCount"
+        android:title="Items:0" />
+    <item
+        android:id="@+id/Cancel"
+        android:icon="@drawable/ic_return_24"
+        android:title="Cancel" />
+</menu>

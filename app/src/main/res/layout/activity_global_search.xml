@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.file.manager.ui.utils.SoftwareKeyboardListener
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/background1"
+    tools:context=".GlobalSearchActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryLight"
+        app:navigationIcon="@drawable/ic_arrow_back_light"
+        app:subtitle="Search"
+        app:subtitleTextColor="#FFF"
+        app:menu="@menu/global_search_menu"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            android:visibility="gone"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:searchIcon="@drawable/ic_search_light"
+            app:closeIcon="@drawable/ic_cancel"
+            app:queryHint="Search">
+        </androidx.appcompat.widget.SearchView>
+    </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:id="@+id/results"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?attr/normalTextColor"
+        android:text=""
+        android:visibility="gone"
+        android:textSize="12dp"/>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:indeterminateOnly="true"
+        android:indeterminateTint="?attr/colorProgress"
+        android:indeterminateTintMode="src_atop"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <include
+        android:id="@+id/nav_wrapper"
+        android:layout_alignParentBottom="true"
+        layout="@layout/storage_file_operations_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fileList"
+        android:layout_above="@+id/nav_wrapper"
+        android:layout_marginRight="5dp"
+        android:paddingBottom="10dp"
+        android:saveEnabled="true"
+        style="@style/scrollbar2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</LinearLayout>
+</com.file.manager.ui.utils.SoftwareKeyboardListener>

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbarThumbVertical="@drawable/scrollview_bar"
+    android:background="?attr/background1"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/background1"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/storage_layout"
+        android:background="?attr/background1"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/img_storage"
+        android:src="@drawable/ic_sd_storage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    <TextView
+        android:id="@+id/name"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/img_storage"
+        android:text="Storage"
+        android:textSize="12dp"
+        android:textColor="?attr/normalTextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <RadioGroup
+        android:visibility="visible"
+        android:id="@+id/storageRadioGroup"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/home"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="12dp"
+                android:button="@null"
+                android:checked="true"
+                android:background="#00FFFFFF"
+                android:drawableLeft="@drawable/ic__home"
+                android:textColor="?attr/textTitle"
+                android:gravity="left|center_vertical"
+                android:text="Home"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/internal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:minWidth="100dp"
+                android:textSize="12dp"
+                android:button="@null"
+                android:background="#00FFFFFF"
+                android:drawableLeft="@drawable/ic_storage"
+                android:textColor="?attr/textTitle"
+                android:gravity="left|center_vertical"
+                android:text="Internal"/>
+            <ImageView
+                android:id="@+id/new_tab_internal"
+                android:src="@drawable/ic_new_tab"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/drawable_highlight4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <RadioButton
+                android:id="@+id/external"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/internal"
+                android:textSize="12dp"
+                android:button="@null"
+                android:background="#00FFFFFF"
+                android:drawableLeft="@drawable/ic_storage"
+                android:textColor="?attr/textTitle"
+                android:gravity="left|center_vertical"
+                android:text="External"/>
+            <ImageView
+                android:id="@+id/new_tab_external"
+                android:src="@drawable/ic_new_tab"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/internal"
+                android:background="@drawable/drawable_highlight4"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+        </RelativeLayout>
+    </RadioGroup>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/type_layout"
+        android:background="?attr/background1"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_type"
+            android:src="@drawable/ic_type_24"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <TextView
+            android:id="@+id/type"
+            android:layout_toRightOf="@+id/img_type"
+            android:text="Type"
+            android:textSize="12dp"
+            android:textColor="?attr/normalTextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <RadioGroup
+        android:visibility="visible"
+        android:id="@+id/typeRadioGroup"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/images"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:checked="false"
+            android:drawableLeft="@drawable/ic_image_gallery_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Images"/>
+        <RadioButton
+            android:id="@+id/music"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_music_gallery_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Music"/>
+
+        <RadioButton
+            android:id="@+id/videos"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_video_gallery_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Videos"/>
+
+        <RadioButton
+            android:id="@+id/documents"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_documents_library"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Documents"/>
+        <RadioButton
+            android:id="@+id/applications"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_android_gallery_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Applications"/>
+        <RadioButton
+            android:id="@+id/compressed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_archive_gallery_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="Compressed"/>
+    </RadioGroup>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/tools_layout"
+            android:background="?attr/background1"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_tools"
+                android:src="@drawable/ic_tools_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:id="@+id/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/img_tools"
+                android:text="Tools"
+                android:textColor="?attr/normalTextColor"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+    <RadioGroup
+        android:visibility="visible"
+        android:id="@+id/toolsRadioGroup"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/largeFilesFinder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:background="#00FFFFFF"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_large_files"
+            android:gravity="left|center_vertical"
+            android:textColor="?attr/normalTextColor"
+            android:text="Large Files"/>
+
+        <RadioButton
+            android:id="@+id/duplicateFilesFinder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:background="#00FFFFFF"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_duplicates"
+            android:gravity="left|center_vertical"
+            android:textColor="?attr/normalTextColor"
+            android:text="Duplicate Files"/>
+
+        <RadioButton
+            android:id="@+id/appManager"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:background="#00FFFFFF"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_android_gallery_icon"
+            android:gravity="left|center_vertical"
+            android:textColor="?attr/normalTextColor"
+            android:text="Installed Apps"/>
+        <RadioButton
+            android:id="@+id/benchmark"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:background="#00FFFFFF"
+            android:button="@null"
+            android:drawableLeft="@drawable/ic_storage"
+            android:gravity="left|center_vertical"
+            android:textColor="?attr/normalTextColor"
+            android:text="Benchmark Storage"/>
+    </RadioGroup>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/network_layout"
+            android:background="?attr/background1"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_network"
+                android:src="@drawable/ic_network"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/network"
+                android:layout_toRightOf="@+id/img_network"
+                android:text="Network"
+                android:textSize="12dp"
+                android:textColor="?attr/normalTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <RadioGroup
+        android:visibility="visible"
+        android:id="@+id/networkRadioGroup"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/FTP"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="12dp"
+            android:button="@null"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_ftp_icon"
+            android:textColor="?attr/textTitle"
+            android:gravity="left|center_vertical"
+            android:text="FTP"/>
+
+
+    </RadioGroup>
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/share_layout"
+            android:background="?attr/background1"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_share"
+                android:src="@drawable/ic_share_24"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:layout_toRightOf="@+id/img_share"
+                android:text="Share"
+                android:textSize="12dp"
+                android:textColor="?attr/normalTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        android:backgroundTint="?attr/background1"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/about_layout"
+            android:background="?attr/background1"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_developer"
+                android:src="@drawable/ic_developer_mode"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:layout_toRightOf="@+id/img_developer"
+                android:text="Developer"
+                android:textSize="12dp"
+                android:textColor="?attr/normalTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+</ScrollView>
