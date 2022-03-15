@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -30,11 +29,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
-import com.file.manager.PictureViewerActivity;
+import com.file.manager.Activities.MainActivity;
+import com.file.manager.Activities.PictureViewerActivity;
 import com.file.manager.R;
-import com.file.manager.SettingsPrefActivity;
-import com.file.manager.VideoPlayerActivity;
+import com.file.manager.Activities.SettingsPrefActivity;
+import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.WindowState;
 import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.helpers.PermissionsHelper;

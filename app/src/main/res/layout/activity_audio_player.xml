@@ -6,7 +6,7 @@
     android:background="@drawable/drawable_gradient1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MusicPlayerActivity">
+    tools:context=".Activities.MusicPlayerActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"

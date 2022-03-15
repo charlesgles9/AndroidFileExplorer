@@ -3,26 +3,18 @@ package com.file.manager.ui;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.documentfile.provider.DocumentFile;
-
-import com.file.manager.MainActivity;
 import com.file.manager.R;
-import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.utils.DeleteFilesUtility;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 

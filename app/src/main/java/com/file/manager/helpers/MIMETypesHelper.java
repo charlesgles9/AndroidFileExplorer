@@ -5,16 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Parcelable;
-import android.os.StrictMode;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import androidx.core.content.FileProvider;
-import androidx.documentfile.provider.DocumentFile;
-
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;

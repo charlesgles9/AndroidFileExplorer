@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -18,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.file.manager.Fragments.PictureTabFragment;
+import com.file.manager.R;
 import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.ui.Adapters.PicturePagerAdapter;
 import com.file.manager.ui.Models.CustomFile;

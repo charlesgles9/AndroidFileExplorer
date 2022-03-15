@@ -13,13 +13,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import com.file.manager.BackgroundServices.FTPService;
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.ui.FolderPickerDialog;
 import com.file.manager.ui.Models.FtpServerInstance;

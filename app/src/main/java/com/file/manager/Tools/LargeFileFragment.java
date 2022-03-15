@@ -14,7 +14,6 @@ import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,22 +27,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
-import com.file.manager.OnTaskCompleteListener;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.Operations;
-import com.file.manager.PictureViewerActivity;
+import com.file.manager.Activities.PictureViewerActivity;
 import com.file.manager.R;
-import com.file.manager.VideoPlayerActivity;
-import com.file.manager.WindowState;
+import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.ui.Adapters.StorageAdapter;
-import com.file.manager.ui.Adapters.SwitchWindowAdapter;
 import com.file.manager.ui.ArchiveExtractorDialog;
 import com.file.manager.ui.ConfirmDeleteDialog;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.Folder;
-import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.SwitchWindowDialog;
 import com.file.manager.ui.storage.FilterType;
 import com.file.manager.ui.utils.ArchiveDecompressUtil;
 import com.file.manager.ui.utils.DeleteFilesUtility;
@@ -51,12 +45,9 @@ import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileFilters;
 import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.ThumbnailLoader;
-import com.file.manager.ui.utils.WindowUtil;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class LargeFileFragment extends Fragment implements IOnBackPressed {
 

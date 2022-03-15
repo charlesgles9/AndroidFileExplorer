@@ -3,37 +3,24 @@ package com.file.manager.ui;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.documentfile.provider.DocumentFile;
-
-import com.file.manager.MainActivity;
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CopyProgressMonitor;
-import com.file.manager.ui.Models.CopyStats;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.CCBuffer;
 import com.file.manager.ui.utils.CopyHelper;
 import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
 
-import net.lingala.zip4j.progress.ProgressMonitor;
-
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class CopyFileDialog extends Dialog  {
 

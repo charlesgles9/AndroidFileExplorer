@@ -29,10 +29,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.bumptech.glide.Glide;
 import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.Operations;
 import com.file.manager.R;
@@ -60,7 +59,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardListener.Listener, IOnBackPressed {
 

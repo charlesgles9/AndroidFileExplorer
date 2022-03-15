@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -20,6 +20,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.file.manager.GlobalFileOperations;
+import com.file.manager.IOnBackPressed;
+import com.file.manager.Operations;
+import com.file.manager.R;
 import com.file.manager.Tools.AppManagerFragment;
 import com.file.manager.Tools.DuplicateFileFragment;
 import com.file.manager.Tools.FtpServerFragment;
@@ -389,7 +393,7 @@ public class MainActivity extends AppCompatActivity  {
         return (BottomNavigationView)findViewById(R.id.FILE_HANDLE);
     }
 
-    private  GlobalFileOperations globalFileOperations= new GlobalFileOperations() {
+    private GlobalFileOperations globalFileOperations= new GlobalFileOperations() {
         @Override
         public void copy() {
             toolbar.setSubtitle(subtitle);

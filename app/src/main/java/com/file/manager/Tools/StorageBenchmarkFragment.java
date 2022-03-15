@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Adapters.BenchmarkAdapter;

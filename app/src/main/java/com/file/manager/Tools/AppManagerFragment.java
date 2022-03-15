@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
@@ -26,24 +25,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
-import com.file.manager.WindowState;
 import com.file.manager.ui.Adapters.AppManagerAdapter;
-import com.file.manager.ui.Adapters.SwitchWindowAdapter;
 import com.file.manager.ui.FolderPickerDialog;
 import com.file.manager.ui.Models.AppManagerModel;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.SwitchWindowDialog;
-import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.utils.CCBuffer;
 import com.file.manager.ui.utils.CopyHelper;
-import com.file.manager.ui.utils.WindowUtil;
-
-import java.util.ArrayList;
-import java.util.UUID;
 
 public class AppManagerFragment extends Fragment implements IOnBackPressed {
 

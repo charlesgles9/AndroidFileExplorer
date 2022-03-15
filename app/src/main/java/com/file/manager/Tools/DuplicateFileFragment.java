@@ -28,26 +28,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.IOnBackPressed;
-import com.file.manager.MainActivity;
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
-import com.file.manager.WindowState;
 import com.file.manager.ui.Adapters.DuplicateFileContainerAdapter;
-import com.file.manager.ui.Adapters.SwitchWindowAdapter;
 import com.file.manager.ui.ConfirmDeleteDialog;
 import com.file.manager.ui.LoadingDialog;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DuplicateFileContainer;
 import com.file.manager.ui.Models.DuplicateFileModel;
-import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.SwitchWindowDialog;
-import com.file.manager.ui.storage.FilterType;
 import com.file.manager.ui.utils.DeleteFilesUtility;
 import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.WindowUtil;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
 

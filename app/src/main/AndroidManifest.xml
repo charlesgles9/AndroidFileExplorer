@@ -32,7 +32,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDark">
        
-        <activity android:name=".MusicPlayerActivity">
+        <activity android:name=".Activities.MusicPlayerActivity">
             <intent-filter
                 android:icon="@drawable/ic_music"
                 android:label="Music">
@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PictureViewerActivity"
+            android:name=".Activities.PictureViewerActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter
                 android:icon="@drawable/ic_image"
@@ -70,7 +70,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VideoPlayerActivity"
+            android:name=".Activities.VideoPlayerActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter
                 android:icon="@drawable/ic_video"
@@ -93,16 +93,16 @@
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsPrefActivity" />
+        <activity android:name=".Activities.SettingsPrefActivity" />
         <activity
-            android:name=".GlobalSearchActivity"
+            android:name=".Activities.GlobalSearchActivity"
             android:theme="@style/AppThemeDark"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SDOptimizerActivity"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="Win-Explorer"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"

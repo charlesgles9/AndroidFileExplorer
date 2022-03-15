@@ -1,11 +1,10 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -13,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.widget.Toast;
 
+import com.file.manager.R;
 import com.file.manager.helpers.AuthenticationHelper;
 import com.file.manager.ui.FingerPrintAuthDialog;
 
@@ -71,7 +71,7 @@ public class SettingsPrefActivity extends PreferenceActivity implements SharedPr
             preference.setSummary(value);
             if(key.equals("theme")){
                 finishAffinity();
-                startActivity(new Intent(this,MainActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
             }
         } else if(preference instanceof SwitchPreference){
             if(key.equals("fingerPrint")){

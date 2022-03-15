@@ -2,7 +2,6 @@ package com.file.manager.Fragments;
 
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.file.manager.R;
 import com.file.manager.TapGesture;
-import com.file.manager.VideoPlayerActivity;
+import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.Timer;
 

@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,6 +23,7 @@ import android.widget.ToggleButton;
 import com.file.manager.BackgroundServices.MusicPlayerService;
 import com.file.manager.Fragments.MusicListFragment;
 import com.file.manager.Fragments.PlayListFragment;
+import com.file.manager.R;
 import com.file.manager.ui.AudioPlayListBottomSheet;
 
 import com.file.manager.ui.Models.MusicHelperSingleton;

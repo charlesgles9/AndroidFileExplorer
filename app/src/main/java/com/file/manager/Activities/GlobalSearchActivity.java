@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 
 import android.annotation.SuppressLint;
@@ -23,6 +23,9 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.file.manager.OnTaskCompleteListener;
+import com.file.manager.Operations;
+import com.file.manager.R;
 import com.file.manager.ui.Adapters.GlobalSearchAdapter;
 import com.file.manager.ui.FolderPickerDialog;
 import com.file.manager.ui.Models.CustomFile;

@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Activities;
 
 
 import android.content.Intent;
@@ -15,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.file.manager.Fragments.VideoTabFragment;
+import com.file.manager.R;
+import com.file.manager.TapGesture;
 import com.file.manager.ui.Adapters.VideoPagerAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.storage.SortBy;

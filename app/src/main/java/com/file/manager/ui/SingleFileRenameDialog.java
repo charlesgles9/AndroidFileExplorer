@@ -2,8 +2,6 @@ package com.file.manager.ui;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.documentfile.provider.DocumentFile;
 
-import com.file.manager.MainActivity;
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
