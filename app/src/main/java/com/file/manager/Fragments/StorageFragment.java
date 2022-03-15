@@ -1,4 +1,4 @@
-package com.file.manager.ui.storage;
+package com.file.manager.Fragments;
 
 
 import android.annotation.SuppressLint;
@@ -74,6 +74,9 @@ import com.file.manager.ui.PropertiesDialog;
 import com.file.manager.ui.SingleFileRenameDialog;
 import com.file.manager.ui.SwitchWindowDialog;
 import com.file.manager.ui.ViewMode;
+import com.file.manager.ui.storage.CopyServiceQueue;
+import com.file.manager.ui.storage.FilterType;
+import com.file.manager.ui.storage.SortBy;
 import com.file.manager.ui.utils.ArchiveCompressUtil;
 import com.file.manager.ui.utils.ArchiveDecompressUtil;
 import com.file.manager.ui.utils.CopyHelper;

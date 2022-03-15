@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.file.manager.ui.AudioPlayListBottomSheet;
 
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.utils.DateUtils;
+import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.Timer;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -184,7 +186,25 @@ public class MusicPlayerActivity extends AppCompatActivity {
             startService(intent);
         }
     }
+    private String onSharedIntent(Intent intent){
+        String rAction=intent.getAction();
+        String rType=intent.getType();
+        if(rAction.equals(Intent.ACTION_SEND)|rAction.equals(Intent.ACTION_VIEW)){
+            if(rType!=null){
+                Uri uri;
+                if(rAction.equals(Intent.ACTION_SEND))
+                    uri=intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                else
+                    uri=intent.getData();
 
+                String path= FileHandleUtil.uriToFilePath(uri);
+                if(path!=null){
+                    return path;
+                }
+            }
+        }
+        return null;
+    }
     private void orderPreference(final Button anchor){
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;

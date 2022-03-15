@@ -46,7 +46,7 @@ import com.file.manager.ui.OpenAsDialog;
 import com.file.manager.ui.PropertiesDialog;
 import com.file.manager.ui.SingleFileRenameDialog;
 import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.storage.StorageFragment;
+import com.file.manager.Fragments.StorageFragment;
 import com.file.manager.ui.utils.CopyHelper;
 import com.file.manager.ui.utils.CutHelper;
 import com.file.manager.ui.utils.DeleteFilesUtility;

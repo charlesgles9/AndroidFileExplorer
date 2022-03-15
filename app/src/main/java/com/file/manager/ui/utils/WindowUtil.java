@@ -4,15 +4,8 @@ import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
-import com.file.manager.Tools.AppManagerFragment;
-import com.file.manager.Tools.DuplicateFileFragment;
-import com.file.manager.Tools.LargeFileFragment;
 import com.file.manager.WindowState;
 import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.home.GlobalSearchFragment;
-import com.file.manager.ui.home.HomeFragment;
-import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.storage.StorageFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/background1"
     android:orientation="vertical"
-    tools:context=".ui.storage.StorageFragment">
+    tools:context=".Fragments.StorageFragment">
 
     <RelativeLayout
         android:id="@+id/top_layout"

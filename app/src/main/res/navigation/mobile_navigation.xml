@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.file.manager.ui.storage.StorageFragment"
+        android:name="com.file.manager.Fragments.StorageFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_storage" />
 

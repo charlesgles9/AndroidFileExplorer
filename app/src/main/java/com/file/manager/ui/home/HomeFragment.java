@@ -44,7 +44,7 @@ import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.WindowModel;
 import com.file.manager.ui.SwitchWindowDialog;
 import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.storage.StorageFragment;
+import com.file.manager.Fragments.StorageFragment;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileFilters;
 import com.file.manager.ui.utils.FileHandleUtil;
