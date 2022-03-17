@@ -44,6 +44,15 @@
                 <data android:scheme="content" />
                 <data android:mimeType="audio/*" />
             </intent-filter>
+            <intent-filter
+                android:icon="@drawable/ic_music"
+                android:label="Music">
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="audio/*" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Activities.PictureViewerActivity"
@@ -98,9 +107,6 @@
             android:name=".Activities.GlobalSearchActivity"
             android:theme="@style/AppThemeDark"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".SDOptimizerActivity"
-            android:theme="@style/AppThemeDark" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="Win-Explorer"
@@ -158,8 +164,6 @@
         <service
             android:name=".BackgroundServices.MusicPlayerService"
             android:enabled="true" />
-
-        <receiver android:name=".ButtonReceiver" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

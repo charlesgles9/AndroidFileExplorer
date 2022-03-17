@@ -66,11 +66,19 @@ public class MusicHelperSingleton {
         return data.get(current);
     }
     public void setCurrent(int current) {
-
         this.current = current;
         this.currentFileName.setValue(new File((getCurrentUri())).getName());
     }
 
+    public void setCurrentByFile(File current){
+        for(int i=0;i<getData().size();i++){
+            CustomFile file=getData().get(i);
+            if(file.getPath().equals(current.getPath())){
+                setCurrent(i);
+                break;
+            }
+        }
+    }
     public int getCurrent() {
         return current;
     }

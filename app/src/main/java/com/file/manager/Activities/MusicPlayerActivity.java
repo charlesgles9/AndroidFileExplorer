@@ -31,6 +31,8 @@ import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.Timer;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,8 +64,13 @@ public class MusicPlayerActivity extends AppCompatActivity {
         Button prev = findViewById(R.id.prev);
         title.setSelected(true);
         musicHelperSingleton = MusicHelperSingleton.getInstance();
+        String externalPath=onSharedIntent(getIntent());
+        if(externalPath!=null){
+            FileHandleUtil.fetchAudioFiles(this,musicHelperSingleton.getData());
+            musicHelperSingleton.setCurrentByFile(new File(externalPath));
+            musicHelperSingleton.getAllSongs().addAll(musicHelperSingleton.getData());
+        }
         musicHelperSingleton.setPlayList("All Songs");
-
         final Context context=this;
         final AudioPlayListBottomSheet audioPlayListBottomSheet= new AudioPlayListBottomSheet(context,fragments);
         playList.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +179,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         modeButton.setOnClickListener(new View.OnClickListener() {
             @Override
