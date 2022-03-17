@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.ui.utils.Timer;
 
 public class CopyStats {
         private int FilesToCopy;
@@ -18,7 +19,7 @@ public class CopyStats {
         private long FileBytesCopied;
         private long FileBytesToCopy;
         private MutableLiveData<CopyStats> stats= new MutableLiveData<>();
-        private FileHandleUtil.WriteSpeedTimer.WriteSpeedListener listener;
+        private Timer.TimerListener listener;
         private String source;
         private String destination;
         private boolean finished=false;
@@ -162,7 +163,7 @@ public class CopyStats {
         return finished;
     }
 
-    public void setListener(FileHandleUtil.WriteSpeedTimer.WriteSpeedListener listener){
+    public void setListener(Timer.TimerListener listener){
             this.listener=listener;
         }
 
@@ -170,7 +171,7 @@ public class CopyStats {
             return stats;
          }
 
-        public FileHandleUtil.WriteSpeedTimer.WriteSpeedListener getListener() {
+        public Timer.TimerListener getListener() {
             return listener;
         }
 }

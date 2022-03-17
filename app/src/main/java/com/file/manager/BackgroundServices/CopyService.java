@@ -24,6 +24,7 @@ import com.file.manager.ui.storage.CopyServiceQueue;
 import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.ui.utils.Timer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -62,8 +63,8 @@ public class CopyService extends IntentService  {
     private void  startJob(final NotificationCompat.Builder builder, final RemoteViews layout1, final RemoteViews layout2, final NotificationModel model){
 
 
-        final FileHandleUtil.WriteSpeedTimer timer= new FileHandleUtil.WriteSpeedTimer();
-        timer.setListener(new FileHandleUtil.WriteSpeedTimer.WriteSpeedListener() {
+        final Timer timer= new Timer();
+        timer.setListener(new Timer.TimerListener() {
             @Override
             public void calculate(long seconds) {
                 CopyProgressMonitor monitor=model.getUtility().getProgressMonitor();

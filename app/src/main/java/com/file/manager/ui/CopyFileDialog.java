@@ -19,6 +19,7 @@ import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.ui.utils.Timer;
 
 import java.io.File;
 
@@ -28,7 +29,7 @@ public class CopyFileDialog extends Dialog  {
     private Context context;
     private boolean error=false;
     private Button cancel;
-    private FileHandleUtil.WriteSpeedTimer writeSpeedTimer;
+    private Timer writeSpeedTimer;
     private CopyUtility copyUtility;
     private Uri uri;
     public CopyFileDialog(Context context) throws NullPointerException{
@@ -55,8 +56,8 @@ public class CopyFileDialog extends Dialog  {
         final TextView destination=findViewById(R.id.destination);
          cancel=findViewById(R.id.cancel);
          copyUtility= new CopyUtility(context,uri);
-         writeSpeedTimer= new FileHandleUtil.WriteSpeedTimer();
-        writeSpeedTimer.setListener(new FileHandleUtil.WriteSpeedTimer.WriteSpeedListener() {
+         writeSpeedTimer= new Timer();
+        writeSpeedTimer.setListener(new Timer.TimerListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void calculate(long seconds) {

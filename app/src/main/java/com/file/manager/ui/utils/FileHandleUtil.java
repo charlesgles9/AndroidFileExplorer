@@ -597,41 +597,6 @@ public class FileHandleUtil {
             return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
         return "";
     }
-    public static class WriteSpeedTimer extends Handler{
-        private static final int TIMER_MESSAGE_ID=0x32;
-        private boolean running=false;
-        private long seconds=0;
-        private WriteSpeedListener listener;
-
-        public void start(){
-            running=true;
-            this.seconds+=1;
-            removeMessages(TIMER_MESSAGE_ID,this);
-            int intervals = 1000;
-            sendMessageDelayed(obtainMessage(TIMER_MESSAGE_ID,this), intervals);
-        }
-
-        public void stop(){
-            running=false;
-            removeCallbacksAndMessages(this);
-        }
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            if(running&&(msg.what==TIMER_MESSAGE_ID)){
-                running=false;
-                start();
-                listener.calculate(seconds);
-            }
-        }
-
-        public void setListener(WriteSpeedListener listener) {
-            this.listener = listener;
-        }
-
-       public interface WriteSpeedListener{
-            void calculate(long seconds);
-        }
-    }
 
     public interface OnTaskComplete{
         void onComplete();

@@ -61,9 +61,7 @@
                 android:icon="@drawable/ic_image"
                 android:label="Win-ImageViewer">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:scheme="file" />
                 <data android:scheme="content" />
                 <data android:mimeType="image/*" />
@@ -72,9 +70,7 @@
                 android:icon="@drawable/ic_image"
                 android:label="Win-ImageViewer">
                 <action android:name="android.intent.action.SEND" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="image/*" />
             </intent-filter>
         </activity>
@@ -85,9 +81,7 @@
                 android:icon="@drawable/ic_video"
                 android:label="Win-VideoPlayer">
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:scheme="file" />
                 <data android:scheme="content" />
                 <data android:mimeType="video/*" />
@@ -96,9 +90,7 @@
                 android:icon="@drawable/ic_video"
                 android:label="Win-VideoPlayer">
                 <action android:name="android.intent.action.SEND" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
@@ -141,9 +133,7 @@
             </intent-filter>
             <intent-filter android:label="Save as..">
                 <action android:name="android.intent.action.SEND" />
-
                 <category android:name="android.intent.category.DEFAULT" />
-
                 <data android:mimeType="*/*" />
                 <data android:scheme="file" />
             </intent-filter>
