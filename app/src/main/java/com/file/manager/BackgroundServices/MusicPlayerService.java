@@ -9,12 +9,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioAttributes;
+import android.media.AudioFocusRequest;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -26,6 +30,8 @@ import java.io.IOException;
 public class MusicPlayerService extends IntentService {
     private NotificationManagerCompat notificationManagerCompact;
     private NotificationCompat.Builder builder;
+    private AudioManager audioManager;
+    private AudioFocusRequest audioFocusRequest;
     private Notification notification;
     private RemoteViews small;
     private MusicHelperSingleton singleton;
@@ -169,6 +175,32 @@ public class MusicPlayerService extends IntentService {
             notificationManager.createNotificationChannel(channel);
         }
     }
+
+    private void initAudioFocus(){
+        audioManager= (AudioManager)getSystemService(AUDIO_SERVICE);
+        AudioAttributes attributes= new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_MEDIA)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC).build();
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
+            audioFocusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN)
+                    .setAudioAttributes(attributes)
+                    .setAcceptsDelayedFocusGain(true)
+                    .setOnAudioFocusChangeListener(new AudioManager.OnAudioFocusChangeListener() {
+                        @Override
+                        public void onAudioFocusChange(int focusChange) {
+                            if(focusChange==AudioManager.AUDIOFOCUS_GAIN){
+                                singleton.setPaused(false);
+                            }else{
+                                singleton.setPaused(true);
+                            }
+                            singleton.setUpdateNotification(true);
+
+                        }
+                    }).build();
+            audioManager.requestAudioFocus(audioFocusRequest);
+        }
+    }
+
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
         try {
@@ -180,7 +212,8 @@ public class MusicPlayerService extends IntentService {
             Toast.makeText(getApplicationContext(),"an Error occurred try again!",Toast.LENGTH_LONG).show();
             stopSelf();
         }
-
+        // set audio focus
+         initAudioFocus();
         return START_NOT_STICKY;
     }
 
