@@ -197,9 +197,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private String onSharedIntent(Intent intent){
         String rAction=intent.getAction();
         String rType=intent.getType();
-        if(rAction==null)
-            return null;
-        if(rAction.equals(Intent.ACTION_SEND)|rAction.equals(Intent.ACTION_VIEW)){
+        if(rAction!=null&&(rAction.equals(Intent.ACTION_SEND)|rAction.equals(Intent.ACTION_VIEW))){
             if(rType!=null){
                 Uri uri;
                 if(rAction.equals(Intent.ACTION_SEND))
