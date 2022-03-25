@@ -14,7 +14,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -24,9 +24,9 @@
     <RelativeLayout
         android:id="@+id/storage_layout"
         android:background="?attr/background1"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -34,14 +34,14 @@
     <ImageView
         android:id="@+id/img_storage"
         android:src="@drawable/ic_sd_storage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"/>
+        android:layout_width="24dp"
+        android:layout_height="24dp"/>
     <TextView
         android:id="@+id/name"
         android:gravity="center"
         android:layout_toRightOf="@+id/img_storage"
         android:text="Storage"
-        android:textSize="12dp"
+        android:textSize="11dp"
         android:textColor="?attr/normalTextColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -62,7 +62,7 @@
                 android:id="@+id/home"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 android:button="@null"
                 android:checked="true"
                 android:background="#00FFFFFF"
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:minWidth="100dp"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 android:button="@null"
                 android:background="#00FFFFFF"
                 android:drawableLeft="@drawable/ic_storage"
@@ -119,7 +119,7 @@
         </RelativeLayout>
     </RadioGroup>
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -129,9 +129,9 @@
     <RelativeLayout
         android:id="@+id/type_layout"
         android:background="?attr/background1"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -139,8 +139,8 @@
         <ImageView
             android:id="@+id/img_type"
             android:src="@drawable/ic_type_24"
-            android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_width="24dp"
+            android:layout_height="24dp"/>
         <TextView
             android:id="@+id/type"
             android:layout_toRightOf="@+id/img_type"
@@ -164,7 +164,7 @@
             android:id="@+id/images"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:checked="false"
@@ -176,7 +176,7 @@
             android:id="@+id/music"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_music_gallery_icon"
@@ -188,7 +188,7 @@
             android:id="@+id/videos"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_video_gallery_icon"
@@ -200,7 +200,7 @@
             android:id="@+id/documents"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_documents_library"
@@ -211,7 +211,7 @@
             android:id="@+id/applications"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_android_gallery_icon"
@@ -222,7 +222,7 @@
             android:id="@+id/compressed"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_archive_gallery_icon"
@@ -231,7 +231,7 @@
             android:text="Compressed"/>
     </RadioGroup>
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -240,9 +240,9 @@
         <RelativeLayout
             android:id="@+id/tools_layout"
             android:background="?attr/background1"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -250,8 +250,8 @@
             <ImageView
                 android:id="@+id/img_tools"
                 android:src="@drawable/ic_tools_24"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
 
             <TextView
                 android:id="@+id/tools"
@@ -260,7 +260,7 @@
                 android:layout_toRightOf="@+id/img_tools"
                 android:text="Tools"
                 android:textColor="?attr/normalTextColor"
-                android:textSize="12dp" />
+                android:textSize="11dp" />
 
         </RelativeLayout>
 
@@ -277,7 +277,7 @@
             android:id="@+id/largeFilesFinder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
             android:drawableLeft="@drawable/ic_large_files"
@@ -289,7 +289,7 @@
             android:id="@+id/duplicateFilesFinder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
             android:drawableLeft="@drawable/ic_duplicates"
@@ -301,7 +301,7 @@
             android:id="@+id/appManager"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
             android:drawableLeft="@drawable/ic_android_gallery_icon"
@@ -312,7 +312,7 @@
             android:id="@+id/benchmark"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
             android:drawableLeft="@drawable/ic_storage"
@@ -321,7 +321,7 @@
             android:text="Benchmark Storage"/>
     </RadioGroup>
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -330,9 +330,9 @@
         <RelativeLayout
             android:id="@+id/network_layout"
             android:background="?attr/background1"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -340,13 +340,13 @@
             <ImageView
                 android:id="@+id/img_network"
                 android:src="@drawable/ic_network"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
             <TextView
                 android:id="@+id/network"
                 android:layout_toRightOf="@+id/img_network"
                 android:text="Network"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -366,7 +366,7 @@
             android:id="@+id/FTP"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textSize="12dp"
+            android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_ftp_icon"
@@ -377,7 +377,7 @@
 
     </RadioGroup>
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -386,9 +386,9 @@
         <RelativeLayout
             android:id="@+id/share_layout"
             android:background="?attr/background1"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -396,12 +396,12 @@
             <ImageView
                 android:id="@+id/img_share"
                 android:src="@drawable/ic_share_24"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
             <TextView
                 android:layout_toRightOf="@+id/img_share"
                 android:text="Share"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -411,7 +411,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
@@ -420,9 +420,9 @@
         <RelativeLayout
             android:id="@+id/about_layout"
             android:background="?attr/background1"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -430,12 +430,12 @@
             <ImageView
                 android:id="@+id/img_developer"
                 android:src="@drawable/ic_developer_mode"
-                android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_width="24dp"
+                android:layout_height="24dp"/>
             <TextView
                 android:layout_toRightOf="@+id/img_developer"
                 android:text="Developer"
-                android:textSize="12dp"
+                android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
