@@ -5,8 +5,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
 import java.math.BigInteger;
@@ -35,17 +33,16 @@ public class WifiInfoUtil {
 
     public static String getWifiIpAddress(Context context){
         WifiManager wifiManager=(WifiManager)context.getSystemService(Context.WIFI_SERVICE);
+        if(wifiManager==null)
+            return null;
         int ipAddress=wifiManager.getConnectionInfo().getIpAddress();
-        if(ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN)){
+        if(ByteOrder.nativeOrder().equals(ByteOrder.LITTLE_ENDIAN))
             ipAddress=Integer.reverseBytes(ipAddress);
-        }
         byte[]ipByteArray= BigInteger.valueOf(ipAddress).toByteArray();
-        String value;
+        String value = null;
         try {
             value= InetAddress.getByAddress(ipByteArray).getHostAddress();
-        }catch (UnknownHostException ex){
-            value=null;
-        }
+        }catch (UnknownHostException ignore){}
         return value;
     }
 }

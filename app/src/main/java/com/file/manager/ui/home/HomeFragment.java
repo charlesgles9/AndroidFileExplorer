@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
     private int FragmentID;
     private View root;
     private Fragment parent;
+    private MainActivity activity;
     private RecentFilesContainer recentFilesContainer;
     private RecentFilesTask recentFilesTask;
     private LinearLayoutManager manager;
@@ -105,7 +106,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
 
         initStorageProgress();
         final Fragment fragment=this;
-        final MainActivity activity=(MainActivity)getContext();
+        activity=(MainActivity)getContext();
         activity.setSubtitle("Home");
         root.findViewById(R.id.storageDetails1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,13 +115,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                     PermissionsHelper.getInstance().grantStorageReadWrite();
                     return;
                 }
-                Fragment instance=WindowUtil.getInstance().getActiveFragment("Internal");
-
-                if(instance==null)
-                activity.setFragment(
-                        new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                "Local", FilterType.DEFAULT,fragment,globalFileOperations));
-                else activity.setFragment(instance);
+                openFragment("Internal",FilterType.DEFAULT,"Local",0);
                 activity.toolbar.setSubtitle("Local");
             }
         });
@@ -132,12 +127,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                     PermissionsHelper.getInstance().grantStorageReadWrite();
                     return;
                 }
-                Fragment instance=WindowUtil.getInstance().getActiveFragment("External");
-                if(instance==null)
-                activity.setFragment(
-                        new StorageFragment(DiskUtils.getInstance().getDirectory(1).getPath(),
-                                "Local", FilterType.DEFAULT,fragment,globalFileOperations));
-                else activity.setFragment(instance);
+                openFragment("External",FilterType.DEFAULT,"Local",1);
                 activity.toolbar.setSubtitle("Local");
             }
         });
@@ -153,56 +143,30 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                 }
 
                 String subtitle="";
-                Fragment instance;
-                WindowUtil window=WindowUtil.getInstance();
                 switch (v.getId()){
                     case R.id.movie_layout:
                         subtitle="Videos";
-                        instance=window.getActiveFragment(FilterType.VIDEO.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.VIDEO,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.VIDEO.toString(),FilterType.VIDEO,"Videos",0);
                         break;
                     case R.id.music_layout:
                         subtitle="Music";
-                        instance=window.getActiveFragment(FilterType.AUDIO.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.AUDIO,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.AUDIO.toString(),FilterType.AUDIO,"Music",0);
                         break;
                     case R.id.android_layout:
                         subtitle="Applications";
-                        instance=window.getActiveFragment(FilterType.APPLICATION.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.APPLICATION,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.APPLICATION.toString(),FilterType.APPLICATION,"Applications",0);
                         break;
                     case R.id.photo_layout:
                         subtitle="Images";
-                        instance=window.getActiveFragment(FilterType.IMAGE.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.IMAGE,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.IMAGE.toString(),FilterType.IMAGE,"Images",0);
                         break;
                     case R.id.document_layout:
                         subtitle="Documents";
-                        instance=window.getActiveFragment(FilterType.DOCUMENT.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.DOCUMENT,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.DOCUMENT.toString(),FilterType.DOCUMENT,"Documents",0);
                         break;
                     case R.id.compressed_layout:
                         subtitle="Archive";
-                        instance=window.getActiveFragment(FilterType.COMPRESSED.toString());
-                        if(instance==null)
-                        activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(0).getPath(),
-                                subtitle,FilterType.COMPRESSED,fragment,globalFileOperations));
-                        else activity.setFragment(instance);
+                        openFragment(FilterType.COMPRESSED.toString(),FilterType.COMPRESSED,"Archive",0);
                         break;
                 }
                 activity.toolbar.setSubtitle(subtitle);
@@ -353,6 +317,17 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         defaultSharedPreferences.getString("zip","Ask me Always");
         defaultSharedPreferences.getString("thumbRatio","64x64");
         return root;
+    }
+
+
+    private void openFragment(String key,FilterType type,String subtitle,int dir){
+        WindowUtil window=WindowUtil.getInstance();
+        Fragment instance=window.getActiveFragment(key);
+        if(instance==null)
+            activity.setFragment(new StorageFragment(DiskUtils.getInstance().getDirectory(dir).getPath(),
+                    subtitle,type,this,globalFileOperations));
+        else
+            activity.setFragment(instance);
     }
 
     public void initStorageProgress(){

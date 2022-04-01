@@ -7,19 +7,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -220,6 +216,7 @@ public class GlobalSearchActivity extends AppCompatActivity implements SoftwareK
         adapter.setOperations(Operations.SELECT);
         adapter.notifyDataSetChanged();
     }
+    
     private void loadThumbnails(){
       int start=manager.findFirstVisibleItemPosition();
       int stop=manager.findLastVisibleItemPosition();

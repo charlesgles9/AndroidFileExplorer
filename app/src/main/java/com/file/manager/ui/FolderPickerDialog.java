@@ -25,7 +25,6 @@ import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DirectoryManager;
 import com.file.manager.ui.Models.Folder;
 import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.utils.CCBuffer;
 import com.file.manager.ui.utils.CopyHelper;
 import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.CutHelper;
@@ -101,14 +100,12 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
         });
         directoryManager.createDir(context,new CustomFile(DiskUtils.getInstance().getDirectory(0).getPath()));
         storageAdapter = new StorageAdapter(directoryManager.currentDir(),context);
-        CCBuffer.getInstance().setDestination(directoryManager.currentDir().getFile());
         storageAdapter.setItemListener(new StorageAdapter.ItemListener() {
             @Override
             public void onItemClick(int position) {
                 final CustomFile file=directoryManager.currentDir().get(position);
                 final Folder parentFolder=directoryManager.currentDir();
                 openFolder(file,parentFolder);
-                CCBuffer.getInstance().setDestination(directoryManager.currentDir().getFile());
                 togglePrevViewVisibility();
             }
 
@@ -183,7 +180,6 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
         mountAdapter= new ArrayAdapter<>(getContext(),R.layout.spinner_item_benchmark,array);
         mountAdapter.setDropDownViewResource(R.layout.spinner_drop_down_item_benchmark);
         spinner.setAdapter(mountAdapter);
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -293,10 +289,9 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
             initializeFolders(directoryManager.currentDir());
 
         }
+
         fileListRecycleView.getLayoutManager().scrollToPosition(0);
     }
-
-
 
     private void getStoragePermission(CustomFile file){
         String storage=DiskUtils.getInstance().getStartDirectory(file);
@@ -306,10 +301,10 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
         }
 
     }
+
     public void setFlag(int flag) {
         this.flag = flag;
     }
-
 
     public interface OnDirPickedListener{
         void picked(String path);
