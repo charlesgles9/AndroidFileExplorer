@@ -13,7 +13,7 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="70dp"/>
+        android:layout_height="80dp"/>
     <TextView
         android:id="@+id/app_title"
         android:layout_width="match_parent"
