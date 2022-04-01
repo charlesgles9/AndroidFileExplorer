@@ -1,5 +1,6 @@
 package com.file.manager.ui.Dialogs;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -17,13 +18,14 @@ import com.file.manager.ui.utils.Timer;
 
 public class ZipCompressDialog extends Dialog {
 
-    private ArchiveCompressUtil archiveCompressUtil;
+   private ArchiveCompressUtil archiveCompressUtil;
    private long pBytes=1L;
     public ZipCompressDialog(Context context, ArchiveCompressUtil archiveCompressUtil){
         super(context);
         this.archiveCompressUtil=archiveCompressUtil;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,6 @@ public class ZipCompressDialog extends Dialog {
                 pBytes=archiveCompressUtil.getZipFile().getFile().length();
                 progress.setProgress(p);
                 percent.setText(progress.getProgress()+"%");
-
                 if(!archiveCompressUtil.isRunning()){
                     progress.setProgress(100);
                     percent.setText("100%");

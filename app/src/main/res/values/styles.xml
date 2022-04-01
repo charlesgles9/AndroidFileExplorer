@@ -16,7 +16,7 @@
         <item name="checkBoxBlank">#C8232323</item>
         <item name="background1">#F3F3F3</item>
         <item name="background2">#F3F3F3</item>
-        <item name="background3">#BDBDBD</item>
+        <item name="background3">#E3E3E3</item>
         <item name="actionMenuTextColor">#F3F3F3</item>
         <item name="bottomSheetDialogTheme">@style/sheetDialogStyle</item>
         <item name="dialogTheme">@style/dialogStyle</item>

@@ -23,7 +23,7 @@
 
     <RelativeLayout
         android:id="@+id/storage_layout"
-        android:background="?attr/background1"
+        android:background="?attr/background3"
         android:paddingTop="5dp"
         android:paddingLeft="5dp"
         android:paddingBottom="5dp"
@@ -34,8 +34,10 @@
     <ImageView
         android:id="@+id/img_storage"
         android:src="@drawable/ic_sd_storage"
-        android:layout_width="24dp"
-        android:layout_height="24dp"/>
+        android:background="@drawable/light_blue_rounded_drawable"
+        android:padding="6dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
     <TextView
         android:id="@+id/name"
         android:gravity="center"
@@ -126,32 +128,6 @@
         android:layout_height="wrap_content">
 
 
-    <RelativeLayout
-        android:id="@+id/type_layout"
-        android:background="?attr/background1"
-        android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/img_type"
-            android:src="@drawable/ic_type_24"
-            android:layout_width="24dp"
-            android:layout_height="24dp"/>
-        <TextView
-            android:id="@+id/type"
-            android:layout_toRightOf="@+id/img_type"
-            android:text="Type"
-            android:textSize="12dp"
-            android:textColor="?attr/normalTextColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-    </RelativeLayout>
     </androidx.cardview.widget.CardView>
     <RadioGroup
         android:visibility="visible"
@@ -160,6 +136,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/type_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/background3"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <ImageView
+                android:id="@+id/img_type"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/light_blue_rounded_drawable"
+                android:padding="6dp"
+                android:src="@drawable/ic_type_24" />
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/img_type"
+                android:text="Type"
+                android:textColor="?attr/normalTextColor"
+                android:textSize="12dp" />
+
+
+        </RelativeLayout>
+
         <RadioButton
             android:id="@+id/images"
             android:layout_width="match_parent"
@@ -239,7 +246,7 @@
 
         <RelativeLayout
             android:id="@+id/tools_layout"
-            android:background="?attr/background1"
+            android:background="?attr/background3"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
@@ -250,8 +257,10 @@
             <ImageView
                 android:id="@+id/img_tools"
                 android:src="@drawable/ic_tools_24"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+                android:background="@drawable/light_blue_rounded_drawable"
+                android:padding="6dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
 
             <TextView
                 android:id="@+id/tools"
@@ -329,7 +338,7 @@
 
         <RelativeLayout
             android:id="@+id/network_layout"
-            android:background="?attr/background1"
+            android:background="?attr/background3"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
@@ -340,8 +349,10 @@
             <ImageView
                 android:id="@+id/img_network"
                 android:src="@drawable/ic_network"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+                android:background="@drawable/light_blue_rounded_drawable"
+                android:padding="6dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <TextView
                 android:id="@+id/network"
                 android:layout_toRightOf="@+id/img_network"
@@ -380,12 +391,13 @@
         app:cardElevation="5dp"
         android:backgroundTint="?attr/background1"
         android:layout_marginBottom="1dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RelativeLayout
             android:id="@+id/share_layout"
-            android:background="?attr/background1"
+            android:background="?attr/background3"
             android:paddingTop="5dp"
             android:paddingLeft="5dp"
             android:paddingBottom="5dp"
@@ -396,8 +408,10 @@
             <ImageView
                 android:id="@+id/img_share"
                 android:src="@drawable/ic_share_24"
-                android:layout_width="24dp"
-                android:layout_height="24dp"/>
+                android:background="@drawable/light_blue_rounded_drawable"
+                android:padding="6dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
             <TextView
                 android:layout_toRightOf="@+id/img_share"
                 android:text="Share"
