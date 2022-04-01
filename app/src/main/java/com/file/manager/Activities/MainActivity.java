@@ -28,7 +28,7 @@ import com.file.manager.Tools.StorageBenchmarkFragment;
 import com.file.manager.helpers.AuthenticationHelper;
 import com.file.manager.helpers.PermissionsHelper;
 
-import com.file.manager.ui.FingerPrintAuthDialog;
+import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 import com.file.manager.ui.Models.WindowModel;
 import com.file.manager.ui.home.GlobalSearchFragment;
 import com.file.manager.ui.home.HomeFragment;

@@ -20,7 +20,7 @@ import com.file.manager.BackgroundServices.FTPService;
 import com.file.manager.IOnBackPressed;
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
-import com.file.manager.ui.FolderPickerDialog;
+import com.file.manager.ui.Dialogs.FolderPickerDialog;
 import com.file.manager.ui.Models.FtpServerInstance;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.SoftwareKeyboardListener;

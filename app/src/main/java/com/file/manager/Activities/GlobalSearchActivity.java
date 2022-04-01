@@ -23,7 +23,7 @@ import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.Operations;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.GlobalSearchAdapter;
-import com.file.manager.ui.FolderPickerDialog;
+import com.file.manager.ui.Dialogs.FolderPickerDialog;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileFilters;

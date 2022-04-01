@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.file.manager.R;
 import com.file.manager.helpers.AuthenticationHelper;
-import com.file.manager.ui.FingerPrintAuthDialog;
+import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 
 
 public class SettingsPrefActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {

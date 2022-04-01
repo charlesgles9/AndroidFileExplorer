@@ -1,4 +1,4 @@
-package com.file.manager.ui;
+package com.file.manager.ui.Dialogs;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

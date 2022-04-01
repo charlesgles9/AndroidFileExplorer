@@ -29,7 +29,7 @@ import com.file.manager.Activities.MainActivity;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.AppManagerAdapter;
-import com.file.manager.ui.FolderPickerDialog;
+import com.file.manager.ui.Dialogs.FolderPickerDialog;
 import com.file.manager.ui.Models.AppManagerModel;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.utils.CopyHelper;

@@ -1,4 +1,4 @@
-package com.file.manager.ui;
+package com.file.manager.ui.Dialogs;
 
 import android.app.Dialog;
 import android.content.ClipData;

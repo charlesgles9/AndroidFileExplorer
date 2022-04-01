@@ -1,4 +1,4 @@
-package com.file.manager.ui;
+package com.file.manager.ui.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -13,11 +13,11 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.PlayListAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.PlayListHierarchy;
+
 import java.util.ArrayList;
 
 public class AddPlayListDialog extends Dialog {
