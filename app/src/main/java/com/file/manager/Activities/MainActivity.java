@@ -470,7 +470,7 @@ public class MainActivity extends AppCompatActivity  {
                   uri=rIntent.getData();
                 if(uri!=null){
                     subtitle="Local";
-                    String path=FileHandleUtil.uriToFilePath(uri);
+                    String path=FileHandleUtil.uriToFilePath(this,uri);
                     if(path!=null) {
                     toolbar.setSubtitle(subtitle);
                     StorageFragment storageFragment= new StorageFragment(new File(path).getParent(),toolbar.getSubtitle().toString(),FilterType.DEFAULT,fragment,globalFileOperations);

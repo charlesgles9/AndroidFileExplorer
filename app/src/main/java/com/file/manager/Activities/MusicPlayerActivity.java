@@ -202,7 +202,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     uri=intent.getParcelableExtra(Intent.EXTRA_STREAM);
                 else
                     uri=intent.getData();
-                String path= FileHandleUtil.uriToFilePath(uri);
+                String path= FileHandleUtil.uriToFilePath(this,uri);
                 if(path!=null){
                     return path;
                 }

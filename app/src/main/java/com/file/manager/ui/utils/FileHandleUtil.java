@@ -117,7 +117,17 @@ public class FileHandleUtil {
     }
 
     // converts a uriTree or a uriFile to standard java file path
-    public static String uriToFilePath(Uri uri){
+    public static String uriToFilePath(Context context,Uri uri){
+        //in case  its a media uri convert it to document uri if necessary
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+            Uri converted;
+            try {
+                converted = MediaStore.getDocumentUri(context, uri);
+                if (converted != null) {
+                    uri = converted;
+                }
+            }catch (IllegalArgumentException ignore){}
+        }
         String path=uri.getPath();
         int isTreeUri=path.indexOf(":");
         File[]mounts=DiskUtils.getInstance().getStorageDirs();
@@ -133,6 +143,8 @@ public class FileHandleUtil {
         }else{
           // it's probably file path then
           for(File mount:mounts) {
+              if(mount==null)
+                   continue;
               int index = path.indexOf(mount.getPath());
               if (index != -1)
                   return path.substring(index);

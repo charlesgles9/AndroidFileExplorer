@@ -4,12 +4,15 @@ package com.file.manager.Activities;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -158,6 +161,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         tab.setExecuteOnStart(file.getPath().equals(chosen.getPath()));
         fragments.add(tab);
     }
+
     private String onSharedIntent(Intent intent){
         String rAction=intent.getAction();
         String rType=intent.getType();
@@ -169,8 +173,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
                     uri=intent.getParcelableExtra(Intent.EXTRA_STREAM);
                 else
                     uri=intent.getData();
-
-                String path= FileHandleUtil.uriToFilePath(uri);
+                String path= FileHandleUtil.uriToFilePath(this,uri);
                 if(path!=null){
                     return path;
                 }
