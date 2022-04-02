@@ -13,13 +13,27 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="80dp"/>
-    <TextView
-        android:id="@+id/app_title"
+        android:layout_height="50dp"/>
+    <LinearLayout
+        android:layout_below="@id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/view"
-        android:textSize="15dp"
-        android:textColor="#FFF"
-        android:text="Win-Explorer" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/app_brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="#FFF"
+            android:text="WX" />
+        <TextView
+            android:id="@+id/app_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view"
+            android:textSize="17dp"
+            android:textColor="#FFF"
+            android:text="Explorer" />
+    </LinearLayout>
+
 </RelativeLayout>
