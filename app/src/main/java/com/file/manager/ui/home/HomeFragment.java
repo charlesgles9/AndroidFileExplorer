@@ -568,18 +568,23 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAsDropDown(anchor,0,0, Gravity.RIGHT);
         final View settings=view.findViewById(R.id.settings);
-
+        final View exit=view.findViewById(R.id.exit);
         final View.OnClickListener onClickListener= new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), SettingsPrefActivity.class);
-                intent.putExtra("Theme",PreferenceManager.getDefaultSharedPreferences(getContext()).getString("theme","Light"));
-                startActivity(intent);
-
+                if(v.getId()==R.id.settings) {
+                    Intent intent = new Intent(getActivity(), SettingsPrefActivity.class);
+                    intent.putExtra("Theme", PreferenceManager.getDefaultSharedPreferences(getContext()).getString("theme", "Light"));
+                    startActivity(intent);
+                }else {
+                    //exit
+                    onBackPressed();
+                }
                 popupWindow.dismiss();
             }
         };
         settings.setOnClickListener(onClickListener);
+        exit.setOnClickListener(onClickListener);
     }
 
     @Override

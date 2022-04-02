@@ -2,22 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/drawable_highlight7"
+    android:foreground="@drawable/drawable_highlight7"
+    android:backgroundTint="?attr/background1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:backgroundTint="#BAB9B9"
-        app:cardCornerRadius="5dp"
-        android:padding="10dp">
+
     <TextView
         android:id="@+id/settings"
         android:text="Settings"
         android:padding="10dp"
-        android:layout_width="wrap_content"
+        android:background="@drawable/drawable_highlight3"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:textColor="#1C1C1C" />
-    </androidx.cardview.widget.CardView>
+        android:textColor="?attr/normalTextColor" />
+        <TextView
+            android:id="@+id/exit"
+            android:text="Exit"
+            android:padding="10dp"
+            android:background="@drawable/drawable_highlight3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTextColor" />
 
 </LinearLayout>
