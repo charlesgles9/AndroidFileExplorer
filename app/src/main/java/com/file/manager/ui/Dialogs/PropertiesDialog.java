@@ -95,7 +95,7 @@ public class PropertiesDialog extends Dialog implements View.OnClickListener {
                         new AsyncTask<String,Integer,String>(){
                             @Override
                             protected String doInBackground(String... strings) {
-                                MD5Hash.setDetails(MD5.fileToMD5(file.getPath()));
+                                MD5Hash.setDetails(MD5.getHashValue(file,file.length()));
                                 return null;
                             }
 

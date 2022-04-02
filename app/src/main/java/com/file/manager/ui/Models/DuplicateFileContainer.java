@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.MutableLiveData;
 
 import com.file.manager.OnTaskCompleteListener;
+import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileFilters;
 import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.MD5;
@@ -44,7 +45,7 @@ public class DuplicateFileContainer {
         task.cancel(true);
     }
     public void put(CustomFile value){
-        final String key= MD5.fileToMD5Fast(value.getPath());
+        final String key= MD5.getHashValue(value, DiskUtils.SIZE_KB*20);
         DuplicateFileModel model=map.get(key);
         if(model!=null){
             model.add(value);
