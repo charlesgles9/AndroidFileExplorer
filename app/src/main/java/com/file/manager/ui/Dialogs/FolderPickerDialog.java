@@ -66,7 +66,7 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.folder_picker_layout);
+        setContentView(R.layout.dialog_folder_picker_layout);
         final Button Paste=findViewById(R.id.PASTE);
         final Button Cancel_Paste=findViewById(R.id.CANCEL_PASTE);
         final Button pick_dir=findViewById(R.id.pick_dir);

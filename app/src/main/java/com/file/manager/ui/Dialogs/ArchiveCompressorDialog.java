@@ -56,7 +56,7 @@ public class ArchiveCompressorDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.compress_layout);
+        setContentView(R.layout.archive_compress_dialog_layout);
         final ArrayAdapter<CharSequence> levelAdapter;
         final ArrayAdapter<CharSequence> methodAdapter;
         final TextInputEditText name=findViewById(R.id.name);

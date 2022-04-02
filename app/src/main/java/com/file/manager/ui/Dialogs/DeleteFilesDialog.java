@@ -40,7 +40,7 @@ public class DeleteFilesDialog  extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.delete_dialog_progress);
+        setContentView(R.layout.dialog_delete_progress);
         final Button cancel=findViewById(R.id.cancel);
         final TextView percent=findViewById(R.id.percent);
         final TextView source=findViewById(R.id.source);

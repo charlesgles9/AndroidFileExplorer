@@ -33,7 +33,7 @@ public class ConfirmDeleteDialog extends Dialog implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getWindow()).setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.confirm_delete);
+        setContentView(R.layout.dialog_confirm_delete);
         final Button confirm=findViewById(R.id.confirm);
         final Button cancel=findViewById(R.id.cancel);
         final TextView size=findViewById(R.id.size);

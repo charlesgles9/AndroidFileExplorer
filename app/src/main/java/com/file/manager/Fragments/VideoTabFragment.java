@@ -49,7 +49,7 @@ public class VideoTabFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View root=inflater.inflate(R.layout.fragment_video_player,container,false);
+        final View root=inflater.inflate(R.layout.video_player_fragment,container,false);
         videoView=root.findViewById(R.id.video);
         play=root.findViewById(R.id.play);
         seekTo=root.findViewById(R.id.seekTo);

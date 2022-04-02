@@ -93,7 +93,7 @@ public class StorageBenchmarkFragment extends Fragment implements  IOnBackPresse
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.storage_benchmark_fragment,container,false);
+        View root=inflater.inflate(R.layout.benchmark_storage_fragment,container,false);
         ((MainActivity)getContext()).toolbar.setVisibility(View.GONE);
         final Button  benchmark=root.findViewById(R.id.start_benchmark);
         final Spinner bufferSpinner=root.findViewById(R.id.buffer);

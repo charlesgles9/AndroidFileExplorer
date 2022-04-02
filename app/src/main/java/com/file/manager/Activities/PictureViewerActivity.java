@@ -47,7 +47,7 @@ public class PictureViewerActivity extends AppCompatActivity  {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_picture_viewer);
+        setContentView(R.layout.picture_viewer_activity);
         DiskUtils.init(this);
         final Intent intent=getIntent();
          toolbar=findViewById(R.id.toolbar);

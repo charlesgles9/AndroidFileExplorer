@@ -18,7 +18,6 @@ import com.file.manager.ui.utils.CopyHelper;
 import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.Timer;
 
 import java.io.File;
@@ -46,7 +45,7 @@ public class CopyFileDialog extends Dialog  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.copy_dialog_progress);
+        setContentView(R.layout.dialog_copy_progress);
         setCancelable(false);
         final ProgressBar currentFileProgress=findViewById(R.id.currentFileProgress);
         final TextView WriteSpeed=findViewById(R.id.writeSpeed);

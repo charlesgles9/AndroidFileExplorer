@@ -38,7 +38,7 @@ public class BatchFileRenameDialog extends Dialog implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setCancelable(true);
-        setContentView(R.layout.batch_file_rename_dialog);
+        setContentView(R.layout.dialog_batch_file_rename);
 
         final Button preview=findViewById(R.id.preview);
         final Button cancel=findViewById(R.id.cancel);

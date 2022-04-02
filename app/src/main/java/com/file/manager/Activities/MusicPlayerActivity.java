@@ -50,7 +50,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setStatusBarColor(Color.argb(80,24,72,94));
-        setContentView(R.layout.activity_audio_player);
+        setContentView(R.layout.audio_player_activity);
         Button playList = findViewById(R.id.playlist);
         final Button modeButton=findViewById(R.id.mode);
         seekBar=findViewById(R.id.seekTo);

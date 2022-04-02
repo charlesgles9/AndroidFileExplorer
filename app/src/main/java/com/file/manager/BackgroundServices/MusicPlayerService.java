@@ -18,7 +18,6 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -133,7 +132,7 @@ public class MusicPlayerService extends IntentService {
     }
 
     private void initNotification(){
-        small=new RemoteViews(getPackageName(), R.layout.audio_notification_small);
+        small=new RemoteViews(getPackageName(), R.layout.notification_audio_small);
         builder= new NotificationCompat.Builder(this,String.valueOf(ID))
                 .setSmallIcon(R.drawable.ic_audio_icon_home)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())

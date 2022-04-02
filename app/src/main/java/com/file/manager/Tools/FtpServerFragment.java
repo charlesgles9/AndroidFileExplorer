@@ -46,7 +46,7 @@ public class FtpServerFragment extends Fragment implements IOnBackPressed {
 
         // create only one instance
        if(root==null)
-        root=inflater.inflate(R.layout.fragment_ftp_layout,container,false);
+        root=inflater.inflate(R.layout.ftp_fragment_layout,container,false);
         Toolbar toolbar=root.findViewById(R.id.toolbar);
         activity=(MainActivity)getContext();
         activity.toolbar.setVisibility(View.GONE);

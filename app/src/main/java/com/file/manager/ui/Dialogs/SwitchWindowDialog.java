@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +27,7 @@ public class SwitchWindowDialog  extends Dialog  implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.window_chooser_layout);
+        setContentView(R.layout.dialog_window_chooser_layout);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
         final RecyclerView windowRecyclerView=findViewById(R.id.windowList);

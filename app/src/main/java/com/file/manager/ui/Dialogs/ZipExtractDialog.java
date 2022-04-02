@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.file.manager.R;
 import com.file.manager.ui.utils.ArchiveDecompressUtil;
@@ -37,7 +36,7 @@ public class ZipExtractDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.zip_dialog_progress);
+        setContentView(R.layout.dialog_zip_progress);
         final TextView source=findViewById(R.id.source);
         final TextView destination=findViewById(R.id.destination);
         final ProgressBar progress=findViewById(R.id.progress);

@@ -1,20 +1,13 @@
 package com.file.manager.ui.utils;
 
-import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MergeCursor;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
-
-import androidx.annotation.NonNull;
-
-import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 
 import com.file.manager.helpers.PermissionsHelper;
@@ -25,19 +18,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class FileHandleUtil {
-
-    private FileHandleUtil(){
-
-    }
-
-    public static ArrayList<CustomFile> ListFiles(Context context,CustomFile file, ArrayList<CustomFile>array, FilenameFilter filter){
+    public static void ListFiles(Context context, CustomFile file, ArrayList<CustomFile>array, FilenameFilter filter){
         String[] files =file.list(filter);
         int position=0;
         if(files!=null) {
@@ -54,10 +39,9 @@ public class FileHandleUtil {
             File mount=new File(DiskUtils.getInstance().getStartDirectory(file));
             Uri uri=PermissionsHelper.getInstance().getUriFromSharedPreference(mount);
             if(uri==null)
-                return array;
+                return;
             SAFListFiles(context,file,uri,array);
         }
-        return array;
     }
 
 
@@ -66,26 +50,21 @@ public class FileHandleUtil {
         final Uri children=DocumentsContract.buildChildDocumentsUriUsingTree(muri,
                 DocumentsContract.getDocumentId(muri));
         final ArrayList<Uri>results= new ArrayList<>();
-        Cursor c=null;
-        try{
-            c=resolver.query(children,new String[]{
-                    DocumentsContract.Document.COLUMN_DOCUMENT_ID,
-                    DocumentsContract.Document.COLUMN_DISPLAY_NAME,
-            },DocumentsContract.Document.COLUMN_SIZE,null,null);
-            while (c.moveToNext()){
-                final String documentId=c.getString(0);
-                final Uri documentUri=DocumentsContract.buildDocumentUriUsingTree(muri,
+        try (Cursor c = resolver.query(children, new String[]{
+                DocumentsContract.Document.COLUMN_DOCUMENT_ID,
+                DocumentsContract.Document.COLUMN_DISPLAY_NAME,
+        }, DocumentsContract.Document.COLUMN_SIZE, null, null)) {
+            assert c != null;
+            while (c.moveToNext()) {
+                final String documentId = c.getString(0);
+                final Uri documentUri = DocumentsContract.buildDocumentUriUsingTree(muri,
                         documentId);
                 results.add(documentUri);
             }
-        }catch (Exception e){
+        } catch (Exception ignored) {
 
-        }finally {
-         if(c!=null)
-            c.close();
         }
-
-        final Uri[]result=results.toArray(new Uri[results.size()]);
+        final Uri[]result=results.toArray(new Uri[0]);
         final DocumentFile[] files=new DocumentFile[result.length];
         for(int i=0;i<result.length;i++){
             files[i]= DocumentFile.fromSingleUri(context, result[i]);
@@ -95,15 +74,15 @@ public class FileHandleUtil {
 
     public static void SAFListFiles(Context context,CustomFile file,Uri uri,ArrayList<CustomFile>array){
         DocumentFile documentFile=DocumentFile.fromTreeUri(context,uri);
+        assert documentFile != null;
         documentFile=walkToFile(file,documentFile);
-        DocumentFile docArray[] = ListFiles(context,documentFile.getUri());
+        DocumentFile[] documentFiles = ListFiles(context,documentFile.getUri());
         String startDirectory=DiskUtils.getInstance().getStartDirectory(file);
-        int position = 0;
-        for (DocumentFile doc : docArray) {
+        for (int i=0;i<documentFiles.length;i++) {
+            DocumentFile doc=documentFiles[i];
             CustomFile customFile = new CustomFile(startDirectory+"/"+treeUriToFilePath(doc.getUri()));
-            customFile.position = position;
+            customFile.position = i;
             array.add(customFile);
-            position++;
             if (customFile.isFile())
                 customFile.setTempThumbnail();
         }
@@ -112,6 +91,7 @@ public class FileHandleUtil {
 
     public static String treeUriToFilePath(Uri uri){
         String path=uri.getPath();
+        assert path != null;
         return path.substring(path.lastIndexOf(":")+1);
 
     }
@@ -129,6 +109,7 @@ public class FileHandleUtil {
             }catch (IllegalArgumentException ignore){}
         }
         String path=uri.getPath();
+        assert path != null;
         int isTreeUri=path.indexOf(":");
         File[]mounts=DiskUtils.getInstance().getStorageDirs();
       if(isTreeUri!=-1){
@@ -158,22 +139,24 @@ public class FileHandleUtil {
         String start=DiskUtils.getInstance().getStartDirectory(file);
         Uri uri= PermissionsHelper.getInstance().getUriFromSharedPreference(new File(start));
         String paths=file.getPath().replace(start,"");
-        String dirs[]=paths.split("/");
+        String[] dirs =paths.split("/");
         DocumentFile doc=DocumentFile.fromTreeUri(context,uri);
         for(int i=1;i<dirs.length;i++){
             String dir=dirs[i];
+            assert doc != null;
             DocumentFile ndoc=doc.findFile(dir);
             if(ndoc!=null)
                 doc=ndoc;
         }
         return doc;
     }
+
     public static DocumentFile walkToFile(File file,DocumentFile doc){
         if(file.getName().equals(doc.getName()))
             return doc;
         String start=DiskUtils.getInstance().getStartDirectory(file);
         String paths=file.getPath().replace(start,"");
-        String dirs[]=paths.split("/");
+        String[] dirs =paths.split("/");
         for(int i=1;i<dirs.length;i++){
             String dir=dirs[i];
             DocumentFile ndoc=doc.findFile(dir);
@@ -182,6 +165,8 @@ public class FileHandleUtil {
         }
         return doc;
     }
+
+
     public static ArrayList<CustomFile> ListFilesRecursively(CustomFile file, FilenameFilter filter){
         ArrayList<CustomFile>subFiles= new ArrayList<>();
         ArrayList<CustomFile>subFolders= new ArrayList<>();
@@ -197,8 +182,9 @@ public class FileHandleUtil {
     }
 
     public static void ListFilesRecursively(CustomFile file,ArrayList<CustomFile>dirs,ArrayList<CustomFile>foundFiles,ArrayList<CustomFile>foundFolders,FilenameFilter filter){
-        String[] file_names =file.list(filter);
-        for(String name:file_names){
+        String[] array =file.list(filter);
+        if(array!=null)
+        for(String name:array){
             CustomFile child= new CustomFile(name,file);
             if(child.isDirectory()){
                 dirs.add(child);
@@ -274,8 +260,6 @@ public class FileHandleUtil {
         }
 
     }
-
-
 
 
     public static void ListLargeFilesRecursively(CustomFile source,ArrayList<CustomFile>files,FilenameFilter filter){
@@ -376,6 +360,8 @@ public class FileHandleUtil {
         }
 
     }
+
+
     public static long getFileSizeArray(ArrayList<CustomFile>files){
         long bytes=0L;
         ArrayList<CustomFile> subFolders = new ArrayList<>();
@@ -417,7 +403,8 @@ public class FileHandleUtil {
             parent.setLocalThumbnail(file.getLocalThumbnail());
             if(!DiskUtils.getInstance().isStartDirectory(parent.getPath()))
                 map.put(parent.getPath(), parent);
-            else map.put(path,file);
+            else
+                map.put(path,file);
             parent.setTempThumbnail();
             cursor.moveToNext();
         }
@@ -576,8 +563,8 @@ public class FileHandleUtil {
         file.delete();
     }
 
-    public static boolean renameTo(File file,CustomFile nFile){
-       return file.renameTo(nFile);
+    public static void renameTo(File file, CustomFile nFile){
+        file.renameTo(nFile);
     }
 
     public static void SAFRenameTo(DocumentFile doc,File file,String name){

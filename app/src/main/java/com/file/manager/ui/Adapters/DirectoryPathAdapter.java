@@ -28,7 +28,7 @@ public class DirectoryPathAdapter extends RecyclerView.Adapter<DirectoryPathAdap
     @NonNull
     @Override
     public PathViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.path_layout,parent,false);
+        View view=inflater.inflate(R.layout.storage_path_layout,parent,false);
         return new PathViewHolder(view);
     }
 

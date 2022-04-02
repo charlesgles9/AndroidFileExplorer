@@ -41,26 +41,6 @@ public class MIMETypesHelper {
         else Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
     }
 
-    public void startNoDefaults(){
-        if(!isStoragePermissionGranted(file)){
-            getStoragePermission(file);
-            return;
-        }
-        intent= OpenFileAs(context, getMimeType(file),file);
-        if(intent!=null)
-            context.startActivity(intent);
-    }
-
-    public void startDefault(String MimeType){
-        if(!isStoragePermissionGranted(file)){
-            getStoragePermission(file);
-            return;
-        }
-        intent=OpenWithDefaults(context,MimeType,file);
-        if(intent!=null)
-            context.startActivity(intent);
-    }
-
     public void startNoDefaults(String MimeType){
         if(!isStoragePermissionGranted(file)){
             getStoragePermission(file);
@@ -81,6 +61,7 @@ public class MIMETypesHelper {
         if(intent!=null)
             context.startActivity(intent);
     }
+
     private String getMimeType(CustomFile file){
         if(file.getExtension()==null||file.getExtension().lastIndexOf(".")==-1)
             return null;

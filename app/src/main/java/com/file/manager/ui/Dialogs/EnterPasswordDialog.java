@@ -22,7 +22,7 @@ public class EnterPasswordDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.enter_password_layout);
+        setContentView(R.layout.dialog_enter_password_layout);
         final Button cancel=findViewById(R.id.cancel);
         final Button okay=findViewById(R.id.okay);
         final TextInputEditText password=findViewById(R.id.password);

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity  {
             setTheme(R.style.AppThemeDark);
             getWindow().setStatusBarColor(getResources().getColor(R.color.darkStatusBar));
         }
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
         toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity  {
         // Format the App name to be displayed at the navigation header
         final TextView app_title=findViewById(R.id.app_title);
         setFont(app_title,this, "Fonts/Rocket.ttf");
-        PermissionsHelper.CreateInstance(this);
+        PermissionsHelper.createInstance(this);
 
         onSharedIntent();
         passwordAuthentication();

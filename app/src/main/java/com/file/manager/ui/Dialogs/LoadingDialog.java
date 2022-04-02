@@ -17,7 +17,7 @@ public class LoadingDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.loading_dialog);
+        setContentView(R.layout.dialog_loading);
     }
 
 

@@ -33,7 +33,7 @@ public class BookMarkAdapter extends RecyclerView.Adapter<BookMarkAdapter.BookMa
     @NonNull
     @Override
     public BookMarkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.bookmark_layout,parent,false);
+        View view=inflater.inflate(R.layout.home_bookmark_layout,parent,false);
         return new BookMarkViewHolder(view);
     }
 

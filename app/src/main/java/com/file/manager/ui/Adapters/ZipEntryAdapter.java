@@ -55,7 +55,7 @@ public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEnt
     @NonNull
     @Override
     public ZipEntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= inflater.inflate(R.layout.linear_file_layout,parent,false);
+        View view= inflater.inflate(R.layout.storage_linear_file_layout,parent,false);
         return new ZipEntryViewHolder(view);
     }
 

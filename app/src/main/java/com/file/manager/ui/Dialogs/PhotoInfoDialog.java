@@ -41,7 +41,7 @@ public class PhotoInfoDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(true);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.properties_layout);
+        setContentView(R.layout.dialog_properties_layout);
         final RecyclerView recyclerView=findViewById(R.id.list);
         final LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -90,7 +90,7 @@ public class PhotoInfoDialog extends Dialog {
         @NonNull
         @Override
         public PhotoInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view=inflater.inflate(R.layout.file_properties_details,parent,false);
+            View view=inflater.inflate(R.layout.dialog_file_properties_details,parent,false);
             return new PhotoInfoViewHolder(view);
         }
 

@@ -25,7 +25,7 @@ public class BatchRenamePreviewDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.batch_rename_preview_layout);
+        setContentView(R.layout.dialog_batch_rename_preview_layout);
         LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
         BatchRenameAdapter adapter= new BatchRenameAdapter(getContext(),models);

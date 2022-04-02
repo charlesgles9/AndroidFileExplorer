@@ -23,7 +23,7 @@ public class TaskDialogPrompt extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.copy_dialog_prompt);
+        setContentView(R.layout.dialog_copy_prompt);
         allow=findViewById(R.id.allow);
         dismiss=findViewById(R.id.dismiss);
         remember=findViewById(R.id.remember);

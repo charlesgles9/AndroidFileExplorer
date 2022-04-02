@@ -29,7 +29,7 @@ public class NewFolderDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.single_file_rename_dialog);
+        setContentView(R.layout.dilaog_single_file_rename);
         name=findViewById(R.id.name);
         title=findViewById(R.id.title);
         Button cancel=findViewById(R.id.cancel);

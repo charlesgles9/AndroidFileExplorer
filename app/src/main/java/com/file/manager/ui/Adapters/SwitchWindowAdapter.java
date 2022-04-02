@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +32,7 @@ public class SwitchWindowAdapter extends RecyclerView.Adapter<SwitchWindowAdapte
     @NonNull
     @Override
     public SwitchWindowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-          View view= inflater.inflate(R.layout.window_layout,parent,false);
+          View view= inflater.inflate(R.layout.dialog_window_layout,parent,false);
         return new SwitchWindowViewHolder(view);
     }
 

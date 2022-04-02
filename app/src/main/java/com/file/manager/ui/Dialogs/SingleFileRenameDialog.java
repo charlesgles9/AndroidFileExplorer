@@ -34,7 +34,7 @@ public class SingleFileRenameDialog extends Dialog implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.single_file_rename_dialog);
+        setContentView(R.layout.dilaog_single_file_rename);
         final Button cancel=findViewById(R.id.cancel);
         final Button okay=findViewById(R.id.okay);
         name=findViewById(R.id.name);

@@ -69,10 +69,10 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
         String prefStr=preferences.getString(folder.getType().toString(),"LIST");
         if(!(prefStr.equals("LIST"))&
                 !folder.getType().equals(FilterType.FOLDERS)) {
-             view=inflater.inflate(R.layout.grid_folder_layout,parent,false);
+             view=inflater.inflate(R.layout.storage_grid_folder_layout,parent,false);
             return new GridViewHolder(view);
         }else
-             view = inflater.inflate(R.layout.linear_file_layout, parent, false);
+             view = inflater.inflate(R.layout.storage_linear_file_layout, parent, false);
 
         return new ListViewHolder(view);
     }

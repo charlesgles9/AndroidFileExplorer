@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CopyProgressMonitor;
 import com.file.manager.ui.utils.CopyUtility;
-import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class BenchmarkAdapter extends RecyclerView.Adapter<BenchmarkAdapter.Benc
     @NonNull
     @Override
     public BenchmarkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.thread_stats_layout,parent,false);
+        View view=inflater.inflate(R.layout.cpu_thread_stats_layout,parent,false);
         return new BenchmarkViewHolder(view);
     }
 

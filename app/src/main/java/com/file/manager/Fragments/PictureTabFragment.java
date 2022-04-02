@@ -36,7 +36,7 @@ public class PictureTabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(root==null)
-        root=inflater.inflate(R.layout.fragment_picture_viewer_tab,container,false);
+        root=inflater.inflate(R.layout.picture_viewer_fragment_tab,container,false);
         picture=root.findViewById(R.id.picture);
         try {
             Glide.with(this).asBitmap()

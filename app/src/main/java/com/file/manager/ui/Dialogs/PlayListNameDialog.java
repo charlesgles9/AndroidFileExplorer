@@ -23,7 +23,7 @@ public class PlayListNameDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.add_playlist_dialog);
+        setContentView(R.layout.audio_add_playlist_dialog);
         final Button cancel=findViewById(R.id.cancel);
         final Button okay=findViewById(R.id.okay);
         final TextInputEditText name=findViewById(R.id.name);

@@ -74,7 +74,7 @@ import com.file.manager.ui.Dialogs.PropertiesDialog;
 import com.file.manager.ui.Dialogs.SingleFileRenameDialog;
 import com.file.manager.ui.Dialogs.SwitchWindowDialog;
 import com.file.manager.ui.ViewMode;
-import com.file.manager.ui.storage.CopyServiceQueue;
+import com.file.manager.ui.Models.CopyServiceQueue;
 import com.file.manager.ui.storage.FilterType;
 import com.file.manager.ui.storage.SortBy;
 import com.file.manager.ui.utils.ArchiveCompressUtil;
@@ -150,7 +150,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_storage, container, false);
+         root = inflater.inflate(R.layout.storage_fragment, container, false);
          setTitleBarSubtitle();
          WindowUtil.getInstance().put(this,key,root);
          FileListRecyclerView=root.findViewById(R.id.fileList);
@@ -1248,7 +1248,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void preference(final View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        final View view=inflater.inflate(R.layout.preference_popup_layout,null);
+        final View view=inflater.inflate(R.layout.popup_preference_layout,null);
         final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final RadioButton settings=view.findViewById(R.id.settings);
@@ -1282,7 +1282,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
     private void sortByPreference(View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.sortby_layout,null);
+        View view=inflater.inflate(R.layout.popup_sortby_layout,null);
         final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final Folder folder=directoryManager.currentDir();
@@ -1317,7 +1317,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
     private void viewTypePreference(View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view=inflater.inflate(R.layout.view_type_layout,null);
+        View view=inflater.inflate(R.layout.popup_view_type_layout,null);
         final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final SharedPreferences.Editor edit=getContext().getSharedPreferences("MyPref",Context.MODE_PRIVATE).edit();
@@ -1344,7 +1344,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void moreOptionsPopup(View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        View view=inflater.inflate(R.layout.more_layout,null);
+        View view=inflater.inflate(R.layout.popup_more_layout,null);
         final Folder folder=directoryManager.currentDir();
         final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAtLocation(anchor,Gravity.BOTTOM|Gravity.RIGHT,0,0);

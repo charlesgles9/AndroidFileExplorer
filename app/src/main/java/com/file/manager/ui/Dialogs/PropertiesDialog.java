@@ -30,7 +30,6 @@ import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.MD5;
 import com.file.manager.ui.utils.ThumbnailLoader;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class PropertiesDialog extends Dialog implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setCancelable(true);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.properties_layout);
+        setContentView(R.layout.dialog_properties_layout);
         final RecyclerView recyclerView=findViewById(R.id.list);
         icon=findViewById(R.id.icon);
         final LinearLayoutManager layoutManager= new LinearLayoutManager(getContext());
@@ -197,7 +196,7 @@ public class PropertiesDialog extends Dialog implements View.OnClickListener {
         @NonNull
         @Override
         public PropertyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view=inflater.inflate(R.layout.file_properties_details,parent,false);
+            View view=inflater.inflate(R.layout.dialog_file_properties_details,parent,false);
             return new PropertyViewHolder(view);
         }
 

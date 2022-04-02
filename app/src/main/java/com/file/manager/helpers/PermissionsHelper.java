@@ -25,7 +25,6 @@ public class PermissionsHelper {
     }
 
     public  void grantStorageReadWrite(){
-
         // check for storage permission
         if(checkStoragePermissionDenied()){
             // ask for the permission
@@ -63,9 +62,11 @@ public class PermissionsHelper {
         DocumentFile doc=DocumentFile.fromTreeUri(context,uri);
         return doc != null && doc.canWrite();
     }
-    public static void CreateInstance(Activity context){
+
+    public static void createInstance(Activity context){
         Instance= new PermissionsHelper(context);
     }
+
     public static PermissionsHelper getInstance(){
         return Instance;
     }

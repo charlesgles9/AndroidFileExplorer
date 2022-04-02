@@ -85,8 +85,8 @@ public class FTPService extends IntentService {
     }
 
     private void start(){
-        final RemoteViews layout1=new RemoteViews(getPackageName(), R.layout.ftp_notification_small);
-        final RemoteViews layout2=new RemoteViews(getPackageName(),R.layout.ftp_notification_big);
+        final RemoteViews layout1=new RemoteViews(getPackageName(), R.layout.notification_ftp_small);
+        final RemoteViews layout2=new RemoteViews(getPackageName(),R.layout.notification_ftp_big);
          builder= new NotificationCompat.Builder(this,String.valueOf(ID))
                 .setSmallIcon(R.drawable.ic_ftp_server_icon)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())

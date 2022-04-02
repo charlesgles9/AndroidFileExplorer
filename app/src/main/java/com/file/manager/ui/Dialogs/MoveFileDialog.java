@@ -29,7 +29,7 @@ public class MoveFileDialog  extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.move_files_dialog_progress);
+        setContentView(R.layout.dialog_move_files_progress);
         final TextView source=findViewById(R.id.source);
         final TextView percent=findViewById(R.id.percent);
         final TextView destination=findViewById(R.id.destination);

@@ -29,7 +29,7 @@ public class BatchRenameAdapter extends RecyclerView.Adapter<BatchRenameAdapter.
     @NonNull
     @Override
     public BatchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= inflater.inflate(R.layout.linear_file_layout,parent,false);
+        View view= inflater.inflate(R.layout.storage_linear_file_layout,parent,false);
 
         return new BatchViewHolder(view);
     }

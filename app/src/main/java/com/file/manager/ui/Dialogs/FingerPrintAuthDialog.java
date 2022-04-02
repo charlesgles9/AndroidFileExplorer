@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.widget.Toast;
 
 import com.file.manager.R;
 import com.file.manager.helpers.AuthenticationHelper;
@@ -24,7 +23,7 @@ public class FingerPrintAuthDialog extends Dialog {
         setCancelable(cancelable);
         getWindow().setGravity(Gravity.BOTTOM);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.finger_print_dialog_prompt);
+        setContentView(R.layout.dialog_finger_print_prompt);
         new AuthenticationHelper().requestAuthentication(context,onAuthSuccess);
     }
 

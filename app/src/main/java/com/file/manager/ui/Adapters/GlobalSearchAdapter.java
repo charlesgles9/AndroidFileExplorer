@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.Operations;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.Models.LocalThumbnail;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.ThumbnailLoader;
 
@@ -42,7 +41,7 @@ public class GlobalSearchAdapter extends RecyclerView.Adapter<GlobalSearchAdapte
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.linear_file_layout,parent,false);
+        View view=inflater.inflate(R.layout.storage_linear_file_layout,parent,false);
         return new SearchViewHolder(view);
     }
 

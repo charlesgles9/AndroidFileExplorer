@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
 
         // inflate the view only once
         if(root==null)
-        root = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.home_fragment, container, false);
         preferences=getContext().getSharedPreferences("Bookmarks",Context.MODE_PRIVATE);
         final LinearLayout searchLayout=root.findViewById(R.id.searchLayout);
         final ToggleButton showRecent=root.findViewById(R.id.showRecent);

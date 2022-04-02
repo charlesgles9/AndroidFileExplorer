@@ -96,10 +96,6 @@
         </activity>
         <activity android:name=".Activities.SettingsPrefActivity" />
         <activity
-            android:name=".Activities.GlobalSearchActivity"
-            android:theme="@style/AppThemeDark"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".Activities.MainActivity"
             android:label="Win-Explorer"
             android:launchMode="singleTop"

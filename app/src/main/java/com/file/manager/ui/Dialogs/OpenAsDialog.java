@@ -20,7 +20,7 @@ public class OpenAsDialog extends Dialog implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.open_as_window_layout);
+        setContentView(R.layout.dialog_open_as_window_layout);
         findViewById(R.id.audio).setOnClickListener(this);
         findViewById(R.id.text).setOnClickListener(this);
         findViewById(R.id.video).setOnClickListener(this);

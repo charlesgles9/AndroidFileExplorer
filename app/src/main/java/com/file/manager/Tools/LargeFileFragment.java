@@ -68,7 +68,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root=inflater.inflate(R.layout.fragment_large_files,container,false);
+        root=inflater.inflate(R.layout.large_fragment_files,container,false);
        final Button Delete=root.findViewById(R.id.delete);
        final Button Refresh=root.findViewById(R.id.refresh);
        final Button SelectAll=root.findViewById(R.id.selectAll);
@@ -283,7 +283,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
 
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        View view=inflater.inflate(R.layout.popup2,null);
+        View view=inflater.inflate(R.layout.popup_large_files,null);
         final RadioButton min_size1=view.findViewById(R.id.min_size1);
         final RadioButton min_size2=view.findViewById(R.id.min_size2);
         final RadioButton min_size3=view.findViewById(R.id.min_size3);

@@ -50,7 +50,7 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root=inflater.inflate(R.layout.fragment_installed_apps,container,false);
+        root=inflater.inflate(R.layout.installed_apps_fragment,container,false);
         recyclerView=root.findViewById(R.id.fileList);
         final MainActivity activity=(MainActivity)(getContext());
         activityToolbar=activity.toolbar;

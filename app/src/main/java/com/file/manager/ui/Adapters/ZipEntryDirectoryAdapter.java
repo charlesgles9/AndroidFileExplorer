@@ -32,7 +32,7 @@ public class ZipEntryDirectoryAdapter extends RecyclerView.Adapter<ZipEntryDirec
     @NonNull
     @Override
     public ZipEntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.path_layout,parent,false);
+        View view=inflater.inflate(R.layout.storage_path_layout,parent,false);
         return new ZipEntryViewHolder(view);
     }
 

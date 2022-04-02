@@ -84,7 +84,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.activity_global_search, container, false);
+        root = inflater.inflate(R.layout.home_global_search, container, false);
         final RecyclerView recyclerView=root.findViewById(R.id.fileList);
         FILE_HANDLE_OPTIONS=root.findViewById(R.id.FILE_HANDLE_OPTIONS1);
         mainToolbar=((MainActivity)getContext()).toolbar;
@@ -359,7 +359,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
     private void moreOptionsPopup(View anchor, final ArrayList<CustomFile>array){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        View view=inflater.inflate(R.layout.more_layout,null);
+        View view=inflater.inflate(R.layout.popup_more_layout,null);
         final PopupWindow popupWindow= new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
         popupWindow.showAtLocation(anchor, Gravity.BOTTOM|Gravity.RIGHT,0,0);
         final RadioButton open=view.findViewById(R.id.open);

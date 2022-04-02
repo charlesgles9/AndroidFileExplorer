@@ -11,7 +11,7 @@ import android.widget.ToggleButton;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.Models.Folder;
+
 import java.util.ArrayList;
 
 public class OverWriteDialog extends Dialog {
@@ -32,7 +32,7 @@ public class OverWriteDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.overwrite_dialog_layout);
+        setContentView(R.layout.dialog_overwrite_layout);
         source=findViewById(R.id.source);
         final View doForAllLayout=findViewById(R.id.doForAllLayout);
         final ToggleButton doForAll=findViewById(R.id.doForAll);

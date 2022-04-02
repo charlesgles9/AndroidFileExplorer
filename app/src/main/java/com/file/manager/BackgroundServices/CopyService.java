@@ -12,18 +12,15 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CopyProgressMonitor;
-import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.storage.CopyServiceQueue;
+import com.file.manager.ui.Models.CopyServiceQueue;
 import com.file.manager.ui.utils.CopyUtility;
 import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.Timer;
 
 import java.io.File;
@@ -106,8 +103,8 @@ public class CopyService extends IntentService  {
 
 
     private void startNotification(){
-        final RemoteViews layout1=new RemoteViews(getPackageName(),R.layout.copy_notification_small);
-        final RemoteViews layout2=new RemoteViews(getPackageName(),R.layout.copy_notification_big);
+        final RemoteViews layout1=new RemoteViews(getPackageName(),R.layout.notification_copy_small);
+        final RemoteViews layout2=new RemoteViews(getPackageName(),R.layout.notification_copy_big);
         final NotificationCompat.Builder builder= new NotificationCompat.Builder(this,String.valueOf(model.getId()))
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())

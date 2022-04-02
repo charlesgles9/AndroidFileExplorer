@@ -47,7 +47,7 @@ public class PlayListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root= inflater.inflate(R.layout.playlist_specific_music_fragment,container,false);
+        root= inflater.inflate(R.layout.audio_playlist_specific_music_fragment,container,false);
         playList=root.findViewById(R.id.playList);
         back=root.findViewById(R.id.back);
         titleMessage=root.findViewById(R.id.title);

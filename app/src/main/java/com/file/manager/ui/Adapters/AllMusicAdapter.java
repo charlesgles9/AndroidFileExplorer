@@ -34,7 +34,7 @@ public class AllMusicAdapter extends RecyclerView.Adapter<AllMusicAdapter.ListVi
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.playlist_item_layout,parent,false);
+        View view=inflater.inflate(R.layout.audio_playlist_item_layout,parent,false);
         return new ListViewHolder(view);
     }
 

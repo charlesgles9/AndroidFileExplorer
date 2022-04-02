@@ -38,7 +38,7 @@ public class MusicListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root=inflater.inflate(R.layout.playlist_all_music_fragment,container,false);
+        root=inflater.inflate(R.layout.audio_playlist_all_music_fragment,container,false);
         fileListRecycleView=root.findViewById(R.id.playList);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);

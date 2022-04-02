@@ -63,7 +63,7 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-         root=inflater.inflate(R.layout.fragment_duplicates,container,false);
+         root=inflater.inflate(R.layout.duplicate_fragment,container,false);
         final Button refresh=root.findViewById(R.id.refresh);
         final Button delete=root.findViewById(R.id.delete);
         final Button selectAll=root.findViewById(R.id.selectAll);
