@@ -26,7 +26,7 @@
 
     <ImageView
         android:id="@+id/img_storage"
-        android:src="@drawable/ic_sd_storage"
+        android:src="@drawable/ic_sd_storage2"
         android:background="@drawable/light_blue_rounded_drawable"
         android:padding="6dp"
         android:layout_width="30dp"
