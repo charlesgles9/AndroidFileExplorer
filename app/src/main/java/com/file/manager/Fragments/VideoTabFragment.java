@@ -41,6 +41,8 @@ public class VideoTabFragment extends Fragment {
     private TextView endTime;
     private long length;
     private boolean isControllerVisible;
+    private int stopPosition=0;
+    private boolean paused=false;
     public VideoTabFragment(File file, TapGesture tapGesture){
         this.file=file;
         this.tapGesture=tapGesture;
@@ -214,8 +216,7 @@ public class VideoTabFragment extends Fragment {
 
     }
 
-    private int stopPosition=0;
-    private boolean paused=false;
+
     @Override
     public void onResume() {
         super.onResume();
