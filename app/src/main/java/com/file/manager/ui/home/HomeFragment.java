@@ -330,31 +330,34 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
             activity.setFragment(instance);
     }
 
+    @SuppressLint("SetTextI18n")
     public void initStorageProgress(){
         // internal
-        final ProgressBar InternalStorageProgress=root.findViewById(R.id.Internal_progress);
-        final TextView textView_TotalSpace_internal=root.findViewById(R.id.text_internal_total);
-        final TextView textView_Used_internal=root.findViewById(R.id.text_internal_used);
-        final TextView textView_Free_internal=root.findViewById(R.id.text_internal_free);
+        final ProgressBar InternalStorageProgress=root.findViewById(R.id.InternalSdProgress);
+        final TextView textView_TotalSpace_internal=root.findViewById(R.id.totalInternal);
+        final TextView textView_Used_internal=root.findViewById(R.id.usedInternal);
+        final TextView textView_Free_internal=root.findViewById(R.id.availInternal);
+        final TextView textView_percent_internal=root.findViewById(R.id.InternalPercentage);
         // external
-        final ProgressBar ExternalStorageProgress=root.findViewById(R.id.External_progress);
-        final TextView textView_TotalSpace_external=root.findViewById(R.id.text_external_total);
-        final TextView textView_Used_external=root.findViewById(R.id.text_external_used);
-        final TextView textView_Free_external=root.findViewById(R.id.text_external_free);
-
+        final ProgressBar ExternalStorageProgress=root.findViewById(R.id.ExternalSdProgress);
+        final TextView textView_TotalSpace_external=root.findViewById(R.id.totalExternal);
+        final TextView textView_Used_external=root.findViewById(R.id.usedExternal);
+        final TextView textView_Free_external=root.findViewById(R.id.availExternal);
+        final TextView textView_percent_external=root.findViewById(R.id.ExternalPercentage);
 
         final File internal=DiskUtils.getInstance().getDirectory(0);
         InternalStorageProgress.setProgress(DiskUtils.getInstance().getFreeStorageInPercent(internal));
-        textView_TotalSpace_internal.setText(DiskUtils.getInstance().getTotalStorageString(internal));
-        textView_Used_internal.setText(DiskUtils.getInstance().getUsedStorageString(internal));
-        textView_Free_internal.setText("Available: "+DiskUtils.getInstance().getFreeStorageString(internal));
-
+        textView_TotalSpace_internal.setText("Total: "+DiskUtils.getInstance().getTotalStorageString(internal));
+        textView_Used_internal.setText("Used: "+DiskUtils.getInstance().getUsedStorageString(internal));
+        textView_Free_internal.setText("Avail: "+DiskUtils.getInstance().getFreeStorageString(internal));
+        textView_percent_internal.setText(DiskUtils.getInstance().getFreeStorageInPercent(internal)+"%");
         final File external=DiskUtils.getInstance().getDirectory(1);
         if(external!=null){
             ExternalStorageProgress.setProgress(DiskUtils.getInstance().getFreeStorageInPercent(external));
-            textView_TotalSpace_external.setText(DiskUtils.getInstance().getTotalStorageString(external));
-            textView_Used_external.setText(DiskUtils.getInstance().getUsedStorageString(external));
-            textView_Free_external.setText("Available: "+DiskUtils.getInstance().getFreeStorageString(external));
+            textView_TotalSpace_external.setText("Total: "+DiskUtils.getInstance().getTotalStorageString(external));
+            textView_Used_external.setText("Used: "+DiskUtils.getInstance().getUsedStorageString(external));
+            textView_Free_external.setText("Avail: "+DiskUtils.getInstance().getFreeStorageString(external));
+            textView_percent_external.setText(DiskUtils.getInstance().getFreeStorageInPercent(external)+"%");
 
         }else {
             root.findViewById(R.id.storageDetails2).setVisibility(View.GONE);
