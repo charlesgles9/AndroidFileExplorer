@@ -511,7 +511,7 @@
                         android:textColor="?attr/normalTextColor"
                         android:text="Documents"/>
                     <ProgressBar
-                        android:id="docProgress"
+                        android:id="@+id/docProgress"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="5dp"
