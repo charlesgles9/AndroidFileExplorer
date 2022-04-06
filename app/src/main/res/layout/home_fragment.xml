@@ -316,6 +316,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:id="@+id/calculationText"
+                android:layout_gravity="center"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/normalTextColor"
+                android:visibility="invisible"
+                android:text="Calculating..."/>
         <TableLayout
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
@@ -363,7 +373,7 @@
                 android:clickable="false"
                 android:indeterminate="false"
                 android:max="100"
-                android:progress="75"
+                android:progress="0"
                 android:progressDrawable="@drawable/progress_drawable_home" />
 
         </LinearLayout>
@@ -401,7 +411,7 @@
                     android:clickable="false"
                     android:indeterminate="false"
                     android:max="100"
-                    android:progress="30"
+                    android:progress="0"
                     android:progressDrawable="@drawable/progress_drawable_home" />
             </LinearLayout>
 
@@ -439,7 +449,7 @@
                     android:clickable="false"
                     android:indeterminate="false"
                     android:max="100"
-                    android:progress="20"
+                    android:progress="0"
                     android:progressDrawable="@drawable/progress_drawable_home" />
         </LinearLayout>
             </TableRow>
@@ -484,7 +494,7 @@
                         android:clickable="false"
                         android:indeterminate="false"
                         android:max="100"
-                        android:progress="10"
+                        android:progress="0"
                         android:progressDrawable="@drawable/progress_drawable_home" />
 
                 </LinearLayout>
@@ -521,7 +531,7 @@
                         android:clickable="false"
                         android:indeterminate="false"
                         android:max="100"
-                        android:progress="5"
+                        android:progress="0"
                         android:progressDrawable="@drawable/progress_drawable_home" />
 
                 </LinearLayout>
@@ -558,7 +568,7 @@
                         android:clickable="false"
                         android:indeterminate="false"
                         android:max="100"
-                        android:progress="8"
+                        android:progress="0"
                         android:progressDrawable="@drawable/progress_drawable_home" />
 
                 </LinearLayout>

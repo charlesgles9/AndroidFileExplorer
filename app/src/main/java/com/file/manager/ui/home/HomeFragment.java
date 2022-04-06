@@ -80,6 +80,13 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
     private BookMarkAdapter bookMarkAdapter;
     private SharedPreferences preferences;
     private ArrayList<File>bookmarksArray=new ArrayList<>();
+    private ProgressBar videoProgress;
+    private ProgressBar photoProgress;
+    private ProgressBar appProgress;
+    private ProgressBar archiveProgress;
+    private ProgressBar docProgress;
+    private ProgressBar audioProgress;
+    private TextView calculatingText;
     public HomeFragment(GlobalFileOperations globalFileOperations){
         FragmentID= UUID.randomUUID().hashCode();
         this.globalFileOperations=globalFileOperations;
@@ -95,6 +102,13 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         preferences=getContext().getSharedPreferences("Bookmarks",Context.MODE_PRIVATE);
         final LinearLayout searchLayout=root.findViewById(R.id.searchLayout);
         final ToggleButton showRecent=root.findViewById(R.id.showRecent);
+        videoProgress=root.findViewById(R.id.videoProgress);
+        photoProgress=root.findViewById(R.id.photoProgress);
+        appProgress=root.findViewById(R.id.appProgress);
+        audioProgress=root.findViewById(R.id.audioProgress);
+        archiveProgress=root.findViewById(R.id.archiveProgress);
+        docProgress=root.findViewById(R.id.docProgress);
+        calculatingText=root.findViewById(R.id.calculationText);
         bookMarkToggleLayout=root.findViewById(R.id.bookMarkToggleLayout);
         bookMarkLayout=root.findViewById(R.id.bookMarkLayout);
         bookToggleBtn=root.findViewById(R.id.bookToggleBtn);
@@ -105,6 +119,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         progressBar=root.findViewById(R.id.progress);
 
         initStorageProgress();
+        initStorageCategoryStats();
         final Fragment fragment=this;
         activity=(MainActivity)getContext();
         activity.setSubtitle("Home");
@@ -301,6 +316,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                     //refresh views
                     initBookMarks();
                     initStorageProgress();
+                    initStorageCategoryStats();
                     recentFilesContainer.clear();
                     if(showRecent.isChecked())
                     initializeRecentFiles();
@@ -363,6 +379,80 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
             root.findViewById(R.id.storageDetails2).setVisibility(View.GONE);
         }
     }
+
+    @SuppressLint("StaticFieldLeak")
+    private void initStorageCategoryStats(){
+        // incase the user refreshes multiple times
+        // prevents memory leaks
+        if(calculatingText.getVisibility()==View.INVISIBLE)
+        new AsyncTask<String ,Integer,String>(){
+            ArrayList<CustomFile>videos= new ArrayList<>();
+            ArrayList<CustomFile>audios= new ArrayList<>();
+            ArrayList<CustomFile>apps= new ArrayList<>();
+            ArrayList<CustomFile>photos= new ArrayList<>();
+            ArrayList<CustomFile>docs= new ArrayList<>();
+            ArrayList<CustomFile>archives= new ArrayList<>();
+            @Override
+            protected String doInBackground(String... strings) {
+                Context context=getContext();
+                FileHandleUtil.fetchVideoFiles(context,videos);
+                FileHandleUtil.fetchImageFiles(context,photos);
+                FileHandleUtil.fetchAudioFiles(context,audios);
+                FileHandleUtil.ListApplication(apps);
+                FileHandleUtil.ListDocuments(docs);
+                FileHandleUtil.ListCompressed(archives);
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                calculatingText.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                long storageSize=1L;
+                long videoSize=1L;
+                long photoSize=1L;
+                long audioSize=1L;
+                long appSize=1L;
+                long docSize=1L;
+                long archiveSize=1L;
+                for(File mount:DiskUtils.getInstance().getStorageDirs()) {
+                       if(mount!=null) {
+                          storageSize+= DiskUtils.getInstance().totalMemory(mount);
+
+                       }
+                }
+                for(CustomFile file:videos)
+                    videoSize+=file.length();
+                for(CustomFile file:photos)
+                    photoSize+=file.length();
+                for(CustomFile file:audios)
+                    audioSize+=file.length();
+                for(CustomFile file:apps)
+                    appSize+=file.length();
+                for(CustomFile file:docs)
+                    docSize+=file.length();
+                for(CustomFile file:archives)
+                    archiveSize+=file.length();
+              videoProgress.setProgress((int)(((float)videoSize/(float)storageSize)*100)+1);
+              photoProgress.setProgress((int)(((float)photoSize/(float)storageSize)*100)+1);
+              audioProgress.setProgress((int)(((float)audioSize/(float)storageSize)*100)+1);
+              appProgress.setProgress((int)(((float)appSize/(float)storageSize)*100)+1);
+              docProgress.setProgress((int)(((float)docSize/(float)storageSize)*100)+1);
+              archiveProgress.setProgress((int)(((float)archiveSize/(float)storageSize)*100)+1);
+              System.out.println("Video "+DiskUtils.getInstance().getSize(videoSize)+" ");
+              System.out.println(("Photo "+DiskUtils.getInstance().getSize(photoSize)));
+              System.out.println(("Audio "+DiskUtils.getInstance().getSize(audioSize)));
+              calculatingText.setVisibility(View.INVISIBLE);
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+    }
+
     public void updateWindowView(View root){
         final Fragment fragment=this;
         WindowUtil.getInstance().put(fragment,FilterType.HOME.toString(),root);
