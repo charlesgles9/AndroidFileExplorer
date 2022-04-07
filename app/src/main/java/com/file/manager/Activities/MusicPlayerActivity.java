@@ -26,9 +26,9 @@ import com.file.manager.R;
 import com.file.manager.ui.Dialogs.AudioPlayListBottomSheet;
 
 import com.file.manager.ui.Models.MusicHelperSingleton;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.FileHandleUtil;
+import com.file.manager.utils.Timer;
 
 import java.io.File;
 import java.io.IOException;

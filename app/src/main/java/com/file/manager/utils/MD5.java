@@ -1,6 +1,4 @@
-package com.file.manager.ui.utils;
-
-import com.file.manager.ui.utils.DiskUtils;
+package com.file.manager.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

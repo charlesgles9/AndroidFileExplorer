@@ -6,7 +6,7 @@ import android.net.Uri;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.file.manager.ui.utils.CopyUtility;
+import com.file.manager.utils.CopyUtility;
 import java.util.LinkedList;
 import java.util.Queue;
 

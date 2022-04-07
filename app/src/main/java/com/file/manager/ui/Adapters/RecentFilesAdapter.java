@@ -15,10 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.RecentFileModel;
-import com.file.manager.ui.home.RecentFilesContainer;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.FileFilters;
-import com.file.manager.ui.utils.ThumbnailLoader;
+import com.file.manager.ui.Models.RecentFilesContainer;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.FileFilters;
+import com.file.manager.utils.ThumbnailLoader;
 
 import java.util.ArrayList;
 import java.util.List;

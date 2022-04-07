@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.FileHandleUtil;
 
 import java.io.File;
 

@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.R;
 import com.file.manager.ui.Models.AppManagerModel;
-import com.file.manager.ui.utils.Sorter;
+import com.file.manager.utils.Sorter;
 
 import java.util.ArrayList;
 import java.util.List;

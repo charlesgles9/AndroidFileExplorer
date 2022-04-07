@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.Operations;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.ThumbnailLoader;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.ThumbnailLoader;
 
 import java.util.ArrayList;
 import java.util.List;

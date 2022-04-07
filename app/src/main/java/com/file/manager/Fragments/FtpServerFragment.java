@@ -22,9 +22,9 @@ import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.ui.Dialogs.FolderPickerDialog;
 import com.file.manager.ui.Models.FtpServerInstance;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.SoftwareKeyboardListener;
-import com.file.manager.ui.utils.WifiInfoUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.SoftwareKeyboardListener;
+import com.file.manager.utils.WifiInfoUtil;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

@@ -19,9 +19,9 @@ import androidx.core.app.NotificationManagerCompat;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CopyProgressMonitor;
 import com.file.manager.ui.Models.CopyServiceQueue;
-import com.file.manager.ui.utils.CopyUtility;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.CopyUtility;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.Timer;
 
 import java.io.File;
 import java.util.ArrayList;

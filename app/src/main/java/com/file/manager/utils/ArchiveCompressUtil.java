@@ -1,4 +1,4 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 ;
 import android.content.Context;
 import android.net.Uri;
@@ -11,7 +11,6 @@ import com.file.manager.ui.Models.CustomFile;
 import net.lingala.zip4j.ZipFile;
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.io.outputstream.ZipOutputStream;
-import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.model.enums.AesKeyStrength;
 import net.lingala.zip4j.model.enums.CompressionLevel;
@@ -21,9 +20,6 @@ import net.lingala.zip4j.progress.ProgressMonitor;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;

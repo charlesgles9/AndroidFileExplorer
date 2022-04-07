@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.file.manager.ui.utils.SoftwareKeyboardListener xmlns:android="http://schemas.android.com/apk/res/android"
+<com.file.manager.utils.SoftwareKeyboardListener xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="?attr/background1"
@@ -186,4 +186,4 @@
         android:textSize="15dp"
         android:textColor="?attr/normalTextColor"
         android:background="@drawable/drawable_highlight6"/>
-</com.file.manager.ui.utils.SoftwareKeyboardListener>
+</com.file.manager.utils.SoftwareKeyboardListener>

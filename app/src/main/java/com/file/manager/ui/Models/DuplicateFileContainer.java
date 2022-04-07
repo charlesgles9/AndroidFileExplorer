@@ -5,10 +5,10 @@ import android.os.AsyncTask;
 import androidx.lifecycle.MutableLiveData;
 
 import com.file.manager.OnTaskCompleteListener;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
-import com.file.manager.ui.utils.MD5;
-import com.file.manager.ui.utils.Sorter;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
+import com.file.manager.utils.MD5;
+import com.file.manager.utils.Sorter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

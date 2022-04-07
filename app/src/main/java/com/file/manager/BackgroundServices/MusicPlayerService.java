@@ -23,7 +23,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.MusicHelperSingleton;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.Timer;
 import java.io.IOException;
 
 public class MusicPlayerService extends IntentService {

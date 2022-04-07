@@ -1,4 +1,4 @@
-package com.file.manager.ui.home;
+package com.file.manager.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -46,14 +46,13 @@ import com.file.manager.ui.Dialogs.OpenAsDialog;
 import com.file.manager.ui.Dialogs.PropertiesDialog;
 import com.file.manager.ui.Dialogs.SingleFileRenameDialog;
 import com.file.manager.FilterType;
-import com.file.manager.Fragments.StorageFragment;
-import com.file.manager.ui.utils.CopyHelper;
-import com.file.manager.ui.utils.CutHelper;
-import com.file.manager.ui.utils.DeleteFilesUtility;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileFilters;
-import com.file.manager.ui.utils.SoftwareKeyboardListener;
-import com.file.manager.ui.utils.ThumbnailLoader;
+import com.file.manager.utils.CopyHelper;
+import com.file.manager.utils.CutHelper;
+import com.file.manager.utils.DeleteFilesUtility;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileFilters;
+import com.file.manager.utils.SoftwareKeyboardListener;
+import com.file.manager.utils.ThumbnailLoader;
 
 import java.io.File;
 import java.io.FilenameFilter;

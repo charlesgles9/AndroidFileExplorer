@@ -19,8 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.file.manager.R;
 import com.file.manager.TapGesture;
 import com.file.manager.Activities.VideoPlayerActivity;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.Timer;
 
 import java.io.File;
 

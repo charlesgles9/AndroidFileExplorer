@@ -1,4 +1,4 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 import com.file.manager.ui.Models.AppManagerModel;
 import com.file.manager.ui.Models.CustomFile;

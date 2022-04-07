@@ -18,7 +18,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.FtpServerInstance;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.Timer;
 
 
 public class FTPService extends IntentService {

@@ -19,7 +19,7 @@ import com.file.manager.R;
 import com.file.manager.ui.Adapters.PlayListAdapter;
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListHierarchy;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.Timer;
 
 
 import java.io.IOException;

@@ -28,9 +28,9 @@ import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Adapters.ZipEntryAdapter;
 import com.file.manager.ui.Adapters.ZipEntryDirectoryAdapter;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.ArchiveDecompressUtil;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Selector;
+import com.file.manager.utils.ArchiveDecompressUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Selector;
 
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;

@@ -17,8 +17,8 @@ import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.DeleteFilesUtility;
-import com.file.manager.ui.utils.DiskUtils;
+import com.file.manager.utils.DeleteFilesUtility;
+import com.file.manager.utils.DiskUtils;
 
 import java.io.File;
 import java.util.ArrayList;

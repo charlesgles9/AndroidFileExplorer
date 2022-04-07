@@ -1,8 +1,7 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 import android.content.Context;
 import android.os.StatFs;
-import android.widget.Toast;
 
 import com.file.manager.ui.Models.CustomFile;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -12,7 +12,7 @@ import androidx.documentfile.provider.DocumentFile;
 
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.home.RecentFilesContainer;
+import com.file.manager.ui.Models.RecentFilesContainer;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.PropertyModel;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileFilters;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileFilters;
 
 import java.io.File;
 import java.util.ArrayList;

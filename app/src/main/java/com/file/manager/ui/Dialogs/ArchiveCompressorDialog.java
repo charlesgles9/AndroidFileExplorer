@@ -20,9 +20,9 @@ import com.file.manager.BackgroundServices.ArchiveCService;
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.ArchiveCompressUtil;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Selector;
+import com.file.manager.utils.ArchiveCompressUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Selector;
 import com.google.android.material.textfield.TextInputEditText;
 
 import net.lingala.zip4j.model.enums.CompressionLevel;

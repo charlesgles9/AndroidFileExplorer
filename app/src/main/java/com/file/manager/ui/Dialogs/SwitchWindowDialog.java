@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.SwitchWindowAdapter;
 import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.utils.WindowUtil;
+import com.file.manager.utils.WindowUtil;
 
 public class SwitchWindowDialog  extends Dialog  implements View.OnClickListener {
 

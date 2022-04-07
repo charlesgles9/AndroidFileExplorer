@@ -1,26 +1,26 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
+
 
 import com.file.manager.ui.Models.CustomFile;
 
 import java.util.ArrayList;
 
-public class CopyHelper {
+public class CutHelper {
     private ArrayList<CustomFile> data= new ArrayList<>();
     private CustomFile destination;
-    private static CopyHelper instance=new CopyHelper();
-    private boolean deleteOldFiles=false;
+    private static CutHelper instance=new CutHelper();
     private CustomFile parent;
-    private CopyHelper(){
+    private CutHelper(){
 
     }
 
     public void add(ArrayList<CustomFile>files){
         this.data.addAll(files);
     }
-    public void add(CustomFile file){
-        this.data.add(file);
-    }
 
+    public boolean isEmpty(){
+        return data.isEmpty();
+    }
     public boolean contains(String path){
         for(CustomFile file:data){
             if(file.getPath().equals(path)){
@@ -28,10 +28,6 @@ public class CopyHelper {
             }
         }
         return false;
-    }
-
-    public boolean isEmpty(){
-        return data.isEmpty();
     }
     public ArrayList<CustomFile> getData() {
         return data;
@@ -45,7 +41,7 @@ public class CopyHelper {
         return destination;
     }
 
-    public static CopyHelper getInstance() {
+    public static CutHelper getInstance() {
         return instance;
     }
 
@@ -57,17 +53,9 @@ public class CopyHelper {
         return parent;
     }
 
-    public  void reset(){
+    public void reset(){
         data.clear();
         destination=null;
         parent=null;
-        deleteOldFiles=false;
-    }
-    public void setDeleteOldFiles(boolean deleteOldFiles) {
-        this.deleteOldFiles = deleteOldFiles;
-    }
-
-    public boolean isDeleteOldFiles() {
-        return deleteOldFiles;
     }
 }

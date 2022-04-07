@@ -23,9 +23,9 @@ import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.ui.Adapters.PicturePagerAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Dialogs.PhotoInfoDialog;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileFilters;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileFilters;
+import com.file.manager.utils.FileHandleUtil;
 
 import java.util.ArrayList;
 import java.util.List;

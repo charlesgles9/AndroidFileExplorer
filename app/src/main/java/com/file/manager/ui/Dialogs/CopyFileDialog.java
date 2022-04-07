@@ -14,11 +14,11 @@ import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CopyProgressMonitor;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.CopyHelper;
-import com.file.manager.ui.utils.CopyUtility;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.CopyHelper;
+import com.file.manager.utils.CopyUtility;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Timer;
 
 import java.io.File;
 

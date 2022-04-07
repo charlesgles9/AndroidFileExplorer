@@ -1,7 +1,6 @@
 package com.file.manager.ui.Adapters;
 
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,10 @@ import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DuplicateFileContainer;
 import com.file.manager.ui.Models.DuplicateFileModel;
 import com.file.manager.ui.Models.LocalThumbnail;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.ThumbnailLoader;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.ThumbnailLoader;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 
 public class DuplicateFileContainerAdapter extends RecyclerView.Adapter<DuplicateFileContainerAdapter.DuplicateFileViewHolder> {

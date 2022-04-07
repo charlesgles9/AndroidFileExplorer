@@ -4,9 +4,9 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Timer;
 
 public class CopyStats {
         private int FilesToCopy;

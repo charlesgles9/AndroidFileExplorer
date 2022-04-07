@@ -1,10 +1,9 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class SoftwareKeyboardListener extends RelativeLayout {

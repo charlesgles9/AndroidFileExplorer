@@ -17,7 +17,7 @@ import com.file.manager.R;
 import com.file.manager.ui.Adapters.AllMusicAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.MusicHelperSingleton;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.Timer;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -32,7 +32,7 @@ import com.file.manager.ui.Adapters.AppManagerAdapter;
 import com.file.manager.ui.Dialogs.FolderPickerDialog;
 import com.file.manager.ui.Models.AppManagerModel;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.CopyHelper;
+import com.file.manager.utils.CopyHelper;
 
 public class AppManagerFragment extends Fragment implements IOnBackPressed {
 

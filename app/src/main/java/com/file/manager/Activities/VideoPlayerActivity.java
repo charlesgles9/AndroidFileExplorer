@@ -20,10 +20,10 @@ import com.file.manager.TapGesture;
 import com.file.manager.ui.Adapters.VideoPagerAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.SortBy;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileFilters;
-import com.file.manager.ui.utils.FileHandleUtil;
-import com.file.manager.ui.utils.Sorter;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileFilters;
+import com.file.manager.utils.FileHandleUtil;
+import com.file.manager.utils.Sorter;
 
 import java.util.ArrayList;
 import java.util.List;

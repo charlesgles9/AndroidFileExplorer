@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.DeleteFilesUtility;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.DeleteFilesUtility;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
 
 import java.util.ArrayList;
 import java.util.Objects;

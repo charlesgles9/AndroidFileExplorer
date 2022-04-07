@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.BatchRenameModel;
-import com.file.manager.ui.utils.DateUtils;
+import com.file.manager.utils.DateUtils;
 
 import java.util.ArrayList;
 

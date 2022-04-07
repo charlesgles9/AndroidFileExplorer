@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
-import com.file.manager.ui.utils.DateUtils;
+import com.file.manager.utils.DateUtils;
 
 import java.io.File;
 import java.util.ArrayList;

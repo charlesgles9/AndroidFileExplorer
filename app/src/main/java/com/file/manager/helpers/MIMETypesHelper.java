@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
 
 import java.io.File;
 import java.util.ArrayList;

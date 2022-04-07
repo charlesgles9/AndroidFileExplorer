@@ -25,12 +25,12 @@ import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DirectoryManager;
 import com.file.manager.ui.Models.Folder;
 import com.file.manager.FilterType;
-import com.file.manager.ui.utils.CopyHelper;
-import com.file.manager.ui.utils.CopyUtility;
-import com.file.manager.ui.utils.CutHelper;
-import com.file.manager.ui.utils.CutUtility;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.CopyHelper;
+import com.file.manager.utils.CopyUtility;
+import com.file.manager.utils.CutHelper;
+import com.file.manager.utils.CutUtility;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
 
 import java.io.File;
 import java.util.ArrayList;

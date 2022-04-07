@@ -1,9 +1,6 @@
 package com.file.manager.ui.Models;
 
-import android.os.AsyncTask;
-
-import com.file.manager.OnTaskCompleteListener;
-import com.file.manager.ui.utils.FileFilters;
+import com.file.manager.utils.FileFilters;
 
 import java.io.File;
 import java.io.FilenameFilter;

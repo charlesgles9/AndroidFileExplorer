@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
 import com.file.manager.ui.Models.CopyProgressMonitor;
-import com.file.manager.ui.utils.CopyUtility;
-import com.file.manager.ui.utils.DiskUtils;
+import com.file.manager.utils.CopyUtility;
+import com.file.manager.utils.DiskUtils;
 
 import java.util.ArrayList;
 

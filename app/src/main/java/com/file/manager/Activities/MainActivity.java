@@ -30,13 +30,13 @@ import com.file.manager.helpers.PermissionsHelper;
 
 import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 import com.file.manager.ui.Models.WindowModel;
-import com.file.manager.ui.home.GlobalSearchFragment;
-import com.file.manager.ui.home.HomeFragment;
+import com.file.manager.Fragments.GlobalSearchFragment;
+import com.file.manager.Fragments.HomeFragment;
 import com.file.manager.FilterType;
 import com.file.manager.Fragments.StorageFragment;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
-import com.file.manager.ui.utils.WindowUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
+import com.file.manager.utils.WindowUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;

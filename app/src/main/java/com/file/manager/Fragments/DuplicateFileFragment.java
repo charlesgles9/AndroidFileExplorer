@@ -37,8 +37,8 @@ import com.file.manager.ui.Dialogs.LoadingDialog;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DuplicateFileContainer;
 import com.file.manager.ui.Models.DuplicateFileModel;
-import com.file.manager.ui.utils.DeleteFilesUtility;
-import com.file.manager.ui.utils.DiskUtils;
+import com.file.manager.utils.DeleteFilesUtility;
+import com.file.manager.utils.DiskUtils;
 
 import java.util.ArrayList;
 

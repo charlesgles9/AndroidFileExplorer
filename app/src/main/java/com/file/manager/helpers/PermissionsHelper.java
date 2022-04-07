@@ -11,8 +11,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 
-import com.file.manager.ui.utils.DiskUtils;
-
 import java.io.File;
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.file.manager.ui.Models;
 
-import com.file.manager.ui.utils.DiskUtils;
+import com.file.manager.utils.DiskUtils;
 
 public class CopyProgressMonitor {
 

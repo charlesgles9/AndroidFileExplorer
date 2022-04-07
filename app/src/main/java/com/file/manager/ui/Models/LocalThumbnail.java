@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.file.manager.R;
-import com.file.manager.ui.utils.FileFilters;
 
 public class LocalThumbnail {
 

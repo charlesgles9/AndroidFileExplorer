@@ -16,8 +16,8 @@ import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.BatchRenameModel;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.FileHandleUtil;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;

@@ -10,10 +10,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.file.manager.R;
-import com.file.manager.ui.utils.ArchiveDecompressUtil;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.ArchiveDecompressUtil;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Timer;
 
 import net.lingala.zip4j.ZipFile;
 

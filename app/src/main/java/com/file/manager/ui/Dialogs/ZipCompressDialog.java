@@ -11,10 +11,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.file.manager.R;
-import com.file.manager.ui.utils.ArchiveCompressUtil;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.Timer;
+import com.file.manager.utils.ArchiveCompressUtil;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.Timer;
 
 public class ZipCompressDialog extends Dialog {
 

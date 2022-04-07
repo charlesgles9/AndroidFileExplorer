@@ -1,10 +1,7 @@
-package com.file.manager.ui.home;
-
-import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.Models.RecentFileModel;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.FileFilters;
-import com.file.manager.ui.utils.Sorter;
+package com.file.manager.ui.Models;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.FileFilters;
+import com.file.manager.utils.Sorter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

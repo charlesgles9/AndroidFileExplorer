@@ -12,10 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
-import com.file.manager.ui.utils.ArchiveDecompressUtil;
-import com.file.manager.ui.utils.DateUtils;
-import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.ThumbnailLoader;
+import com.file.manager.utils.ArchiveDecompressUtil;
+import com.file.manager.utils.DateUtils;
+import com.file.manager.utils.DiskUtils;
+import com.file.manager.utils.ThumbnailLoader;
 
 import net.lingala.zip4j.model.FileHeader;
 import java.util.List;

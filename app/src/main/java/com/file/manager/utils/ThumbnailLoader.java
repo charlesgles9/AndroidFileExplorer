@@ -1,4 +1,4 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 
 import android.content.Context;
@@ -10,14 +10,12 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.bumptech.glide.Glide;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.LocalThumbnail;
 import com.file.manager.ui.Models.RecentFileModel;
-import com.file.manager.ui.home.RecentFilesContainer;
+import com.file.manager.ui.Models.RecentFilesContainer;
 
 import net.lingala.zip4j.model.FileHeader;
 

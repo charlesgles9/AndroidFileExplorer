@@ -1,10 +1,9 @@
-package com.file.manager.ui.utils;
+package com.file.manager.utils;
 
 import com.file.manager.ui.Models.CustomFile;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
 
 public class FileFilters {
 
