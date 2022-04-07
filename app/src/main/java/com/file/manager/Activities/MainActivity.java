@@ -20,11 +20,11 @@ import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
 import com.file.manager.Operations;
 import com.file.manager.R;
-import com.file.manager.Tools.AppManagerFragment;
-import com.file.manager.Tools.DuplicateFileFragment;
-import com.file.manager.Tools.FtpServerFragment;
-import com.file.manager.Tools.LargeFileFragment;
-import com.file.manager.Tools.StorageBenchmarkFragment;
+import com.file.manager.Fragments.AppManagerFragment;
+import com.file.manager.Fragments.DuplicateFileFragment;
+import com.file.manager.Fragments.FtpServerFragment;
+import com.file.manager.Fragments.LargeFileFragment;
+import com.file.manager.Fragments.StorageBenchmarkFragment;
 import com.file.manager.helpers.AuthenticationHelper;
 import com.file.manager.helpers.PermissionsHelper;
 

@@ -1,4 +1,4 @@
-package com.file.manager.Activities;
+package com.file.manager.Fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.widget.Toast;
 
+import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.helpers.AuthenticationHelper;
 import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;

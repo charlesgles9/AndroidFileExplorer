@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.Timer;
 
 public class CopyStats {

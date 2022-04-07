@@ -1,9 +1,6 @@
 package com.file.manager.ui.home;
 
-import android.content.Context;
-
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.ui.Models.LocalThumbnail;
 import com.file.manager.ui.Models.RecentFileModel;
 import com.file.manager.ui.utils.DateUtils;
 import com.file.manager.ui.utils.FileFilters;

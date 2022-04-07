@@ -25,7 +25,6 @@ import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.Selector;
 import com.file.manager.ui.utils.Timer;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
 

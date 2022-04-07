@@ -51,7 +51,6 @@ import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.Operations;
 import com.file.manager.ui.Dialogs.OverWriteDialog;
 import com.file.manager.R;
-import com.file.manager.Activities.SettingsFragment;
 import com.file.manager.WindowState;
 import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.helpers.PermissionsHelper;

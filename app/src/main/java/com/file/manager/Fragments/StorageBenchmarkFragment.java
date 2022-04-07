@@ -1,4 +1,4 @@
-package com.file.manager.Tools;
+package com.file.manager.Fragments;
 
 import android.app.ActivityManager;
 import android.content.Context;

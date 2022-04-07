@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
+import com.file.manager.Fragments.SettingsFragment;
 import com.file.manager.R;
 
 public class SettingsActivity extends Activity {

@@ -3,12 +3,10 @@ package com.file.manager.ui.utils;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import androidx.documentfile.provider.DocumentFile;
 
 import com.file.manager.OnTaskCompleteListener;
-import com.file.manager.helpers.PermissionsHelper;
 import com.file.manager.ui.Models.CustomFile;
 
 import net.lingala.zip4j.ZipFile;
@@ -19,7 +17,6 @@ import net.lingala.zip4j.model.LocalFileHeader;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

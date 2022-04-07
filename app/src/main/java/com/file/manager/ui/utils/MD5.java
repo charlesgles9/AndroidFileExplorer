@@ -1,5 +1,7 @@
 package com.file.manager.ui.utils;
 
+import com.file.manager.ui.utils.DiskUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +14,7 @@ public class MD5 {
         InputStream stream=null;
         try {
             stream= new FileInputStream(file);
-            int size=(int)Math.min(bytes,DiskUtils.SIZE_KB*20);
+            int size=(int)Math.min(bytes, DiskUtils.SIZE_KB*20);
             byte[]buffer=new byte[size];
             final MessageDigest digest=MessageDigest.getInstance("MD5");
             int num=0;

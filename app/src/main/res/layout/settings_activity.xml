@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/nav_host_fragment"
         android:layout_below="@id/toolbar"
-        android:name="com.file.manager.Activities.SettingsFragment"
+        android:name="com.file.manager.Fragments.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true" />

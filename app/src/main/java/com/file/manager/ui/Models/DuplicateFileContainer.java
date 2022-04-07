@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.ui.utils.DiskUtils;
-import com.file.manager.ui.utils.FileFilters;
 import com.file.manager.ui.utils.FileHandleUtil;
 import com.file.manager.ui.utils.MD5;
 import com.file.manager.ui.utils.Sorter;
