@@ -51,7 +51,7 @@ import com.file.manager.OnTaskCompleteListener;
 import com.file.manager.Operations;
 import com.file.manager.ui.Dialogs.OverWriteDialog;
 import com.file.manager.R;
-import com.file.manager.Activities.SettingsPrefActivity;
+import com.file.manager.Activities.SettingsFragment;
 import com.file.manager.WindowState;
 import com.file.manager.helpers.MIMETypesHelper;
 import com.file.manager.helpers.PermissionsHelper;
@@ -1266,7 +1266,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                         sortByPreference(anchor);
                         break;
                     case R.id.settings:
-                        Intent intent=new Intent(getActivity(), SettingsPrefActivity.class);
+                        Intent intent=new Intent(getActivity(), SettingsFragment.class);
                         intent.putExtra("Theme",PreferenceManager.getDefaultSharedPreferences(getContext()).getString("theme","Light"));
                         startActivity(intent);
                         break;

@@ -27,12 +27,12 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.file.manager.Activities.SettingsActivity;
 import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.Activities.PictureViewerActivity;
 import com.file.manager.R;
-import com.file.manager.Activities.SettingsPrefActivity;
 import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.WindowState;
 import com.file.manager.helpers.MIMETypesHelper;
@@ -667,7 +667,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
             @Override
             public void onClick(View v) {
                 if(v.getId()==R.id.settings) {
-                    Intent intent = new Intent(getActivity(), SettingsPrefActivity.class);
+                    Intent intent = new Intent(getActivity(), SettingsActivity.class);
                     intent.putExtra("Theme", PreferenceManager.getDefaultSharedPreferences(getContext()).getString("theme", "Light"));
                     startActivity(intent);
                 }else {

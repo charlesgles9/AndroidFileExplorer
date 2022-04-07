@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryLight"
+        app:navigationIcon="@drawable/ic_arrow_back2"
+        app:subtitle="Settings"
+        app:subtitleTextColor="#FFF"
+        app:menu="@menu/global_search_menu"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:layout_below="@id/toolbar"
+        android:name="com.file.manager.Activities.SettingsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true" />
+</RelativeLayout>

@@ -94,7 +94,7 @@
                 <data android:mimeType="video/*" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SettingsPrefActivity" />
+        <activity android:name=".Activities.SettingsActivity" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="Win-Explorer"

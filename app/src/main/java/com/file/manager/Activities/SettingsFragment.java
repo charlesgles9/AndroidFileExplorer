@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.widget.Toast;
@@ -17,27 +17,21 @@ import com.file.manager.helpers.AuthenticationHelper;
 import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 
 
-public class SettingsPrefActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
 
     private boolean authenticated =false;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        if(getIntent().getExtras().getString("Theme").equals("Dark")) {
-           setTheme("Dark");
-            getWindow().setStatusBarColor( getResources().getColor(R.color.darkStatusBar));
-        }else {
-            setTheme("Light");
-            getWindow().setStatusBarColor( getResources().getColor(R.color.colorPrimaryLight));
-        }
+    public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         String[]keys={"theme","zip","hidden","thumbRatio","copy","version"};
         // set up list preferences
         for (String key : keys) {
-            SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getContext());
             Preference preference=findPreference(key);
             if(preference instanceof ListPreference)
             preference.setSummary(sharedPreferences.getString(key,preference.getSummary().toString()));
@@ -45,7 +39,7 @@ public class SettingsPrefActivity extends PreferenceActivity implements SharedPr
         // get version
         Preference preference=findPreference("version");
         try {
-            PackageInfo info=getApplicationContext().getPackageManager().getPackageInfo(getPackageName(),0);
+            PackageInfo info=getContext().getPackageManager().getPackageInfo(getActivity().getPackageName(),0);
             preference.setSummary(info.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -55,11 +49,11 @@ public class SettingsPrefActivity extends PreferenceActivity implements SharedPr
 
     private void setTheme(String theme){
         if(theme.equals("Dark")) {
-            setTheme(R.style.PreferenceThemeDark);
-            getWindow().setStatusBarColor( getResources().getColor(R.color.darkStatusBar));
+            getActivity().setTheme(R.style.PreferenceThemeDark);
+            getActivity().getWindow().setStatusBarColor( getResources().getColor(R.color.darkStatusBar));
         }else {
-            setTheme(R.style.PreferenceThemeLight);
-            getWindow().setStatusBarColor( getResources().getColor(R.color.colorPrimaryLight));
+            getActivity().setTheme(R.style.PreferenceThemeLight);
+            getActivity().getWindow().setStatusBarColor( getResources().getColor(R.color.colorPrimaryLight));
         }
     }
 
@@ -67,19 +61,19 @@ public class SettingsPrefActivity extends PreferenceActivity implements SharedPr
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference=findPreference(key);
         if(preference instanceof ListPreference) {
-            String value = (String) sharedPreferences.getString(key, "Light");
+            String value = sharedPreferences.getString(key, "Light");
             preference.setSummary(value);
             if(key.equals("theme")){
-                finishAffinity();
-                startActivity(new Intent(this, MainActivity.class));
+                getActivity().finishAffinity();
+                getActivity().startActivity(new Intent(getContext(), MainActivity.class));
             }
         } else if(preference instanceof SwitchPreference){
             if(key.equals("fingerPrint")){
-                boolean isEnrolled=new AuthenticationHelper().isFingerPrintEnrolled(getApplicationContext());
+                boolean isEnrolled=new AuthenticationHelper().isFingerPrintEnrolled(getContext());
                 boolean checked=isEnrolled&((SwitchPreference) preference).isChecked();
                 ((SwitchPreference) preference).setChecked(checked);
                 if(!isEnrolled){
-                    Toast.makeText(getApplicationContext(),"set fingerPrint in settings",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"set fingerPrint in settings",Toast.LENGTH_LONG).show();
                 }else {
                     if(checked&!authenticated){
                         ((SwitchPreference) preference).setChecked(false);
@@ -94,7 +88,7 @@ public class SettingsPrefActivity extends PreferenceActivity implements SharedPr
     }
 
     private void fingerPrintAuthentication(final SwitchPreference preference){
-        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(this,true );
+        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(getContext(),true );
         authDialog.setOnAuthSuccess(new AuthenticationHelper.OnAuthSuccess() {
             @Override
             public void onSuccess() {
