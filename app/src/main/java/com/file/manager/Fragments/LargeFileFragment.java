@@ -38,7 +38,7 @@ import com.file.manager.ui.Dialogs.ArchiveExtractorDialog;
 import com.file.manager.ui.Dialogs.ConfirmDeleteDialog;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.Folder;
-import com.file.manager.ui.storage.FilterType;
+import com.file.manager.FilterType;
 import com.file.manager.ui.utils.ArchiveDecompressUtil;
 import com.file.manager.ui.utils.DeleteFilesUtility;
 import com.file.manager.ui.utils.DiskUtils;

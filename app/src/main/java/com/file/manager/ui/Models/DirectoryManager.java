@@ -2,14 +2,10 @@ package com.file.manager.ui.Models;
 
 import android.content.Context;
 
-import com.file.manager.ui.storage.FilterType;
+import com.file.manager.FilterType;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Stack;
 
 public class DirectoryManager implements Serializable {
 

@@ -12,8 +12,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.file.manager.R;
 import com.file.manager.helpers.PermissionsHelper;
-import com.file.manager.ui.storage.FilterType;
-import com.file.manager.ui.storage.SortBy;
+import com.file.manager.FilterType;
+import com.file.manager.SortBy;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileFilters;
 import com.file.manager.ui.utils.FileHandleUtil;

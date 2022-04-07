@@ -32,7 +32,7 @@ import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 import com.file.manager.ui.Models.WindowModel;
 import com.file.manager.ui.home.GlobalSearchFragment;
 import com.file.manager.ui.home.HomeFragment;
-import com.file.manager.ui.storage.FilterType;
+import com.file.manager.FilterType;
 import com.file.manager.Fragments.StorageFragment;
 import com.file.manager.ui.utils.DiskUtils;
 import com.file.manager.ui.utils.FileHandleUtil;

@@ -1,4 +1,4 @@
-package com.file.manager.ui.storage;
+package com.file.manager;
 
 public enum FilterType {
     DEFAULT,

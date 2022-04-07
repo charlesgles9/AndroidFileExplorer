@@ -1,4 +1,4 @@
-package com.file.manager.ui;
+package com.file.manager;
 
 public enum ViewMode {
     LIST,
