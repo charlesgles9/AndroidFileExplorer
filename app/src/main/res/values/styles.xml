@@ -19,7 +19,6 @@
         <item name="background3">#E3E3E3</item>
         <item name="actionMenuTextColor">#F3F3F3</item>
         <item name="bottomSheetDialogTheme">@style/sheetDialogStyle</item>
-        <item name="dialogTheme">@style/dialogStyle</item>
     </style>
     <!-- Dark mode theme. -->
     <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -41,7 +40,6 @@
         <item name="actionMenuTextColor">#F3F3F3</item>
         <item name="rippleColor">@color/colorPrimaryLight</item>
         <item name="bottomSheetDialogTheme">@style/sheetDialogStyle</item>
-        <item name="dialogTheme">@style/dialogStyle</item>
     </style>
 
     <style name="PreferenceThemeDark" parent="Theme.AppCompat.NoActionBar">
@@ -73,11 +71,7 @@
         <item name="windowMinWidthMinor">97%</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
-    <style name="dialogStyle" parent="Theme.AppCompat.Dialog">
-        <item name="windowMinWidthMajor">97%</item>
-        <item name="windowMinWidthMinor">97%</item>
-        <item name="android:windowBackground">@color/transparent</item>
-    </style>
+
     <style name="SpinnerTheme" parent="Widget.AppCompat.Spinner">
         <item name="android:background">@drawable/ic_drop_down_24</item>
     </style>
