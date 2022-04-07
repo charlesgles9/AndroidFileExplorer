@@ -131,7 +131,7 @@
                     android:layout_margin="2dp"
                     android:layout_toRightOf="@+id/usedInternal"
                     android:textSize="10dp"
-                    android:textColor="?attr/normalTextColor"
+                    android:textColor="@color/colorPrimary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="total:"/>
@@ -245,7 +245,7 @@
                         android:layout_margin="2dp"
                         android:layout_toRightOf="@+id/usedExternal"
                         android:textSize="10dp"
-                        android:textColor="?attr/normalTextColor"
+                        android:textColor="@color/colorPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="total:"/>
