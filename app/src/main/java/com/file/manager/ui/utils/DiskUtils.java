@@ -2,6 +2,8 @@ package com.file.manager.ui.utils;
 
 import android.content.Context;
 import android.os.StatFs;
+import android.widget.Toast;
+
 import com.file.manager.ui.Models.CustomFile;
 import java.io.File;
 import java.text.DecimalFormat;
@@ -45,6 +47,10 @@ public class DiskUtils {
             }
         }
         return null;
+    }
+
+    public boolean isExternalSdCorrupt(){
+        return dirs.length>1&&dirs[1]==null;
     }
     public  long totalMemory(File file){
         StatFs statFs= new StatFs(file.getAbsolutePath());

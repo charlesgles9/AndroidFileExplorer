@@ -332,6 +332,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         defaultSharedPreferences.getString("copy","Ask me Always");
         defaultSharedPreferences.getString("zip","Ask me Always");
         defaultSharedPreferences.getString("thumbRatio","64x64");
+
         return root;
     }
 

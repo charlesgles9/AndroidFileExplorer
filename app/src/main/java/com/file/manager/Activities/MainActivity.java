@@ -313,6 +313,9 @@ public class MainActivity extends AppCompatActivity  {
         passwordAuthentication();
         PermissionsHelper.getInstance().grantStorageReadWrite();
 
+         if(DiskUtils.getInstance().isExternalSdCorrupt()){
+             Toast.makeText(this,"external SdCard is corrupt!",Toast.LENGTH_SHORT).show();
+         }
     }
 
 
