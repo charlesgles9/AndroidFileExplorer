@@ -131,7 +131,8 @@
                     android:layout_margin="2dp"
                     android:layout_toRightOf="@+id/usedInternal"
                     android:textSize="10dp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#B3349FF4"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="total:"/>
@@ -245,7 +246,8 @@
                         android:layout_margin="2dp"
                         android:layout_toRightOf="@+id/usedExternal"
                         android:textSize="10dp"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="#B3349FF4"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="total:"/>
@@ -315,6 +317,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/normalTextColor"
+                android:textStyle="bold"
                 android:visibility="invisible"
                 android:text="Calculating..."/>
         <TableLayout
@@ -346,6 +349,7 @@
                 android:background="@drawable/blue_rounded_drawable"
                 android:src="@drawable/ic_video_rounded_icon"/>
             <TextView
+                android:id="@+id/videoText"
                 android:layout_gravity="center"
                 android:textSize="11dp"
                 android:layout_width="wrap_content"
@@ -385,6 +389,7 @@
                 android:src="@drawable/ic_audio_icon_home"/>
 
                 <TextView
+                    android:id="@+id/audioText"
                     android:layout_gravity="center"
                     android:textSize="11dp"
                     android:layout_width="wrap_content"
@@ -423,6 +428,7 @@
                     android:background="@drawable/green_rounded_drawable"
                     android:src="@drawable/ic_app_icon_home"/>
             <TextView
+                android:id="@+id/androidText"
                 android:textSize="11dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -468,6 +474,7 @@
                         android:background="@drawable/brown_rounded_drawable"
                         android:src="@drawable/ic_image_icon_home"/>
                     <TextView
+                        android:id="@+id/photoText"
                         android:layout_gravity="center"
                         android:textSize="11dp"
                         android:layout_width="wrap_content"
@@ -505,12 +512,13 @@
                         android:src="@drawable/ic_document_icon_home"/>
 
                     <TextView
+                        android:id="@+id/docText"
                         android:layout_gravity="center"
                         android:textSize="11dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="?attr/normalTextColor"
-                        android:text="Documents"/>
+                        android:text="Doc"/>
                     <ProgressBar
                         android:id="@+id/docProgress"
                         style="?android:attr/progressBarStyleHorizontal"
@@ -542,6 +550,7 @@
                         android:src="@drawable/ic_zip_icon_home"/>
 
                     <TextView
+                        android:id="@+id/archiveText"
                         android:layout_gravity="center"
                         android:textSize="11dp"
                         android:layout_width="wrap_content"

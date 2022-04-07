@@ -411,6 +411,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                 calculatingText.setVisibility(View.VISIBLE);
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
@@ -445,6 +446,12 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
               appProgress.setProgress((int)(((float)appSize/(float)storageSize)*100)+1);
               docProgress.setProgress((int)(((float)docSize/(float)storageSize)*100)+1);
               archiveProgress.setProgress((int)(((float)archiveSize/(float)storageSize)*100)+1);
+              ((TextView)root.findViewById(R.id.videoText)).setText("Video("+DiskUtils.getInstance().getSize(videoSize)+")");
+              ((TextView)root.findViewById(R.id.audioText)).setText("Audio("+DiskUtils.getInstance().getSize(audioSize)+")");
+              ((TextView)root.findViewById(R.id.androidText)).setText("App("+DiskUtils.getInstance().getSize(appSize)+")");
+              ((TextView)root.findViewById(R.id.photoText)).setText("Photos("+DiskUtils.getInstance().getSize(photoSize)+")");
+              ((TextView)root.findViewById(R.id.docText)).setText("Doc("+DiskUtils.getInstance().getSize(docSize)+")");
+              ((TextView)root.findViewById(R.id.archiveText)).setText("Archive("+DiskUtils.getInstance().getSize(archiveSize)+")");
               System.out.println("Video "+DiskUtils.getInstance().getSize(videoSize)+" ");
               System.out.println(("Photo "+DiskUtils.getInstance().getSize(photoSize)));
               System.out.println(("Audio "+DiskUtils.getInstance().getSize(audioSize)));
