@@ -44,7 +44,7 @@ public class DuplicateFileContainer {
         task.cancel(true);
     }
     public void put(CustomFile value){
-        final String key= MD5.getHashValue(value, DiskUtils.SIZE_KB*20);
+        final String key= MD5.getHashValue(value, DiskUtils.SIZE_KB*10);
         DuplicateFileModel model=map.get(key);
         if(model!=null){
             model.add(value);

@@ -19,11 +19,9 @@ import java.util.List;
 
 public class MIMETypesHelper {
 
-
     private Context context;
     private CustomFile file;
     private Intent intent;
-
     public MIMETypesHelper(Context context,CustomFile file){
         this.context=context;
         this.file=file;
@@ -65,10 +63,8 @@ public class MIMETypesHelper {
     private String getMimeType(CustomFile file){
         if(file.getExtension()==null||file.getExtension().lastIndexOf(".")==-1)
             return null;
-        String fexe=file.getExtension().substring(file.getExtension().lastIndexOf(".")+1,file.getExtension().length());
-        if(fexe!=null)
-            return MimeTypeMap.getSingleton().getMimeTypeFromExtension(fexe);
-        return null;
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(
+                file.getExtension().substring(file.getExtension().lastIndexOf(".")+1));
     }
 
 
@@ -99,7 +95,7 @@ public class MIMETypesHelper {
         try {
             if (!defaults.activityInfo.name.endsWith("ResolverActivity")) {
                 return intent;
-            }}catch (NullPointerException ne){}
+            }}catch (NullPointerException ignored){}
 
         // retrieve all valid apps for our intent
         ArrayList<Intent> targets= new ArrayList<>();

@@ -450,7 +450,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
               ((TextView)root.findViewById(R.id.audioText)).setText("Audio("+DiskUtils.getInstance().getSize(audioSize)+")");
               ((TextView)root.findViewById(R.id.androidText)).setText("App("+DiskUtils.getInstance().getSize(appSize)+")");
               ((TextView)root.findViewById(R.id.photoText)).setText("Photos("+DiskUtils.getInstance().getSize(photoSize)+")");
-              ((TextView)root.findViewById(R.id.docText)).setText("Doc("+DiskUtils.getInstance().getSize(docSize)+")");
+              ((TextView)root.findViewById(R.id.docText)).setText("Docs("+DiskUtils.getInstance().getSize(docSize)+")");
               ((TextView)root.findViewById(R.id.archiveText)).setText("Archive("+DiskUtils.getInstance().getSize(archiveSize)+")");
               System.out.println("Video "+DiskUtils.getInstance().getSize(videoSize)+" ");
               System.out.println(("Photo "+DiskUtils.getInstance().getSize(photoSize)));
