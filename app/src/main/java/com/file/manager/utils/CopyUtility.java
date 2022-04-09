@@ -300,29 +300,22 @@ public class CopyUtility extends AsyncTask<String,Integer,String> {
 
 
     public  void SAFCopyFiles(Context context, File source,DocumentFile destination) throws IOException{
-        InputStream in= new FileInputStream(source);
-        current=source;
-        progressMonitor.setSource(source.getParentFile().getName()+"/"+source.getName());
-        long bytes=progressMonitor.getWorkCompleted();
-        try {
-            DocumentFile parent=destination.getParentFile();
-            progressMonitor.setDestination(parent!=null?parent.getName()+"/"+destination.getName():destination.getName());
-            OutputStream out= context.getContentResolver().openOutputStream(destination.getUri());
-            try {
-                byte []buffer= new byte[(int)DiskUtils.SIZE_MB];
+        try (InputStream in = new FileInputStream(source)) {
+            current = source;
+            progressMonitor.setSource(source.getParentFile().getName() + "/" + source.getName());
+            long bytes = progressMonitor.getWorkCompleted();
+            DocumentFile parent = destination.getParentFile();
+            progressMonitor.setDestination(parent != null ? parent.getName() + "/" + destination.getName() : destination.getName());
+            try (OutputStream out = context.getContentResolver().openOutputStream(destination.getUri())) {
+                byte[] buffer = new byte[(int) DiskUtils.SIZE_MB];
                 int len;
-                while ((len=in.read(buffer))>0){
-                    out.write(buffer,0,len);
-                    progressMonitor.setWorkCompleted(bytes+destination.length());
-                    if(!isRunning())
+                while ((len = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, len);
+                    progressMonitor.setWorkCompleted(bytes + destination.length());
+                    if (!isRunning())
                         break;
                 }
-            }finally {
-                if(out!=null)
-                out.close();
             }
-        }finally {
-            in.close();
         }
 
     }

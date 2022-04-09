@@ -364,24 +364,18 @@ public class Folder {
                     case IMAGE:
                         try {
                             listImages(FileFilters.FilesOnlyImages());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        } catch (Exception ignore) { }
                         break;
                     case AUDIO:
                         try {
                             listAudio();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        } catch (Exception ignore) { }
                         sortBy=SortBy.EXTENSION;
                         break;
                     case VIDEO:
                         try {
                             listVideos(FileFilters.FilesOnlyVideos());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                        } catch (Exception ignore) {}
                         break;
                     case DOCUMENT:
                         sortBy=SortBy.EXTENSION;

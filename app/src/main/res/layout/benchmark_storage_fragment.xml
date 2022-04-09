@@ -149,11 +149,12 @@
 
             <com.jjoe64.graphview.GraphView
                 android:id="@+id/graph"
+                android:background="@color/transparent"
                 android:layout_width="match_parent"
+
                 android:layout_height="200dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cpuInfo"
-                android:layout_below="@+id/graph"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:saveEnabled="true"

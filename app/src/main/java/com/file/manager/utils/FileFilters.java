@@ -80,8 +80,7 @@ public class FileFilters {
                   if(file.getName().equals("Android"))
                       return false;
                   String []arr=file.getPath().split("/");
-                  if(arr!=null)
-                          return arr.length<=level;
+                  return arr.length<=level;
               }
               return false;
           }
@@ -95,8 +94,7 @@ public class FileFilters {
 
                 if(file.isDirectory()){
                     String []arr=file.getPath().split("/");
-                    if(arr!=null)
-                        return arr.length<=level;
+                    return arr.length<=level;
                 }
                 return false;
             }
@@ -249,7 +247,6 @@ public class FileFilters {
         return  new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                CustomFile file=new CustomFile(name,dir);
                 return isApk(name);
             }
         };
@@ -326,9 +323,7 @@ public class FileFilters {
             @Override
             public boolean accept(File dir, String name) {
 
-                if(new File(dir,name).isHidden()&!showHidden)
-                    return false;
-                return true;
+                return !(new File(dir, name).isHidden() & !showHidden);
             }
         };
     }
