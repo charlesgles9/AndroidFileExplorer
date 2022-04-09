@@ -107,6 +107,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             rh = Integer.parseInt(arr[1]);
         }catch (NumberFormatException ignore){}
         for(int i=start;i<=stop;i++) {
+            if(folder.getFiles().get(i).isDirectory())
+                continue;
             folder.loadThumbnails(i, i, rw, rh, folder.getFiles(),onThumbnailComplete);
         }
     }

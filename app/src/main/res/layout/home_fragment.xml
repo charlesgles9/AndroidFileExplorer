@@ -355,7 +355,7 @@
             <TextView
                 android:id="@+id/videoText"
                 android:layout_gravity="center"
-                android:textSize="11dp"
+                android:textSize="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="?attr/normalTextColor"
@@ -395,7 +395,7 @@
                 <TextView
                     android:id="@+id/audioText"
                     android:layout_gravity="center"
-                    android:textSize="11dp"
+                    android:textSize="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="?attr/normalTextColor"
@@ -431,14 +431,16 @@
                     android:padding="5dp"
                     android:background="@drawable/green_rounded_drawable"
                     android:src="@drawable/ic_app_icon_home"/>
-            <TextView
-                android:id="@+id/androidText"
-                android:textSize="11dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="?attr/normalTextColor"
-                android:text="App"/>
+
+                <TextView
+                    android:id="@+id/androidText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="App"
+                    android:textColor="?attr/normalTextColor"
+                    android:textSize="10dp" />
+
                 <ProgressBar
                     android:id="@+id/appProgress"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -480,7 +482,7 @@
                     <TextView
                         android:id="@+id/photoText"
                         android:layout_gravity="center"
-                        android:textSize="11dp"
+                        android:textSize="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="?attr/normalTextColor"
@@ -518,7 +520,7 @@
                     <TextView
                         android:id="@+id/docText"
                         android:layout_gravity="center"
-                        android:textSize="11dp"
+                        android:textSize="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="?attr/normalTextColor"
@@ -556,7 +558,7 @@
                     <TextView
                         android:id="@+id/archiveText"
                         android:layout_gravity="center"
-                        android:textSize="11dp"
+                        android:textSize="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="?attr/normalTextColor"

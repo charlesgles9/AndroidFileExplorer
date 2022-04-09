@@ -31,9 +31,9 @@ public class CopyService extends IntentService  {
 
     private NotificationModel model;
     private Notification notification;
-    private ArrayList<NotificationModel>notificationModels= new ArrayList<>();
+    private final ArrayList<NotificationModel>notificationModels= new ArrayList<>();
     private NotificationManagerCompat notificationManagerCompact;
-    private Intent updates= new Intent();
+    private final Intent updates= new Intent();
 
     public CopyService() {
         super("CopyService");
@@ -161,8 +161,8 @@ public class CopyService extends IntentService  {
     }
 
     class NotificationModel{
-        private CopyUtility utility;
-        private int Id;
+        private final CopyUtility utility;
+        private final int Id;
         private BroadcastReceiver receiver;
         private NotificationCompat.Builder builder;
         public NotificationModel(){

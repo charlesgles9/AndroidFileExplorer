@@ -35,10 +35,10 @@ import java.util.UUID;
 
 public class ArchiveDService extends IntentService {
 
-    private ArrayList<NotificationModel>notifications= new ArrayList<>();
+    private final ArrayList<NotificationModel>notifications= new ArrayList<>();
     private Notification notification;
     private NotificationManagerCompat notificationManagerCompact;
-    private Intent updates= new Intent();
+    private final Intent updates= new Intent();
 
     public ArchiveDService(){
         super("ArchiveService");
@@ -183,9 +183,9 @@ public class ArchiveDService extends IntentService {
 
 
     public class NotificationModel{
-        private int Id;
+        private final int Id;
         private BroadcastReceiver receiver;
-        private Selector selector;
+        private final Selector selector;
         public NotificationModel( Selector selector){
             this.selector=selector;
             this.Id= UUID.randomUUID().hashCode();

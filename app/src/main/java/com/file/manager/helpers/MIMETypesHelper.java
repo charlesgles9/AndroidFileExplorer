@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
+
+import androidx.core.content.FileProvider;
 
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.ui.Models.CustomFile;
@@ -33,21 +36,36 @@ public class MIMETypesHelper {
             getStoragePermission(file);
             return;
         }
-        intent=OpenWithDefaults(context,getMimeType(file),file);
-        if(intent!=null)
-        context.startActivity(intent);
-        else Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
+        FileHandleUtil.fileToUri(context,file,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        intent=OpenWithDefaults(context,getMimeType(file),uri);
+                        if(intent!=null)
+                            context.startActivity(intent);
+                        else
+                            Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
+                    }
+                });
+
     }
 
-    public void startNoDefaults(String MimeType){
+    public void startNoDefaults(final String MimeType){
         if(!isStoragePermissionGranted(file)){
             getStoragePermission(file);
             return;
         }
-        intent= OpenFileAs(context, MimeType,file);
-        if(intent!=null)
-            context.startActivity(intent);
-        else Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
+        FileHandleUtil.fileToUri(context,file,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        intent= OpenFileAs(context, MimeType,uri);
+                        if(intent!=null)
+                            context.startActivity(intent);
+                        else Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
+                    }
+                });
+
     }
 
     public void startShare(){
@@ -55,9 +73,16 @@ public class MIMETypesHelper {
             getStoragePermission(file);
             return;
         }
-        intent= OpenShareFile(context, file);
-        if(intent!=null)
-            context.startActivity(intent);
+        FileHandleUtil.fileToUri(context,file,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        intent= OpenShareFile(context, uri);
+                        if(intent!=null)
+                            context.startActivity(intent);
+                    }
+                });
+
     }
 
     private String getMimeType(CustomFile file){
@@ -67,21 +92,17 @@ public class MIMETypesHelper {
                 file.getExtension().substring(file.getExtension().lastIndexOf(".")+1));
     }
 
-
-
-    private Intent OpenWithDefaults(Context context, String MimeType,CustomFile file) throws IllegalArgumentException{
+    private Intent OpenWithDefaults(Context context, String MimeType,Uri uri) throws IllegalArgumentException{
 
         // exit if completely unavailable exit
         if(MimeType==null)
             return null;
-
-        Uri uri;
-        try {
+        /*try {
             uri = FileHandleUtil.walkToFile(file, context).getUri();// FileProvider.getUriForFile(context,context.getPackageName()+".provider",file);
         }catch (Exception e){
             Toast.makeText(context,"No app found to open this file",Toast.LENGTH_LONG).show();
             return null;
-        }
+        }*/
         Intent intent= new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -123,11 +144,11 @@ public class MIMETypesHelper {
         return chooserIntent;
 
     }
-    private Intent OpenFileAs(Context context,String MimeType, CustomFile file){
+    private Intent OpenFileAs(Context context,String MimeType, Uri uri){
         // exit if completely unavailable exit
         if(MimeType==null)
             return null;
-        Uri uri= FileHandleUtil.walkToFile(file,context).getUri(); // FileProvider.getUriForFile(context,context.getPackageName()+".provider",file);
+       // Uri uri= FileHandleUtil.walkToFile(file,context).getUri(); // FileProvider.getUriForFile(context,context.getPackageName()+".provider",file);
         Intent intent= new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -162,16 +183,17 @@ public class MIMETypesHelper {
     }
 
 
-    private Intent OpenShareFile(Context context, CustomFile file){
+    private Intent OpenShareFile(Context context, Uri uri){
         String MimeType=getMimeType(file);
         // exit if completely unavailable exit
         if(MimeType==null)
             return null;
-        Uri uri= FileHandleUtil.walkToFile(file,context).getUri();//  FileProvider.getUriForFile(context,context.getPackageName()+".provider",file);
+       // Uri uri= FileHandleUtil.walkToFile(file,context).getUri();//  FileProvider.getUriForFile(context,context.getPackageName()+".provider",file);
         Intent intent= new Intent();
         intent.putExtra(Intent.EXTRA_STREAM,uri);
         intent.setDataAndType(uri,MimeType);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
         return  Intent.createChooser(intent,"Share");
     }
 

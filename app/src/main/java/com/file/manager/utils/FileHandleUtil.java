@@ -4,10 +4,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MergeCursor;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
+import android.widget.Toast;
+
 import androidx.documentfile.provider.DocumentFile;
 
 import com.file.manager.helpers.PermissionsHelper;
@@ -88,6 +91,11 @@ public class FileHandleUtil {
         }
     }
 
+
+    public static void fileToUri(Context context,File file, MediaScannerConnection.OnScanCompletedListener onScanCompletedListener){
+        MediaScannerConnection.scanFile(context, new String[]{file.getAbsolutePath()}, null,
+              onScanCompletedListener);
+    }
 
     public static String treeUriToFilePath(Uri uri){
         String path=uri.getPath();

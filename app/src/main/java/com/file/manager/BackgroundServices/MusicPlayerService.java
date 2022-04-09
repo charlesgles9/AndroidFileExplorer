@@ -34,12 +34,12 @@ public class MusicPlayerService extends IntentService {
     private Notification notification;
     private RemoteViews small;
     private MusicHelperSingleton singleton;
-    private Intent closeIntent= new Intent();
-    private Intent playIntent= new Intent();
-    private Intent nextIntent = new Intent();
-    private Intent prevIntent= new Intent();
-    private IntentFilter filter= new IntentFilter();
-    private int ID=0x56;
+    private final Intent closeIntent= new Intent();
+    private final Intent playIntent= new Intent();
+    private final Intent nextIntent = new Intent();
+    private final Intent prevIntent= new Intent();
+    private final IntentFilter filter= new IntentFilter();
+    private final int ID=0x56;
     public MusicPlayerService(){
         super("MusicPlayer");
     }
@@ -79,7 +79,7 @@ public class MusicPlayerService extends IntentService {
     };
 
 
-    private int[] res ={R.drawable.ic_play_clip,R.drawable.ic_pause_clip};
+    private final int[] res ={R.drawable.ic_play_clip,R.drawable.ic_pause_clip};
     private void updateNotification(){
         small.setImageViewResource(R.id.play,singleton.getMediaPlayer().isPlaying()?res[1]:res[0]);
         small.setTextViewText(R.id.title,singleton.getCurrentFileName().getValue());

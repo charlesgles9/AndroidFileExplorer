@@ -26,8 +26,8 @@ public class FTPService extends IntentService {
     private NotificationManagerCompat notificationManagerCompact;
     private NotificationCompat.Builder builder;
     private Notification notification;
-    private IntentFilter filter= new IntentFilter();
-    private int ID=0x86;
+    private final IntentFilter filter= new IntentFilter();
+    private final int ID=0x86;
     public FTPService(){
         super("FTPServer");
 

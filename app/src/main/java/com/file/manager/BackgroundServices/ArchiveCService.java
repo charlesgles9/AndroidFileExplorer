@@ -30,10 +30,10 @@ import java.util.UUID;
 
 public class ArchiveCService extends IntentService {
 
-    private ArrayList<NotificationModel> notifications=new ArrayList<>();
+    private final ArrayList<NotificationModel> notifications=new ArrayList<>();
     private Notification notification;
     private NotificationManagerCompat notificationManagerCompact;
-    private Intent updates= new Intent();
+    private final Intent updates= new Intent();
 
     public ArchiveCService(){
         super("ArchiveCompression");
@@ -143,9 +143,9 @@ public class ArchiveCService extends IntentService {
 
 
     class NotificationModel{
-        private int Id;
+        private final int Id;
         private BroadcastReceiver receiver;
-        private Selector selector;
+        private final Selector selector;
         public NotificationModel(Selector selector){
             this.selector=selector;
             this.Id= UUID.randomUUID().hashCode();
