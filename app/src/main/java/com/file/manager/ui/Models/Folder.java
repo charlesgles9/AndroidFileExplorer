@@ -349,6 +349,7 @@ public class Folder {
             String storage=DiskUtils.getInstance().getStartDirectory(file);
                 switch (type) {
                     case DEFAULT:
+                    case SYSTEM:
                         SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(context);
                         boolean  showHidden=preferences.getBoolean("hidden",false);
                       if(file.canRead()) {
@@ -361,6 +362,7 @@ public class Folder {
                            }
                       }
                         break;
+
                     case IMAGE:
                         try {
                             listImages(FileFilters.FilesOnlyImages());

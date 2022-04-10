@@ -98,6 +98,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
 
     // load within range
     public void LoadThumbnails(int start, int stop, ThumbnailLoader.onThumbnailComplete onThumbnailComplete){
+        if(start==-1)
+            return;
         String ratio= PreferenceManager.getDefaultSharedPreferences(context).getString("thumbRatio","64x64");
         String []arr=ratio.split("x");
         int rw=64;

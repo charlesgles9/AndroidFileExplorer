@@ -7,6 +7,7 @@ import com.file.manager.ui.Models.CustomFile;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class DiskUtils {
@@ -24,6 +25,9 @@ public class DiskUtils {
              if(file!=null)
              dirs[i]=new File(file.getPath().substring(0,file.getPath().indexOf("Android")));
          }
+        File[]arr={null,null,new File("/system")};
+        System.arraycopy(dirs,0,arr,0,dirs.length);
+        dirs=arr;
     }
 
 
@@ -124,7 +128,7 @@ public class DiskUtils {
 
     public String getStartDirectory(File file){
         for (File dir:dirs){
-            if(file.getPath().contains(dir.getPath())){
+            if(dir!=null&&file.getPath().contains(dir.getPath())){
                 return dir.getPath();
             }
         }

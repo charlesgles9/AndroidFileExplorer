@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity  {
 
         RadioButton internal=findViewById(R.id.internal);
         RadioButton external=findViewById(R.id.external);
+        RadioButton system=findViewById(R.id.system);
         RadioButton images=findViewById(R.id.images);
         RadioButton music=findViewById(R.id.music);
         RadioButton videos=findViewById(R.id.videos);
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity  {
         RadioButton home=findViewById(R.id.home);
         RadioButton benchmark=findViewById(R.id.benchmark);
         RadioButton ftpServer=findViewById(R.id.FTP);
+
         View.OnClickListener onClickListener= new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +190,15 @@ public class MainActivity extends AppCompatActivity  {
                         // 1 denotes the external storage
                         if(instance==null)
                         fragment= new StorageFragment(file.getPath(),toolbar.getSubtitle().toString(),FilterType.DEFAULT,fragment,globalFileOperations);
+                        else fragment=instance;
+                        break;
+                    case R.id.system:
+                        subtitle="System";
+                        instance= window.getActiveFragment(FilterType.SYSTEM.toString());
+                        // 0 denotes the internal storage
+                        toolbar.setSubtitle(subtitle);
+                        if(instance==null)
+                            fragment= new StorageFragment("/system",toolbar.getSubtitle().toString(),FilterType.SYSTEM,fragment,globalFileOperations);
                         else fragment=instance;
                         break;
                     case R.id.images:
@@ -292,6 +303,7 @@ public class MainActivity extends AppCompatActivity  {
         });
         internal.setOnClickListener(onClickListener);
         external.setOnClickListener(onClickListener);
+        system.setOnClickListener(onClickListener);
         images.setOnClickListener(onClickListener);
         videos.setOnClickListener(onClickListener);
         applications.setOnClickListener(onClickListener);
@@ -304,6 +316,7 @@ public class MainActivity extends AppCompatActivity  {
         home.setOnClickListener(onClickListener);
         benchmark.setOnClickListener(onClickListener);
         ftpServer.setOnClickListener(onClickListener);
+
         // Format the App name to be displayed at the navigation header
         final TextView app_title=findViewById(R.id.app_title);
         setFont(app_title,this, "Fonts/Rocket.ttf");
@@ -316,6 +329,7 @@ public class MainActivity extends AppCompatActivity  {
          if(DiskUtils.getInstance().isExternalSdCorrupt()){
              Toast.makeText(this,"external SdCard is corrupt!",Toast.LENGTH_SHORT).show();
          }
+
     }
 
 

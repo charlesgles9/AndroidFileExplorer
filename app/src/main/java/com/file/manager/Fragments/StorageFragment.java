@@ -298,7 +298,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
            pathAdapter.setItemListener(new DirectoryPathAdapter.ItemListener() {
                @Override
                public void onItemClick(int position) {
-                   if(!directoryManager.currentDir().getType().equals(FilterType.DEFAULT))
+                   if(!directoryManager.currentDir().getType().equals(FilterType.DEFAULT)&
+                           !directoryManager.currentDir().getType().equals(FilterType.SYSTEM))
                        return;
                    String path=pathAdapter.getSegmentAsString(position);
                    String nP=entryFile.getPath()+"/"+path;
@@ -1470,6 +1471,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         switch (type){
             case DEFAULT:
                 activity.setSubtitle("Local");
+                break;
+            case SYSTEM:
+                activity.setSubtitle("System");
                 break;
             case IMAGE:
                 activity.setSubtitle("Images");

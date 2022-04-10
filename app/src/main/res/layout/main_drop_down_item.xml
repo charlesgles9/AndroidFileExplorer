@@ -111,6 +111,28 @@
                 android:layout_marginRight="15dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
+            <RadioButton
+                android:id="@+id/system"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/external"
+                android:textSize="12dp"
+                android:button="@null"
+                android:background="#00FFFFFF"
+                android:drawableLeft="@drawable/ic_storage"
+                android:textColor="?attr/textTitle"
+                android:gravity="left|center_vertical"
+                android:text="System"/>
+            <ImageView
+                android:id="@+id/new_tab_system"
+                android:src="@drawable/ic_new_tab"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/external"
+                android:background="@drawable/drawable_highlight4"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
         </RelativeLayout>
     </RadioGroup>
     <androidx.cardview.widget.CardView

@@ -2,6 +2,7 @@ package com.file.manager;
 
 public enum FilterType {
     DEFAULT,
+    SYSTEM,
     IMAGE,
     AUDIO,
     VIDEO,
