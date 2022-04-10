@@ -39,6 +39,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.Activities.MusicPlayerActivity;
+import com.file.manager.Activities.SettingsActivity;
 import com.file.manager.BackgroundServices.CopyService;
 import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
@@ -1265,7 +1266,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                         sortByPreference(anchor);
                         break;
                     case R.id.settings:
-                        Intent intent=new Intent(getActivity(), SettingsFragment.class);
+                        Intent intent=new Intent(getActivity(), SettingsActivity.class);
                         intent.putExtra("Theme",PreferenceManager.getDefaultSharedPreferences(getContext()).getString("theme","Light"));
                         startActivity(intent);
                         break;

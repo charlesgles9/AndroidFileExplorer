@@ -10,6 +10,7 @@
     android:defaultValue="@string/defaultTheme"
     android:summary="@string/summaryTheme"
     android:dialogTitle="Choose Theme"/>
+
 </PreferenceCategory>
   <PreferenceCategory android:title="Display">
  <SwitchPreference

@@ -203,9 +203,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 else
                     uri=intent.getData();
                 String path= FileHandleUtil.uriToFilePath(this,uri);
-                if(path!=null){
-                    return path;
-                }
+                return path;
             }
         }
         return null;
