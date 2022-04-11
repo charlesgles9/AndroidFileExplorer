@@ -1,14 +1,13 @@
 package com.file.manager.utils;
 
 import android.content.Context;
+import android.os.Environment;
 import android.os.StatFs;
 
 import com.file.manager.ui.Models.CustomFile;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 
 public class DiskUtils {
 
@@ -25,7 +24,7 @@ public class DiskUtils {
              if(file!=null)
              dirs[i]=new File(file.getPath().substring(0,file.getPath().indexOf("Android")));
          }
-        File[]arr={null,null,new File("/system")};
+        File[]arr={null,null,Environment.getRootDirectory()};
         System.arraycopy(dirs,0,arr,0,dirs.length);
         dirs=arr;
     }
@@ -146,9 +145,6 @@ public class DiskUtils {
 
     public String getSize(File file){
         return getSize(file.length());
-    }
-    public boolean isSpaceAvailable(File file){
-        return freeMemory(file) > 0;
     }
     public boolean isSpaceEnough(File file,long bytes){
         return freeMemory(file) >= bytes;

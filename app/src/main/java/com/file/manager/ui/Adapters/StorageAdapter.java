@@ -1,5 +1,6 @@
 package com.file.manager.ui.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -28,6 +29,7 @@ import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileFilters;
 import com.file.manager.utils.ThumbnailLoader;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,16 +92,11 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
 
     }
 
-
-    public void initFolderSize(){
-        new sizeTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    }
-
-
     // load within range
     public void LoadThumbnails(int start, int stop, ThumbnailLoader.onThumbnailComplete onThumbnailComplete){
         if(start==-1)
             return;
+        String prefStr=preferences.getString(folder.getType().toString(),"LIST");
         String ratio= PreferenceManager.getDefaultSharedPreferences(context).getString("thumbRatio","64x64");
         String []arr=ratio.split("x");
         int rw=64;
@@ -109,7 +106,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             rh = Integer.parseInt(arr[1]);
         }catch (NumberFormatException ignore){}
         for(int i=start;i<=stop;i++) {
-            if(folder.getFiles().get(i).isDirectory())
+            if(folder.getFiles().get(i).isDirectory()&prefStr.equals("LIST"))
                 continue;
             folder.loadThumbnails(i, i, rw, rh, folder.getFiles(),onThumbnailComplete);
         }
@@ -147,6 +144,54 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
 
     }
 
+    @SuppressLint("StaticFieldLeak")
+    public void initFolderSize(final int start, final int stop){
+        // if its a folder get the folder size
+        new AsyncTask<String,Integer,String>() {
+
+            @Override
+            protected String doInBackground(String... strings) {
+                for(int i = start;i<=stop;i++) {
+                    CustomFile file = folder.get(i);
+                    if (file.isDirectory()) {
+                        switch (folder.getType()) {
+                            case IMAGE:
+                                file.initFolderSize(FileFilters.ImagesOnly());
+                                break;
+                            case AUDIO:
+                                file.initFolderSize(FileFilters.AudioOnly());
+                                break;
+                            case VIDEO:
+                                file.initFolderSize(FileFilters.VideosOnly());
+                                break;
+                            case DOCUMENT:
+                                file.initFolderSize(FileFilters.DocumentsOnly());
+                                break;
+                            case COMPRESSED:
+                                file.initFolderSize(FileFilters.CompressedOnly());
+                                break;
+                            case APPLICATION:
+                                file.initFolderSize(FileFilters.ApkOnly());
+                                break;
+                            default:
+                                file.initFolderSize(FileFilters.Default(true));
+                        }
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                for(int i=start;i<=stop;i++){
+                    notifyItemChanged(i);
+                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+
     public class ListViewHolder extends FileViewHolder{
 
         private TextView name;
@@ -168,7 +213,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             view.setOnLongClickListener(this);
         }
 
-        public void init(CustomFile file){
+        @SuppressLint({"SetTextI18n", "StaticFieldLeak"})
+        public void init(final CustomFile file){
             name.setText(file.getName());
 
             file.getLocalThumbnail().setThumbnailToImageView(thumbnail);
@@ -180,7 +226,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             // toggle select view
             selected.setVisibility(operations.equals(Operations.SELECT)? View.VISIBLE:View.INVISIBLE);
             if(file.isDirectory()){
-                size.setText(file.getFolderSizeModel().getLength()+" items");
+                size.setText(""+file.getFolderLength()+" items");
+
             }
 
             else
@@ -213,6 +260,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             thumbnail.setLayoutParams(params);
         }
 
+        @SuppressLint("SetTextI18n")
         public void init(CustomFile file){
             name.setText(file.getName());
             file.getLocalThumbnail().setThumbnailToImageView(thumbnail);
@@ -227,7 +275,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             if(file.isDirectory()){
                 name.setVisibility(View.VISIBLE);
                 size.setVisibility(View.VISIBLE);
-                size.setText("("+file.getFolderSizeModel().getLength()+" items)");
+                size.setText("("+file.getFolderLength()+" items)");
             } else {
                 // don't show the file name in the video and image gallery if it's not a directory
                 if(!folder.getType().equals(FilterType.VIDEO)&
@@ -243,8 +291,6 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             }
 
             selected.setChecked(file.IsSelected());
-            String ratio= PreferenceManager.getDefaultSharedPreferences(context).getString("thumbRatio","64x64");
-            String []arr=ratio.split("x");
 
         }
     }
@@ -272,62 +318,9 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             return true;
         }
     }
-    class sizeTask extends AsyncTask<String,Integer,String>{
-
-
-        @Override
-        protected String doInBackground(String... strings) {
-            List<Integer>positions= new ArrayList<>();
-            for(int i=0;i<folder.getFiles().size();i++) {
-                CustomFile file=folder.getFiles().get(i);
-                if(!file.isDirectory())
-                    continue;
-            switch (folder.getType()){
-
-                case IMAGE:
-                    file.getFolderSizeModel().setFilter(FileFilters.ImagesOnly());
-                    break;
-                case AUDIO:
-                    file.getFolderSizeModel().setFilter(FileFilters.AudioOnly());
-                    break;
-                case VIDEO:
-                    file.getFolderSizeModel().setFilter(FileFilters.VideosOnly());
-                    break;
-                case DOCUMENT:
-                    file.getFolderSizeModel().setFilter(FileFilters.DocumentsOnly());
-                    break;
-                case COMPRESSED:
-                    file.getFolderSizeModel().setFilter(FileFilters.CompressedOnly());
-                    break;
-                case APPLICATION:
-                    file.getFolderSizeModel().setFilter(FileFilters.ApkOnly());
-                    break;
-                default:
-                    file.getFolderSizeModel().setFilter(FileFilters.Default(true));
-            }
-               FolderSizeModel model=file.getFolderSizeModel();
-               model.initialize();
-               positions.add(i);
-             }
-            return null;
-        }
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
-    }
 
 
     public interface ItemListener{
-
          void onItemClick(int position);
          void onItemLongClick(int position);
     }

@@ -9,6 +9,7 @@ import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
@@ -177,7 +178,6 @@ public class MainActivity extends AppCompatActivity  {
                           else fragment=instance;
                         break;
                     case R.id.external:
-
                         File file=DiskUtils.getInstance().getDirectory(1);
                         if(file==null) {
                             Toast.makeText(getApplicationContext(),"Removable SDCard not mounted!",Toast.LENGTH_SHORT).show();
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity  {
                         // 0 denotes the internal storage
                         toolbar.setSubtitle(subtitle);
                         if(instance==null)
-                            fragment= new StorageFragment("/system",toolbar.getSubtitle().toString(),FilterType.SYSTEM,fragment,globalFileOperations);
+                            fragment= new StorageFragment(Environment.getRootDirectory().getPath(),toolbar.getSubtitle().toString(),FilterType.SYSTEM,fragment,globalFileOperations);
                         else fragment=instance;
                         break;
                     case R.id.images:

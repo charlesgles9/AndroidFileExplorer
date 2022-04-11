@@ -110,6 +110,7 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
         }
     }
 
+    //check if the user has removed a package and remove it from the list
     public void verify(){
         PackageManager packageManager=context.getPackageManager();
         for(int i=0;i<apps.size();i++){
@@ -118,7 +119,6 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
                 apps.remove(i);
             }
         }
-
        notifyDataSetChanged();
     }
     @Override
@@ -214,9 +214,7 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
             message.postValue("Sorting apps...");
             try {
                 sortList();
-            }catch (IllegalArgumentException args){
-
-            }
+            }catch (IllegalArgumentException ignore){}
             return null;
         }
 

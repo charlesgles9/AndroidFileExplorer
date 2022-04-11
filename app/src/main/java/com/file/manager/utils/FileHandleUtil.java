@@ -111,9 +111,8 @@ public class FileHandleUtil {
             Uri converted;
             try {
                 converted = MediaStore.getDocumentUri(context, uri);
-                if (converted != null) {
+                if (converted != null)
                     uri = converted;
-                }
             }catch (IllegalArgumentException ignore){}
         }
         String path=uri.getPath();
@@ -211,64 +210,6 @@ public class FileHandleUtil {
         }
 
     }
-
-    public static void ListFilesRecursivelyGalleryGrid(CustomFile file, ArrayList<CustomFile>files, ArrayList<CustomFile>folders, FilenameFilter filter){
-        ListFilesRecursivelyGalleryGrid(file,new ArrayList<CustomFile>(),files,folders,filter);
-    }
-
-    public static void ListFilesRecursivelyGalleryGrid(CustomFile source, ArrayList<CustomFile>dirs, ArrayList<CustomFile>foundFiles, ArrayList<CustomFile>foundFolders, FilenameFilter filter){
-        String[] array=source.list(filter);;
-        if(array!=null)
-        for(String name:array){
-            CustomFile child= new CustomFile(name,source);
-            if(child.isDirectory()){
-                dirs.add(child);
-            }else {
-                source.setLocalThumbnail(child.getLocalThumbnail());
-                foundFiles.add(child);
-                child.setTempThumbnail();
-            }
-
-        }
-        if(!foundFiles.isEmpty()&!source.isStartDirectory()) {
-            foundFolders.add(source);
-            foundFiles.clear();
-        }
-        for(int i=0;i<dirs.size();i++){
-            CustomFile folder=dirs.get(i);
-            dirs.remove(i);
-            ListFilesRecursivelyGalleryGrid(folder,dirs,foundFiles,foundFolders,filter);
-        }
-
-    }
-
-    public static void ListFilesRecursivelyGalleryList(CustomFile file, ArrayList<CustomFile>files, ArrayList<CustomFile>folders, FilenameFilter filter){
-        ListFilesRecursivelyGalleryList(file,new ArrayList<CustomFile>(),files,folders,filter);
-    }
-
-    public static void ListFilesRecursivelyGalleryList(CustomFile source, ArrayList<CustomFile>dirs, ArrayList<CustomFile>foundFiles, ArrayList<CustomFile>foundFolders, FilenameFilter filter){
-        String[] array=source.list(filter);
-        if(array!=null)
-            for(String name:array){
-                CustomFile child= new CustomFile(name,source);
-                if(child.isDirectory()){
-                    dirs.add(child);
-                }else {
-                    source.setLocalThumbnail(child.getLocalThumbnail());
-                    foundFiles.add(child);
-                    child.setTempThumbnail();
-                }
-
-            }
-
-        for(int i=0;i<dirs.size();i++){
-            CustomFile folder=dirs.get(i);
-            dirs.remove(i);
-            ListFilesRecursivelyGalleryList(folder,dirs,foundFiles,foundFolders,filter);
-        }
-
-    }
-
 
     public static void ListLargeFilesRecursively(CustomFile source,ArrayList<CustomFile>files,FilenameFilter filter){
         ListLargeFilesRecursively(source,new ArrayList<CustomFile>(),files,new ArrayList<CustomFile>(),filter);
@@ -546,6 +487,7 @@ public class FileHandleUtil {
         }
         cursor.close();
     }
+
 
     public static void fetchRecentMedia(Context context,RecentFilesContainer container) throws Exception{
         ArrayList<CustomFile>images= new ArrayList<>();

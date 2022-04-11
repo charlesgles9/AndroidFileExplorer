@@ -196,7 +196,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
                 if(isLoading())
                     return;
                 SelectAll.setText(!folder.getSelectAllStatus()?"SelectAll":"DeselectAll");
-                folder.addAllToMultiselectList();
+                folder.addAllToMultiSelectList();
                 updateSelectedItemCount();
                 adapter.notifyDataSetChanged();
             }

@@ -166,8 +166,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         FileListRecyclerView.setItemAnimator(null);
         FileListRecyclerView.setAnimation(null);
         FileListRecyclerView.setHasFixedSize(true);
-        FileListRecyclerView.setItemViewCacheSize(20);
-        FileListRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        FileListRecyclerView.setItemViewCacheSize(10);
+        FileListRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
         FileOperations=root.findViewById(R.id.FILE_HANDLE);
         FileOperations.setItemIconTintList(null);
         unCheckFileOperationMenu();
@@ -281,6 +281,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                                }
                            }
                        });
+                       storageAdapter.initFolderSize(range.first,range.second);
                      if(operations.equals(Operations.NAVIGATE))
                        showFloatingButton(true);
                    }else  if(newState==RecyclerView.SCROLL_STATE_DRAGGING){
@@ -603,7 +604,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             storageAdapter.setFolder(parentFolder);
             setCurrentDirectoryPath(parentFolder);
             parentFolder.removeDeleted();
-            storageAdapter.initFolderSize();
             storageAdapter.notifyDataSetChanged();
             FileListRecyclerView.scrollToPosition(parentFolder.getPosition());
         }
@@ -612,7 +612,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             setCurrentDirectoryPath(folder);
             storageAdapter.setFolder(folder);
             storageAdapter.notifyDataSetChanged();
-            storageAdapter.initFolderSize();
             FileListRecyclerView.scrollToPosition(folder.getPosition());
             initializeFolders(directoryManager.currentDir());
         }else {
@@ -621,7 +620,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             directoryManager.setCurrent(folder);
             storageAdapter.setFolder(folder);
             folder.removeDeleted();
-            storageAdapter.initFolderSize();
             FileListRecyclerView.scrollToPosition(folder.getPosition());
             storageAdapter.notifyDataSetChanged();
         }
@@ -642,7 +640,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 loadingProgress.setVisibility(View.INVISIBLE);
                 checkIfContentDisplay();
                 setCurrentDirectoryPath(folder);
-                storageAdapter.initFolderSize();
             }
 
         });
@@ -676,6 +673,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 }
             }
         });
+        storageAdapter.initFolderSize(start,stop);
     }
 
     private boolean isStoragePermissionGranted(CustomFile file){
@@ -770,7 +768,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
     @SuppressLint("SetTextI18n")
     public void selectAll(){
-        directoryManager.currentDir().addAllToMultiselectList();
+        directoryManager.currentDir().addAllToMultiSelectList();
         storageAdapter.notifyDataSetChanged();
         globalFileOperations.itemCount(directoryManager.currentDir().getMultiSelectedFiles().size());
         ItemCount.setText(directoryManager.currentDir().getMultiSelectedFiles().size()+"/"+getFolder().size());
@@ -883,7 +881,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     FileListRecyclerView.setAdapter(storageAdapter);
                     Pair<Integer,Integer>range=getVisibleItemRange();
                     LoadThumbnails(range.first,range.second);
-                    storageAdapter.initFolderSize();
                     CutHelper.getInstance().reset();
                     Toast.makeText(getContext(),dialog.getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -938,7 +935,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     FileListRecyclerView.setAdapter(storageAdapter);
                     Pair<Integer,Integer>range=getVisibleItemRange();
                     LoadThumbnails(range.first,range.second);
-                    storageAdapter.initFolderSize();
                     CopyHelper.getInstance().reset();
                     Toast.makeText(getContext(),dialog.getMessage(),Toast.LENGTH_SHORT).show();
 
@@ -950,7 +946,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     FileListRecyclerView.setAdapter(storageAdapter);
                     Pair<Integer,Integer>range=getVisibleItemRange();
                     LoadThumbnails(range.first,range.second);
-                    storageAdapter.initFolderSize();
                     CopyHelper.getInstance().reset();
                     Toast.makeText(getContext(),dialog.getMessage(),Toast.LENGTH_SHORT).show();
                 }
@@ -1017,7 +1012,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 FileListRecyclerView.setAdapter(storageAdapter);
                 Pair<Integer,Integer>range=getVisibleItemRange();
                 LoadThumbnails(range.first,range.second);
-                storageAdapter.initFolderSize();
                 CopyHelper.getInstance().reset();
                 if(getContext()!=null)
                     Toast.makeText(getContext(),"success! files copied",Toast.LENGTH_SHORT).show();

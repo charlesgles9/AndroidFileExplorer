@@ -5,6 +5,7 @@ import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.ThumbnailLoader;
 
 import java.io.File;
+import java.io.FilenameFilter;
 
 public class CustomFile extends File {
 
@@ -12,10 +13,13 @@ public class CustomFile extends File {
     private boolean selected=false;
     private LocalThumbnail localThumbnail;
     public int position=0;
-    private FolderSizeModel folderSizeModel;
+    private int folderLength;
     public CustomFile(String path){
         super(path);
-        folderSizeModel=new FolderSizeModel(this);
+        localThumbnail= new LocalThumbnail(this);
+    }
+    public CustomFile(String name, File parent){
+        super(parent.getPath(),name);
         localThumbnail= new LocalThumbnail(this);
     }
     public void setTempThumbnail(){
@@ -34,6 +38,18 @@ public class CustomFile extends File {
         return DiskUtils.getInstance().isStartDirectory(getPath());
     }
 
+    public void initFolderSize(FilenameFilter filter){
+        if(folderLength==0) {
+            String[] arr = this.list(filter);
+            if(arr!=null)
+            folderLength=arr.length;
+        }
+    }
+
+    public int getFolderLength() {
+        return folderLength;
+    }
+
     public boolean isAndroidDirectory(){
         String start=DiskUtils.getInstance().getStartDirectory(this)+"/Android";
         if(start.length()<getPath().length())
@@ -41,15 +57,7 @@ public class CustomFile extends File {
         return getPath().regionMatches(0,start,0,start.length());
     }
 
-    public CustomFile(String name, File parent){
-        super(parent.getPath(),name);
-        localThumbnail= new LocalThumbnail(this);
-        folderSizeModel=new FolderSizeModel(this);
-    }
 
-    public FolderSizeModel getFolderSizeModel() {
-        return folderSizeModel;
-    }
 
     public LocalThumbnail getLocalThumbnail() {
         return localThumbnail;

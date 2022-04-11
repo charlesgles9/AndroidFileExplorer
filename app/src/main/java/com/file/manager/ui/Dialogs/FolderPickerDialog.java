@@ -201,7 +201,7 @@ public class FolderPickerDialog extends Dialog implements View.OnClickListener {
             @Override
             public void onComplete() {
                 storageAdapter.notifyDataSetChanged();
-                storageAdapter.initFolderSize();
+                storageAdapter.initFolderSize(0,folder.size()-1);
                 loadingProgress.setVisibility(View.INVISIBLE);
                 setCurrentDirectoryPath(folder);
             }});

@@ -17,6 +17,7 @@ public class AppManagerModel {
     private String date;
     private String name;
     private File file;
+
     public AppManagerModel(PackageInfo info, PackageManager packageManager){
         this.info=info;
         this.icon=info.applicationInfo.loadIcon(packageManager);
@@ -24,6 +25,7 @@ public class AppManagerModel {
         this.size= DiskUtils.getInstance().getSize(file);
         this.date= DateUtils.getDateString(file.lastModified());
         this.name=info.applicationInfo.loadLabel(packageManager).toString();
+
     }
 
     public Drawable getIcon() {
@@ -49,4 +51,6 @@ public class AppManagerModel {
     public File getFile() {
         return file;
     }
+
+
 }

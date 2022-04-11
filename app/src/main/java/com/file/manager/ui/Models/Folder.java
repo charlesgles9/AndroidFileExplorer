@@ -92,14 +92,6 @@ public class Folder {
         return files.get(position);
     }
 
-    public CustomFile getByName(String name){
-        for(CustomFile file:files){
-            if(file.getName().equals(name)){
-                return file;
-            }
-        }
-        return null;
-    }
     public int size(){
         return getFiles().size();
     }
@@ -169,7 +161,7 @@ public class Folder {
     public boolean getSelectAllStatus(){
         return selectAll;
     }
-    public void addAllToMultiselectList(){
+    public void addAllToMultiSelectList(){
         multiSelectedFiles.clear();
         for(CustomFile file:files){
             file.setSelected(selectAll);
@@ -358,7 +350,7 @@ public class Folder {
                          }catch (NullPointerException ne) {
                                if (preferences.contains(storage))
                                    FileHandleUtil.SAFListFiles(context, file,
-                                           PermissionsHelper.getInstance().getUriFromSharedPreference(new File(storage)), files);
+                                   PermissionsHelper.getInstance().getUriFromSharedPreference(new File(storage)), files);
                            }
                       }
                         break;
@@ -403,10 +395,9 @@ public class Folder {
             if(type.equals(FilterType.LARGEFILES)){
                 message.postValue("Sorting Files...");
                 Sorter.sortBySize(files);
-            }
-            else{
+            }else
                 sort();
-            }
+
             return null;
         }
 
