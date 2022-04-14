@@ -47,7 +47,6 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
     private DuplicateFileContainerAdapter adapter;
     private DuplicateFileContainer duplicateFileContainer;
     private Toolbar activityToolbar;
-    private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private LinearLayoutManager manager;
     private TextView message;
@@ -55,6 +54,10 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
     private boolean deleted=false;
     private Fragment parent;
     private Toolbar toolbar;
+    private View loadingView;
+    private TextView loadingPercentage;
+    private TextView loadingMessage;
+    private ProgressBar loadingProgress;
     public DuplicateFileFragment(Fragment parent){
         this.parent=parent;
     }
@@ -67,10 +70,13 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
         final Button refresh=root.findViewById(R.id.refresh);
         final Button delete=root.findViewById(R.id.delete);
         final Button selectAll=root.findViewById(R.id.selectAll);
+        loadingView=root.findViewById(R.id.loadingView);
+        loadingPercentage=root.findViewById(R.id.loadingPercentage);
+        loadingMessage=root.findViewById(R.id.loadingMessage);
+        loadingProgress=root.findViewById(R.id.loadingProgress);
         toolbar=root.findViewById(R.id.toolbar);
          message=root.findViewById(R.id.message);
         recyclerView=root.findViewById(R.id.fileList);
-         progressBar=root.findViewById(R.id.progress);
         recyclerView.setItemAnimator(null);
         manager= new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
@@ -144,12 +150,12 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
 
 
     private boolean isLoading(){
-        return progressBar.getVisibility()==View.VISIBLE;
+        return loadingView.getVisibility()==View.VISIBLE;
     }
 
     private void loadDuplicates(){
         if(duplicateFileContainer!=null) {
-            progressBar.setVisibility(View.VISIBLE);
+            loadingView.setVisibility(View.VISIBLE);
             duplicateFileContainer.cancel();
             duplicateFileContainer.clear();
             selectedItemsCount();
@@ -160,7 +166,7 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
                 @Override
                 public void onTaskComplete() {
                     recyclerView.setAdapter(adapter);
-                    progressBar.setVisibility(View.GONE);
+                    loadingView.setVisibility(View.GONE);
                     selectedItemsCount();
                     if(duplicateFileContainer.size()==0){
                         message.setText("No duplicates files found!");
@@ -173,14 +179,14 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
             });
 
         }else {
-            progressBar.setVisibility(View.VISIBLE);
+            loadingView.setVisibility(View.VISIBLE);
             message.setVisibility(View.VISIBLE);
             duplicateFileContainer = new DuplicateFileContainer(new CustomFile(DiskUtils.getInstance().getDirectory(0).getPath()),getContext());
             duplicateFileContainer.searchForDuplicates(new OnTaskCompleteListener() {
                 @Override
                 public void onTaskComplete() {
                     recyclerView.setAdapter(adapter);
-                    progressBar.setVisibility(View.GONE);
+                    loadingView.setVisibility(View.GONE);
                     if(duplicateFileContainer.size()==0){
                         message.setText("No duplicates files found!");
                         return;
@@ -198,6 +204,10 @@ public class DuplicateFileFragment extends Fragment implements IOnBackPressed {
                @Override
                public void onChanged(String s) {
                    message.setText(s);
+                   loadingMessage.setText(s);
+                   loadingProgress.setIndeterminate(!duplicateFileContainer.isDeterminate());
+                   loadingPercentage.setText(duplicateFileContainer.getProgress()+"%");
+                   loadingProgress.setProgress(duplicateFileContainer.getProgress());
                }
            });
        }

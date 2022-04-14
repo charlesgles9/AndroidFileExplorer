@@ -35,7 +35,8 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
     public static final int SYSTEM_APPS =0;
     public static final int USER_APPS =1;
     public static final int ALL_APPS=2;
-
+    private int progress;
+    private boolean determinate;
     public static final int SORT_AZ=0;
     public static final int SORT_ZA=1;
     public static final int SORT_LAST_MODIFIED=2;
@@ -198,9 +199,11 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
             List<PackageInfo> packageInfos=context.getPackageManager().getInstalledPackages(0);
             int pSize=packageInfos.size();
             int pCount=1;
+            determinate=true;
             for(PackageInfo info:packageInfos){
                 pCount++;
-                message.postValue("filtering files..."+((int)((((float)pCount)/(float)(pSize))*100)));
+                message.postValue("filtering files...");
+                progress=(int)((((float)pCount)/(float)(pSize))*100);
                 if((info.applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM)!=0&mode==USER_APPS)
                     continue;
                 if((info.applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM)==0&mode==SYSTEM_APPS)
@@ -211,6 +214,7 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
                 apps.add(new AppManagerModel(info,context.getPackageManager()));
 
             }
+            determinate=false;
             message.postValue("Sorting apps...");
             try {
                 sortList();
@@ -237,6 +241,14 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
 
     public LiveData<String> getMessage() {
         return message;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public boolean isDeterminate() {
+        return determinate;
     }
 
     public interface OnItemClickListener{

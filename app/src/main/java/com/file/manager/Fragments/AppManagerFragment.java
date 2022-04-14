@@ -37,28 +37,31 @@ import com.file.manager.utils.CopyHelper;
 public class AppManagerFragment extends Fragment implements IOnBackPressed {
 
     private AppManagerAdapter adapter;
-    private ProgressBar progressBar;
-    private TextView message;
     private Toolbar activityToolbar;
     private RecyclerView recyclerView;
-    private View root;
     private Fragment parent;
     private Toolbar toolbar;
+    private View loadingView;
+    private TextView loadingPercentage;
+    private TextView loadingMessage;
+    private ProgressBar loadingProgress;
+    private MainActivity activity;
     public AppManagerFragment(Fragment parent){
         this.parent=parent;
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root=inflater.inflate(R.layout.installed_apps_fragment,container,false);
-        recyclerView=root.findViewById(R.id.fileList);
-        final MainActivity activity=(MainActivity)(getContext());
+        View root = inflater.inflate(R.layout.installed_apps_fragment, container, false);
+        recyclerView= root.findViewById(R.id.fileList);
+        activity=(MainActivity)(getContext());
+        loadingView=root.findViewById(R.id.loadingView);
+        loadingPercentage=root.findViewById(R.id.loadingPercentage);
+        loadingMessage=root.findViewById(R.id.loadingMessage);
+        loadingProgress=root.findViewById(R.id.loadingProgress);
         activityToolbar=activity.toolbar;
         activityToolbar.setVisibility(View.GONE);
-        toolbar=root.findViewById(R.id.toolbar);
-        progressBar=root.findViewById(R.id.progress);
-        message=root.findViewById(R.id.message);
-        message.setText("Loading...");
+        toolbar= root.findViewById(R.id.toolbar);
         LinearLayoutManager manager= new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(manager);
@@ -70,15 +73,13 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
                     recyclerView.setVisibility(View.VISIBLE);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                    message.setVisibility(View.INVISIBLE);
-                    progressBar.setVisibility(View.INVISIBLE);
+                    loadingView.setVisibility(View.INVISIBLE);
                     fileCount();
                 }
             });
         }else {
             recyclerView.setAdapter(adapter);
-            message.setVisibility(View.INVISIBLE);
-            progressBar.setVisibility(View.INVISIBLE);
+            loadingView.setVisibility(View.INVISIBLE);
             fileCount();
         }
         adapter.setOnItemClickListener(new AppManagerAdapter.OnItemClickListener() {
@@ -113,7 +114,10 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
         adapter.getMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                message.setText(s);
+                loadingPercentage.setText(adapter.getProgress()+"%");
+                loadingProgress.setProgress(adapter.getProgress());
+                loadingMessage.setText(s);
+                loadingProgress.setIndeterminate(!adapter.isDeterminate());
             }
         });
         return root;
@@ -176,19 +180,19 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
         RadioButton ZA=view.findViewById(R.id.ZA);
         RadioButton size=view.findViewById(R.id.size);
         RadioButton lastModified=view.findViewById(R.id.lastModified);
-        if(adapter.getMode()==adapter.USER_APPS){
+        if(adapter.getMode()== AppManagerAdapter.USER_APPS){
             option1.setChecked(true);
-        }else if(adapter.getMode()==adapter.SYSTEM_APPS){
+        }else if(adapter.getMode()== AppManagerAdapter.SYSTEM_APPS){
             option2.setChecked(true);
         }else {
             option3.setChecked(true);
         }
 
-        if(adapter.getSortMode()==adapter.SORT_AZ){
+        if(adapter.getSortMode()== AppManagerAdapter.SORT_AZ){
             AZ.setChecked(true);
-        }else if(adapter.getSortMode()==adapter.SORT_ZA){
+        }else if(adapter.getSortMode()== AppManagerAdapter.SORT_ZA){
             ZA.setChecked(true);
-        }else if(adapter.getSortMode()==adapter.SORT_BY_SIZE){
+        }else if(adapter.getSortMode()== AppManagerAdapter.SORT_BY_SIZE){
             size.setChecked(true);
         }else {
             lastModified.setChecked(true);
@@ -199,20 +203,19 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.option1:
-                        adapter.setMode(adapter.USER_APPS);
+                        adapter.setMode(AppManagerAdapter.USER_APPS);
                         break;
                     case R.id.option2:
-                        adapter.setMode(adapter.SYSTEM_APPS);
+                        adapter.setMode(AppManagerAdapter.SYSTEM_APPS);
                         break;
                     case R.id.option3:
-                        adapter.setMode(adapter.ALL_APPS);
+                        adapter.setMode(AppManagerAdapter.ALL_APPS);
                         break;
 
                 }
                 adapter.reset();
                 adapter.notifyDataSetChanged();
-                message.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.VISIBLE);
+                loadingView.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.INVISIBLE);
                 popupWindow.dismiss();
             }
@@ -223,16 +226,16 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.AZ:
-                        adapter.setSortBy(adapter.SORT_AZ);
+                        adapter.setSortBy(AppManagerAdapter.SORT_AZ);
                         break;
                     case R.id.ZA:
-                        adapter.setSortBy(adapter.SORT_ZA);
+                        adapter.setSortBy(AppManagerAdapter.SORT_ZA);
                         break;
                     case R.id.size:
-                        adapter.setSortBy(adapter.SORT_BY_SIZE);
+                        adapter.setSortBy(AppManagerAdapter.SORT_BY_SIZE);
                         break;
                     case R.id.lastModified:
-                        adapter.setSortBy(adapter.SORT_LAST_MODIFIED);
+                        adapter.setSortBy(AppManagerAdapter.SORT_LAST_MODIFIED);
                         break;
                 }
                 adapter.sortList();
@@ -293,6 +296,6 @@ public class AppManagerFragment extends Fragment implements IOnBackPressed {
     @Override
     public void onBackPressed() {
         if(parent!=null)
-            ((MainActivity)getContext()).setFragment(parent);
+            activity.setFragment(parent);
     }
 }

@@ -15,30 +15,51 @@
         app:menu="@menu/large_files_finder_menu"
         app:popupTheme="@style/AppTheme.PopupOverlay">
     </androidx.appcompat.widget.Toolbar>
-    <LinearLayout
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/loadingView"
         android:layout_centerInParent="true"
-        android:id="@+id/messageLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="250dp"
-        android:layout_height="10dp"
-        android:layout_gravity="center"
-        android:indeterminateOnly="true"
-        android:indeterminateTint="?attr/colorProgress"
-        android:indeterminateTintMode="src_atop"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-        <TextView
-            android:id="@+id/messageTv"
+        android:elevation="5dp"
+        android:visibility="invisible"
+        android:backgroundTint="?attr/background2"
+        app:cardCornerRadius="10dp">
+        <TableLayout
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="10dp"
-            android:textColor="?attr/normalTextColor"/>
-    </LinearLayout>
+            android:layout_height="wrap_content">
+            <TableRow >
+
+                <TextView
+                    android:padding="10dp"
+                    android:id="@+id/loadingMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="13dp"
+                    android:text="..."
+                    android:textColor="?attr/normalTextColor"/>
+            </TableRow>
+            <TableRow >
+                <ProgressBar
+                    android:id="@+id/loadingProgress"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:visibility="visible"
+                    android:layout_span="1"
+                    android:indeterminateOnly="true"
+                    android:indeterminateBehavior="cycle"
+                    android:indeterminateTintMode="src_atop"
+                    android:scrollbarSize="10dp"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+            </TableRow>
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
     <RelativeLayout
         android:id="@+id/bottomNav"
         android:layout_alignParentBottom="true"

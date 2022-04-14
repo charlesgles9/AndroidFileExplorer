@@ -20,6 +20,8 @@ public class DuplicateFileContainer {
     private MutableLiveData<String>message=new MutableLiveData<>();
     private CustomFile dir;
     private Context context;
+    private int progress;
+    private boolean determinate;
     public static final byte IMAGE=0;
     public static final byte VIDEO=1;
     public static final byte AUDIO=2;
@@ -114,15 +116,18 @@ public class DuplicateFileContainer {
                     break;
             }
 
+            determinate=false;
             message.postValue("Sorting files...");
             Sorter.sortByDate(files);
             message.postValue("Comparing files...");
             int fCount=files.size();
             int gCount=1;
+            determinate=true;
             for(CustomFile file:files){
                 if(!file.exists())
                     continue;
-                message.postValue("Comparing files..."+String.valueOf((int)(((float)gCount/(float)fCount)*100))+" %");
+                message.postValue("Comparing files...");
+                progress=(int)(((float)gCount/(float)fCount)*100);
                 if(isCancelled()){
                     clear();
                     return null;
@@ -131,7 +136,7 @@ public class DuplicateFileContainer {
                 gCount++;
                 file.setTempThumbnail();
             }
-
+            determinate=false;
             message.postValue("Grouping Files...");
             for (Map.Entry<String, DuplicateFileModel> entry : map.entrySet()) {
                 if(isCancelled()){
@@ -154,6 +159,14 @@ public class DuplicateFileContainer {
         protected void onPreExecute() {
             super.onPreExecute();
         }
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public boolean isDeterminate() {
+        return determinate;
     }
 
     public MutableLiveData<String> getMessage() {

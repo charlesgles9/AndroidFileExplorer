@@ -57,30 +57,28 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
     private Folder folder;
     private RecyclerView recyclerView;
     private LinearLayoutManager manager;
-    private View messageLayout;
-    private boolean deleted=false;
     private Fragment parent;
-    private View root;
     private Toolbar toolbar;
+    private View loadingView;
+    private TextView loadingMessage;
+    private MainActivity activity;
     public LargeFileFragment(Fragment parent){
         this.parent=parent;
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root=inflater.inflate(R.layout.large_fragment_files,container,false);
-       final Button Delete=root.findViewById(R.id.delete);
-       final Button Refresh=root.findViewById(R.id.refresh);
-       final Button SelectAll=root.findViewById(R.id.selectAll);
-       final TextView messageTv=root.findViewById(R.id.messageTv);
-         recyclerView=root.findViewById(R.id.fileList);
-         messageLayout=root.findViewById(R.id.messageLayout);
-        final MainActivity activity=(MainActivity)(getContext());
+        View root = inflater.inflate(R.layout.large_fragment_files, container, false);
+       final Button Delete= root.findViewById(R.id.delete);
+       final Button Refresh= root.findViewById(R.id.refresh);
+       final Button SelectAll= root.findViewById(R.id.selectAll);
+        loadingView= root.findViewById(R.id.loadingView);
+        loadingMessage= root.findViewById(R.id.loadingMessage);
+         recyclerView= root.findViewById(R.id.fileList);
+        activity=(MainActivity)(getContext());
         activityToolbar=activity.toolbar;
         activityToolbar.setVisibility(View.GONE);
-
-        toolbar=root.findViewById(R.id.toolbar);
-
+        toolbar= root.findViewById(R.id.toolbar);
         toolbar.setSubtitle("Large Files");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +111,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         folder.getMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                messageTv.setText(s);
+                loadingMessage.setText(s);
             }
         });
         initFolder(folder);
@@ -241,7 +239,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
                 folder.getMultiSelectedFiles().size()+"/"+folder.getFiles().size());
     }
     private void initFolder(final Folder folder){
-        messageLayout.setVisibility(View.VISIBLE);
+        loadingView.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.INVISIBLE);
         folder.init(new FileHandleUtil.OnTaskComplete() {
             @Override
@@ -262,24 +260,23 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
             @Override
             public void onGlobalLayout() {
                 LoadThumbnails();
-                messageLayout.setVisibility(View.GONE);
+                loadingView.setVisibility(View.GONE);
                 recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
         });
     }
 
     private boolean isLoading(){
-        return messageLayout.getVisibility()==View.VISIBLE;
+        return loadingView.getVisibility()==View.VISIBLE;
     }
 
     private void minSizePopUp(View anchor){
 
         if(isLoading())
             return;
-        final DiskUtils diskUtils=DiskUtils.getInstance();
         final SharedPreferences preferences=getContext().getSharedPreferences("MyPref",Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor=preferences.edit();
-        final long pBytes=preferences.getLong("MinLargeFile",diskUtils.SIZE_MB*50);
+        final long pBytes=preferences.getLong("MinLargeFile", DiskUtils.SIZE_MB *50);
 
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
@@ -289,11 +286,11 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         final RadioButton min_size3=view.findViewById(R.id.min_size3);
         final RadioButton min_size4=view.findViewById(R.id.min_size4);
         final Button accept=view.findViewById(R.id.accept);
-        if(200*diskUtils.SIZE_MB==pBytes){
+        if(200* DiskUtils.SIZE_MB ==pBytes){
             min_size1.setChecked(true);
-        }else if(100*diskUtils.SIZE_MB==pBytes){
+        }else if(100* DiskUtils.SIZE_MB ==pBytes){
             min_size2.setChecked(true);
-        }else if(50*diskUtils.SIZE_MB==pBytes){
+        }else if(50* DiskUtils.SIZE_MB ==pBytes){
             min_size3.setChecked(true);
         }else {
             min_size4.setChecked(true);
@@ -306,22 +303,22 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
 
                 switch (v.getId()){
                     case R.id.min_size1:
-                        editor.putLong("MinLargeFile",200*diskUtils.SIZE_MB);
+                        editor.putLong("MinLargeFile",200* DiskUtils.SIZE_MB);
                         break;
                     case R.id.min_size2:
-                        editor.putLong("MinLargeFile",100*diskUtils.SIZE_MB);
+                        editor.putLong("MinLargeFile",100* DiskUtils.SIZE_MB);
                         break;
                     case R.id.min_size3:
-                        editor.putLong("MinLargeFile",50*diskUtils.SIZE_MB);
+                        editor.putLong("MinLargeFile",50* DiskUtils.SIZE_MB);
                         break;
                     case R.id.min_size4:
-                        editor.putLong("MinLargeFile",20*diskUtils.SIZE_MB);
+                        editor.putLong("MinLargeFile",20* DiskUtils.SIZE_MB);
                         break;
                     case R.id.accept:
                         popupWindow.dismiss();
                         break;
                 }
-                editor.commit();
+                editor.apply();
             }
         };
         min_size1.setOnClickListener(onClickListener);
@@ -333,7 +330,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
             @Override
             public void onDismiss() {
                 //refresh the list
-                final long cBytes=preferences.getLong("MinLargeFile",DiskUtils.getInstance().SIZE_MB*50);
+                final long cBytes=preferences.getLong("MinLargeFile", DiskUtils.SIZE_MB *50);
                 if(pBytes!=cBytes){
                    initFolder(folder);
                    adapter.notifyDataSetChanged();
@@ -364,7 +361,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
     @Override
     public void onBackPressed() {
         if(parent!=null)
-            ((MainActivity)getContext()).setFragment(parent);
+            activity.setFragment(parent);
     }
     @Override
     public void onDetach() {
