@@ -146,12 +146,15 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
 
     @SuppressLint("StaticFieldLeak")
     public void initFolderSize(final int start, final int stop){
+        if(start==-1)
+            return;
         // if its a folder get the folder size
         new AsyncTask<String,Integer,String>() {
 
             @Override
             protected String doInBackground(String... strings) {
                 for(int i = start;i<=stop;i++) {
+
                     CustomFile file = folder.get(i);
                     if (file.isDirectory()) {
                         switch (folder.getType()) {
@@ -185,6 +188,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 for(int i=start;i<=stop;i++){
+                    if(folder.get(i).isDirectory())
                     notifyItemChanged(i);
                 }
             }
