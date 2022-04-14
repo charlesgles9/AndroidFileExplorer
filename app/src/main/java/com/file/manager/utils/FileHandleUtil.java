@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.MergeCursor;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
@@ -258,6 +259,16 @@ public class FileHandleUtil {
         ListMediaRecursively(src,new ArrayList<CustomFile>(),files,new ArrayList<CustomFile>(),FileFilters.FilterFoldersCompressedGallery(11));
     }
 
+    public static void ListMedia(ArrayList<CustomFile>files,FilenameFilter filter){
+        File[]mounts=DiskUtils.getInstance().getStorageDirs();
+        for (File mount:mounts) {
+            if(mount!=null){
+                ListMediaRecursively(new CustomFile(mount.getPath()),new ArrayList<CustomFile>(),files,
+                        new ArrayList<CustomFile>(),filter);
+            }
+        }
+
+    }
     public static void ListDocuments(ArrayList<CustomFile>files){
         File[]mounts=DiskUtils.getInstance().getStorageDirs();
         for (File mount:mounts) {

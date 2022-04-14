@@ -119,7 +119,6 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         progressBar=root.findViewById(R.id.progress);
 
         initStorageProgress();
-        initStorageCategoryStats();
         final Fragment fragment=this;
         activity=(MainActivity)getContext();
         activity.setSubtitle("Home");
@@ -220,7 +219,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
 
 
         if(recentFilesContainer==null)
-        recentFilesContainer=new RecentFilesContainer();
+            recentFilesContainer = new RecentFilesContainer();
         manager= new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(manager);
@@ -229,6 +228,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         if(adapter==null) {
             adapter = new RecentFilesAdapter(getContext(), recentFilesContainer);
+            initStorageCategoryStats();
         }else {
             LoadThumbnails();
         }
@@ -383,78 +383,79 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
 
     @SuppressLint("StaticFieldLeak")
     private void initStorageCategoryStats(){
-        // incase the user refreshes multiple times
+        // in case the user refreshes multiple times
         // prevents memory leaks
-        if(calculatingText.getVisibility()==View.INVISIBLE)
-        new AsyncTask<String ,Integer,String>(){
-            ArrayList<CustomFile>videos= new ArrayList<>();
-            ArrayList<CustomFile>audios= new ArrayList<>();
-            ArrayList<CustomFile>apps= new ArrayList<>();
-            ArrayList<CustomFile>photos= new ArrayList<>();
-            ArrayList<CustomFile>docs= new ArrayList<>();
-            ArrayList<CustomFile>archives= new ArrayList<>();
-            @Override
-            protected String doInBackground(String... strings) {
-                Context context=getContext();
-                FileHandleUtil.fetchVideoFiles(context,videos);
-                FileHandleUtil.fetchImageFiles(context,photos);
-                FileHandleUtil.fetchAudioFiles(context,audios);
-                FileHandleUtil.ListApplication(apps);
-                FileHandleUtil.ListDocuments(docs);
-                FileHandleUtil.ListCompressed(archives);
-                return null;
-            }
+        if(calculatingText.getVisibility()==View.INVISIBLE) {
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                calculatingText.setVisibility(View.VISIBLE);
-            }
+            new AsyncTask<String, Integer, String>() {
+                ArrayList<CustomFile> videos = new ArrayList<>();
+                ArrayList<CustomFile> audios = new ArrayList<>();
+                ArrayList<CustomFile> photos = new ArrayList<>();
+                ArrayList<CustomFile> media = new ArrayList<>();
 
-            @SuppressLint("SetTextI18n")
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                long storageSize=1L;
-                long videoSize=1L;
-                long photoSize=1L;
-                long audioSize=1L;
-                long appSize=1L;
-                long docSize=1L;
-                long archiveSize=1L;
-                for(File mount:DiskUtils.getInstance().getStorageDirs()) {
-                       if(mount!=null) {
-                          storageSize+= DiskUtils.getInstance().totalMemory(mount);
-
-                       }
+                @Override
+                protected String doInBackground(String... strings) {
+                    Context context = getContext();
+                    FileHandleUtil.fetchVideoFiles(context, videos);
+                    FileHandleUtil.fetchImageFiles(context, photos);
+                    FileHandleUtil.fetchAudioFiles(context, audios);
+                    FileHandleUtil.ListMedia(media, FileFilters.FilterAppArchiveAndDocs());
+                    return null;
                 }
-                for(CustomFile file:videos)
-                    videoSize+=file.length();
-                for(CustomFile file:photos)
-                    photoSize+=file.length();
-                for(CustomFile file:audios)
-                    audioSize+=file.length();
-                for(CustomFile file:apps)
-                    appSize+=file.length();
-                for(CustomFile file:docs)
-                    docSize+=file.length();
-                for(CustomFile file:archives)
-                    archiveSize+=file.length();
-              videoProgress.setProgress((int)(((float)videoSize/(float)storageSize)*100)+1);
-              photoProgress.setProgress((int)(((float)photoSize/(float)storageSize)*100)+1);
-              audioProgress.setProgress((int)(((float)audioSize/(float)storageSize)*100)+1);
-              appProgress.setProgress((int)(((float)appSize/(float)storageSize)*100)+1);
-              docProgress.setProgress((int)(((float)docSize/(float)storageSize)*100)+1);
-              archiveProgress.setProgress((int)(((float)archiveSize/(float)storageSize)*100)+1);
-              ((TextView)root.findViewById(R.id.videoText)).setText("Video("+DiskUtils.getInstance().getSize(videoSize)+")");
-              ((TextView)root.findViewById(R.id.audioText)).setText("Audio("+DiskUtils.getInstance().getSize(audioSize)+")");
-              ((TextView)root.findViewById(R.id.androidText)).setText("App("+DiskUtils.getInstance().getSize(appSize)+")");
-              ((TextView)root.findViewById(R.id.photoText)).setText("Photos("+DiskUtils.getInstance().getSize(photoSize)+")");
-              ((TextView)root.findViewById(R.id.docText)).setText("Docs("+DiskUtils.getInstance().getSize(docSize)+")");
-              ((TextView)root.findViewById(R.id.archiveText)).setText("Archive("+DiskUtils.getInstance().getSize(archiveSize)+")");
-              calculatingText.setVisibility(View.INVISIBLE);
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    calculatingText.setVisibility(View.VISIBLE);
+                }
+
+                @SuppressLint("SetTextI18n")
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    long storageSize = 1L;
+                    long videoSize = 1L;
+                    long photoSize = 1L;
+                    long audioSize = 1L;
+                    long appSize = 1L;
+                    long docSize = 1L;
+                    long archiveSize = 1L;
+                    for (File mount : DiskUtils.getInstance().getStorageDirs()) {
+                        if (mount != null) {
+                            storageSize += DiskUtils.getInstance().totalMemory(mount);
+
+                        }
+                    }
+                    for (CustomFile file : videos)
+                        videoSize += file.length();
+                    for (CustomFile file : photos)
+                        photoSize += file.length();
+                    for (CustomFile file : audios)
+                        audioSize += file.length();
+                    for (CustomFile file : media) {
+                        if (FileFilters.isApk(file.getName()))
+                            appSize += file.length();
+                        else if (FileFilters.isDocument(file.getName()))
+                            docSize += file.length();
+                        else
+                            archiveSize += file.length();
+                    }
+                    videoProgress.setProgress((int) (((float) videoSize / (float) storageSize) * 100) + 1);
+                    photoProgress.setProgress((int) (((float) photoSize / (float) storageSize) * 100) + 1);
+                    audioProgress.setProgress((int) (((float) audioSize / (float) storageSize) * 100) + 1);
+                    appProgress.setProgress((int) (((float) appSize / (float) storageSize) * 100) + 1);
+                    docProgress.setProgress((int) (((float) docSize / (float) storageSize) * 100) + 1);
+                    archiveProgress.setProgress((int) (((float) archiveSize / (float) storageSize) * 100) + 1);
+                    ((TextView) root.findViewById(R.id.videoText)).setText("Video(" + DiskUtils.getInstance().getSize(videoSize) + ")");
+                    ((TextView) root.findViewById(R.id.audioText)).setText("Audio(" + DiskUtils.getInstance().getSize(audioSize) + ")");
+                    ((TextView) root.findViewById(R.id.androidText)).setText("App(" + DiskUtils.getInstance().getSize(appSize) + ")");
+                    ((TextView) root.findViewById(R.id.photoText)).setText("Photos(" + DiskUtils.getInstance().getSize(photoSize) + ")");
+                    ((TextView) root.findViewById(R.id.docText)).setText("Docs(" + DiskUtils.getInstance().getSize(docSize) + ")");
+                    ((TextView) root.findViewById(R.id.archiveText)).setText("Archive(" + DiskUtils.getInstance().getSize(archiveSize) + ")");
+                    calculatingText.setVisibility(View.INVISIBLE);
+                }
+            }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
 
     }
 

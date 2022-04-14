@@ -1,5 +1,7 @@
 package com.file.manager.utils;
 
+import android.os.Environment;
+
 import com.file.manager.ui.Models.CustomFile;
 
 import java.io.File;
@@ -206,6 +208,21 @@ public class FileFilters {
                 if (file.isDirectory())
                     return !file.isAndroidDirectory();
                 return isVideo(name) | isImage(name);
+            }
+        };
+    }
+
+    public static FilenameFilter FilterAppArchiveAndDocs(){
+       return  new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                CustomFile file = new CustomFile(name, dir);
+                // only search the system file directory if its an apk file
+                if (file.isHidden()|(file.getPath().equals(Environment.getRootDirectory().getPath())&!isApk(name)))
+                    return false;
+                if (file.isDirectory())
+                    return !file.isAndroidDirectory();
+                return isApk(name) | isCompressed(name)|isDocument(name);
             }
         };
     }
