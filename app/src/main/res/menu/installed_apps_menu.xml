@@ -10,7 +10,7 @@
     <item
         android:id="@+id/ACTION_SETTINGS"
         android:orderInCategory="200"
-        android:icon="@drawable/ic_more"
+        android:icon="@drawable/ic_more1"
         android:title="@string/action_settings"
         app:showAsAction="ifRoom" />
 </menu>

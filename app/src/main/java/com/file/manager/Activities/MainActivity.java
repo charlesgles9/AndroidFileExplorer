@@ -440,7 +440,7 @@ public class MainActivity extends AppCompatActivity  {
             toolbar.setNavigationIcon(R.drawable.ic_menu_open_24);
         }else {
             getMenuInflater().inflate(R.menu.multi_select_menu, menu);
-            toolbar.setNavigationIcon(R.drawable.ic_close);
+            toolbar.setNavigationIcon(R.drawable.ic_close1);
         }
 
         return super.onCreateOptionsMenu(menu);

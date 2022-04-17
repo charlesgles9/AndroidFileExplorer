@@ -90,6 +90,7 @@ import com.file.manager.utils.FileHandleUtil;
 import com.file.manager.utils.ThumbnailLoader;
 import com.file.manager.utils.WindowUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -116,7 +117,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private GlobalFileOperations globalFileOperations;
     private String title;
     private Operations operations=Operations.NAVIGATE;
-    private BottomNavigationView FileOperations;
     private boolean deleted=false;
     private Fragment parent;
     private FilterType type;
@@ -124,6 +124,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private String action="";
     private String uriAction="";
     private MainActivity activity;
+    private LinearLayout bottomFileOperations;
+    private BottomSheetBehavior sheetBehavior;
     public StorageFragment(String EntryPath,String title,FilterType type,Fragment parent,GlobalFileOperations globalFileOperations){
         this.EntryPath=EntryPath;
         this.FragmentID= UUID.randomUUID().hashCode();
@@ -168,11 +170,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         FileListRecyclerView.setHasFixedSize(true);
         FileListRecyclerView.setItemViewCacheSize(10);
         FileListRecyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
-        FileOperations=root.findViewById(R.id.FILE_HANDLE);
-        FileOperations.setItemIconTintList(null);
-        unCheckFileOperationMenu();
+        bottomFileOperations=root.findViewById(R.id.file_operations_layout);
+        sheetBehavior=BottomSheetBehavior.from(bottomFileOperations);
         final CustomFile entryFile= new CustomFile(EntryPath);
-
       if(!directoryManager.contains(entryFile)) {
               directoryManager.createDir(getContext(), entryFile);
               final Folder folder = directoryManager.currentDir();
@@ -184,7 +184,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
           pathAdapter.setSegments(directoryManager.currentDir().getPath());
           loadingProgress.setVisibility(View.INVISIBLE);
         }
-
+        initStorageFileOperationsListener();
+        showFileOperationDialog(View.GONE);
         setFileView();
        final SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(getContext());
         storageAdapter.setItemListener(new StorageAdapter.ItemListener() {
@@ -249,10 +250,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 if(position<0)
                     return;
                 showFloatingButton(false);
-                // open file-handle options
-                FileOperations.setVisibility(View.VISIBLE);
                 operations=Operations.SELECT;
                 storageAdapter.setOperations(operations);
+                showFileOperationDialog(View.VISIBLE);
                 if(!storageAdapter.get(position).IsSelected())
                     directoryManager.currentDir().addToMultiSelectList(position);
                 storageAdapter.get(position).setSelected(true);
@@ -413,7 +413,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         PathListRecyclerView.setAdapter(pathAdapter);
 
         // init storage operations
-        storageOperations();
+        //storageOperations();
         initToolBarMenuClickListener();
         final MainActivity activity=((MainActivity)getContext());
         activity.getGlobalFileHandleLayout().setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -759,9 +759,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         directoryManager.currentDir().resetMultiSelectedList();
         operations=Operations.NAVIGATE;
         storageAdapter.setOperations(operations);
+        showFileOperationDialog(View.GONE);
         storageAdapter.notifyDataSetChanged();
         globalFileOperations.select(operations);
-        FileOperations.setVisibility(View.GONE);
         ItemCount.setVisibility(View.GONE);
         ItemCount.setText("0/" + getFolder().size());
     }
@@ -774,67 +774,90 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         ItemCount.setText(directoryManager.currentDir().getMultiSelectedFiles().size()+"/"+getFolder().size());
     }
 
-    private void storageOperations(){
-        FileOperations.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+    private void initStorageFileOperationsListener(){
+
+        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                root.findViewById(R.id.header_drop_down_arrow).setRotation(slideOffset*180);
+            }
+        });
+
+        root.findViewById(R.id.operation_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED)
+                sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                else
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+        final View.OnClickListener onClickListener= new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 CustomFile file;
                 String storage;
-                switch (item.getItemId()){
+                switch (v.getId()){
                     case R.id.COPY:
                         initCopyHelper();
                         globalFileOperations.copy();
                         exitSelectMode();
-                        FileOperations.setVisibility(View.GONE);
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        showFileOperationDialog(View.GONE);
                         break;
                     case R.id.DELETE:
-                         file=getFolder().getMultiSelectedFiles().get(0);
-                         storage=DiskUtils.getInstance().getStartDirectory(file);
+                        file=getFolder().getMultiSelectedFiles().get(0);
+                        storage=DiskUtils.getInstance().getStartDirectory(file);
                         if(!isStoragePermissionGranted(file)) {
                             getStoragePermission(new CustomFile(storage));
                         } else {
                             Delete();exitSelectMode();
-                        FileOperations.setVisibility(View.GONE);}
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                            showFileOperationDialog(View.GONE);}
                         break;
                     case R.id.CUT:
                         initCutHelper();
                         globalFileOperations.cut();
                         exitSelectMode();
-                        FileOperations.setVisibility(View.GONE);
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                        showFileOperationDialog(View.GONE);
                         break;
                     case R.id.RENAME:
-                         file=getFolder().getMultiSelectedFiles().get(0);
-                         storage=DiskUtils.getInstance().getStartDirectory(file);
+                        file=getFolder().getMultiSelectedFiles().get(0);
+                        storage=DiskUtils.getInstance().getStartDirectory(file);
                         if(!isStoragePermissionGranted(file)) {
                             getStoragePermission(new CustomFile(storage));
                         }else {
                             Rename();
                             exitSelectMode();
-                            FileOperations.setVisibility(View.GONE);
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                            showFileOperationDialog(View.GONE);
                         }
                         break;
                     case R.id.MORE:
-                        moreOptionsPopup(FileOperations);
+                        moreOptionsPopup(v);
                         break;
-
                 }
 
-                unCheckFileOperationMenu();
-                return false;
             }
-        });
-    }
+        };
 
-    private void unCheckFileOperationMenu(){
-        FileOperations.getMenu().setGroupCheckable(0,true,false);
-        for(int i=0;i<FileOperations.getMenu().size();i++){
-            FileOperations.getMenu().getItem(i).setChecked(false);
-        }
-        FileOperations.getMenu().setGroupCheckable(0,true,true);
+        root.findViewById(R.id.COPY).setOnClickListener(onClickListener);
+        root.findViewById(R.id.CUT).setOnClickListener(onClickListener);
+        root.findViewById(R.id.DELETE).setOnClickListener(onClickListener);
+        root.findViewById(R.id.RENAME).setOnClickListener(onClickListener);
+        root.findViewById(R.id.MORE).setOnClickListener(onClickListener);
 
     }
 
-
+    private void showFileOperationDialog(int visibility){
+           bottomFileOperations.setVisibility(visibility);
+    }
     private void Delete() {
         final Folder folder=directoryManager.currentDir();
         if(folder.getMultiSelectedFiles().isEmpty())
@@ -1366,9 +1389,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     case R.id.open:
                         try {
                             new MIMETypesHelper(getContext(),file).startDefault();
-                        }catch (Exception e){
-
-                        }
+                        }catch (Exception ignore){ }
 
                         break;
                     case R.id.share:

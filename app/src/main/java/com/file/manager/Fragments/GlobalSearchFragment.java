@@ -450,7 +450,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
     private void selectMode(){
         FILE_HANDLE_OPTIONS.setVisibility(View.VISIBLE);
         searchView.setVisibility(View.GONE);
-        toolbar.setNavigationIcon(R.drawable.ic_close);
+        toolbar.setNavigationIcon(R.drawable.ic_close1);
         toolbar.getMenu().getItem(0).setVisible(true);
         adapter.setOperations(Operations.SELECT);
         adapter.notifyDataSetChanged();

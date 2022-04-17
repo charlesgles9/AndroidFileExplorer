@@ -74,7 +74,7 @@
                 android:layout_height="50dp"
                 android:button="@null"
                 android:background="@drawable/drawable_highlight2"
-                android:drawableTop="@drawable/ic_more"
+                android:drawableTop="@drawable/ic_more1"
                 android:gravity="center"
                 android:textColor="#BFDFDFDF"
                 android:textSize="9dp"

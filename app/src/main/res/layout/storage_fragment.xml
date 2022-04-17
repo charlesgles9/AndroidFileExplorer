@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/STORAGE_OPTIONS"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_filter_list"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentEnd="true"/>
         <LinearLayout
             android:id="@+id/search_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/filter"
+            android:layout_toStartOf="@+id/filter"
             android:visibility="gone"
             android:orientation="horizontal">
             <ImageView
@@ -47,10 +47,10 @@
                 android:src="@drawable/ic_cancel"/>
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/search_text"
-                android:hint="Search Keyword"
+                android:hint="@string/search_keyword"
                 android:textSize="12dp"
                 android:textColor="?attr/normalTextColor"
-                android:drawableLeft="@drawable/ic_search"
+                android:drawableStart="@drawable/ic_search"
                 android:textColorHint="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -65,8 +65,8 @@
         android:minHeight="25dp"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/STORAGE_OPTIONS"
-        android:layout_toLeftOf="@+id/search_layout"
+        android:layout_toEndOf="@+id/STORAGE_OPTIONS"
+        android:layout_toStartOf="@+id/search_layout"
         android:layout_marginBottom="1dp"/>
         <View
             android:layout_below="@+id/pathList"
@@ -82,28 +82,14 @@
             android:layout_height="2px"/>
     </RelativeLayout>
 
-               <com.google.android.material.bottomnavigation.BottomNavigationView
-                   android:id="@+id/FILE_HANDLE"
-                   android:visibility="gone"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentBottom="true"
-                   android:background="?attr/colorPrimaryLight"
-                   app:itemTextColor="#FFF"
-                   app:itemIconTint="?attr/normalTextColor"
-                   app:labelVisibilityMode="labeled"
-                   app:elevation="5dp"
-                   app:menu="@menu/bottom_file_operation1"/>
-
            <ProgressBar
                android:id="@+id/progress"
                style="?android:attr/indeterminateProgressStyle"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:layout_marginLeft="10dp"
+               android:layout_marginStart="10dp"
                android:layout_centerVertical="true"
                android:layout_centerHorizontal="true"
-               android:layout_toLeftOf="@+id/thumbnail"
                android:max="100"
                android:progress="80"
                android:indeterminateTint="@color/colorPrimaryLight"
@@ -119,24 +105,32 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:text="No Media files found"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fileList"
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/bottomFileOperation"
         android:layout_below="@+id/top_layout"
-        android:layout_above="@+id/FILE_HANDLE"
-        android:layout_marginRight="5dp"
-        android:saveEnabled="true"
-        android:nestedScrollingEnabled="true"
-        style="@style/scrollbar2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fileList"
+            android:layout_marginEnd="5dp"
+            android:saveEnabled="true"
+            android:nestedScrollingEnabled="true"
+            style="@style/scrollbar2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <include layout="@layout/dialog_file_operations"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
         <TextView
             android:id="@+id/ItemCount"
             android:visibility="gone"
             android:textColor="#FFF"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:textSize="11dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/text_view_drawable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -145,7 +139,6 @@
 
 <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/addFolderFloatingButton"
-    android:layout_above="@+id/FILE_HANDLE"
     android:layout_alignParentEnd="true"
     android:layout_alignParentBottom="true"
     android:clickable="true"
@@ -153,7 +146,7 @@
     android:layout_height="wrap_content"
     app:backgroundTint="@color/colorPrimaryLight"
     android:layout_marginBottom="25dp"
-    android:layout_marginRight="25dp"
+    android:layout_marginEnd="25dp"
     android:src="@drawable/ic_baseline_create_new_folder_24"
     android:focusable="true" />
 </RelativeLayout>

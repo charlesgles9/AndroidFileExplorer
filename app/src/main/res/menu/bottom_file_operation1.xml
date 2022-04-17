@@ -27,7 +27,7 @@
             android:title="Rename" />
          <item
             android:id="@+id/MORE"
-            android:icon="@drawable/ic_more"
+            android:icon="@drawable/ic_more1"
              app:showAsAction="ifRoom"
             android:title="More" />
     </group>
