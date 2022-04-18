@@ -29,7 +29,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@drawable/ic_cancel_red"/>
+                android:src="@drawable/ic_cancel_light_blue"/>
     <ImageView
         android:id="@+id/ic_screen"
         android:layout_below="@+id/DELETE"

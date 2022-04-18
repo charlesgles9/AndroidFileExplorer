@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:textSize="10dp"
         android:text="Touch the fingerPrint sensor"
-        android:textColor="?attr/lightGrey"
+        android:textColor="#B21E8BEA"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

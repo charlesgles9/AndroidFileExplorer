@@ -21,6 +21,7 @@ import com.file.manager.IOnBackPressed;
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.ui.Dialogs.FolderPickerDialog;
+import com.file.manager.ui.GraphView;
 import com.file.manager.ui.Models.FtpServerInstance;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.SoftwareKeyboardListener;
@@ -159,6 +160,9 @@ public class FtpServerFragment extends Fragment implements IOnBackPressed {
             pass.setText(instance.getPassword());
             dir.setText(instance.getPath());
         }
+
+
+
         return root;
     }
 
