@@ -1,6 +1,7 @@
 package com.file.manager.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -351,6 +352,12 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
                 folder.removeDeleted(data);
                 adapter.notifyDataSetChanged();
                 updateSelectedItemCount();
+            }
+        });
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                adapter.notifyDataSetChanged();
             }
         });
         dialog.show();
