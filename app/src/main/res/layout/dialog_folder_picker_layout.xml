@@ -128,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/drawable_highlight2"
                         android:gravity="center"
-                        android:textColor="#CEDFDFDF"
+                        android:textColor="?attr/normalTextColor"
                         android:text="0:Items"/>
                     <RadioButton
                         android:id="@+id/PASTE"
@@ -140,7 +140,7 @@
                         android:drawableTop="@drawable/ic_paste"
                         android:checked="true"
                         android:gravity="center"
-                        android:textColor="#CEDFDFDF"
+                        android:textColor="?attr/normalTextColor"
                         android:textSize="10dp"
                         android:text="Paste"/>
 
@@ -153,7 +153,7 @@
                         android:background="@drawable/drawable_highlight2"
                         android:drawableTop="@drawable/ic_return_24"
                         android:gravity="center"
-                        android:textColor="#CEDFDFDF"
+                        android:textColor="?attr/normalTextColor"
                         android:textSize="10dp"
                         android:text="Cancel"/>
                 </RelativeLayout>
