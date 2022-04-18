@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,13 +22,14 @@ public class SwitchWindowDialog  extends Dialog  implements View.OnClickListener
     private SwitchWindowAdapter adapter;
     private SwitchWindowAdapter.onWindowSelectListener listener;
     public SwitchWindowDialog(Context context){
-        super(context);
+        super(context,R.style.DialogStyle);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_window_chooser_layout);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
         final RecyclerView windowRecyclerView=findViewById(R.id.windowList);
