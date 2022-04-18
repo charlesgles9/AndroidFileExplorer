@@ -1,5 +1,6 @@
 package com.file.manager.Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -13,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +53,7 @@ import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileFilters;
 import com.file.manager.utils.SoftwareKeyboardListener;
 import com.file.manager.utils.ThumbnailLoader;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -68,14 +69,14 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
     private GlobalSearchAdapter adapter;
     private LinearLayoutManager manager;
     private String previousQuery="";
-    private RadioGroup FILE_HANDLE_OPTIONS;
     private SearchView searchView;
     private Toolbar toolbar;
     private Toolbar mainToolbar;
     private MutableLiveData<Integer>update= new MutableLiveData<>();
-    private View root;
     private HomeFragment homeFragment;
     private GlobalFileOperations globalFileOperations;
+    private LinearLayout bottomFileOperations;
+    private BottomSheetBehavior sheetBehavior;
     public GlobalSearchFragment(HomeFragment homeFragment, GlobalFileOperations globalFileOperations){
         this.homeFragment=homeFragment;
         this.globalFileOperations=globalFileOperations;
@@ -83,18 +84,20 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.home_global_search, container, false);
-        final RecyclerView recyclerView=root.findViewById(R.id.fileList);
-        FILE_HANDLE_OPTIONS=root.findViewById(R.id.FILE_HANDLE_OPTIONS1);
+        View root = inflater.inflate(R.layout.home_global_search, container, false);
+        final RecyclerView recyclerView= root.findViewById(R.id.fileList);
+        bottomFileOperations=root.findViewById(R.id.file_operations_layout);
+        sheetBehavior=BottomSheetBehavior.from(bottomFileOperations);
+        showFileOperationDialog(View.GONE);
         mainToolbar=((MainActivity)getContext()).toolbar;
-        searchView=root.findViewById(R.id.search);
-        toolbar=root.findViewById(R.id.toolbar);
+        searchView= root.findViewById(R.id.search);
+        toolbar= root.findViewById(R.id.toolbar);
         mainToolbar.setVisibility(View.GONE);
         searchView.setVisibility(View.VISIBLE);
-        results=root.findViewById(R.id.results);
-        SoftwareKeyboardListener softwareKeyboardListener=(SoftwareKeyboardListener)root.findViewById(R.id.main);
+        results= root.findViewById(R.id.results);
+        SoftwareKeyboardListener softwareKeyboardListener=root.findViewById(R.id.main);
         softwareKeyboardListener.setListener(this);
-        loading=root.findViewById(R.id.progress);
+        loading= root.findViewById(R.id.progress);
         manager= new LinearLayoutManager(getContext());
         manager.setOrientation(androidx.recyclerview.widget.RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(manager);
@@ -102,8 +105,8 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         adapter= new GlobalSearchAdapter(getContext(),queries);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        recyclerView.setItemViewCacheSize(10);
+        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_AUTO);
         final Fragment fragment=this;
         adapter.setItemListener(new GlobalSearchAdapter.ItemListener() {
             @Override
@@ -239,13 +242,28 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         results.setVisibility(View.VISIBLE);
         previousQuery=query;
     }
-    private void initStorageOptions(View root){
-        final RadioButton COPY=root.findViewById(R.id.COPY);
-        final RadioButton DELETE=root.findViewById(R.id.DELETE);
-        final RadioButton CUT=root.findViewById(R.id.CUT);
-        final RadioButton RENAME=root.findViewById(R.id.RENAME);
-        final RadioButton MORE=root.findViewById(R.id.MORE);
-        final RadioGroup FILE_HANDLE_OPTIONS=root.findViewById(R.id.FILE_HANDLE_OPTIONS1);
+    private void initStorageOptions(final View root){
+        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                root.findViewById(R.id.header_drop_down_arrow).setRotation(slideOffset*180);
+            }
+        });
+
+        root.findViewById(R.id.operation_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED)
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                else
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
         final Context context=getContext();
         final View.OnClickListener listener= new View.OnClickListener() {
             @Override
@@ -273,7 +291,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
                             }
                         });
                         folderPickerDialog.show();
-                        FILE_HANDLE_OPTIONS.setVisibility(View.GONE);
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         navigationMode();
                         break;
                     case R.id.CUT:
@@ -293,12 +311,13 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
                             }
                         });
                         folderPickerDialog.show();
-                        FILE_HANDLE_OPTIONS.setVisibility(View.GONE);
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         navigationMode();
                         break;
                     case R.id.DELETE:
                         final ConfirmDeleteDialog confirmDeleteDialog= new ConfirmDeleteDialog(context,array);
                         confirmDeleteDialog.setOnCompleteListener(new DeleteFilesUtility.OnDeleteCompleteListener() {
+                            @SuppressLint("SetTextI18n")
                             @Override
                             public void onSuccess(ArrayList<CustomFile> data) {
                                 adapter.notifyDataSetChanged();
@@ -337,6 +356,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
                                 }
                             });
                             batchFileRenameDialog.show();
+                            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                             navigationMode();
                         }
                         break;
@@ -348,19 +368,20 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
 
             }
         };
-        COPY.setOnClickListener(listener);
-        CUT.setOnClickListener(listener);
-        DELETE.setOnClickListener(listener);
-        RENAME.setOnClickListener(listener);
-        MORE.setOnClickListener(listener);
+        root.findViewById(R.id.COPY).setOnClickListener(listener);
+        root.findViewById(R.id.CUT).setOnClickListener(listener);
+        root.findViewById(R.id.DELETE).setOnClickListener(listener);
+        root.findViewById(R.id.RENAME).setOnClickListener(listener);
+        root.findViewById(R.id.MORE).setOnClickListener(listener);
     }
 
     private void moreOptionsPopup(View anchor, final ArrayList<CustomFile>array){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
         View view=inflater.inflate(R.layout.popup_more_layout,null);
-        final PopupWindow popupWindow= new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
-        popupWindow.showAtLocation(anchor, Gravity.BOTTOM|Gravity.RIGHT,0,0);
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final PopupWindow popupWindow= new PopupWindow(view, view.getMeasuredWidth(),view.getMeasuredHeight(),true);
+        popupWindow.showAsDropDown(anchor);
         final RadioButton open=view.findViewById(R.id.open);
         final RadioButton openAs=view.findViewById(R.id.openAs);
         final RadioButton share=view.findViewById(R.id.share);
@@ -438,7 +459,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
 
     }
     private void navigationMode(){
-        FILE_HANDLE_OPTIONS.setVisibility(View.GONE);
+        showFileOperationDialog(View.GONE);
         searchView.setVisibility(View.VISIBLE);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_light);
         toolbar.getMenu().getItem(0).setVisible(false);
@@ -446,9 +467,11 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         adapter.notifyDataSetChanged();
         adapter.resetSelect();
     }
-
+    private void showFileOperationDialog(int visibility){
+        bottomFileOperations.setVisibility(visibility);
+    }
     private void selectMode(){
-        FILE_HANDLE_OPTIONS.setVisibility(View.VISIBLE);
+        showFileOperationDialog(View.VISIBLE);
         searchView.setVisibility(View.GONE);
         toolbar.setNavigationIcon(R.drawable.ic_close1);
         toolbar.getMenu().getItem(0).setVisible(true);
@@ -469,6 +492,7 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     class SearchTask extends AsyncTask<String,Integer,String>{
         private OnTaskCompleteListener onTaskCompleteListener;
         private String query;
@@ -563,8 +587,5 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
 
     }
 
-    interface OnItemInserted{
-        void item(int position);
-    }
 
 }

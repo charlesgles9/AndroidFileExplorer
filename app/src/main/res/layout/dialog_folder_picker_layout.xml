@@ -62,7 +62,7 @@
         <TextView
             android:text="Go Back..."
             android:gravity="center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textColor="?attr/normalTextColor"
             android:textSize="11dp"
             android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
         <ImageView
             android:src="@drawable/ic_keyboard_return"
             android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_width="24dp"
             android:layout_height="24dp"/>
     </LinearLayout>
@@ -99,7 +99,7 @@
                 <Button
                     android:id="@+id/pick_dir"
                     android:layout_margin="5dp"
-                    android:layout_toRightOf="@id/cancel_picker"
+                    android:layout_toEndOf="@id/cancel_picker"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:text="Okay"
@@ -110,7 +110,8 @@
             <RadioGroup
                 android:visibility="invisible"
                 android:id="@+id/BottomNav1"
-                android:background="?attr/colorPrimaryLight"
+                android:background="?attr/background1"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -122,7 +123,7 @@
                         android:id="@+id/ITEMS"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/drawable_highlight2"
@@ -131,7 +132,7 @@
                         android:text="0:Items"/>
                     <RadioButton
                         android:id="@+id/PASTE"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"
                         android:layout_width="60dp"
                         android:layout_height="50dp"
                         android:button="@null"
@@ -164,7 +165,7 @@
             android:id="@+id/fileList"
             android:layout_above="@+id/nav_wrapper"
             android:layout_below="@+id/back"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:saveEnabled="true"
             style="@style/scrollbar2"
             android:layout_width="match_parent"
