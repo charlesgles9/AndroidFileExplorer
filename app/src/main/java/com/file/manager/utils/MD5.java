@@ -15,13 +15,9 @@ public class MD5 {
             int size=(int)Math.min(bytes, DiskUtils.SIZE_KB*10);
             byte[]buffer=new byte[size];
             final MessageDigest digest=MessageDigest.getInstance("MD5");
-            int num=0;
-            while (num!=-1) {
-                num = stream.read(buffer, 0, size);
+            int num = stream.read(buffer, 0, size);
                 if (num > 0)
                     digest.update(buffer, 0, num);
-            }
-
             byte[]md5Bytes=digest.digest();
             return bytesToString(md5Bytes);
         } catch (IOException | NoSuchAlgorithmException e) {

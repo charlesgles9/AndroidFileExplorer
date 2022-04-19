@@ -44,6 +44,9 @@
 
     <style name="PreferenceThemeDark" parent="Theme.AppCompat.NoActionBar">
         <item name="android:textColor">#FFFFFF</item>
+        <item name="background1">#272727</item>
+        <item name="background2">#353535</item>
+        <item name="normalTextColor">#CFCDCD</item>
         <item name="colorAccent">#5ECAF4</item>
         <item name="android:listViewStyle">@style/listViewPrefsDark</item>
         <item name="android:textColorSecondary">#AEAEAF</item>
@@ -52,6 +55,9 @@
 
     <style name="PreferenceThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">#131313</item>
+        <item name="background1">#F3F3F3</item>
+        <item name="background2">#F3F3F3</item>
+        <item name="normalTextColor">#C8232323</item>
         <item name="colorAccent">#5ECAF4</item>
         <item name="android:listViewStyle">@style/listViewPrefsLight</item>
         <item name="android:textColorSecondary">#434242</item>

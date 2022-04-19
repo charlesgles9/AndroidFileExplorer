@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.RectF;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -15,7 +14,6 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GraphView extends View {
 
@@ -52,6 +50,8 @@ public class GraphView extends View {
         LinePaint.setStrokeWidth(2f);
         GridPaint.setStrokeWidth(2f);
         ColumnTextPaint.setTextSize(18);
+
+
         runnable= new GraphRunnable();
         handler.postDelayed(runnable,300);
     }
@@ -64,35 +64,34 @@ public class GraphView extends View {
         int sp=getHeight()/5;
         int offsetX=10;
         int offsetY=10;
-
+        if(waveList.isEmpty()){
+            this.addWave(new GraphView.Wave(100,getWidth()));
+        }
 
         // draw all other previous coordinates
         for(Wave wave:waveList){
-            for(int i=0;i<wave.coordinates.size()-1;i++){
-                Pair<Float, Float>pair1=wave.coordinates.get(i);
-                Pair<Float, Float>pair2=wave.coordinates.get(i+1);
+            for(int i=0;i<wave.coordinates.length-1;i++){
+                if(wave.coordinates[i]==null|wave.coordinates[i+1]==null)
+                    continue;
+                Pair<Float, Float>pair1=wave.coordinates[i];
+                Pair<Float, Float>pair2=wave.coordinates[i+1];
                 path.moveTo(pair1.first-10,pair1.second);
                 path.lineTo(pair2.first-10,pair2.second);
             }
         }
         for(Wave wave:waveList){
-            wave.x=index*10;
-            wave.y=wave.frequency;
+            float amplitude=20;
+            wave.x=index*amplitude*(float)Math.cos(90);
+            wave.y=wave.frequency*index*(float)Math.cos(90);
             float quadrant=getHeight()-sp-wave.frequency;
-            float amplitude=-80;
             float y=quadrant+amplitude;
             path.moveTo(getWidth()-wave.x,y);
-            path.lineTo(getWidth()-wave.x-10,y);
-            wave.coordinates.add(new Pair<Float, Float>(getWidth()-wave.x,y));
+            path.lineTo(getWidth()-wave.x-amplitude,y);
+            wave.set(index,new Pair<Float, Float>(getWidth()-wave.x-20,y));
         }
 
-
-        if(waveList.get(0).getLastCoords().first<=10){
-            waveList.get(0).removeLastCoord();
-            index=0;
-        }
-
-        index++;
+        index=(index+1)%waveList.get(0).coordinates.length;
+        System.out.println(index);
         // draw the grid lines
         // draw columns
         path.moveTo(10,10);
@@ -141,21 +140,25 @@ public class GraphView extends View {
         waveList.add(wave);
     }
 
+
     public static class Wave {
         private int frequency=180;
+        private  int pFrequency=180;
         private float x,y;
-        private ArrayList<Pair<Float,Float>>coordinates;
-        public Wave(int frequency){
+        private Pair<Float,Float>[]coordinates;
+        public Wave(int frequency,int width){
             this.frequency=frequency;
-            this.coordinates= new ArrayList<>();
+            this.pFrequency=frequency;
+            this.coordinates=new Pair[width/10];
         }
-
-        public Pair<Float, Float> getLastCoords() {
-            return coordinates.get(coordinates.size()-1);
+        public void set(int index,Pair<Float,Float> pair) {
+             coordinates[index]=pair;
         }
-
-        public void removeLastCoord(){
-            coordinates.remove(coordinates.size()-1);
+        public Pair<Float, Float> getLast() {
+            return coordinates[coordinates.length-1];
+        }
+        public Pair<Float, Float> getFirst() {
+            return coordinates[0];
         }
         public void setFrequency(int frequency) {
             this.frequency = frequency;
@@ -163,6 +166,12 @@ public class GraphView extends View {
 
         public int getFrequency() {
             return frequency;
+        }
+
+        public int amplitude(){
+            int diff= frequency-pFrequency;
+            pFrequency=frequency;
+            return diff;
         }
 
         public void setX(float x) {

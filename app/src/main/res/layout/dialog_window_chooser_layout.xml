@@ -39,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:src="@drawable/ic_cancel_light_blue"/>
+            android:src="@drawable/ic_cancel_red"/>
         <View
             android:layout_below="@+id/CANCEL"
             android:layout_marginTop="10dp"

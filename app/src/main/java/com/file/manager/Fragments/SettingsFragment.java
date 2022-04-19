@@ -1,5 +1,6 @@
 package com.file.manager.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -65,37 +66,38 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             String value = sharedPreferences.getString(key, "Light");
             preference.setSummary(value);
             if(key.equals("theme")){
+                if(getActivity()==null)
+                    return;
                 getActivity().finishAffinity();
-                getActivity().startActivity(new Intent(getContext(), MainActivity.class));
+                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
             }
         } else if(preference instanceof SwitchPreference){
             if(key.equals("fingerPrint")){
-                boolean isEnrolled=new AuthenticationHelper().isFingerPrintEnrolled(getContext());
+                // for some reason at times the context will return nullptr
+                if(getActivity()==null)
+                    return;
+                boolean isEnrolled=new AuthenticationHelper().isFingerPrintEnrolled(getActivity());
                 boolean checked=isEnrolled&((SwitchPreference) preference).isChecked();
-                ((SwitchPreference) preference).setChecked(checked);
+              //  ((SwitchPreference) preference).setChecked(checked);
                 if(!isEnrolled){
-                    Toast.makeText(getContext(),"set fingerPrint in settings",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"set fingerPrint in settings",Toast.LENGTH_LONG).show();
                 }else {
-                    if(checked&!authenticated){
-                        ((SwitchPreference) preference).setChecked(false);
-                        if(!authenticated)
-                        fingerPrintAuthentication((SwitchPreference) preference);
-                        else
-                         ((SwitchPreference) preference).setChecked(true);
+                    if(!authenticated&!checked){
+                        fingerPrintAuthentication((SwitchPreference) preference,getActivity());
+                        authenticated=true;
                     }
                 }
             }
         }
     }
 
-    private void fingerPrintAuthentication(final SwitchPreference preference){
-        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(getContext(),true );
+    private void fingerPrintAuthentication(final SwitchPreference preference,final Context context){
+        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(context,true );
         authDialog.setOnAuthSuccess(new AuthenticationHelper.OnAuthSuccess() {
             @Override
             public void onSuccess() {
-                authDialog.dismiss();
+                authDialog.cancel();
                 authenticated =true;
-                preference.setChecked(true);
             }
 
             @Override

@@ -13,6 +13,7 @@ import com.file.manager.R;
 
 public class SettingsActivity extends Activity {
 
+    final SettingsFragment settingsFragment= new SettingsFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         String strTheme=getIntent().getExtras().getString("Theme");
@@ -28,7 +29,7 @@ public class SettingsActivity extends Activity {
         });
         setToolbarColor(strTheme);
         FragmentTransaction transaction= getFragmentManager().beginTransaction();
-        transaction.replace(R.id.nav_host_fragment,new SettingsFragment());
+        transaction.replace(R.id.nav_host_fragment,settingsFragment);
         transaction.commit();
     }
 
