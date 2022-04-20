@@ -23,6 +23,7 @@ import com.file.manager.BackgroundServices.MusicPlayerService;
 import com.file.manager.Fragments.MusicListFragment;
 import com.file.manager.Fragments.PlayListFragment;
 import com.file.manager.R;
+import com.file.manager.ui.Adapters.MusicAdapter;
 import com.file.manager.ui.Dialogs.AudioPlayListBottomSheet;
 
 import com.file.manager.ui.Models.MusicHelperSingleton;
@@ -112,6 +113,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 if(musicHelperSingleton.isReset()&musicHelperSingleton.isAlive()){
                     musicHelperSingleton.setCurrentVideoLength();
                     setTextTitle();
+
                     musicHelperSingleton.setReset(false);
                 }
                 if(isDestroyed()){
@@ -202,8 +204,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     uri=intent.getParcelableExtra(Intent.EXTRA_STREAM);
                 else
                     uri=intent.getData();
-                String path= FileHandleUtil.uriToFilePath(this,uri);
-                return path;
+                return FileHandleUtil.uriToFilePath(this,uri);
             }
         }
         return null;
@@ -247,7 +248,9 @@ public class MusicPlayerActivity extends AppCompatActivity {
     
     private void addPlayListFragment(){
         musicHelperSingleton.setPlayList("All Songs");
-        fragments.add(new MusicListFragment(musicHelperSingleton.getData()));
+        final MusicListFragment musicListFragment=new MusicListFragment();
+
+        fragments.add(musicListFragment);
         fragments.add(new PlayListFragment());
     }
 

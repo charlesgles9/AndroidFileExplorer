@@ -54,7 +54,7 @@
             android:textSize="12dp"/>
 
         <TextView
-            android:id="@+id/count"
+            android:id="@+id/title_count"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
@@ -67,7 +67,7 @@
             android:textSize="12dp" />
         <TextView
             android:id="@+id/date"
-            android:layout_below="@+id/count"
+            android:layout_below="@+id/title_count"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="25dp"
             android:layout_marginRight="10dp"

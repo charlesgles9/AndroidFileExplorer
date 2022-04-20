@@ -112,7 +112,7 @@ public class DuplicateFileContainerAdapter extends RecyclerView.Adapter<Duplicat
             this.view=view;
             name=view.findViewById(R.id.name);
             path=view.findViewById(R.id.path);
-            count=view.findViewById(R.id.count);
+            count=view.findViewById(R.id.title_count);
             date=view.findViewById(R.id.date);
             thumbnail=view.findViewById(R.id.thumbnail);
             dropDownToggle=view.findViewById(R.id.dropdownToggle);

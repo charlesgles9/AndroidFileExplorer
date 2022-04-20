@@ -14,21 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.MusicHelperSingleton;
+import com.file.manager.ui.Models.PlayListChild;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AllMusicAdapter extends RecyclerView.Adapter<AllMusicAdapter.ListViewHolder> {
+public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ListViewHolder> {
 
     private LayoutInflater inflater;
-    private ArrayList<CustomFile>files;
+    private List<PlayListChild> files;
+    private List<PlayListChild>selectedFiles;
     private OnItemClickListener onItemClickListener;
     private boolean activateSelect;
-    private int highlight=-1;
-    private int selectCount=0;
-    public AllMusicAdapter(Context context, ArrayList<CustomFile>files){
+
+    public MusicAdapter(Context context, List<PlayListChild>files){
         this.inflater=LayoutInflater.from(context);
         this.files=files;
-        this.highlight= MusicHelperSingleton.getInstance().getCurrent();
+        this.selectedFiles= new ArrayList<>();
     }
 
     @NonNull
@@ -40,11 +42,11 @@ public class AllMusicAdapter extends RecyclerView.Adapter<AllMusicAdapter.ListVi
 
     @Override
     public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
-        CustomFile file=files.get(position);
+        PlayListChild file=files.get(position);
         holder.name.setText(file.getName());
-        holder.name.setTextColor(highlight==position? Color.argb(200,69,155,241):
+        holder.name.setTextColor(MusicHelperSingleton.getInstance().getCurrent()==position? Color.argb(200,69,155,241):
                 Color.argb(200,255,255,255));
-        holder.selected.setChecked(file.IsSelected());
+        holder.selected.setChecked(file.isSelected());
         holder.selected.setVisibility(isActivateSelect()?View.VISIBLE:View.INVISIBLE);
     }
 
@@ -53,14 +55,13 @@ public class AllMusicAdapter extends RecyclerView.Adapter<AllMusicAdapter.ListVi
         return files.size();
     }
 
-    public int getSelectCount() {
-        return selectCount;
+    public PlayListChild get(int position){
+        return files.get(position);
     }
 
-    public void setSelectCount(int selectCount) {
-        this.selectCount = selectCount;
+    public List<PlayListChild> getSelectedFiles() {
+        return selectedFiles;
     }
-
 
     public void setActivateSelect(boolean activateSelect) {
         this.activateSelect = activateSelect;
@@ -70,19 +71,6 @@ public class AllMusicAdapter extends RecyclerView.Adapter<AllMusicAdapter.ListVi
         return activateSelect;
     }
 
-    public void setHighlight(int highlight) {
-        this.highlight = highlight;
-    }
-
-    public int getHighlight() {
-        return highlight;
-    }
-
-    public void reset(){
-        for(CustomFile file:files){
-            file.setSelected(false);
-        }
-    }
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }

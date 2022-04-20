@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/count"
+            android:id="@+id/title_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -27,7 +27,7 @@
 
         <View
             android:id="@id/divide"
-            android:layout_below="@id/count"
+            android:layout_below="@id/title_count"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="?attr/dividerColor"
@@ -74,12 +74,12 @@
 
         <TextView
             android:id="@+id/selectText"
-            android:layout_toRightOf="@+id/exitSelect"
+            android:layout_toEndOf="@+id/exitSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:text="SELECTED ITEMS(0/0)"
             android:textSize="12dp"
             android:maxLines="1"

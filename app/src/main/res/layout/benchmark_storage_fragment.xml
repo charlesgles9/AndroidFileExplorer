@@ -46,10 +46,10 @@
             android:textSize="10dp" />
         <TextView
             android:id="@+id/usedRamInfo"
-            android:layout_toRightOf="@+id/usedRamInfoLabel"
+            android:layout_toEndOf="@+id/usedRamInfoLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textColor="#FFF"
             android:textStyle="bold"
             android:text=""
@@ -63,26 +63,26 @@
             android:textStyle="bold"
             android:text="Available Ram:"
             android:textSize="10dp"
-            android:layout_toRightOf="@id/usedRamInfo"
+            android:layout_toEndOf="@id/usedRamInfo"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:id="@+id/availableRamInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textColor="#FFF"
             android:textStyle="bold"
             android:text=""
             android:textSize="10dp"
-            android:layout_toRightOf="@id/availableRamInfoLabel"
+            android:layout_toEndOf="@id/availableRamInfoLabel"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:id="@+id/speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:gravity="center"
             android:textColor="#fff"
             android:textStyle="bold"
@@ -95,13 +95,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:textColor="#fff"
             android:textStyle="bold"
             android:gravity="center"
             android:text="speed:"
             android:textSize="10dp"
-            android:layout_toLeftOf="@id/speed"
+            android:layout_toStartOf="@id/speed"
             android:layout_marginBottom="5dp" />
         <TextView
             android:id="@+id/bytesCopied"
@@ -118,7 +118,7 @@
         <LinearLayout
             android:layout_below="@+id/availableRamInfo"
             android:id="@+id/cpuStats"
-            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -129,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:text="CPU LOAD:"
@@ -139,7 +139,7 @@
                     android:id="@+id/cpuLoad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:text=""
@@ -195,10 +195,9 @@
         android:text="Configurations"
         android:textSize="12dp"
         android:padding="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_marginBottom="5dp" />
         <LinearLayout
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal">
@@ -224,7 +223,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     <LinearLayout
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
@@ -250,7 +249,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"/>
     <LinearLayout
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
@@ -276,7 +275,7 @@
         android:layout_width="match_parent"
         android:layout_height="1px"/>
     <LinearLayout
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
@@ -310,13 +309,11 @@
         android:text="Statistics"
         android:textSize="12dp"
         android:padding="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_marginBottom="5dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/threadList"
-        android:layout_below="@+id/layout1"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:saveEnabled="true"

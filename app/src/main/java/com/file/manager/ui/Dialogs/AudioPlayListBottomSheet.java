@@ -14,19 +14,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
+
 import androidx.viewpager.widget.ViewPager;
 
 import com.file.manager.Fragments.MusicListFragment;
 import com.file.manager.Fragments.PlayListFragment;
 import com.file.manager.R;
+import com.file.manager.ui.Adapters.MusicAdapter;
 import com.file.manager.ui.Adapters.PlayListPagerAdapter;
 import com.file.manager.ui.Models.MusicHelperSingleton;
-import com.file.manager.ui.Models.PlayListHierarchy;
+import com.file.manager.ui.Models.PlayListChild;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
@@ -36,6 +35,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
     private View selectLayout;
     private Button addToPlayList;
     private TextView select_count;
+    private  TextView titleCount;
     private MusicListFragment musicListFragment;
     private PlayListFragment  playListFragment;
     private int currentPage=0;
@@ -52,7 +52,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
         navigationLayout=root.findViewById(R.id.navLayout);
         selectLayout=root.findViewById(R.id.selectLayout);
         addToPlayList=root.findViewById(R.id.addToPlayList);
-        TextView music_count = root.findViewById(R.id.count);
+        titleCount = root.findViewById(R.id.title_count);
         select_count=root.findViewById(R.id.selectText);
         final View exitSelect=root.findViewById(R.id.exitSelect);
         pager=root.findViewById(R.id.pager);
@@ -64,8 +64,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
         final RadioButton[]pages ={root.findViewById(R.id.firstPage),root.findViewById(R.id.secondPage)};
         musicListFragment=(MusicListFragment)fragments.get(0);
         playListFragment=(PlayListFragment)fragments.get(1);
-        final MutableLiveData<String> musicListLiveData=musicListFragment.getMode();
-        final MutableLiveData<String> playListLiveData=playListFragment.getMode();
+
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -76,17 +75,14 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
             @Override
             public void onPageSelected(int position) {
                 pages[position].setChecked(true);
-                musicListFragment.updateMode("Navigation");
-                addToPlayList.setText(position==0?"ADD TO PLAYLIST":"REMOVE FROM PLAYLIST");
                 if(position==0){
-                    MusicHelperSingleton.getInstance().getData().clear();
-                    MusicHelperSingleton.getInstance().setPlayList("All Songs");
-                    musicListFragment.updateAdapter();
-                    musicListFragment.startAdapterUITimer();
+                    if(musicListFragment.getAdapter().isActivateSelect()) {
+                        setTitle("SELECTED(" + musicListFragment.getAdapter().getSelectedFiles().size() + "/"
+                                + musicListFragment.getAdapter().getItemCount() + ")");
+                    }else
+                        setTitle("Music("+musicListFragment.getAdapter().getItemCount()+")");
                 }else {
-                    playListFragment.setSongs();
-                    playListFragment.showMessageIfEmpty();
-                    musicListFragment.stopAdapterUITimer();
+                    setTitle("PlayList("+musicListFragment.getAdapter().getItemCount()+")");
                 }
                 currentPage=position;
             }
@@ -107,87 +103,49 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
             radioButtonPageClickListener(i,pages[i]);
         }
 
-        musicListLiveData.removeObservers(this);
-        musicListLiveData.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-              toggleLayout(s);
-            }
-        });
-        playListLiveData.removeObservers(this);
-        playListLiveData.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                toggleLayout(s);
-            }
-        });
 
-        addToPlayList.setOnClickListener(new View.OnClickListener() {
+        musicListFragment.setOnItemClickListener(new MusicAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                // if current fragment is music fragment
-              if(pager.getCurrentItem()==0) {
-                  AddPlayListDialog addPlayListDialog = new AddPlayListDialog(getContext(), musicListFragment.getSelected());
-                  addPlayListDialog.setOnTaskCompleteListener(new AddPlayListDialog.OnItemCompleteListener() {
-                      @Override
-                      public void onComplete(PlayListHierarchy.PlayListModel parent, ArrayList<PlayListHierarchy.PlayListModel> array) {
-                       playListFragment.add(parent.getName(),array);
-                      }
-                  });
-                  addPlayListDialog.show();
-              }else {
-                  playListFragment.removeSelected();
-              }
-                musicListFragment.updateMode("Navigation");
+            public void onClick(int position) {
+               if(!musicListFragment.getAdapter().isActivateSelect()) {
+                   MusicHelperSingleton.getInstance().play(position);
+               }else {
+                   PlayListChild child= musicListFragment.getAdapter().get(position);
+                   child.setSelected(!child.isSelected());
+                   if(child.isSelected()){
+                       musicListFragment.getAdapter().getSelectedFiles().add(child);
+                   }else
+                       musicListFragment.getAdapter().getSelectedFiles().remove(child);
+
+               }
+                musicListFragment.getAdapter().notifyItemChanged(position);
+
+            }
+
+            @Override
+            public void onLongClick(int position) {
+              musicListFragment.getAdapter().setActivateSelect(true);
+              selectLayout.setVisibility(View.VISIBLE);
+              navigationLayout.setVisibility(View.INVISIBLE);
             }
         });
 
         exitSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pager.getCurrentItem()==0)
-                musicListFragment.updateMode("Navigation");
-                else
-                playListFragment.updateMode("Navigation");
+                selectLayout.setVisibility(View.INVISIBLE);
+                navigationLayout.setVisibility(View.VISIBLE);
+                musicListFragment.getAdapter().getSelectedFiles().clear();
             }
         });
-        music_count.setText("Music("+MusicHelperSingleton.getInstance().getAllSongs().size()+")");
-
-        // if the file name changes update the UI in the two fragments
-        MutableLiveData<String> currentFileName= MusicHelperSingleton.getInstance().getCurrentFileName();
-        currentFileName.removeObservers(this);
-        currentFileName.observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                int position=MusicHelperSingleton.getInstance().getCurrent();
-                if(!MusicHelperSingleton.getInstance().getPlayList().equals("All Songs"))
-                    playListFragment.highlightItem(position);
-                else
-                    musicListFragment.highlightItem(position);
-
-            }
-        });
-
         return root;
     }
 
 
-    @SuppressLint("SetTextI18n")
-    private void toggleLayout(String s){
-        if(s.equals("Navigation")){
-            navigationLayout.setVisibility(View.VISIBLE);
-            selectLayout.setVisibility(View.INVISIBLE);
-        }else if(s.equals("Select")){
-            navigationLayout.setVisibility(View.INVISIBLE);
-            selectLayout.setVisibility(View.VISIBLE);
-            if(pager.getCurrentItem()==0){
-                select_count.setText("SELECTED ITEMS("+musicListFragment.getSelectCount()+"/"+MusicHelperSingleton.getInstance().getAllSongs().size()+")");
-            }else {
-                select_count.setText("SELECTED ITEMS("+playListFragment.getSelectCount()+"/"+playListFragment.size()+")");
-            }
-        }
-        addToPlayList.setEnabled(s.equals("Select"));
+    private void setTitle(String title){
+        titleCount.setText(title);
     }
+
     private void radioButtonPageClickListener(final int position,RadioButton button){
         button.setOnClickListener(new View.OnClickListener() {
             @Override

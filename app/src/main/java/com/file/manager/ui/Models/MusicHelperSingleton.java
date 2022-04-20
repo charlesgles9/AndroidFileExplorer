@@ -83,6 +83,16 @@ public class MusicHelperSingleton {
         return current;
     }
 
+
+    public void play(int position){
+        setCurrent(position);
+        try {
+            startPlayer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public void Next(){
         switch (MODE){
             case SHUFFLE:
