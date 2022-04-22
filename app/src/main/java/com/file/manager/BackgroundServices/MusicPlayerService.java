@@ -194,6 +194,7 @@ public class MusicPlayerService extends IntentService {
                             }
                             singleton.setUpdateNotification(true);
 
+
                         }
                     }).build();
             audioManager.requestAudioFocus(audioFocusRequest);
@@ -215,6 +216,7 @@ public class MusicPlayerService extends IntentService {
          initAudioFocus();
         return START_NOT_STICKY;
     }
+
 
     @Override
     public void onDestroy() {

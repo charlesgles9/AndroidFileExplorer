@@ -10,11 +10,12 @@ import java.util.Map;
 public class PlayListHeader {
 
     private String key;
-    private String name;
+    private String date;
     private List<PlayListChild> childList;
-    public PlayListHeader(String key, String name){
+    private boolean selected=false;
+    public PlayListHeader(String key,String date){
         this.key=key;
-        this.name=name;
+        this.date=date;
         this.childList= new ArrayList<>();
     }
 
@@ -57,21 +58,28 @@ public class PlayListHeader {
         return childList;
     }
 
+    public PlayListChild get(int position){
+        return childList.get(position);
+    }
+    public int size(){
+        return childList.size();
+    }
     public void setKey(String key) {
         this.key = key;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public boolean isSelected() {
+        return selected;
     }
 
     public String getKey() {
         return key;
     }
 
-    public String getName() {
-        return name;
-    }
 
 
 }

@@ -9,15 +9,24 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
+import com.file.manager.ui.Models.MusicHelperSingleton;
+import com.file.manager.ui.Models.PlayListChild;
+import com.file.manager.ui.Models.PlayListHeader;
 
 import java.util.ArrayList;
+import java.util.List;
+
 public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayListViewHolder> {
 
 
     private LayoutInflater inflater;
-
-    public PlayListAdapter(Context context){
-
+    private PlayListHeader header;
+    private List<PlayListChild>selectedFiles;
+    private boolean activateSelect;
+    public PlayListAdapter(Context context,PlayListHeader header){
+       this.header=header;
+       this.selectedFiles= new ArrayList<>();
+       this.inflater=LayoutInflater.from(context);
     }
 
 
@@ -32,16 +41,42 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
     @Override
     public void onBindViewHolder(@NonNull PlayListViewHolder holder, int position) {
 
+        PlayListChild child=header.get(position);
+        holder.name.setText(child.getName());
+        holder.name.setTextColor(MusicHelperSingleton.getInstance().getCurrent()==position? Color.argb(200,69,155,241):
+                Color.argb(200,255,255,255));
+        holder.selected.setChecked(child.isSelected());
+        holder.selected.setVisibility(isActivateSelect()?View.VISIBLE:View.INVISIBLE);
     }
 
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return header.size();
     }
 
-    class PlayListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public  void resetSelectedFiles(){
+        for (PlayListChild child : selectedFiles) {
+            child.setSelected(false);
+        }
+        selectedFiles.clear();
+        notifyDataSetChanged();
+    }
+
+    public List<PlayListChild> getSelectedFiles() {
+        return selectedFiles;
+    }
+
+    public void setActivateSelect(boolean activateSelect) {
+        this.activateSelect = activateSelect;
+    }
+
+    public boolean isActivateSelect() {
+        return activateSelect;
+    }
+
+    static class PlayListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView name;
         ToggleButton selected;
         public PlayListViewHolder(View view){

@@ -44,12 +44,16 @@ public class MusicListFragment extends Fragment {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         fileListRecycleView.setLayoutManager(linearLayoutManager);
         fileListRecycleView.setItemAnimator(null);
+
         adapter= new MusicAdapter(getContext(),files);
         fileListRecycleView.setAdapter(adapter);
         adapter.setOnItemClickListener(onItemClickListener);
         // load the data only once
         if(files.isEmpty())
           populateAdapter();
+
+        // main ui updates at the bottom sheet layout
+          updatable.update();
         return root;
     }
 
@@ -71,6 +75,7 @@ public class MusicListFragment extends Fragment {
                     updatable.update();
                     return;
                 }
+                updatable.update();
                 fileListRecycleView.setVerticalScrollBarEnabled(false);
                 files.add(new PlayListChild(singleton.getAllSongs().get(files.size()).getPath()));
                 adapter.notifyItemInserted(files.size()-1);
@@ -90,7 +95,6 @@ public class MusicListFragment extends Fragment {
         int stop=linearLayoutManager.findLastVisibleItemPosition();
         return position>=start&position<=stop;
     }
-
 
 
 }

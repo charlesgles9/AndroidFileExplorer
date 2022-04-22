@@ -71,7 +71,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
             @Override
             public void onPageSelected(int position) {
                 pages[position].setChecked(true);
-                setTitle();
+                updateTitle();
                 currentPage=position;
             }
 
@@ -106,6 +106,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                        musicListFragment.getAdapter().getSelectedFiles().add(child);
                    }else
                        musicListFragment.getAdapter().getSelectedFiles().remove(child);
+                   updateTitle();
 
                }
                 musicListFragment.getAdapter().notifyItemChanged(position);
@@ -120,7 +121,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
               animateView(selectLayout,true);
               animateView(addToPlayList,true);
               addToPlayList.setVisibility(View.VISIBLE);
-              setTitle();
+              updateTitle();
             }
         });
 
@@ -132,7 +133,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                 animateView(navigationLayout,true);
                 addToPlayList.setVisibility(View.GONE);
                 musicListFragment.getAdapter().resetSelectedFiles();
-                setTitle();
+                updateTitle();
             }
         });
 
@@ -140,22 +141,23 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
     }
 
 
-    private void setTitle(){
-        String title="";
+    @SuppressLint("SetTextI18n")
+    private void updateTitle(){
         if(musicListFragment.getAdapter().isActivateSelect()) {
-            title="SELECTED(" + musicListFragment.getAdapter().getSelectedFiles().size() + "/"
-                    + musicListFragment.getAdapter().getItemCount() + ")";
+            select_count.setText("SELECTED(" + musicListFragment.getAdapter().getSelectedFiles().size() + "/"
+                    + musicListFragment.getAdapter().getItemCount() + ")");
         }else
-            title="Music("+musicListFragment.getAdapter().getItemCount()+")";
-        titleCount.setText(title);
+            titleCount.setText("Music("+musicListFragment.getAdapter().getItemCount()+")");
     }
 
     private void addPlayListFragment(){
+        if(!fragments.isEmpty())
+            return;
         MusicHelperSingleton.getInstance().setPlayList("All Songs");
         musicListFragment=new MusicListFragment(new Updatable() {
             @Override
             public void update() {
-                setTitle();
+                updateTitle();
             }});
         playListFragment=new PlayListFragment();
         fragments.add(musicListFragment);
