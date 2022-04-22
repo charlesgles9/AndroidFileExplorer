@@ -1256,7 +1256,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     }
 
 
-    // remove decoration incase the user changes the view
+    // remove decoration in case the user changes the view
     private void removeItemDecorations(RecyclerView recyclerView){
         int count=recyclerView.getItemDecorationCount();
         for(int i=0;i<count;i++)

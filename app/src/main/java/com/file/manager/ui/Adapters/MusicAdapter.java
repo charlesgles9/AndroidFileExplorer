@@ -59,6 +59,14 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.ListViewHold
         return files.get(position);
     }
 
+
+    public  void resetSelectedFiles(){
+        for (PlayListChild child : selectedFiles) {
+            child.setSelected(false);
+        }
+        selectedFiles.clear();
+        notifyDataSetChanged();
+    }
     public List<PlayListChild> getSelectedFiles() {
         return selectedFiles;
     }

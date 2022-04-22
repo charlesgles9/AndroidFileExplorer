@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.MusicAdapter;
+import com.file.manager.ui.Dialogs.AudioPlayListBottomSheet;
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListChild;
 import com.file.manager.utils.Timer;
@@ -28,8 +29,10 @@ public class MusicListFragment extends Fragment {
     private MusicAdapter adapter;
     private MusicHelperSingleton singleton=MusicHelperSingleton.getInstance();
     private MusicAdapter.OnItemClickListener onItemClickListener;
-    public MusicListFragment(){
+    private AudioPlayListBottomSheet.Updatable updatable;
+    public MusicListFragment(AudioPlayListBottomSheet.Updatable updatable){
         this.files=new ArrayList<>();
+        this.updatable=updatable;
     }
 
     @Nullable
@@ -65,6 +68,7 @@ public class MusicListFragment extends Fragment {
                 if(singleton.getAllSongs().size()==files.size()) {
                     fileListRecycleView.setVerticalScrollBarEnabled(true);
                     timer.stop();
+                    updatable.update();
                     return;
                 }
                 fileListRecycleView.setVerticalScrollBarEnabled(false);
@@ -86,5 +90,7 @@ public class MusicListFragment extends Fragment {
         int stop=linearLayoutManager.findLastVisibleItemPosition();
         return position>=start&position<=stop;
     }
+
+
 
 }

@@ -2,8 +2,6 @@ package com.file.manager.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +18,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.file.manager.BackgroundServices.MusicPlayerService;
-import com.file.manager.Fragments.MusicListFragment;
-import com.file.manager.Fragments.PlayListFragment;
 import com.file.manager.R;
-import com.file.manager.ui.Adapters.MusicAdapter;
 import com.file.manager.ui.Dialogs.AudioPlayListBottomSheet;
 
 import com.file.manager.ui.Models.MusicHelperSingleton;
@@ -33,8 +28,7 @@ import com.file.manager.utils.Timer;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 public class MusicPlayerActivity extends AppCompatActivity {
 
     private ToggleButton playButton;
@@ -42,7 +36,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private TextView currentTime;
     private TextView endTime;
     private TextView title;
-    private List<Fragment> fragments= new ArrayList<>();
     private MusicHelperSingleton musicHelperSingleton;
     private int[]modeDrawables={R.drawable.ic_repeat_one,
                                R.drawable.ic_shuffle,
@@ -71,7 +64,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
         musicHelperSingleton.setPlayList("All Songs");
         final Context context=this;
-        final AudioPlayListBottomSheet audioPlayListBottomSheet= new AudioPlayListBottomSheet(context,fragments);
+        final AudioPlayListBottomSheet audioPlayListBottomSheet= new AudioPlayListBottomSheet();
         playList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,7 +173,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
 
-
         modeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,12 +180,12 @@ public class MusicPlayerActivity extends AppCompatActivity {
             }
         });
         timer.start();
-        addPlayListFragment();
         if(!MusicHelperSingleton.getInstance().isAlive()) {
             Intent intent = new Intent(this, MusicPlayerService.class);
             startService(intent);
         }
     }
+
     private String onSharedIntent(Intent intent){
         String rAction=intent.getAction();
         String rType=intent.getType();
@@ -209,6 +201,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         }
         return null;
     }
+
     private void orderPreference(final Button anchor){
         LayoutInflater inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
@@ -238,6 +231,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         view.findViewById(R.id.shuffle).setOnClickListener(onClickListener);
         view.findViewById(R.id.order).setOnClickListener(onClickListener);
         view.findViewById(R.id.repeatOne).setOnClickListener(onClickListener);
+        musicHelperSingleton.setPlayList("All Songs");
     }
 
     @SuppressLint("SetTextI18n")
@@ -245,14 +239,6 @@ public class MusicPlayerActivity extends AppCompatActivity {
         title.setText("\t\t\t\t" + musicHelperSingleton.getCurrentFileName().getValue() + "\t\t\t\t");
     }
 
-    
-    private void addPlayListFragment(){
-        musicHelperSingleton.setPlayList("All Songs");
-        final MusicListFragment musicListFragment=new MusicListFragment();
-
-        fragments.add(musicListFragment);
-        fragments.add(new PlayListFragment());
-    }
 
     @Override
     public void onBackPressed() {
