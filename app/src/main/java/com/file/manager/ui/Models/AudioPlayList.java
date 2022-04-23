@@ -16,7 +16,7 @@ public class AudioPlayList {
     }
 
 
-    private void loadHeaders(Context context){
+    public void loadHeaders(Context context){
         SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
         Map<String,?> values=preferences.getAll();
         for(Map.Entry<String,?>value:values.entrySet()) {
@@ -51,6 +51,9 @@ public class AudioPlayList {
         }
     }
 
+    public PlayListHeader get(int position){
+        return headers.get(position);
+    }
     public void remove(PlayListHeader header){
        headers.remove(header);
     }

@@ -23,6 +23,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
     private PlayListHeader header;
     private List<PlayListChild>selectedFiles;
     private boolean activateSelect;
+    private OnItemClickListener onItemClickListener;
     public PlayListAdapter(Context context,PlayListHeader header){
        this.header=header;
        this.selectedFiles= new ArrayList<>();
@@ -30,6 +31,13 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
     }
 
 
+    public void setHeader(PlayListHeader header) {
+        this.header = header;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @NonNull
     @Override
@@ -53,7 +61,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
 
     @Override
     public int getItemCount() {
-        return header.size();
+        return header!=null?header.size():0;
     }
 
     public  void resetSelectedFiles(){
@@ -76,9 +84,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
         return activateSelect;
     }
 
-    static class PlayListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+     class PlayListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView name;
         ToggleButton selected;
+
         public PlayListViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
@@ -90,12 +99,14 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
 
         @Override
         public void onClick(View v) {
-
+           if(onItemClickListener!=null)
+               onItemClickListener.onClick(getAdapterPosition());
         }
 
         @Override
         public boolean onLongClick(View v) {
-
+            if(onItemClickListener!=null)
+                onItemClickListener.onLongClick(getAdapterPosition());
             return false;
         }
     }

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -11,19 +11,52 @@
         android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
+        <RelativeLayout
+            android:background="?attr/background3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/name"
         android:layout_marginTop="1dp"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
+        android:maxEms="10"
+        android:layout_marginStart="5dp"
+        android:paddingTop="5dp"
         android:paddingBottom="15dp"
         android:maxLines="1"
         android:textColor="?attr/normalTextColor"
         android:textStyle="bold"
         android:text="Name"
-        android:textSize="12dp"/>
+        android:textSize="11dp"/>
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_close1"
+                android:layout_toEndOf="@+id/name"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_marginTop="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:layout_alignParentBottom="true"
+                android:textColor="?attr/normalTextColor"
+                android:textStyle="normal"
+                android:layout_below="@id/delete"
+                android:text="11/10/2022"
+                android:textSize="9dp"/>
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

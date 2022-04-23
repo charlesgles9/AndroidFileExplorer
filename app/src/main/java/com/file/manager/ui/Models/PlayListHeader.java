@@ -76,6 +76,10 @@ public class PlayListHeader {
         return selected;
     }
 
+    public String getDate() {
+        return date;
+    }
+
     public String getKey() {
         return key;
     }
