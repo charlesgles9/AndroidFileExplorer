@@ -11,10 +11,10 @@ import android.widget.Toast;
 import com.file.manager.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class PlayListNameDialog extends Dialog {
+public class PlayListHeaderDialog extends Dialog {
 
     private PlayListCallBack playListCallBack;
-    public PlayListNameDialog(Context context){
+    public PlayListHeaderDialog(Context context){
         super(context);
     }
 
@@ -23,7 +23,7 @@ public class PlayListNameDialog extends Dialog {
         super.onCreate(savedInstanceState);
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
-        setContentView(R.layout.audio_add_playlist_dialog);
+        setContentView(R.layout.audio_add_play_list_header_dialog);
         final Button cancel=findViewById(R.id.cancel);
         final Button okay=findViewById(R.id.okay);
         final TextInputEditText name=findViewById(R.id.name);

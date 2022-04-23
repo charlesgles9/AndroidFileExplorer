@@ -3,6 +3,7 @@ package com.file.manager.ui.Models;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,24 @@ public class PlayListHeader {
         this.childList= new ArrayList<>();
     }
 
+
+    public void addChild(Context context, File file){
+        SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.putString(file.getPath(),file.getName());
+        childList.add(new PlayListChild(file.getPath()));
+        editor.apply();
+    }
+
+    public void addChild(Context context, ArrayList<File> files){
+        SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        for (File file:files) {
+            editor.putString(file.getPath(), file.getName());
+            childList.add(new PlayListChild(file.getPath()));
+        }
+        editor.apply();
+    }
 
     public void loadChildren(Context context){
         SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);

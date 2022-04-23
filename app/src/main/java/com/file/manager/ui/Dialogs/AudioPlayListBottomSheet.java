@@ -1,6 +1,7 @@
 package com.file.manager.ui.Dialogs;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +22,13 @@ import com.file.manager.Fragments.PlayListFragment;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.MusicAdapter;
 import com.file.manager.ui.Adapters.PlayListPagerAdapter;
+import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListChild;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,6 +137,25 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                 addToPlayList.setVisibility(View.GONE);
                 musicListFragment.getAdapter().resetSelectedFiles();
                 updateTitle();
+            }
+        });
+
+        addToPlayList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<File>selected=new ArrayList<>();
+                for(PlayListChild file: musicListFragment.getAdapter().getSelectedFiles()){
+                    selected.add(new File(file.getPath()));
+                }
+                final AddPlayListDialog dialog= new AddPlayListDialog(getContext(),selected);
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+
+                    }
+                });
+                exitSelect.callOnClick();
+
             }
         });
 

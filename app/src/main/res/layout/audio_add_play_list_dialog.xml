@@ -19,8 +19,8 @@
 
 <RelativeLayout
     android:id="@+id/options"
-    android:paddingLeft="5dp"
-    android:paddingRight="10dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="10dp"
     android:paddingTop="10dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Okay"
         android:textSize="11dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/drawable_highlight9"
         android:textColor="?attr/normalTextColor"/>
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="cancel"
         android:textSize="11dp"
-        android:layout_toLeftOf="@+id/okay"
+        android:layout_toStartOf="@+id/okay"
         android:background="@drawable/drawable_highlight9"
         android:textColor="?attr/normalTextColor"/>
 
