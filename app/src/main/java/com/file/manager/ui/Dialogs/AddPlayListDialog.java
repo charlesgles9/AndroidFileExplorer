@@ -50,7 +50,6 @@ public class AddPlayListDialog extends Dialog {
         adapter= new PlayListHeaderAdapter(getContext());
         adapter.setHeaders(audioPlayList.getHeaders());
         playList.setAdapter(adapter);
-
         adapter.setOnItemClickListener(new PlayListHeaderAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
@@ -74,6 +73,7 @@ public class AddPlayListDialog extends Dialog {
 
                 audioPlayList.get(selected).addChild(getContext(),files);
                 adapter.notifyDataSetChanged();
+                dismiss();
             }
         });
 
@@ -100,6 +100,8 @@ public class AddPlayListDialog extends Dialog {
 
                     }
                 });
+                headerDialog.show();
+
             }
         });
 

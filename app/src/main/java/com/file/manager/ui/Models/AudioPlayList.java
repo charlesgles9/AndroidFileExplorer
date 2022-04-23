@@ -28,7 +28,7 @@ public class AudioPlayList {
 
 
     public void addHeader(Context context,String key,String date){
-        SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
+        SharedPreferences preferences=context.getSharedPreferences(this.key,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
         editor.putString(key,date);
         editor.apply();

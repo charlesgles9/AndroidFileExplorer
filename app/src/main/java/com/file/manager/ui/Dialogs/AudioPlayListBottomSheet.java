@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +23,6 @@ import com.file.manager.Fragments.PlayListFragment;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.MusicAdapter;
 import com.file.manager.ui.Adapters.PlayListPagerAdapter;
-import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListChild;
 
@@ -36,7 +36,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
     private ViewPager pager;
     private View navigationLayout;
     private View selectLayout;
-    private View addToPlayList;
+    private View bottomLayout;
     private TextView select_count;
     private  TextView titleCount;
     private MusicListFragment musicListFragment;
@@ -53,7 +53,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
         View root=inflater.inflate(R.layout.audio_play_list_bottom_sheet,container,false);
         navigationLayout=root.findViewById(R.id.navLayout);
         selectLayout=root.findViewById(R.id.selectLayout);
-        addToPlayList=root.findViewById(R.id.bottom_options);
+        bottomLayout =root.findViewById(R.id.bottom_options);
         titleCount = root.findViewById(R.id.title_count);
         select_count=root.findViewById(R.id.selectText);
         final View exitSelect=root.findViewById(R.id.exitSelect);
@@ -122,8 +122,9 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
               musicListFragment.getAdapter().notifyDataSetChanged();
               navigationLayout.setVisibility(View.INVISIBLE);
               animateView(selectLayout,true);
-              animateView(addToPlayList,true);
-              addToPlayList.setVisibility(View.VISIBLE);
+              animateView(bottomLayout,true);
+
+              bottomLayout.setVisibility(View.VISIBLE);
               updateTitle();
             }
         });
@@ -134,15 +135,16 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                 musicListFragment.getAdapter().setActivateSelect(false);
                 selectLayout.setVisibility(View.INVISIBLE);
                 animateView(navigationLayout,true);
-                addToPlayList.setVisibility(View.GONE);
+                bottomLayout.setVisibility(View.GONE);
                 musicListFragment.getAdapter().resetSelectedFiles();
                 updateTitle();
             }
         });
 
-        addToPlayList.setOnClickListener(new View.OnClickListener() {
+        root.findViewById(R.id.addToPlayList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getContext(),"Hello",Toast.LENGTH_LONG).show();
                 ArrayList<File>selected=new ArrayList<>();
                 for(PlayListChild file: musicListFragment.getAdapter().getSelectedFiles()){
                     selected.add(new File(file.getPath()));
@@ -154,6 +156,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
 
                     }
                 });
+                dialog.show();
                 exitSelect.callOnClick();
 
             }

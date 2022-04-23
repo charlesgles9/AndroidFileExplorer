@@ -34,7 +34,7 @@ public class PlayListFragment extends Fragment {
         LinearLayoutManager manager1= new LinearLayoutManager(getContext());
         manager1.setOrientation(RecyclerView.HORIZONTAL);
         LinearLayoutManager manager2= new LinearLayoutManager(getContext());
-        manager1.setOrientation(RecyclerView.VERTICAL);
+        manager2.setOrientation(RecyclerView.VERTICAL);
         playList.setLayoutManager(manager1);
         fileList.setLayoutManager(manager2);
         headerAdapter= new PlayListHeaderAdapter(getContext());
