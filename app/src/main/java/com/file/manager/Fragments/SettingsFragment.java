@@ -1,6 +1,7 @@
 package com.file.manager.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -78,21 +79,18 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
                     return;
                 boolean isEnrolled=new AuthenticationHelper().isFingerPrintEnrolled(getActivity());
                 boolean checked=isEnrolled&((SwitchPreference) preference).isChecked();
-              //  ((SwitchPreference) preference).setChecked(checked);
                 if(!isEnrolled){
                     Toast.makeText(getActivity(),"set fingerPrint in settings",Toast.LENGTH_LONG).show();
                 }else {
-                    if(!authenticated&!checked){
+                    if(!authenticated&checked)
                         fingerPrintAuthentication((SwitchPreference) preference,getActivity());
-                        authenticated=true;
-                    }
                 }
             }
         }
     }
 
     private void fingerPrintAuthentication(final SwitchPreference preference,final Context context){
-        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(context,true );
+        final FingerPrintAuthDialog authDialog= new FingerPrintAuthDialog(context,!authenticated );
         authDialog.setOnAuthSuccess(new AuthenticationHelper.OnAuthSuccess() {
             @Override
             public void onSuccess() {
@@ -111,6 +109,12 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
             }
         });
         authDialog.show();
+        authDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                preference.setChecked(authenticated);
+            }
+        });
     }
 }
 

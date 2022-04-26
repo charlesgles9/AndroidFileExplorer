@@ -137,7 +137,6 @@ public class MusicPlayerService extends IntentService {
                 .setSmallIcon(R.drawable.ic_audio_icon_home)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                 .setCustomContentView(small)
-                .setCustomBigContentView(small)
                 .setNotificationSilent()
                 .setOngoing(false)
                 .setPriority(NotificationCompat.PRIORITY_MAX);
