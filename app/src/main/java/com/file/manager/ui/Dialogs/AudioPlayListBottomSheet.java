@@ -11,7 +11,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -99,9 +98,12 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
             @Override
             public void onClick(int position) {
                if(!musicListFragment.getAdapter().isActivateSelect()) {
+                   if(MusicHelperSingleton.getInstance().getPlayList().equals("PlayList"))
+                       musicListFragment.setData();
                    int previous=MusicHelperSingleton.getInstance().getCurrent();
                    MusicHelperSingleton.getInstance().play(position);
                    musicListFragment.getAdapter().notifyItemChanged(previous);
+                   MusicHelperSingleton.getInstance().setReset(true);
                }else {
                    PlayListChild child= musicListFragment.getAdapter().get(position);
                    child.setSelected(!child.isSelected());
@@ -123,7 +125,6 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
               navigationLayout.setVisibility(View.INVISIBLE);
               animateView(selectLayout,true);
               animateView(bottomLayout,true);
-
               bottomLayout.setVisibility(View.VISIBLE);
               updateTitle();
             }
@@ -144,7 +145,6 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
         root.findViewById(R.id.addToPlayList).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"Hello",Toast.LENGTH_LONG).show();
                 ArrayList<File>selected=new ArrayList<>();
                 for(PlayListChild file: musicListFragment.getAdapter().getSelectedFiles()){
                     selected.add(new File(file.getPath()));
@@ -153,7 +153,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-
+                       playListFragment.reset(getContext());
                     }
                 });
                 dialog.show();
@@ -178,7 +178,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
     private void addPlayListFragment(){
         if(!fragments.isEmpty())
             return;
-        MusicHelperSingleton.getInstance().setPlayList("All Songs");
+        MusicHelperSingleton.getInstance().setPlayList("AllMusic");
         musicListFragment=new MusicListFragment(new Updatable() {
             @Override
             public void update() {
@@ -189,7 +189,15 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
         fragments.add(playListFragment);
     }
 
-    private void radioButtonPageClickListener(final int position,RadioButton button){
+    public PlayListFragment getPlayListFragment() {
+        return playListFragment;
+    }
+
+    public MusicListFragment getMusicListFragment() {
+        return musicListFragment;
+    }
+
+    private void radioButtonPageClickListener(final int position, RadioButton button){
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

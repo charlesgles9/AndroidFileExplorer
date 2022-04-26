@@ -2,9 +2,8 @@ package com.file.manager.ui.Models;
 
 import androidx.annotation.NonNull;
 
-import java.io.File;
 
-public class PlayListChild extends File {
+public class PlayListChild extends CustomFile {
 
     private boolean selected=false;
 

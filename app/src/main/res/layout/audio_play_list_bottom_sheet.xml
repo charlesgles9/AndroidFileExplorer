@@ -130,8 +130,8 @@
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        android:layout_above="@+id/bottom_options"
         android:nestedScrollingEnabled="true"
+        android:layout_above="@+id/bottom_options"
         android:layout_below="@+id/navLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

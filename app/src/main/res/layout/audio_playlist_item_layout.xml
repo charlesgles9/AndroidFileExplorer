@@ -33,10 +33,21 @@
         android:clickable="false"
         android:textOff=""
         android:textOn="" />
+    <ImageView
+        android:id="@+id/delete"
+        android:visibility="gone"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_close1" />
     <View
         android:layout_below="@id/thumbnail"
         android:layout_margin="1dp"
         android:background="?attr/dividerColor"
         android:layout_width="match_parent"
         android:layout_height="1px"/>
+
 </RelativeLayout>

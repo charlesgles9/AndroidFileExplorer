@@ -58,6 +58,11 @@ public class MusicListFragment extends Fragment {
     }
 
 
+    public void setData(){
+        MusicHelperSingleton.getInstance().clear();
+        MusicHelperSingleton.getInstance().add(MusicHelperSingleton.getInstance().getAllSongs());
+    }
+
     public void setOnItemClickListener(MusicAdapter.OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }

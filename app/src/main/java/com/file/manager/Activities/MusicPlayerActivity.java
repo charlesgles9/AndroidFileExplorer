@@ -62,7 +62,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
             musicHelperSingleton.setCurrentByFile(new File(externalPath));
             musicHelperSingleton.getAllSongs().addAll(musicHelperSingleton.getData());
         }
-        musicHelperSingleton.setPlayList("All Songs");
+        musicHelperSingleton.setPlayList("AllMusic");
         final Context context=this;
         final AudioPlayListBottomSheet audioPlayListBottomSheet= new AudioPlayListBottomSheet();
         playList.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +106,11 @@ public class MusicPlayerActivity extends AppCompatActivity {
                 if(musicHelperSingleton.isReset()&musicHelperSingleton.isAlive()){
                     musicHelperSingleton.setCurrentVideoLength();
                     setTextTitle();
-
+                    // update the playlist adapter or the music adapter
+                    if(musicHelperSingleton.getPlayList().equals("PlayList"))
+                       audioPlayListBottomSheet.getPlayListFragment().getPlayListAdapter().notifyDataSetChanged();
+                    else
+                        audioPlayListBottomSheet.getMusicListFragment().getAdapter().notifyDataSetChanged();
                     musicHelperSingleton.setReset(false);
                 }
                 if(isDestroyed()){
@@ -231,7 +235,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         view.findViewById(R.id.shuffle).setOnClickListener(onClickListener);
         view.findViewById(R.id.order).setOnClickListener(onClickListener);
         view.findViewById(R.id.repeatOne).setOnClickListener(onClickListener);
-        musicHelperSingleton.setPlayList("All Songs");
+        musicHelperSingleton.setPlayList("AllMusic");
     }
 
     @SuppressLint("SetTextI18n")

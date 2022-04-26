@@ -1,5 +1,6 @@
 package com.file.manager.ui.Dialogs;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -53,13 +54,23 @@ public class AddPlayListDialog extends Dialog {
         adapter.setOnItemClickListener(new PlayListHeaderAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
+                if(selected!=-1)
+                audioPlayList.get(selected).setSelected(false);
+                audioPlayList.get(position).setSelected(true);
                 selected=position;
-
             }
 
             @Override
             public void onLongClick(int position) {
 
+            }
+
+            @Override
+            public void onDelete(int position) {
+                if(selected==position)
+                   selected=-1;
+                audioPlayList.deleteHeader(getContext(),position);
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -112,8 +123,8 @@ public class AddPlayListDialog extends Dialog {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     class FetchHeadersTask extends AsyncTask<String,Integer,String>{
-
         private Context context;
         public FetchHeadersTask(Context context){
             this.context=context;

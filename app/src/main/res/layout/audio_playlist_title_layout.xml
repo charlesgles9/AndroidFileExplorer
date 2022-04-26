@@ -5,14 +5,9 @@
     android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="5dp">
         <RelativeLayout
-            android:background="?attr/background3"
+            android:layout_margin="5dp"
+            android:foreground="@drawable/drawable_highlight7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -56,7 +51,23 @@
                 android:layout_below="@id/delete"
                 android:text="11/10/2022"
                 android:textSize="9dp"/>
-
+            <TextView
+                android:id="@+id/items"
+                android:layout_marginTop="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="bottom"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:maxLines="1"
+                android:maxEms="10"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/name"
+                android:textColor="?attr/normalTextColor"
+                android:textStyle="normal"
+                android:layout_below="@id/delete"
+                android:text="Items(0)"
+                android:textSize="9dp"/>
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
 </LinearLayout>

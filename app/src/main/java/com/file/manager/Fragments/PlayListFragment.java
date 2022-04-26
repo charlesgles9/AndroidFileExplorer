@@ -18,6 +18,9 @@ import com.file.manager.R;
 import com.file.manager.ui.Adapters.PlayListAdapter;
 import com.file.manager.ui.Adapters.PlayListHeaderAdapter;
 import com.file.manager.ui.Models.AudioPlayList;
+import com.file.manager.ui.Models.MusicHelperSingleton;
+import com.file.manager.ui.Models.PlayListChild;
+import com.file.manager.ui.Models.PlayListHeader;
 
 public class PlayListFragment extends Fragment {
 
@@ -25,10 +28,12 @@ public class PlayListFragment extends Fragment {
     private PlayListAdapter playListAdapter;
     private PlayListHeaderAdapter headerAdapter;
     private AudioPlayList audioPlayList=new AudioPlayList();
+    private int chosenHeader=0;
+    private int chosenSong=-1;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.audio_playlist_specific_music_fragment,container,false);
-        RecyclerView playList = root.findViewById(R.id.playList);
+        final RecyclerView playList = root.findViewById(R.id.playList);
         RecyclerView fileList = root.findViewById(R.id.fileList);
         message=root.findViewById(R.id.message);
         LinearLayoutManager manager1= new LinearLayoutManager(getContext());
@@ -37,25 +42,20 @@ public class PlayListFragment extends Fragment {
         manager2.setOrientation(RecyclerView.VERTICAL);
         playList.setLayoutManager(manager1);
         fileList.setLayoutManager(manager2);
+
         headerAdapter= new PlayListHeaderAdapter(getContext());
         playListAdapter= new PlayListAdapter(getContext(),null);
-
         playListAdapter.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-
-            }
-
-            @Override
-            public void onLongClick(int position) {
-
-            }
-        });
-
-        headerAdapter.setOnItemClickListener(new PlayListHeaderAdapter.OnItemClickListener() {
-            @Override
-            public void onClick(int position) {
-                playListAdapter.setHeader(audioPlayList.get(position));
+                if(!MusicHelperSingleton.getInstance().getPlayList().equals("PlayList")|chosenHeader!=position){
+                    MusicHelperSingleton.getInstance().setPlayList("PlayList");
+                    MusicHelperSingleton.getInstance().clear();
+                    MusicHelperSingleton.getInstance().getData().addAll(audioPlayList.get(chosenHeader).getChildList());
+                }
+                playListAdapter.notifyItemChanged(position);
+                MusicHelperSingleton.getInstance().play(position);
+                MusicHelperSingleton.getInstance().setReset(true);
                 playListAdapter.notifyDataSetChanged();
             }
 
@@ -63,17 +63,70 @@ public class PlayListFragment extends Fragment {
             public void onLongClick(int position) {
 
             }
+
+            @Override
+            public void onDelete(int position) {
+                PlayListHeader header=audioPlayList.get(chosenHeader);
+                if(header!=playListAdapter.getHeader())
+                    return;
+                PlayListChild child=header.get(position);
+                audioPlayList.get(chosenHeader).deleteChild(getContext(),child);
+                MusicHelperSingleton.getInstance().getData().remove(position);
+                playListAdapter.notifyItemRemoved(position);
+
+            }
         });
+
+        headerAdapter.setOnItemClickListener(new PlayListHeaderAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                audioPlayList.get(position).setSelected(true);
+                audioPlayList.get(chosenHeader).setSelected(false);
+                headerAdapter.setCurrent(position);
+                playListAdapter.setHeader(audioPlayList.get(position));
+                playListAdapter.notifyDataSetChanged();
+                if(chosenHeader!=position)
+                 playListAdapter.getOnItemClickListener().onClick(0);
+                 chosenHeader=position;
+
+            }
+
+            @Override
+            public void onLongClick(int position) {
+
+            }
+
+            @Override
+            public void onDelete(int position) {
+             audioPlayList.deleteHeader(getContext(),position);
+             headerAdapter.notifyItemRemoved(position);
+            }
+        });
+
         fileList.setAdapter(playListAdapter);
         playList.setAdapter(headerAdapter);
-
         if(audioPlayList.isEmpty())
             new LoadPlayListTask(getContext()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        else{
+            headerAdapter.setHeaders(audioPlayList.getHeaders());
+            headerAdapter.notifyDataSetChanged();
+            playListAdapter.setHeader(audioPlayList.get(chosenHeader));
+            playListAdapter.notifyDataSetChanged();
+        }
 
 
         return root;
     }
 
+
+    public PlayListAdapter getPlayListAdapter() {
+        return playListAdapter;
+    }
+
+    public void reset(Context context){
+        audioPlayList.clear();
+        new LoadPlayListTask(context).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
 
     @SuppressLint("StaticFieldLeak")
     private class LoadPlayListTask extends AsyncTask<String,Integer,String>{
@@ -85,7 +138,6 @@ public class PlayListFragment extends Fragment {
         @Override
         protected String doInBackground(String... strings) {
             audioPlayList.loadHeaders(context);
-
             return null;
         }
 
@@ -101,7 +153,8 @@ public class PlayListFragment extends Fragment {
             headerAdapter.notifyDataSetChanged();
             if(!audioPlayList.getHeaders().isEmpty()){
                 message.setVisibility(View.GONE);
-                playListAdapter.setHeader(audioPlayList.get(0));
+                playListAdapter.setHeader(audioPlayList.get(chosenHeader));
+                audioPlayList.get(chosenHeader).setSelected(true);
                 playListAdapter.notifyDataSetChanged();
             }else {
                 message.setVisibility(View.VISIBLE);

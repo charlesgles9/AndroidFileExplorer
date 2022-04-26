@@ -187,12 +187,14 @@ public class MusicPlayerService extends IntentService {
                     .setOnAudioFocusChangeListener(new AudioManager.OnAudioFocusChangeListener() {
                         @Override
                         public void onAudioFocusChange(int focusChange) {
-                            if(focusChange==AudioManager.AUDIOFOCUS_GAIN){
-                                singleton.setPaused(false);
-                            }else{
-                                singleton.setPaused(true);
-                            }
-                            singleton.setUpdateNotification(true);
+                            try {
+                                if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                                    singleton.setPaused(false);
+                                } else {
+                                    singleton.setPaused(true);
+                                }
+                                singleton.setUpdateNotification(true);
+                            }catch (IllegalStateException ignore){ }
 
 
                         }

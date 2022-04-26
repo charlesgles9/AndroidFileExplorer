@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:nestedScrollingEnabled="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
@@ -18,16 +19,19 @@
         android:textColor="#FFF"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playList"
-        android:saveEnabled="true"
-        android:nestedScrollingEnabled="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="?attr/dividerColor"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fileList"
         style="@style/scrollbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fileList"
-        android:saveEnabled="true"
-        android:nestedScrollingEnabled="true"
-        style="@style/scrollbar2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </LinearLayout>

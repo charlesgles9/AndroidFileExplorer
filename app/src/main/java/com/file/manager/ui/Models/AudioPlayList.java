@@ -34,26 +34,31 @@ public class AudioPlayList {
         editor.apply();
         headers.add(new PlayListHeader(key,date));
     }
-    private void deleteHeader(Context context, String key){
-        SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
+
+    public void deleteHeader(Context context, String key){
+        SharedPreferences preferences=context.getSharedPreferences(this.key,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
         editor.remove(key);
         editor.apply();
         remove(key);
     }
 
-    private void deleteHeader(Context context, PlayListHeader header){
-        SharedPreferences preferences=context.getSharedPreferences(header.getKey(),Context.MODE_PRIVATE);
+    public void deleteHeader(Context context, int position){
+        deleteHeader(context, headers.get(position));
+    }
+
+    public void deleteHeader(Context context, PlayListHeader header){
+        SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
         editor.remove(header.getKey());
         editor.apply();
-        remove(header);
+        remove(header.getKey());
     }
 
     public void remove(String key){
-        for(int i=0;i<headers.size();i++){
-            if(headers.get(i).getKey().equals(key)){
-                headers.remove(headers.get(i));
+        for(PlayListHeader header:headers){
+            if(header.getKey().equals(key)){
+                headers.remove(header);
                 break;
             }
         }

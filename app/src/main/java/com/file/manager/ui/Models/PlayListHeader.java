@@ -62,15 +62,24 @@ public class PlayListHeader {
     public void deleteChild(Context context,List<PlayListChild>children){
         for (PlayListChild child:children) {
             deleteChild(context, child);
-            childList.remove(child);
+           remove(child.getPath());
         }
     }
 
+    public void remove(String path){
+        for(PlayListChild child:childList){
+            if(child.getPath().equals(path)){
+                childList.remove(child);
+                break;
+            }
+        }
+    }
     public void deleteChild(Context context,PlayListChild child){
         SharedPreferences preferences=context.getSharedPreferences(key,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferences.edit();
         editor.remove(child.getPath());
         editor.apply();
+        childList.remove(child);
     }
 
     public List<PlayListChild> getChildList() {
