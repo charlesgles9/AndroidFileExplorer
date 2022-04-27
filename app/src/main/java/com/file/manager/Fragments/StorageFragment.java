@@ -189,6 +189,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         setFileView();
        final SharedPreferences preferences=PreferenceManager.getDefaultSharedPreferences(getContext());
         storageAdapter.setItemListener(new StorageAdapter.ItemListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onItemClick(int position) {
 
@@ -303,8 +304,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                            !directoryManager.currentDir().getType().equals(FilterType.SYSTEM))
                        return;
                    String path=pathAdapter.getSegmentAsString(position);
-                   String nP=entryFile.getPath()+"/"+path;
-                   path=nP;
+                   path= entryFile.getPath()+"/"+path;
                  final CustomFile parent=new CustomFile(path);
                    Folder folder;
                  if(!directoryManager.contains(parent.getPath())){
@@ -341,43 +341,11 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
                    storageAdapter.search(s.toString(), new Folder.onSearchComplete() {
                        @Override
-                       public void onComplete(ArrayList<Integer> positions) {
-                           if(positions.isEmpty()) {
-                               getFolder().resetSearchHighlights();
-                               storageAdapter.notifyDataSetChanged();
-                               return;
-                           }
-                           // move to the searched item  to first position
-                           int position=positions.get(0);
-                           FileListRecyclerView.scrollToPosition(position);
-                           int start;
-                           int stop;
-                           if(FileListRecyclerView.getLayoutManager() instanceof LinearLayoutManager){
-                               LinearLayoutManager LinearManager=(LinearLayoutManager)FileListRecyclerView.getLayoutManager();
-                               start=LinearManager.findFirstVisibleItemPosition();
-                               stop=LinearManager.findLastVisibleItemPosition();
-                               directoryManager.currentDir().setAdapterPosition(LinearManager.findLastCompletelyVisibleItemPosition());
-                           }else {
-                               GridLayoutManager GridManager=(GridLayoutManager)FileListRecyclerView.getLayoutManager();
-                               start=GridManager.findFirstVisibleItemPosition();
-                               stop=GridManager.findLastVisibleItemPosition();
-                               directoryManager.currentDir().setAdapterPosition(GridManager.findLastCompletelyVisibleItemPosition());
-                           }
-                           //push the found contents to the top when searching
-                           int count=stop-start;
-                           try {
-                           if(storageAdapter.getItemCount()>position+count){
-                               if(position>=(start+count/2)) {
-                                   FileListRecyclerView.scrollToPosition(position + count);
-                               }else {
-                                   FileListRecyclerView.scrollToPosition(position - count);
-                               }
-                               stop=position+count;
-                               storageAdapter.notifyDataSetChanged(); }
-                           }catch (IndexOutOfBoundsException | NullPointerException ignore){
+                       public void onComplete() {
 
-                           }
-                           LoadThumbnails(start,stop);
+                           Pair<Integer,Integer>pair=getVisibleItemRange();
+                           storageAdapter.notifyDataSetChanged();
+                           LoadThumbnails(pair.first,pair.second);
 
                        }
                    });
@@ -405,7 +373,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                    EnableSearch.setVisibility(View.VISIBLE);
                    CancelSearch.setVisibility(View.INVISIBLE);
                    searchTextView.setText("");
-                   getFolder().resetSearchHighlights();
+                   getFolder().resetSearch();
                    storageAdapter.notifyDataSetChanged();
                }
            });
@@ -423,12 +391,11 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 switch (item.getItemId()){
                     case R.id.Paste:
                         String storage=DiskUtils.getInstance().getStartDirectory(file);
-                        if(!isStoragePermissionGranted(file)) {
+                        if(!isStoragePermissionGranted(file))
                             getStoragePermission(new CustomFile(storage));
-                        }else {
+                         else
                             //paste files
-                           copyOrCutFiles();
-                        }
+                           copyAndCutFiles();
                         break;
                     case R.id.Cancel:
                         activity.getGlobalFileHandleLayout().setVisibility(View.GONE);
@@ -649,6 +616,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         statusMessage.setVisibility(visibility?View.VISIBLE:View.INVISIBLE);
         statusMessage.setText(message);
     }
+
     private void checkIfContentDisplay(){
         FileListRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -743,11 +711,10 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             final Fragment fragment = this;
             WindowUtil.getInstance().put(fragment,key, root);
             WindowModel model = WindowUtil.getInstance().get(getFragmentID());
-            if(type.equals(FilterType.DEFAULT)) {
+            if(type.equals(FilterType.DEFAULT))
                 model.setPath(storageAdapter.getPath());
-            } else {
+             else
                 model.setPath(type.toString());
-            }
             model.setTitle(title);
             WindowUtil.getInstance().setCurrent(getFragmentID());
         }
@@ -858,6 +825,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void showFileOperationDialog(int visibility){
            bottomFileOperations.setVisibility(visibility);
     }
+
     private void Delete() {
         final Folder folder=directoryManager.currentDir();
         if(folder.getMultiSelectedFiles().isEmpty())
@@ -1048,14 +1016,13 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     }
     public void CutPaste(){
         CutHelper.getInstance().setDestination(getFolder().getFile());
-        if(!CutHelper.getInstance().isEmpty()) {
+        if(!CutHelper.getInstance().isEmpty())
             Cut();
-        }else {
+        else
             exitSelectMode();
-        }
     }
 
-    private boolean copyOrCutFiles(){
+    private boolean copyAndCutFiles(){
         final ArrayList<CustomFile>data;
         if(!CopyHelper.getInstance().isEmpty()) {
             data = CopyHelper.getInstance().getData();
@@ -1092,18 +1059,18 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     }
 
     private void pasteFiles(ArrayList<CustomFile>data){
-        if(!data.isEmpty()) {
+        if(!data.isEmpty())
             if (!CopyHelper.getInstance().isEmpty()) {
                 CopyPaste();
             } else {
                 CutPaste();
             }
-        }else {
-            exitSelectMode();
-        }
+         else
+           exitSelectMode();
         globalFileOperations.paste();
         activity.getGlobalFileHandleLayout().setVisibility(View.GONE);
     }
+
     private void Rename(){
         final Folder folder=directoryManager.currentDir();
         if(folder.getMultiSelectedFiles().isEmpty())
@@ -1167,6 +1134,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         });
         newFolderDialog.show();
     }
+
     private void initToolBarMenuClickListener(){
         final Toolbar toolbar=((MainActivity)getContext()).toolbar;
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -1266,13 +1234,13 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void preference(final View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
-        final View view=inflater.inflate(R.layout.popup_preference_layout,null);
-        final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+        View view=inflater.inflate(R.layout.popup_preference_layout,null);
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final PopupWindow popupWindow= new PopupWindow(view, view.getMeasuredWidth(),view.getMeasuredHeight(),true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final RadioButton settings=view.findViewById(R.id.settings);
         final RadioButton viewType=view.findViewById(R.id.viewType);
         final RadioButton sortBy=view.findViewById(R.id.sortBy);
-
         final View.OnClickListener onClickListener= new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1301,7 +1269,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void sortByPreference(View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.popup_sortby_layout,null);
-        final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final PopupWindow popupWindow= new PopupWindow(view, view.getMeasuredWidth(),view.getMeasuredHeight(),true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final Folder folder=directoryManager.currentDir();
         final View.OnClickListener onClickListener= new View.OnClickListener() {
@@ -1336,7 +1305,8 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void viewTypePreference(View anchor){
         LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view=inflater.inflate(R.layout.popup_view_type_layout,null);
-        final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final PopupWindow popupWindow= new PopupWindow(view, view.getMeasuredWidth(),view.getMeasuredHeight(),true);
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final SharedPreferences.Editor edit=getContext().getSharedPreferences("MyPref",Context.MODE_PRIVATE).edit();
         final Folder folder=directoryManager.currentDir();
@@ -1364,8 +1334,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         assert inflater != null;
         View view=inflater.inflate(R.layout.popup_more_layout,null);
         final Folder folder=directoryManager.currentDir();
-        final PopupWindow popupWindow= new PopupWindow(view,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
-        popupWindow.showAtLocation(anchor,Gravity.BOTTOM|Gravity.RIGHT,0,0);
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        final PopupWindow popupWindow= new PopupWindow(view, view.getMeasuredWidth(),view.getMeasuredHeight(),true);
+        popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final RadioButton open=view.findViewById(R.id.open);
         final RadioButton openAs=view.findViewById(R.id.openAs);
         final RadioButton share=view.findViewById(R.id.share);

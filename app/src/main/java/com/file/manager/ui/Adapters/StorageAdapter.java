@@ -106,6 +106,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             rh = Integer.parseInt(arr[1]);
         }catch (NumberFormatException ignore){}
         for(int i=start;i<=stop;i++) {
+            if(i>=folder.size())
+                break;
             if(folder.getFiles().get(i).isDirectory()&prefStr.equals("LIST"))
                 continue;
             folder.loadThumbnails(i, i, rw, rh, folder.getFiles(),onThumbnailComplete);
@@ -154,7 +156,8 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             @Override
             protected String doInBackground(String... strings) {
                 for(int i = start;i<=stop;i++) {
-
+                      if(i>=folder.size())
+                          break;
                     CustomFile file = folder.get(i);
                     if (file.isDirectory()) {
                         switch (folder.getType()) {
@@ -188,7 +191,7 @@ public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileView
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 for(int i=start;i<=stop;i++){
-                    if(folder.get(i).isDirectory())
+                    if(i<folder.size()&&folder.get(i).isDirectory())
                     notifyItemChanged(i);
                 }
             }

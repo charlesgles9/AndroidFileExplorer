@@ -33,7 +33,6 @@ public class Folder {
     private ArrayList<CustomFile>multiSelectedFiles= new ArrayList<>();
     private int adapterPosition=0;
     private FilterType type=FilterType.DEFAULT;
-    private SharedPreferences preferences;
     private Context context;
     private Folder parent;
     private SortBy sortBy=SortBy.AZ;
@@ -42,7 +41,6 @@ public class Folder {
     private int position=0;
     public Folder(Context context,CustomFile file){
         this.file=file;
-        this.preferences=context.getSharedPreferences("MyPref",Context.MODE_PRIVATE);
         this.context=context;
         this.message.setValue("");
     }
@@ -105,32 +103,32 @@ public class Folder {
     }
 
 
+
+    final ArrayList<CustomFile>filteredSearch=new ArrayList<>();
     public void searchFile(String name,onSearchComplete onSearchComplete){
-        SearchFilesTask task= new SearchFilesTask(name,onSearchComplete);
-        task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        searchFileByName(name);
+        onSearchComplete.onComplete();
     }
 
-    private ArrayList<Integer> searchFileByName(String name){
-        ArrayList<Integer>positions= new ArrayList<>();
+    public void searchFileByName(String name){
         // remove all highlights
-        resetSearchHighlights();
+        resetSearch();
         if(name==null||name.equals(""))
-            return positions;
+            return;
         for(int i=0;i<files.size();i++){
             CustomFile file=files.get(i);
-            file.highlighted=file.getName().toLowerCase().contains(name.toLowerCase());
-            if(file.highlighted)
-                positions.add(i);
+            if(!file.getName().toLowerCase().contains(name.toLowerCase()))
+                filteredSearch.add(file);
+
         }
-        return positions;
+        files.removeAll(filteredSearch);
     }
 
-
-    public void resetSearchHighlights(){
-        for(int i=0;i<files.size();i++)
-            files.get(i).highlighted=false;
+    public void resetSearch(){
+       files.addAll(filteredSearch);
+       filteredSearch.clear();
+       sort();
     }
-
 
     public void loadThumbnails(int start, int stop, int width, int height, ArrayList< CustomFile>files,ThumbnailLoader.onThumbnailComplete onThumbnailComplete){
         boolean showThumbnail=!PreferenceManager.getDefaultSharedPreferences(context).getBoolean("thumbnail",true);
@@ -268,31 +266,6 @@ public class Folder {
         return adapterPosition;
     }
 
-
-    @SuppressLint("StaticFieldLeak")
-    class SearchFilesTask extends AsyncTask<String,Integer,String>{
-        private String name;
-        private ArrayList<Integer>positions= new ArrayList<>();
-        private onSearchComplete onComplete;
-
-        public SearchFilesTask(String name,onSearchComplete onComplete){
-            this.name=name;
-            this.onComplete=onComplete;
-        }
-        @Override
-        protected String doInBackground(String... strings) {
-            positions=searchFileByName(name);
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-
-            onComplete.onComplete(positions);
-            super.onPostExecute(s);
-        }
-    }
-
     public boolean isEmpty(){
         return files.isEmpty();
     }
@@ -323,16 +296,16 @@ public class Folder {
         }
 
 
-
         private void listAudio() throws Exception{
             FileHandleUtil.fetchAudioFiles(context,files);
         }
+
      private void LoadLargeFiles(){
          files.clear();
          DiskUtils diskUtils=DiskUtils.getInstance();
          SharedPreferences preferences=context.getSharedPreferences("MyPref",Context.MODE_PRIVATE);
          message.postValue("Filtering files....");
-         long bytes=preferences.getLong("MinLargeFile",diskUtils.SIZE_MB*50);
+         long bytes=preferences.getLong("MinLargeFile", DiskUtils.SIZE_MB *50);
          FileHandleUtil.ListLargeFilesRecursively(file,files,FileFilters.FilterLargeFiles(bytes));
         }
 
@@ -427,6 +400,6 @@ public class Folder {
     }
     public interface onSearchComplete{
 
-        void onComplete(ArrayList<Integer>positions);
+        void onComplete();
     }
 }

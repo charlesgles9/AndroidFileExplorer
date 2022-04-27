@@ -418,15 +418,11 @@ public class MainActivity extends AppCompatActivity  {
             operations=op;
             invalidateOptionsMenu();
         }
-
         @Override
         public void itemCount(int count) {
-
             getGlobalFileHandleLayout().getMenu().getItem(1)
                     .setTitle("Items: "+count);
-
         }
-
         @Override
         public void switchWindow(WindowModel model) {
             setFragment(model.getFragment());

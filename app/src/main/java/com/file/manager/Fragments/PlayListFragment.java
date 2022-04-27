@@ -29,7 +29,6 @@ public class PlayListFragment extends Fragment {
     private PlayListHeaderAdapter headerAdapter;
     private AudioPlayList audioPlayList=new AudioPlayList();
     private int chosenHeader=0;
-    private int chosenSong=-1;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root= inflater.inflate(R.layout.audio_playlist_specific_music_fragment,container,false);
@@ -85,9 +84,11 @@ public class PlayListFragment extends Fragment {
                 headerAdapter.setCurrent(position);
                 playListAdapter.setHeader(audioPlayList.get(position));
                 playListAdapter.notifyDataSetChanged();
-                if(chosenHeader!=position)
+                int prev=chosenHeader;
+                chosenHeader=position;
+                if(prev!=position)
                  playListAdapter.getOnItemClickListener().onClick(0);
-                 chosenHeader=position;
+
 
             }
 
@@ -113,8 +114,6 @@ public class PlayListFragment extends Fragment {
             playListAdapter.setHeader(audioPlayList.get(chosenHeader));
             playListAdapter.notifyDataSetChanged();
         }
-
-
         return root;
     }
 

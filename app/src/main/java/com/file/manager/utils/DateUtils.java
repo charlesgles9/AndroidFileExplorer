@@ -29,7 +29,7 @@ public class DateUtils {
     public static String getHoursMinutesSec(long ll){
      if(ll<=59){
          return ll+"sec";
-     }else if(ll>=60&ll<=(60*60)){
+     }else if(ll <= 60 * 60){
          return ll/60+" min";
      }else {
          return ll/360+"hrs";

@@ -44,7 +44,6 @@ public class MusicListFragment extends Fragment {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         fileListRecycleView.setLayoutManager(linearLayoutManager);
         fileListRecycleView.setItemAnimator(null);
-
         adapter= new MusicAdapter(getContext(),files);
         fileListRecycleView.setAdapter(adapter);
         adapter.setOnItemClickListener(onItemClickListener);
@@ -70,7 +69,7 @@ public class MusicListFragment extends Fragment {
     // load the data in intervals avoids lag and wait time
     private void populateAdapter(){
         final Timer timer= new Timer();
-        timer.setIntervalsMillis(20);
+        timer.setIntervalsMillis(2);
         timer.setListener(new Timer.TimerListener() {
             @Override
             public void calculate(long seconds) {
