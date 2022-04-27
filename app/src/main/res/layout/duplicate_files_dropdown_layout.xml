@@ -22,14 +22,14 @@
 
         <ImageView
             android:id="@+id/thumbnail"
-            android:layout_toRightOf="@id/dropdownToggle"
+            android:layout_toEndOf="@id/dropdownToggle"
             android:src="@drawable/ic_unknown"
             android:layout_margin="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
         <TextView
             android:id="@+id/name"
-            android:layout_toRightOf="@id/thumbnail"
+            android:layout_toEndOf="@id/thumbnail"
             android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:textSize="12dp"/>
         <TextView
             android:id="@+id/path"
-            android:layout_toRightOf="@id/thumbnail"
+            android:layout_toEndOf="@id/thumbnail"
             android:layout_below="@id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             android:id="@+id/title_count"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -70,7 +70,7 @@
             android:layout_below="@+id/title_count"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="25dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -91,7 +91,7 @@
         android:id="@+id/dropDownList"
         android:visibility="gone"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         android:saveEnabled="true"
         style="@style/scrollbar2"
         android:layout_width="match_parent"

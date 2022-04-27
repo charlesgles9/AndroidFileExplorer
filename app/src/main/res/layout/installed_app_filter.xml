@@ -4,15 +4,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:backgroundTint="?attr/background2"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="10dp">
         <LinearLayout
             android:orientation="vertical"
+            android:background="@drawable/drawable_highlight6"
+            android:foreground="@drawable/drawable_highlight7"
+            android:backgroundTint="?attr/background1"
             android:layout_margin="10dp"
             android:layout_width="200dp"
             android:layout_height="wrap_content">
@@ -28,7 +24,7 @@
                 android:textColor="?attr/normalTextColor"
                 android:textSize="11dp"
                 android:gravity="center"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Filter list"/>
             <RadioButton
@@ -37,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:button="@null"
-                android:drawableLeft="@drawable/toggle_btn2"
+                android:drawableStart="@drawable/toggle_btn2"
                 android:text=" User Apps"
                 android:textColor="?attr/normalTextColor"
                 android:background="@drawable/drawable_highlight2"/>
@@ -48,7 +44,7 @@
                 android:layout_margin="10dp"
                 android:button="@drawable/drawable_highlight2"
                 android:text=" System Apps"
-                android:drawableLeft="@drawable/toggle_btn2"
+                android:drawableStart="@drawable/toggle_btn2"
                 android:textColor="?attr/normalTextColor"
                 android:background="@drawable/drawable_highlight2"/>
             <RadioButton
@@ -57,11 +53,19 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:button="@drawable/drawable_highlight2"
-                android:drawableLeft="@drawable/toggle_btn2"
+                android:drawableStart="@drawable/toggle_btn2"
                 android:text=" All Apps"
                 android:textColor="?attr/normalTextColor"
                 android:background="@drawable/drawable_highlight2"/>
+
         </RadioGroup>
+            <View
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="?attr/dividerColor"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
             <RadioGroup
                 android:orientation="vertical"
                 android:layout_margin="5dp"
@@ -74,7 +78,7 @@
                     android:textColor="?attr/normalTextColor"
                     android:textSize="11dp"
                     android:gravity="center"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:text="Sort order"/>
                 <RadioButton
@@ -83,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:button="@null"
-                    android:drawableLeft="@drawable/toggle_btn2"
+                    android:drawableStart="@drawable/toggle_btn2"
                     android:text=" ascending(A-z)"
                     android:textColor="?attr/normalTextColor"
                     android:background="@drawable/drawable_highlight2"/>
@@ -94,7 +98,7 @@
                     android:layout_margin="10dp"
                     android:button="@drawable/drawable_highlight2"
                     android:text=" descending(z-A)"
-                    android:drawableLeft="@drawable/toggle_btn2"
+                    android:drawableStart="@drawable/toggle_btn2"
                     android:textColor="?attr/normalTextColor"
                     android:background="@drawable/drawable_highlight2"/>
                 <RadioButton
@@ -103,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:button="@drawable/drawable_highlight2"
-                    android:drawableLeft="@drawable/toggle_btn2"
+                    android:drawableStart="@drawable/toggle_btn2"
                     android:text=" size"
                     android:textColor="?attr/normalTextColor"
                     android:background="@drawable/drawable_highlight2"/>
@@ -113,13 +117,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:button="@drawable/drawable_highlight2"
-                    android:drawableLeft="@drawable/toggle_btn2"
+                    android:drawableStart="@drawable/toggle_btn2"
                     android:text=" lastModified"
                     android:textColor="?attr/normalTextColor"
                     android:background="@drawable/drawable_highlight2"/>
             </RadioGroup>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

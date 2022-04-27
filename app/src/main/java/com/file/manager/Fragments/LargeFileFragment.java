@@ -63,6 +63,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
     private View loadingView;
     private TextView loadingMessage;
     private MainActivity activity;
+    private Button SelectAll;
     public LargeFileFragment(Fragment parent){
         this.parent=parent;
     }
@@ -72,7 +73,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         View root = inflater.inflate(R.layout.large_fragment_files, container, false);
        final Button Delete= root.findViewById(R.id.delete);
        final Button Refresh= root.findViewById(R.id.refresh);
-       final Button SelectAll= root.findViewById(R.id.selectAll);
+        SelectAll= root.findViewById(R.id.selectAll);
         loadingView= root.findViewById(R.id.loadingView);
         loadingMessage= root.findViewById(R.id.loadingMessage);
          recyclerView= root.findViewById(R.id.fileList);
@@ -362,6 +363,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         });
         dialog.show();
         folder.resetMultiSelectedList();
+        SelectAll.setText(!folder.getSelectAllStatus()?"SelectAll":"DeselectAll");
     }
 
 
@@ -370,6 +372,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         if(parent!=null)
             activity.setFragment(parent);
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
