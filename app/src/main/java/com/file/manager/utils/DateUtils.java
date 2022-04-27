@@ -5,12 +5,19 @@ import android.annotation.SuppressLint;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtils {
 
     private DateUtils(){
 
+    }
+
+    public static String now(){
+        Calendar calendar= Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat= new SimpleDateFormat("MM/dd/yyy");
+        return simpleDateFormat.format(calendar.getTime());
     }
 
     public static String getDateString(long ll){

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.file.manager.R;
 import com.file.manager.ui.Adapters.PlayListHeaderAdapter;
 import com.file.manager.ui.Models.AudioPlayList;
-import com.file.manager.ui.Models.CustomFile;
+import com.file.manager.utils.DateUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class AddPlayListDialog extends Dialog {
 
 
-    private RecyclerView playList;
     private AudioPlayList audioPlayList;
     private PlayListHeaderAdapter adapter;
     private TextView message;
@@ -43,7 +42,7 @@ public class AddPlayListDialog extends Dialog {
         final Button cancel=findViewById(R.id.cancel);
         final Button addPlayListHeader=findViewById(R.id.addPlayList);
         message=findViewById(R.id.message);
-        playList=findViewById(R.id.playList);
+        RecyclerView playList = findViewById(R.id.playList);
         LinearLayoutManager manager= new LinearLayoutManager(getContext());
         manager.setOrientation(RecyclerView.VERTICAL);
         playList.setLayoutManager(manager);
@@ -102,7 +101,7 @@ public class AddPlayListDialog extends Dialog {
                 headerDialog.setPlayListCallBack(new PlayListHeaderDialog.PlayListCallBack() {
                     @Override
                     public void accept(String name) {
-                        audioPlayList.addHeader(getContext(),name,"date");
+                        audioPlayList.addHeader(getContext(),name, DateUtils.now());
                         adapter.notifyDataSetChanged();
                     }
 
