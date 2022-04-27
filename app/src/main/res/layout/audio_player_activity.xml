@@ -58,8 +58,8 @@
             android:layout_height="wrap_content"
             android:textColor="#FFF"
             android:textSize="11dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
             android:text="0:00"/>
         <TextView
             android:id="@+id/endTime"
@@ -68,12 +68,12 @@
             android:layout_alignParentEnd="true"
             android:textColor="#FFF"
             android:textSize="11dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="5dp"
             android:text="0:00"/>
         <SeekBar
-            android:layout_toRightOf="@id/currentTime"
-            android:layout_toLeftOf="@id/endTime"
+            android:layout_toEndOf="@id/currentTime"
+            android:layout_toStartOf="@id/endTime"
             android:id="@+id/seekTo"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
@@ -111,18 +111,18 @@
               android:background="@drawable/blue_play_background"/>
           <Button
               android:id="@+id/next"
-              android:layout_marginLeft="25dp"
+              android:layout_marginStart="25dp"
               android:layout_width="45dp"
               android:layout_height="45dp"
-             android:layout_toRightOf="@+id/play"
+             android:layout_toEndOf="@+id/play"
               android:layout_centerVertical="true"
               android:background="@drawable/ic_music_skip_next"/>
           <Button
               android:id="@+id/prev"
-              android:layout_marginRight="25dp"
+              android:layout_marginEnd="25dp"
               android:layout_width="45dp"
               android:layout_height="45dp"
-              android:layout_toLeftOf="@+id/play"
+              android:layout_toStartOf="@+id/play"
               android:layout_centerVertical="true"
               android:background="@drawable/ic_music_skip_prev"/>
           <Button

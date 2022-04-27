@@ -22,7 +22,8 @@
             android:checked="false"
             android:clickable="true"
             android:textOff=""
-            android:textOn="" />
+            android:textOn=""
+            android:focusable="true" />
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_toEndOf="@id/selected"

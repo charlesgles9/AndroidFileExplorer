@@ -21,12 +21,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true" >
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbarThumbVertical="@drawable/scrollview_bar"
-            android:background="?attr/background1"
-            xmlns:app="http://schemas.android.com/apk/res-auto">
+            android:background="?attr/background1">
      <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

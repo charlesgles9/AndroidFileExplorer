@@ -32,7 +32,7 @@
                android:background="@drawable/drawable_highlight2"
                android:text="Sort by"
                android:textColor="?attr/normalTextColor"
-               android:drawableRight="@drawable/ic_next_24"/>
+               android:drawableEnd="@drawable/ic_next_24"/>
            <RadioButton
                android:id="@+id/viewType"
                android:layout_margin="1dp"
@@ -43,6 +43,6 @@
                android:background="@drawable/drawable_highlight2"
                android:text="View"
                android:textColor="?attr/normalTextColor"
-               android:drawableRight="@drawable/ic_next_24"/>
+               android:drawableEnd="@drawable/ic_next_24"/>
        </RadioGroup>
 </LinearLayout>

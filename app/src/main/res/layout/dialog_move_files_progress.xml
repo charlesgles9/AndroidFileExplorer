@@ -55,7 +55,6 @@
                     android:id="@+id/percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:text="(0%)"
                     android:layout_gravity="end"
                     android:textColor="?attr/normalTextColor"

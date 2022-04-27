@@ -30,7 +30,6 @@
             android:id="@+id/app_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view"
             android:textSize="17dp"
             android:textColor="#FFF"
             android:text="Explorer" />

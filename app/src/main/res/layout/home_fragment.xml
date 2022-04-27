@@ -99,9 +99,9 @@
 
             <RelativeLayout
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_below="@+id/titleInternal"
-                android:layout_toRightOf="@id/progressLayoutInternal"
+                android:layout_toEndOf="@id/progressLayoutInternal"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -131,7 +131,7 @@
                     android:id="@+id/totalInternal"
                     android:padding="1dp"
                     android:layout_margin="2dp"
-                    android:layout_toRightOf="@+id/usedInternal"
+                    android:layout_toEndOf="@+id/usedInternal"
                     android:textSize="10dp"
                     android:textColor="#B3349FF4"
                     android:textStyle="bold"
@@ -156,7 +156,7 @@
                 android:id="@+id/storageDetails2"
                 android:background="@drawable/drawable_highlight10"
                 android:layout_margin="5dp"
-                android:paddingRight="50dp"
+                android:paddingEnd="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <LinearLayout
@@ -170,7 +170,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:padding="5dp"
-                    android:layout_alignParentStart="true"
                     android:src="@drawable/ic_sd_storage"/>
                     <TextView
                         android:padding="1dp"
@@ -183,7 +182,7 @@
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
                     android:layout_below="@id/titleExternal"
                     android:id="@+id/progressLayoutExternal"
                     android:layout_width="wrap_content"
@@ -194,7 +193,7 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
                         android:background="@drawable/circular_shape"
                         android:clickable="false"
                         android:indeterminate="false"
@@ -215,10 +214,10 @@
 
                 <RelativeLayout
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:paddingRight="10dp"
+                    android:layout_marginStart="20dp"
+                    android:paddingEnd="10dp"
                     android:layout_below="@+id/titleExternal"
-                    android:layout_toRightOf="@id/progressLayoutExternal"
+                    android:layout_toEndOf="@id/progressLayoutExternal"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -272,7 +271,8 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="true">
            <LinearLayout
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -281,12 +281,12 @@
                <ImageView
                    android:id="@+id/thumbnail"
                    android:src="@drawable/ic_search"
-                   android:layout_marginLeft="1dp"
+                   android:layout_marginStart="1dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
                <TextView
                    android:textSize="12dp"
-                   android:layout_marginLeft="5dp"
+                   android:layout_marginStart="5dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:gravity="bottom"
@@ -425,7 +425,6 @@
                     android:id="@+id/androidIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
                     android:minHeight="50dp"
                     android:minWidth="50dp"
                     android:padding="5dp"
@@ -587,7 +586,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -617,7 +616,7 @@
             android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bookMarkList"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:saveEnabled="true"
                 android:scrollbars="none"
                 android:layout_width="match_parent"
@@ -633,8 +632,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:text="Recent Documents"
                 android:textColor="?attr/normalTextColor"
@@ -651,13 +650,13 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:text=""
-                android:textSize="0dp" />
+                android:textSize="0dp"
+                android:focusable="true" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fileList"
-            android:layout_above="@+id/nav_wrapper"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:saveEnabled="true"
             android:nestedScrollingEnabled="true"
             style="@style/scrollbar2"

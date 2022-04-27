@@ -17,7 +17,7 @@
             android:layout_height="wrap_content">
             <RadioButton
                 android:id="@+id/COPY"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:button="@null"
@@ -31,7 +31,7 @@
             <RadioButton
                 android:id="@+id/DELETE"
                 android:layout_centerHorizontal="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:button="@null"
@@ -42,8 +42,8 @@
                 android:textSize="9dp"
                 android:text="Delete"/>
             <RadioButton
-                android:layout_toLeftOf="@id/DELETE"
-                android:layout_marginRight="20dp"
+                android:layout_toStartOf="@id/DELETE"
+                android:layout_marginEnd="20dp"
                 android:id="@+id/CUT"
                 android:layout_width="60dp"
                 android:layout_height="50dp"
@@ -56,7 +56,7 @@
                 android:text="Cut"/>
 
             <RadioButton
-                android:layout_toRightOf="@+id/DELETE"
+                android:layout_toEndOf="@+id/DELETE"
                 android:id="@+id/RENAME"
                 android:layout_width="60dp"
                 android:layout_height="50dp"

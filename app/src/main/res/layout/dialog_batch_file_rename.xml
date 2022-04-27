@@ -5,7 +5,7 @@
     android:foreground="@drawable/drawable_highlight7"
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
-    android:paddingLeft="5dp"
+    android:paddingStart="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/ic_information_314866"/>
         <TextView
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textSize="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,17 +56,17 @@
         android:layout_margin="10dp">
 
         <RelativeLayout
-            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/replaceTitle"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:textSize="15dp"
                 android:textColor="?attr/normalTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:text="Replace Text"/>
 
             <LinearLayout
@@ -79,18 +79,16 @@
             <TextView
                 android:id="@+id/findTv"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="5dp"
                 android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/replaceTitle"
                 android:text="Find"/>
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/findText"
                 android:layout_margin="5dp"
-                android:layout_below="@id/replaceTitle"
                 android:hint=""
                 android:textSize="10dp"
                 android:backgroundTint="?attr/iconColor1"
@@ -108,18 +106,16 @@
                 <TextView
                     android:id="@+id/replaceWithTv"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="5dp"
                     android:textSize="11dp"
                     android:textColor="?attr/normalTextColor"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/replaceTitle"
                     android:text="Replace With"/>
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/replaceWithText"
                     android:layout_margin="5dp"
-                    android:layout_below="@id/replaceTitle"
                     android:hint=""
                     android:textSize="10dp"
                     android:backgroundTint="?attr/iconColor1"
@@ -138,17 +134,17 @@
         android:layout_margin="10dp">
 
         <RelativeLayout
-            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <TextView
             android:id="@+id/numberingTitle"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textSize="15dp"
             android:textColor="?attr/normalTextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:text="Numbering"/>
             <LinearLayout
                 android:id="@+id/startNumberLayout"
@@ -160,13 +156,12 @@
                 <TextView
                     android:id="@+id/startNumberTv"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="5dp"
                     android:textSize="11dp"
                     android:textColor="?attr/normalTextColor"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/replaceTitle"
                     android:text="Start Number:"/>
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/startNumber"
@@ -189,8 +184,8 @@
                 <TextView
                     android:id="@+id/numberFormatTv"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="5dp"
                     android:textSize="11dp"
                     android:textColor="?attr/normalTextColor"
                     android:layout_width="70dp"
@@ -199,7 +194,6 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/numberFormatText"
                     android:layout_margin="5dp"
-                    android:layout_below="@id/replaceTitle"
                     android:hint="number of zeros to the right"
                     android:textSize="10dp"
                     android:backgroundTint="?attr/iconColor1"

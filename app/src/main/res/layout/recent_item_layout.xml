@@ -16,7 +16,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/icon"
+            android:layout_toEndOf="@id/icon"
             android:layout_marginTop="5dp"
             android:maxWidth="150dp"
             android:maxLines="1"
@@ -35,7 +35,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/nextIcon"
+            android:layout_toStartOf="@+id/nextIcon"
             android:layout_margin="10dp"
             android:textColor="?attr/normalTextColor"
             android:text="11-20-2021"
@@ -44,7 +44,7 @@
     <RelativeLayout
         android:layout_below="@+id/icon"
         android:id="@+id/sampleFiles"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
@@ -62,12 +62,12 @@
             android:src="@drawable/ic_play_clip"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <ImageView
             android:id="@+id/thumb2"
-            android:layout_toRightOf="@id/thumb1"
+            android:layout_toEndOf="@id/thumb1"
             android:visibility="invisible"
             android:src="@drawable/ic_document"
             android:layout_margin="1dp"
@@ -75,17 +75,17 @@
             android:layout_height="70dp"/>
         <ImageView
             android:id="@+id/v2"
-            android:layout_toRightOf="@id/thumb1"
+            android:layout_toEndOf="@id/thumb1"
             android:visibility="invisible"
             android:src="@drawable/ic_play_clip"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <ImageView
             android:id="@+id/thumb3"
-            android:layout_toRightOf="@+id/thumb2"
+            android:layout_toEndOf="@+id/thumb2"
             android:visibility="invisible"
             android:src="@drawable/ic_document"
             android:layout_margin="1dp"
@@ -93,17 +93,17 @@
             android:layout_height="70dp"/>
         <ImageView
             android:id="@+id/v3"
-            android:layout_toRightOf="@+id/thumb2"
+            android:layout_toEndOf="@+id/thumb2"
             android:visibility="invisible"
             android:src="@drawable/ic_play_clip"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <ImageView
             android:id="@+id/thumb4"
-            android:layout_toRightOf="@id/thumb3"
+            android:layout_toEndOf="@id/thumb3"
             android:visibility="invisible"
             android:src="@drawable/ic_document"
             android:layout_margin="1dp"
@@ -111,12 +111,12 @@
             android:layout_height="70dp"/>
         <ImageView
             android:id="@+id/v4"
-            android:layout_toRightOf="@id/thumb3"
+            android:layout_toEndOf="@id/thumb3"
             android:visibility="invisible"
             android:src="@drawable/ic_play_clip"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
     </RelativeLayout>

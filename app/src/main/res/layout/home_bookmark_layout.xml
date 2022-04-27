@@ -27,21 +27,21 @@
         android:layout_height="35dp"/>
     <TextView
         android:id="@+id/name"
-        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:maxLines="1"
         android:textColor="?attr/normalTextColor"
         android:text="bookmark"
         android:textSize="11dp"/>
     <TextView
         android:id="@+id/path"
-        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toEndOf="@+id/thumbnail"
         android:layout_below="@id/name"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="60dp"
+        android:layout_marginEnd="60dp"
         android:maxLines="4"
         android:textColor="@color/colorPrimaryLight"
         android:text="/storage/emulated/0/test"

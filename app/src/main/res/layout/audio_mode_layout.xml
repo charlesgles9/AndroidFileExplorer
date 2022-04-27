@@ -11,8 +11,8 @@
         android:id="@+id/shuffle"
         android:background="@drawable/drawable_highlight2"
         android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="20dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="5dp"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -38,8 +38,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="20dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="5dp"
         android:background="@drawable/drawable_highlight2"
         android:orientation="horizontal">
@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/drawable_highlight2"
         android:paddingTop="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="20dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="5dp"
         android:orientation="horizontal">
         <ImageView

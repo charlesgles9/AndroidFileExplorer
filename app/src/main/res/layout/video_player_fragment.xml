@@ -56,8 +56,8 @@
             android:layout_marginLeft="5dp"
             android:text="0:00"/>
         <SeekBar
-            android:layout_toRightOf="@id/currentTime"
-            android:layout_toLeftOf="@id/endTime"
+            android:layout_toEndOf="@id/currentTime"
+            android:layout_toStartOf="@id/endTime"
             android:id="@+id/seekTo"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"

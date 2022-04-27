@@ -18,7 +18,7 @@
         android:id="@+id/storage_layout"
         android:background="?attr/background3"
         android:paddingTop="5dp"
-        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
     <TextView
         android:id="@+id/name"
         android:gravity="center"
-        android:layout_toRightOf="@+id/img_storage"
+        android:layout_toEndOf="@+id/img_storage"
         android:text="Storage"
         android:textSize="11dp"
         android:textColor="?attr/normalTextColor"
@@ -61,7 +61,7 @@
                 android:button="@null"
                 android:checked="true"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/ic__home"
+                android:drawableStart="@drawable/ic__home"
                 android:textColor="?attr/textTitle"
                 android:gravity="left|center_vertical"
                 android:text="Home"/>
@@ -76,7 +76,7 @@
                 android:textSize="11dp"
                 android:button="@null"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/ic_storage"
+                android:drawableStart="@drawable/ic_storage"
                 android:textColor="?attr/textTitle"
                 android:gravity="left|center_vertical"
                 android:text="Internal"/>
@@ -85,7 +85,7 @@
                 android:src="@drawable/ic_new_tab"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:background="@drawable/drawable_highlight4"
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
@@ -97,7 +97,7 @@
                 android:textSize="12dp"
                 android:button="@null"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/ic_storage"
+                android:drawableStart="@drawable/ic_storage"
                 android:textColor="?attr/textTitle"
                 android:gravity="left|center_vertical"
                 android:text="External"/>
@@ -108,7 +108,7 @@
                 android:layout_below="@id/internal"
                 android:background="@drawable/drawable_highlight4"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <RadioButton
@@ -119,7 +119,7 @@
                 android:textSize="12dp"
                 android:button="@null"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/ic_storage"
+                android:drawableStart="@drawable/ic_storage"
                 android:textColor="?attr/textTitle"
                 android:gravity="left|center_vertical"
                 android:text="System"/>
@@ -130,7 +130,7 @@
                 android:layout_below="@id/external"
                 android:background="@drawable/drawable_highlight4"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
         </RelativeLayout>
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:background="?attr/background3"
             android:orientation="horizontal"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp">
 
@@ -174,7 +174,7 @@
                 android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/img_type"
+                android:layout_toEndOf="@+id/img_type"
                 android:text="Type"
                 android:textColor="?attr/normalTextColor"
                 android:textSize="12dp" />
@@ -190,7 +190,7 @@
             android:button="@null"
             android:background="#00FFFFFF"
             android:checked="false"
-            android:drawableLeft="@drawable/ic_image_gallery_icon"
+            android:drawableStart="@drawable/ic_image_gallery_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Images"/>
@@ -201,7 +201,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_music_gallery_icon"
+            android:drawableStart="@drawable/ic_music_gallery_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Music"/>
@@ -213,7 +213,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_video_gallery_icon"
+            android:drawableStart="@drawable/ic_video_gallery_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Videos"/>
@@ -225,7 +225,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_documents_library"
+            android:drawableStart="@drawable/ic_documents_library"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Documents"/>
@@ -236,7 +236,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_android_gallery_icon"
+            android:drawableStart="@drawable/ic_android_gallery_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Applications"/>
@@ -247,7 +247,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_archive_gallery_icon"
+            android:drawableStart="@drawable/ic_archive_gallery_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="Compressed"/>
@@ -263,7 +263,7 @@
             android:id="@+id/tools_layout"
             android:background="?attr/background3"
             android:paddingTop="5dp"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -281,7 +281,7 @@
                 android:id="@+id/tools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/img_tools"
+                android:layout_toEndOf="@+id/img_tools"
                 android:text="Tools"
                 android:textColor="?attr/normalTextColor"
                 android:textSize="11dp" />
@@ -304,7 +304,7 @@
             android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
-            android:drawableLeft="@drawable/ic_large_files"
+            android:drawableStart="@drawable/ic_large_files"
             android:gravity="left|center_vertical"
             android:textColor="?attr/normalTextColor"
             android:text="Large Files"/>
@@ -316,7 +316,7 @@
             android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
-            android:drawableLeft="@drawable/ic_duplicates"
+            android:drawableStart="@drawable/ic_duplicates"
             android:gravity="left|center_vertical"
             android:textColor="?attr/normalTextColor"
             android:text="Duplicate Files"/>
@@ -328,7 +328,7 @@
             android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
-            android:drawableLeft="@drawable/ic_android_gallery_icon"
+            android:drawableStart="@drawable/ic_android_gallery_icon"
             android:gravity="left|center_vertical"
             android:textColor="?attr/normalTextColor"
             android:text="Installed Apps"/>
@@ -339,7 +339,7 @@
             android:textSize="11dp"
             android:background="#00FFFFFF"
             android:button="@null"
-            android:drawableLeft="@drawable/ic_storage"
+            android:drawableStart="@drawable/ic_storage"
             android:gravity="left|center_vertical"
             android:textColor="?attr/normalTextColor"
             android:text="Benchmark Storage"/>
@@ -355,7 +355,7 @@
             android:id="@+id/network_layout"
             android:background="?attr/background3"
             android:paddingTop="5dp"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -370,7 +370,7 @@
                 android:layout_height="30dp"/>
             <TextView
                 android:id="@+id/network"
-                android:layout_toRightOf="@+id/img_network"
+                android:layout_toEndOf="@+id/img_network"
                 android:text="Network"
                 android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"
@@ -395,7 +395,7 @@
             android:textSize="11dp"
             android:button="@null"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_ftp_icon"
+            android:drawableStart="@drawable/ic_ftp_icon"
             android:textColor="?attr/textTitle"
             android:gravity="left|center_vertical"
             android:text="FTP"/>
@@ -414,7 +414,7 @@
             android:id="@+id/share_layout"
             android:background="?attr/background3"
             android:paddingTop="5dp"
-            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
             android:paddingBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -428,7 +428,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
             <TextView
-                android:layout_toRightOf="@+id/img_share"
+                android:layout_toEndOf="@+id/img_share"
                 android:text="Share"
                 android:textSize="11dp"
                 android:textColor="?attr/normalTextColor"

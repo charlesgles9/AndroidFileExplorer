@@ -19,7 +19,7 @@
         android:text="Compress"/>
     <TextView
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textSize="11dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             android:text=".zip"/>
     </RelativeLayout>
     <TextView
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textSize="11dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textSize="11dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <TextView
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textSize="11dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
         android:textColor="?attr/normalTextColor"
         android:text="Password"/>
         <TextView
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="( this field is optional for password protect)"
@@ -145,7 +145,7 @@
         android:textOff=""
         android:textOn="" />
     <TextView
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:textSize="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
