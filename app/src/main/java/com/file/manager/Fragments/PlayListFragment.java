@@ -47,10 +47,8 @@ public class PlayListFragment extends Fragment {
         playListAdapter.setOnItemClickListener(new PlayListAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                if(!MusicHelperSingleton.getInstance().getPlayList().equals("PlayList")|chosenHeader!=position){
-                    MusicHelperSingleton.getInstance().setPlayList("PlayList");
-                    MusicHelperSingleton.getInstance().clear();
-                    MusicHelperSingleton.getInstance().getData().addAll(audioPlayList.get(chosenHeader).getChildList());
+                if(!MusicHelperSingleton.getInstance().getPlayList().equals("PlayList")){
+                    setData();
                 }
                 playListAdapter.notifyItemChanged(position);
                 MusicHelperSingleton.getInstance().play(position);
@@ -86,8 +84,10 @@ public class PlayListFragment extends Fragment {
                 playListAdapter.notifyDataSetChanged();
                 int prev=chosenHeader;
                 chosenHeader=position;
-                if(prev!=position)
-                 playListAdapter.getOnItemClickListener().onClick(0);
+                if(prev!=position) {
+                    setData();
+                    playListAdapter.getOnItemClickListener().onClick(0);
+                }
 
 
             }
@@ -101,6 +101,8 @@ public class PlayListFragment extends Fragment {
             public void onDelete(int position) {
              audioPlayList.deleteHeader(getContext(),position);
              headerAdapter.notifyItemRemoved(position);
+             int next=(position+1)%audioPlayList.size();
+             headerAdapter.getOnItemClickListener().onClick(next);
             }
         });
 
@@ -118,6 +120,11 @@ public class PlayListFragment extends Fragment {
     }
 
 
+    private void setData(){
+        MusicHelperSingleton.getInstance().setPlayList("PlayList");
+        MusicHelperSingleton.getInstance().clear();
+        MusicHelperSingleton.getInstance().getData().addAll(audioPlayList.get(chosenHeader).getChildList());
+    }
     public PlayListAdapter getPlayListAdapter() {
         return playListAdapter;
     }

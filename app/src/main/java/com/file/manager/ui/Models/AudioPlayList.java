@@ -67,6 +67,10 @@ public class AudioPlayList {
     public PlayListHeader get(int position){
         return headers.get(position);
     }
+
+    public int size(){
+        return headers.size();
+    }
     public void remove(PlayListHeader header){
        headers.remove(header);
     }

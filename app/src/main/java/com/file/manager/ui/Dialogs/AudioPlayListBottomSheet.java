@@ -149,6 +149,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
                 for(PlayListChild file: musicListFragment.getAdapter().getSelectedFiles()){
                     selected.add(new File(file.getPath()));
                 }
+                musicListFragment.getAdapter().resetSelectedFiles();
                 final AddPlayListDialog dialog= new AddPlayListDialog(getContext(),selected);
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
@@ -183,6 +184,7 @@ public class AudioPlayListBottomSheet extends BottomSheetDialogFragment {
             @Override
             public void update() {
                 updateTitle();
+
             }});
         playListFragment=new PlayListFragment();
         fragments.add(musicListFragment);

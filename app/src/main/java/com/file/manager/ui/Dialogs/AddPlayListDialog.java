@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.file.manager.utils.DateUtils;
 import java.io.File;
 import java.util.ArrayList;
 
+
 public class AddPlayListDialog extends Dialog {
 
 
@@ -30,7 +32,7 @@ public class AddPlayListDialog extends Dialog {
     private ArrayList<File>files;
     private int selected=-1;
     public AddPlayListDialog(Context context, ArrayList<File>files){
-        super(context);
+        super(context,R.style.DialogStyle);
         this.files=files;
     }
 
@@ -38,6 +40,7 @@ public class AddPlayListDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.audio_add_play_list_dialog);
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         final Button okay=findViewById(R.id.okay);
         final Button cancel=findViewById(R.id.cancel);
         final Button addPlayListHeader=findViewById(R.id.addPlayList);

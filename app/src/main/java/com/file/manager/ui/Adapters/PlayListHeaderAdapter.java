@@ -38,6 +38,10 @@ public class PlayListHeaderAdapter extends RecyclerView.Adapter<PlayListHeaderAd
         this.onItemClickListener = onItemClickListener;
     }
 
+    public OnItemClickListener getOnItemClickListener() {
+        return onItemClickListener;
+    }
+
     @NonNull
     @Override
     public PlayListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

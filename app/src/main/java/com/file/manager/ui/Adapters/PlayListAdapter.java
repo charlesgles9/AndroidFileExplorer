@@ -84,11 +84,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
 
         @Override
         public void onClick(View v) {
+            int position=getAdapterPosition();
            if(onItemClickListener!=null) {
                if(v.getId()==R.id.delete)
-                   onItemClickListener.onDelete(getAdapterPosition());
+                   onItemClickListener.onDelete(position);
                else
-                  onItemClickListener.onClick(getAdapterPosition());
+                  onItemClickListener.onClick(position);
            }
         }
 
