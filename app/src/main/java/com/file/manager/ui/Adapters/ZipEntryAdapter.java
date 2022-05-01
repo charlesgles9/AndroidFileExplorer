@@ -67,26 +67,29 @@ public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEnt
         private ImageView thumbnail;
         private TextView size;
         private TextView date;
-
+        private ToggleButton selected;
         public ZipEntryViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
             thumbnail=view.findViewById(R.id.thumbnail);
             size=view.findViewById(R.id.file_size);
             date=view.findViewById(R.id.date);
-            ToggleButton selected = view.findViewById(R.id.selected);
-            selected.setVisibility(View.INVISIBLE);
+            selected = view.findViewById(R.id.selected);
+            selected.setVisibility(View.VISIBLE);
+            selected.setOnClickListener(this);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
+             if(v.getId()==R.id.selected)
+                onItemClickListener.onSelect(archiveDecompressUtil.getCurrentDirList().get(getAdapterPosition()));
+             else
             onItemClickListener.onClick(archiveDecompressUtil.getCurrentDirList().get(getAdapterPosition()));
-
         }
     }
     public interface  OnItemClickListener{
         void onClick(FileHeader fileHeader);
+        void onSelect(FileHeader header);
     }
 }

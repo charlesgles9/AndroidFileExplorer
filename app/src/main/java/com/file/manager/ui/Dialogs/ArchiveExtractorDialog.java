@@ -136,6 +136,10 @@ public class ArchiveExtractorDialog extends Dialog  {
                     task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 }
             }
+            @Override
+            public void onSelect(FileHeader header){
+
+            }
         });
 
         back.setOnClickListener(new View.OnClickListener() {
