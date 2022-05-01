@@ -94,11 +94,6 @@ public class MusicListFragment extends Fragment {
         return adapter;
     }
 
-    private boolean isItemVisible(int position){
-        int start=linearLayoutManager.findFirstVisibleItemPosition();
-        int stop=linearLayoutManager.findLastVisibleItemPosition();
-        return position>=start&position<=stop;
-    }
 
 
 }

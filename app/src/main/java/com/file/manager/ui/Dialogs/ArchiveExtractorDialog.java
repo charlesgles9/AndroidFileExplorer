@@ -8,10 +8,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -41,13 +46,10 @@ public class ArchiveExtractorDialog extends Dialog  {
 
 
     private ArchiveDecompressUtil.OnExtractCompleteCallback onExtractCompleteCallback;
-    private RecyclerView fileList;
-    private RecyclerView pathList;
     private ZipEntryAdapter zipEntryAdapter;
     private ZipEntryDirectoryAdapter entryDirectoryAdapter;
     private CustomFile file;
     private ArchiveDecompressUtil archiveDecompressUtil;
-    private Spinner spinner;
     private Context context;
     public ArchiveExtractorDialog(Context context, CustomFile file){
         super(context);
@@ -65,15 +67,16 @@ public class ArchiveExtractorDialog extends Dialog  {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
         setContentView(R.layout.archive_content_layout);
-        fileList=findViewById(R.id.fileList);
-        pathList=findViewById(R.id.pathList);
-        spinner=findViewById(R.id.charSet);
+        RecyclerView fileList = findViewById(R.id.fileList);
+        RecyclerView pathList = findViewById(R.id.pathList);
+        Spinner spinner = findViewById(R.id.charSet);
         TextView name=findViewById(R.id.name);
         final TextView path=findViewById(R.id.path);
         final View back=findViewById(R.id.back);
         final Button extract=findViewById(R.id.extract);
         final Button cancel=findViewById(R.id.cancel);
         final ProgressBar progress=findViewById(R.id.progress);
+        final ImageView more=findViewById(R.id.more);
         name.setText(file.getName());
         path.setText(file.getParent());
         final LinearLayoutManager manager1= new LinearLayoutManager(getContext());
@@ -250,6 +253,13 @@ public class ArchiveExtractorDialog extends Dialog  {
         });
 
 
+       more.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               selectAllPopUp(v);
+           }
+       });
+
         archiveDecompressUtil.listFileHeadersTask(new OnTaskCompleteListener() {
             @Override
             public void onTaskComplete() {
@@ -263,7 +273,20 @@ public class ArchiveExtractorDialog extends Dialog  {
 
     }
 
+   private void selectAllPopUp(View anchor){
+       final LayoutInflater inflater=(LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+       assert inflater != null;
+       View view=inflater.inflate(R.layout.dialog_select_all,null);
+       final PopupWindow popupWindow= new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
+       popupWindow.showAsDropDown(anchor,0,0, Gravity.RIGHT);
+       TextView textView=view.findViewById(R.id.selectAll);
+       textView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
 
+           }
+       });
+   }
     private void start(){
         final SharedPreferences preferences= PreferenceManager.getDefaultSharedPreferences(getContext());
         final SharedPreferences.Editor editor=preferences.edit();

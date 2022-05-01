@@ -38,8 +38,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
     private TextView title;
     private MusicHelperSingleton musicHelperSingleton;
     private int[]modeDrawables={R.drawable.ic_repeat_one,
-                               R.drawable.ic_shuffle,
-                               R.drawable.ic_repeat};
+                                R.drawable.ic_shuffle,
+                                R.drawable.ic_repeat};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

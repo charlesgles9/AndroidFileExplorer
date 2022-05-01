@@ -1,5 +1,6 @@
 package com.file.manager.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
@@ -78,7 +79,7 @@ public class StorageBenchmarkFragment extends Fragment implements  IOnBackPresse
         this.bytesToWriteMap.put("200Mb",200*DiskUtils.SIZE_MB);
         this.bytesToWriteMap.put("300Mb",300*DiskUtils.SIZE_MB);
         this.bytesToWriteMap.put("500Mb",500*DiskUtils.SIZE_MB);
-        this.bytesToWriteMap.put("1Gb",1*DiskUtils.SIZE_GB);
+        this.bytesToWriteMap.put("1Gb", DiskUtils.SIZE_GB);
         this.bytesToWriteMap.put("2Gb",2*DiskUtils.SIZE_GB);
         this.bytesToWriteMap.put("3Gb",3*DiskUtils.SIZE_GB);
         this.bytesToWriteMap.put("4Gb",4*DiskUtils.SIZE_GB);
@@ -139,8 +140,9 @@ public class StorageBenchmarkFragment extends Fragment implements  IOnBackPresse
         mountSpinner.setAdapter(mountAdapter);
 
         timer= new Timer();
-        final String speed[]={" "};
+        final String[] speed ={" "};
         timer.setListener(new Timer.TimerListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void calculate(long seconds) {
                 long workCompleted=0L;
@@ -165,13 +167,13 @@ public class StorageBenchmarkFragment extends Fragment implements  IOnBackPresse
                     benchmark.setText("START BENCHMARK");
                     benchmark.setBackgroundResource(R.drawable.drawable_highlight6);
                     timer.stop();
-                    return;
                 }
             }
         });
         benchmarkAdapter =new BenchmarkAdapter(getContext(),threads);
         threadList.setAdapter(benchmarkAdapter);
         benchmark.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
 
@@ -336,8 +338,8 @@ public class StorageBenchmarkFragment extends Fragment implements  IOnBackPresse
     private void getCpuInformation(){
         final Timer timer= new Timer();
         timer.setIntervals(1);
-        final int average[]=new int[2];
-        final DataPoint points[]= new DataPoint[60];
+        final int[] average =new int[2];
+        final DataPoint[] points = new DataPoint[60];
         for(int i=0;i<points.length;i++){
             points[i]=new DataPoint(i,0);
         }

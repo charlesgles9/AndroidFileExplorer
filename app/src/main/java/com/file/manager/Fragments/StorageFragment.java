@@ -395,7 +395,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                             getStoragePermission(new CustomFile(storage));
                          else
                             //paste files
-                           copyAndCutFiles();
+                           pasteFiles();
                         break;
                     case R.id.Cancel:
                         activity.getGlobalFileHandleLayout().setVisibility(View.GONE);
@@ -958,19 +958,19 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
             boolean askMeAlways = copy.equals("Ask me Always");
             if (askMeAlways) {
-                final TaskDialogPrompt taskDialogPrompt = new TaskDialogPrompt(getContext());
-                taskDialogPrompt.setOnItemClickListener(new TaskDialogPrompt.OnItemClickListener() {
+                final TaskDialogPrompt dialogPrompt = new TaskDialogPrompt(getContext());
+                dialogPrompt.setOnItemClickListener(new TaskDialogPrompt.OnItemClickListener() {
                     @Override
                     public void onClick() {
                         String choice = "Ask me Always";
-                        if (taskDialogPrompt.isForeground()) {
+                        if (dialogPrompt.isForeground()) {
                             CopyServiceQueue.getInstance().update(getContext(), PermissionsHelper.getInstance().getUriFromSharedPreference(
                                     new File(startDir)));
                             setCopyCompleteListener(CopyServiceQueue.getInstance().getFirst());
                             getContext().startService(new Intent(getActivity(), CopyService.class));
-                            choice = taskDialogPrompt.rememberChoice() ? "Background Always" : choice;
+                            choice = dialogPrompt.rememberChoice() ? "Background Always" : choice;
                         } else {
-                            choice = taskDialogPrompt.rememberChoice() ? "Foreground Always" : choice;
+                            choice = dialogPrompt.rememberChoice() ? "Foreground Always" : choice;
                             copy();
                         }
 
@@ -978,7 +978,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                         editor.apply();
                     }
                 });
-                taskDialogPrompt.show();
+                dialogPrompt.show();
             } else {
                 if (copy.equals("Background Always")) {
                     CopyServiceQueue.getInstance().update(getContext(), PermissionsHelper.getInstance().getUriFromSharedPreference(
@@ -986,13 +986,11 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     setCopyCompleteListener(CopyServiceQueue.getInstance().getFirst());
                     Intent intent = new Intent(getActivity(), CopyService.class);
                     getContext().startService(intent);
-                } else {
+                } else
                     copy();
-                }
             }
-        }else {
+        }else
             exitSelectMode();
-        }
     }
 
     private void setCopyCompleteListener(CopyUtility utility){
@@ -1014,6 +1012,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             }
         });
     }
+
     public void CutPaste(){
         CutHelper.getInstance().setDestination(getFolder().getFile());
         if(!CutHelper.getInstance().isEmpty())
@@ -1022,7 +1021,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             exitSelectMode();
     }
 
-    private boolean copyAndCutFiles(){
+    private boolean pasteFiles(){
         final ArrayList<CustomFile>data;
         if(!CopyHelper.getInstance().isEmpty()) {
             data = CopyHelper.getInstance().getData();
@@ -1136,7 +1135,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     }
 
     private void initToolBarMenuClickListener(){
-        final Toolbar toolbar=((MainActivity)getContext()).toolbar;
+        final Toolbar toolbar=activity.toolbar;
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -1199,9 +1198,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         if(folder.getType().equals(FilterType.IMAGE)|
            folder.getType().equals(FilterType.VIDEO)){
             mode=preferences.getString(type,"GRID");
-        }else {
+        }else
             mode=preferences.getString(type,"LIST");
-        }
+
 
         if(mode.equals("LIST")) {
             editor.putString(type, mode);

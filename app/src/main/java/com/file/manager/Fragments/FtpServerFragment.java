@@ -1,5 +1,6 @@
 package com.file.manager.Fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import com.file.manager.IOnBackPressed;
 import com.file.manager.Activities.MainActivity;
 import com.file.manager.R;
 import com.file.manager.ui.Dialogs.FolderPickerDialog;
-import com.file.manager.ui.GraphView;
 import com.file.manager.ui.Models.FtpServerInstance;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.SoftwareKeyboardListener;
@@ -166,6 +166,7 @@ public class FtpServerFragment extends Fragment implements IOnBackPressed {
         return root;
     }
 
+    @SuppressLint("SetTextI18n")
     private void toggleStartServerUI(Button startServer){
         if(!FtpServerInstance.getInstance().isRunning()) {
             startServer.setText("START SERVER");

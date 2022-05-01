@@ -23,12 +23,10 @@ import java.util.List;
 public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEntryViewHolder> {
 
 
-    private Context context;
     private ArchiveDecompressUtil archiveDecompressUtil;
     private LayoutInflater inflater;
     private OnItemClickListener onItemClickListener;
     public ZipEntryAdapter(Context context, ArchiveDecompressUtil archiveDecompressUtil){
-        this.context=context;
         this.archiveDecompressUtil = archiveDecompressUtil;
         this.inflater=LayoutInflater.from(context);
     }
@@ -69,14 +67,14 @@ public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEnt
         private ImageView thumbnail;
         private TextView size;
         private TextView date;
-        private ToggleButton selected;
+
         public ZipEntryViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
             thumbnail=view.findViewById(R.id.thumbnail);
             size=view.findViewById(R.id.file_size);
             date=view.findViewById(R.id.date);
-            selected=view.findViewById(R.id.selected);
+            ToggleButton selected = view.findViewById(R.id.selected);
             selected.setVisibility(View.INVISIBLE);
             view.setOnClickListener(this);
         }

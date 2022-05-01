@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity  {
 
         // Format the App name to be displayed at the navigation header
         final TextView app_title=findViewById(R.id.app_title);
-        setFont(app_title,this, "Fonts/Rocket.ttf");
+        setFont(app_title,this);
         PermissionsHelper.createInstance(this);
 
         onSharedIntent();
@@ -498,6 +498,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -505,9 +506,9 @@ public class MainActivity extends AppCompatActivity  {
                 || super.onSupportNavigateUp();
     }
 
-    private void setFont(TextView textView,Context context,String path){
+    private void setFont(TextView textView, Context context){
         AssetManager assetManager=context.getAssets();
-        Typeface typeface=Typeface.createFromAsset(assetManager,path);
+        Typeface typeface=Typeface.createFromAsset(assetManager, "Fonts/Rocket.ttf");
         textView.setTypeface(typeface);
     }
 

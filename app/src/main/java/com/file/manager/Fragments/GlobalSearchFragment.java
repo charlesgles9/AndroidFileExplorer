@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -497,7 +496,6 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         private OnTaskCompleteListener onTaskCompleteListener;
         private String query;
         private boolean running=false;
-        private boolean executed=false;
         public SearchTask(String query,OnTaskCompleteListener onTaskCompleteListener){
             this.onTaskCompleteListener=onTaskCompleteListener;
             this.query=query;
@@ -506,7 +504,6 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         @Override
         protected String doInBackground(String... strings) {
             running=true;
-            executed=true;
             search();
             return null;
         }
@@ -552,10 +549,6 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
             return running&!isCancelled();
         }
 
-        public boolean isExecuted() {
-            return executed;
-        }
-
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
@@ -575,7 +568,6 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         mainToolbar.setVisibility(View.VISIBLE);
     }
 
-
     @Override
     public void onBackPressed() {
         ((MainActivity)getContext()).setFragment(homeFragment);
@@ -586,6 +578,5 @@ public class GlobalSearchFragment extends Fragment implements SoftwareKeyboardLi
         loadThumbnails();
 
     }
-
 
 }

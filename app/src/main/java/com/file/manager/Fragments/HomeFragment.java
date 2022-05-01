@@ -609,6 +609,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
 
         }
     }
+    @SuppressLint("StaticFieldLeak")
     class RecentFilesTask extends AsyncTask<String,Integer,String>{
 
         private boolean running;

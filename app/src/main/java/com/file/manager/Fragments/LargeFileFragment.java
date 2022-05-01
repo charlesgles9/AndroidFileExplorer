@@ -240,6 +240,7 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
         toolbar.getMenu().getItem(0).setTitle(
                 folder.getMultiSelectedFiles().size()+"/"+folder.getFiles().size());
     }
+
     private void initFolder(final Folder folder){
         loadingView.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.INVISIBLE);
@@ -255,7 +256,6 @@ public class LargeFileFragment extends Fragment implements IOnBackPressed {
 
 
     }
-
 
     private void checkIfContentDisplaysOnScreen(){
         recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

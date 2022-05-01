@@ -1,9 +1,7 @@
 package com.file.manager.utils;
 
 import android.os.AsyncTask;
-
 import com.file.manager.ui.Models.CpuModel;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -74,9 +72,7 @@ public class CpuStats {
         final File[] files=directory.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-                if(Pattern.matches("cpu[0-9]",new File(dir,name).getName()))
-                     return true;
-                return false;
+                return Pattern.matches("cpu[0-9]", new File(dir, name).getName());
             }
         });
         return files.length;

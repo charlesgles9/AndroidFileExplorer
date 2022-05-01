@@ -24,7 +24,6 @@ public class PictureTabFragment extends Fragment {
 
 
     private View root;
-    private ZoomageView picture;
     private File file;
     private int rw=0;
     private int rh=0;
@@ -37,7 +36,7 @@ public class PictureTabFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(root==null)
         root=inflater.inflate(R.layout.picture_viewer_fragment_tab,container,false);
-        picture=root.findViewById(R.id.picture);
+        ZoomageView picture = root.findViewById(R.id.picture);
         try {
             Glide.with(this).asBitmap()
                     .load(file).into(picture);
