@@ -51,6 +51,7 @@ public class DeleteFilesDialog  extends Dialog {
 
         deleteFilesUtility= new DeleteFilesUtility(getContext(),uri,files);
         deleteFilesUtility.getUpdate().observe((MainActivity) context, new Observer<Boolean>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(Boolean update) {
                 if(update){
@@ -73,6 +74,7 @@ public class DeleteFilesDialog  extends Dialog {
         });
 
         cancel.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if(deleteFilesUtility.isRunning()) {

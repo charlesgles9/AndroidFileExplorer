@@ -71,4 +71,15 @@
             android:clickable="false"/>
 
     </RelativeLayout>
+    <Button
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_margin="10dp"
+        android:layout_above="@id/controller"
+        android:text="Subtitles"
+        android:textSize="10dp"
+        android:maxEms="10"
+        android:textColor="#D30C0C"
+        android:background="@drawable/drawable_highlight13"/>
 </RelativeLayout>

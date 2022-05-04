@@ -35,12 +35,12 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
     public static final int SYSTEM_APPS =0;
     public static final int USER_APPS =1;
     public static final int ALL_APPS=2;
-    private int progress;
-    private boolean determinate;
     public static final int SORT_AZ=0;
     public static final int SORT_ZA=1;
     public static final int SORT_LAST_MODIFIED=2;
     public static final int SORT_BY_SIZE=3;
+    private int progress;
+    private boolean determinate;
     private int sortBy=0;
     private int mode=1;
     private MutableLiveData<String>message;

@@ -30,12 +30,6 @@ public class AuthenticationHelper  {
     private KeyStore keyStore;
     private Cipher cipher;
     private String KEY="FileEcp0_32";
-    public AuthenticationHelper(){
-
-
-    }
-
-
     @RequiresApi(api = Build.VERSION_CODES.Q)
     public void biometricAuthentication(Context context){
         BiometricPrompt builder= new BiometricPrompt.Builder(context)

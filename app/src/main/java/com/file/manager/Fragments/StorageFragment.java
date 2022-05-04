@@ -829,9 +829,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
     private void Delete() {
         final Folder folder=directoryManager.currentDir();
         if(folder.getMultiSelectedFiles().isEmpty())
-
             return;
-        Toast.makeText(getContext(),"test",Toast.LENGTH_SHORT).show();
         ConfirmDeleteDialog deleteDialog= new ConfirmDeleteDialog(getContext(),folder.getMultiSelectedFiles());
         deleteDialog.setOnCompleteListener(new DeleteFilesUtility.OnDeleteCompleteListener() {
             @Override
