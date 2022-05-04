@@ -391,7 +391,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 switch (item.getItemId()){
                     case R.id.Paste:
                         String storage=DiskUtils.getInstance().getStartDirectory(file);
-                        if(!isStoragePermissionGranted(file))
+                        if(isStoragePermissionGranted(file))
                             getStoragePermission(new CustomFile(storage));
                          else
                             //paste files
@@ -546,7 +546,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             setCurrentDirectoryPath(folder);
         } else {
             String storage=DiskUtils.getInstance().getStartDirectory(file);
-            if(!isStoragePermissionGranted(file)&file.isAndroidDirectory()) {
+            if(isStoragePermissionGranted(file) &file.isAndroidDirectory()) {
                 getStoragePermission(new CustomFile(storage));
                 return;
             }
@@ -646,7 +646,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
 
     private boolean isStoragePermissionGranted(CustomFile file){
         String storage=DiskUtils.getInstance().getStartDirectory(file);
-        return PermissionsHelper.getInstance().uriValid(new File(storage),getContext());
+        return !PermissionsHelper.getInstance().uriValid(new File(storage), getContext());
     }
 
     private void getStoragePermission(CustomFile file){
@@ -780,7 +780,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     case R.id.DELETE:
                         file=getFolder().getMultiSelectedFiles().get(0);
                         storage=DiskUtils.getInstance().getStartDirectory(file);
-                        if(!isStoragePermissionGranted(file)) {
+                        if(isStoragePermissionGranted(file)) {
                             getStoragePermission(new CustomFile(storage));
                         } else {
                             Delete();exitSelectMode();
@@ -797,7 +797,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     case R.id.RENAME:
                         file=getFolder().getMultiSelectedFiles().get(0);
                         storage=DiskUtils.getInstance().getStartDirectory(file);
-                        if(!isStoragePermissionGranted(file)) {
+                        if(isStoragePermissionGranted(file)) {
                             getStoragePermission(new CustomFile(storage));
                         }else {
                             Rename();
