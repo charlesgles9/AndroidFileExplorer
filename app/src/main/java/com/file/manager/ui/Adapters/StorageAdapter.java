@@ -22,16 +22,12 @@ import com.file.manager.Operations;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.Folder;
-import com.file.manager.ui.Models.FolderSizeModel;
 import com.file.manager.FilterType;
 import com.file.manager.utils.DateUtils;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileFilters;
 import com.file.manager.utils.ThumbnailLoader;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class StorageAdapter extends RecyclerView.Adapter<StorageAdapter.FileViewHolder> {

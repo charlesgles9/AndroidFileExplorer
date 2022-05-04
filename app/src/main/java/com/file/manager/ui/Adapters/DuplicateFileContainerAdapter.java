@@ -1,5 +1,6 @@
 package com.file.manager.ui.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ public class DuplicateFileContainerAdapter extends RecyclerView.Adapter<Duplicat
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull DuplicateFileViewHolder holder, int position) {
         final DuplicateFileModel model=container.getArray().get(position);

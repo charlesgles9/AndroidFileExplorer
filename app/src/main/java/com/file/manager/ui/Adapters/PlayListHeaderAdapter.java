@@ -12,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
-import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListHeader;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,9 +70,6 @@ public class PlayListHeaderAdapter extends RecyclerView.Adapter<PlayListHeaderAd
         notifyItemChanged(current);
     }
 
-    public int getCurrent() {
-        return current;
-    }
 
     @Override
     public int getItemCount() {

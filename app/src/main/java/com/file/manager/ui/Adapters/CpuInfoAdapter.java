@@ -1,5 +1,6 @@
 package com.file.manager.ui.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class CpuInfoAdapter extends RecyclerView.Adapter<CpuInfoAdapter.CpuInfoV
         return new CpuInfoViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CpuInfoViewHolder holder, int position) {
         CpuModel cpuModel=array.get(position);
@@ -42,7 +44,7 @@ public class CpuInfoAdapter extends RecyclerView.Adapter<CpuInfoAdapter.CpuInfoV
         return array.size();
     }
 
-    class CpuInfoViewHolder extends RecyclerView.ViewHolder{
+    static class CpuInfoViewHolder extends RecyclerView.ViewHolder{
         TextView processor;
         TextView usage;
         public CpuInfoViewHolder(View view){

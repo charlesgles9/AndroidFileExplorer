@@ -41,8 +41,7 @@ public class DirectoryPathAdapter extends RecyclerView.Adapter<DirectoryPathAdap
         segments.clear();
         String start= DiskUtils.getInstance().getStartDirectory(new File(path));
         path=path.replace(start,"");
-        String newS="Local "+path;
-        path=newS;
+        path= "Local "+path;
         String []array=path.split("/");
         Collections.addAll(segments,array);
         notifyDataSetChanged();
@@ -52,14 +51,14 @@ public class DirectoryPathAdapter extends RecyclerView.Adapter<DirectoryPathAdap
         this.itemListener=itemListener;
     }
     public String getSegmentAsString(int stop){
-        String path="";
+        StringBuilder path= new StringBuilder();
         for(int i=0;i<=stop;i++){
             String segment=segments.get(i);
             if(segment.equals("Local "))
                 continue;
-            path+=segment+"/";
+            path.append(segment).append("/");
         }
-        return path;
+        return path.toString();
     }
 
     @Override

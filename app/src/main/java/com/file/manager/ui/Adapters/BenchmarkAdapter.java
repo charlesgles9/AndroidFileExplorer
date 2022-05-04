@@ -1,5 +1,6 @@
 package com.file.manager.ui.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class BenchmarkAdapter extends RecyclerView.Adapter<BenchmarkAdapter.Benc
         return new BenchmarkViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BenchmarkViewHolder holder, int position) {
       final CopyUtility utility=array.get(position);
@@ -58,7 +60,7 @@ public class BenchmarkAdapter extends RecyclerView.Adapter<BenchmarkAdapter.Benc
         return array.size();
     }
 
-    class BenchmarkViewHolder extends RecyclerView.ViewHolder{
+    static class BenchmarkViewHolder extends RecyclerView.ViewHolder{
         TextView title;
         TextView speed;
         TextView bytes;

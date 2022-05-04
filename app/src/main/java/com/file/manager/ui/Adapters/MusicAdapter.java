@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.file.manager.R;
-import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.MusicHelperSingleton;
 import com.file.manager.ui.Models.PlayListChild;
 

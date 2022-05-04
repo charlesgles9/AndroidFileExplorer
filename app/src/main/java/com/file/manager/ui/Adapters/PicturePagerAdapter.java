@@ -1,8 +1,5 @@
 package com.file.manager.ui.Adapters;
 
-import android.content.Context;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,11 +14,10 @@ import java.util.List;
 public class PicturePagerAdapter extends FragmentPagerAdapter {
 
     private List<PictureTabFragment>fragments;
-    private Context context;
-    public PicturePagerAdapter(Context context,FragmentManager manager, List<PictureTabFragment>fragments){
+
+    public PicturePagerAdapter(FragmentManager manager, List<PictureTabFragment>fragments){
         super(manager);
        this.fragments=fragments;
-       this.context=context;
     }
 
 
@@ -36,8 +32,7 @@ public class PicturePagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String name=fragments.get(position).getName();
-        return name;
+        return fragments.get(position).getName();
     }
 
     @NonNull

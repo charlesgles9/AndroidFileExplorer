@@ -62,7 +62,7 @@ public class PictureViewerActivity extends AppCompatActivity  {
         if(path==null)finish();
         CustomFile chosen=new CustomFile(path);
         final CustomFile parent=new CustomFile(chosen.getParent());
-        adapter=new PicturePagerAdapter(getApplicationContext(),getSupportFragmentManager(),fragments);
+        adapter=new PicturePagerAdapter(getSupportFragmentManager(),fragments);
         pager=findViewById(R.id.pager);
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
