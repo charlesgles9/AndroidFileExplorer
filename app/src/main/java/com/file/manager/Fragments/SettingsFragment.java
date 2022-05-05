@@ -50,16 +50,6 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 
     }
 
-    private void setTheme(String theme){
-        if(theme.equals("Dark")) {
-            getActivity().setTheme(R.style.PreferenceThemeDark);
-            getActivity().getWindow().setStatusBarColor( getResources().getColor(R.color.darkStatusBar));
-        }else {
-            getActivity().setTheme(R.style.PreferenceThemeLight);
-            getActivity().getWindow().setStatusBarColor( getResources().getColor(R.color.colorPrimaryLight));
-        }
-    }
-
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference=findPreference(key);
