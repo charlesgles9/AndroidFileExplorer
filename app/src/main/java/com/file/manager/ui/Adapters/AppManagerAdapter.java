@@ -90,6 +90,7 @@ public class AppManagerAdapter extends RecyclerView.Adapter<AppManagerAdapter.Ap
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AppManagerViewHolder holder, int position) {
          final AppManagerModel model=apps.get(position);

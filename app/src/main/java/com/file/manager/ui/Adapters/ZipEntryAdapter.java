@@ -47,6 +47,7 @@ public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEnt
         if(!header.isDirectory())
         holder.size.setText(DiskUtils.getInstance().getSize(header.getUncompressedSize()));
         else holder.size.setText("");
+        holder.selected.setChecked(archiveDecompressUtil.isSelected(position));
 
     }
 
@@ -83,13 +84,13 @@ public class ZipEntryAdapter extends RecyclerView.Adapter<ZipEntryAdapter.ZipEnt
         @Override
         public void onClick(View v) {
              if(v.getId()==R.id.selected)
-                onItemClickListener.onSelect(archiveDecompressUtil.getCurrentDirList().get(getAdapterPosition()));
+                onItemClickListener.onSelect(getAdapterPosition());
              else
             onItemClickListener.onClick(archiveDecompressUtil.getCurrentDirList().get(getAdapterPosition()));
         }
     }
     public interface  OnItemClickListener{
         void onClick(FileHeader fileHeader);
-        void onSelect(FileHeader header);
+        void onSelect(int position);
     }
 }

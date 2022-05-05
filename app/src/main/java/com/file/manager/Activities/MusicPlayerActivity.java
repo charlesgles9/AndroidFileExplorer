@@ -110,6 +110,8 @@ public class MusicPlayerActivity extends AppCompatActivity {
                     if(musicHelperSingleton.getPlayList().equals("PlayList"))
                        audioPlayListBottomSheet.getPlayListFragment().getPlayListAdapter().notifyDataSetChanged();
                     else
+                        // make sure the bottom sheet dialog layout has been initialized at least once
+                        if(audioPlayListBottomSheet.getMusicListFragment()!=null)
                         audioPlayListBottomSheet.getMusicListFragment().getAdapter().notifyDataSetChanged();
                     musicHelperSingleton.setReset(false);
                 }

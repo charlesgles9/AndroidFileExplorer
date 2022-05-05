@@ -137,8 +137,8 @@ public class ArchiveExtractorDialog extends Dialog  {
                 }
             }
             @Override
-            public void onSelect(FileHeader header){
-
+            public void onSelect(int position){
+                archiveDecompressUtil.toggleSelect(position);
             }
         });
 

@@ -36,6 +36,7 @@ public class ArchiveDecompressUtil  {
   private int dirKey=1;
   private List<FileHeader>fileHeaders;
   private List<FileHeader>currentDir= new ArrayList<>();
+  private boolean SELECT[];
   private Map<Integer,List<FileHeader>>map= new HashMap<>();
   private String destination;
   private OnExtractCompleteCallback onExtractCompleteCallback;
@@ -53,20 +54,37 @@ public class ArchiveDecompressUtil  {
     }
 
     private void extractAll() throws Exception {
-        if(new File(destination).canWrite()) {
-            if (isEncrypted()) {
-                try {
-                    zipFile.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                zipFile = new ZipFile(source.getPath(), password.toCharArray());
+        final ArrayList<Integer>positions= new ArrayList<>();
+        if(SELECT!=null)
+        for (int i=0;i<SELECT.length;i++){
+            if(SELECT[i]){
+                positions.add(i);
             }
-            zipFile.setCharset(Charset.forName(charset));
-            zipFile.extractAll(destination);
-        }else {
-            if(treeUri!=null)
-                streamExtract(treeUri);
+        }
+        if(positions.isEmpty()) {
+            if (new File(destination).canWrite()) {
+                if (isEncrypted()) {
+                    try {
+                        zipFile.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    zipFile = new ZipFile(source.getPath(), password.toCharArray());
+                }
+                zipFile.setCharset(Charset.forName(charset));
+                zipFile.extractAll(destination);
+            } else {
+                if (treeUri != null)
+                    streamExtract(treeUri);
+
+            }
+            // extract only the selected files
+        }else{
+            for(int value:positions) {
+                extractFile(fileHeaders.get(value));
+                // reset select
+                SELECT[value]=false;
+            }
 
         }
     }
@@ -113,9 +131,12 @@ public class ArchiveDecompressUtil  {
                 }
                 continue;
             }
+            assert file != null;
             OutputStream out=context.getContentResolver().openOutputStream(file.getUri());
             while ((count=zipInputStream.read(buffer))!=-1){
-                out.write(buffer,0,count);
+                if (out != null) {
+                    out.write(buffer,0,count);
+                }
             }
         }
 
@@ -154,6 +175,7 @@ public class ArchiveDecompressUtil  {
         if(ll!=null)
         currentDir=ll;
         else currentDir=new ArrayList<>();
+        SELECT= new boolean[currentDir.size()];
     }
 
     public int getDirKey() {
@@ -166,6 +188,15 @@ public class ArchiveDecompressUtil  {
 
     public void setCharset(String charset) {
         this.charset = charset;
+    }
+
+
+    public boolean isSelected(int position){
+        return SELECT!=null&&SELECT[position];
+    }
+
+    public void toggleSelect(int position){
+        SELECT[position]=!SELECT[position];
     }
 
     public ListFileHeaders listFileHeadersTask(OnTaskCompleteListener onTaskCompleteListener){
@@ -194,14 +225,12 @@ public class ArchiveDecompressUtil  {
                 list= new ArrayList<>();
                 map.put(arr.length,list);
             }
+            assert list != null;
             list.add(fileHeader);
         }
         for (Map.Entry<Integer, List<FileHeader>> entry:map.entrySet())
              Sorter.sortZipEntry(entry.getValue());
-        dirKey=firstKey;
-        List<FileHeader>ll=map.get(dirKey);
-        if(ll!=null)
-        currentDir=ll;
+        setDirKey(firstKey);
     }
 
 
