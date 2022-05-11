@@ -269,7 +269,6 @@ public class MainActivity extends AppCompatActivity  {
                         break;
                     case R.id.benchmark:
                         fragment=new StorageBenchmarkFragment(fragment);
-
                         break;
                 }
             }
@@ -370,6 +369,7 @@ public class MainActivity extends AppCompatActivity  {
         this.subtitle=subtitle;
         toolbar.setSubtitle(subtitle);
    }
+
     public void openDrawer(){
         drawer.open();
     }
