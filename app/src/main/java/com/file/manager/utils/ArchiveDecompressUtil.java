@@ -1,5 +1,6 @@
 package com.file.manager.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -36,7 +37,7 @@ public class ArchiveDecompressUtil  {
   private int dirKey=1;
   private List<FileHeader>fileHeaders;
   private List<FileHeader>currentDir= new ArrayList<>();
-  private boolean SELECT[];
+  private boolean[] SELECT;
   private Map<Integer,List<FileHeader>>map= new HashMap<>();
   private String destination;
   private OnExtractCompleteCallback onExtractCompleteCallback;
@@ -186,6 +187,7 @@ public class ArchiveDecompressUtil  {
         return currentDir;
     }
 
+
     public void setCharset(String charset) {
         this.charset = charset;
     }
@@ -305,6 +307,7 @@ public class ArchiveDecompressUtil  {
         running=false;
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class ListFileHeaders extends AsyncTask<String,Integer,String>{
 
         private OnTaskCompleteListener onListFileHeaderListener;
@@ -332,6 +335,7 @@ public class ArchiveDecompressUtil  {
             super.onPreExecute();
         }
     }
+    @SuppressLint("StaticFieldLeak")
     public class ExtractSingleTask extends AsyncTask<String,Integer,String>{
 
         private FileHeader header;

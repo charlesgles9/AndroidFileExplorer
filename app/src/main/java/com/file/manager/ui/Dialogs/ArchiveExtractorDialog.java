@@ -283,11 +283,13 @@ public class ArchiveExtractorDialog extends Dialog  {
        View view=inflater.inflate(R.layout.dialog_select_all,null);
        final PopupWindow popupWindow= new PopupWindow(view, LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT,true);
        popupWindow.showAsDropDown(anchor,0,0, Gravity.RIGHT);
-       TextView textView=view.findViewById(R.id.selectAll);
+       final TextView textView=view.findViewById(R.id.selectAll);
        textView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-
+            for(int i=0;i<archiveDecompressUtil.size();i++)
+                archiveDecompressUtil.toggleSelect(i);
+             zipEntryAdapter.notifyDataSetChanged();
            }
        });
    }
