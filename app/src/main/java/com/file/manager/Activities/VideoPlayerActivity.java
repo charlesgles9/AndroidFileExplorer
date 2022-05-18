@@ -17,7 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.file.manager.Fragments.VideoTabFragment;
 import com.file.manager.R;
-import com.file.manager.TapGesture;
+import com.file.manager.ui.TapGesture;
 import com.file.manager.ui.Adapters.VideoPagerAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.Constants.SortBy;

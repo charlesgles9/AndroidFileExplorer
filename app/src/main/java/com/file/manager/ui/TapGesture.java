@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.ui;
 
 import android.content.Context;
 import android.view.GestureDetector;

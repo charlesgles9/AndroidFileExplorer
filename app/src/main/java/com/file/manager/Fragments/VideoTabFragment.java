@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.file.manager.R;
-import com.file.manager.TapGesture;
+import com.file.manager.ui.TapGesture;
 import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.utils.DateUtils;
 import com.file.manager.utils.Timer;
