@@ -29,6 +29,7 @@ public class VideoTabFragment extends Fragment {
 
     private VideoView videoView;
     private ToggleButton play;
+    private Button subtitle;
     private Button rotate;
     private View controller;
     private File file;
@@ -53,6 +54,7 @@ public class VideoTabFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View root=inflater.inflate(R.layout.video_player_fragment,container,false);
         videoView=root.findViewById(R.id.video);
+        subtitle=root.findViewById(R.id.subtitle);
         play=root.findViewById(R.id.play);
         seekTo=root.findViewById(R.id.seekTo);
         rotate=root.findViewById(R.id.rotate);
@@ -185,6 +187,7 @@ public class VideoTabFragment extends Fragment {
             controller.setVisibility(play.getVisibility());
             rotate.setVisibility(play.getVisibility());
             isControllerVisible=isVisible;
+            subtitle.setVisibility(isVisible ? View.VISIBLE : View.INVISIBLE);
 
         }
 
