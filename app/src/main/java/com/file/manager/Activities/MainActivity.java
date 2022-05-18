@@ -399,13 +399,7 @@ public class MainActivity extends AppCompatActivity  {
     private GlobalFileOperations globalFileOperations= new GlobalFileOperations() {
         @Override
         public void copy() {
-            toolbar.setSubtitle(subtitle);
             findViewById(R.id.FILE_HANDLE).setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        public void paste() {
-
         }
 
         @Override

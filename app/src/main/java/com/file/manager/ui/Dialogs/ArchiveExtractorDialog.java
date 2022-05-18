@@ -287,9 +287,10 @@ public class ArchiveExtractorDialog extends Dialog  {
        textView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-            for(int i=0;i<archiveDecompressUtil.size();i++)
+            for(int i=0;i<archiveDecompressUtil.getCurrentDirList().size();i++)
                 archiveDecompressUtil.toggleSelect(i);
-             zipEntryAdapter.notifyDataSetChanged();
+               zipEntryAdapter.notifyDataSetChanged();
+              popupWindow.dismiss();
            }
        });
    }

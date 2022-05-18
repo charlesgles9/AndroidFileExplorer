@@ -1064,7 +1064,6 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             }
          else
            exitSelectMode();
-        globalFileOperations.paste();
         activity.getGlobalFileHandleLayout().setVisibility(View.GONE);
     }
 

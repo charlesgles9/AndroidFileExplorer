@@ -82,7 +82,7 @@ public class ArchiveDecompressUtil  {
             // extract only the selected files
         }else{
             for(int value:positions) {
-                extractFile(fileHeaders.get(value));
+                extractFile(currentDir.get(value));
                 // reset select
                 SELECT[value]=false;
             }
@@ -258,6 +258,7 @@ public class ArchiveDecompressUtil  {
     public int size(){
         return fileHeaders.size();
     }
+    @SuppressLint("StaticFieldLeak")
     public class ExtractAllTask extends AsyncTask<String,Integer,String>{
 
 
