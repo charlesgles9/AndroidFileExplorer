@@ -374,7 +374,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
     private void initStorageCategoryStats(){
         // in case the user refreshes multiple times
         // prevents memory leaks
-        if(calculatingText.getVisibility()==View.INVISIBLE) {
+        if(calculatingText.getVisibility()==View.INVISIBLE&!PermissionsHelper.getInstance().checkStoragePermissionDenied()) {
 
             new AsyncTask<String, Integer, String>() {
                 ArrayList<CustomFile> videos = new ArrayList<>();
