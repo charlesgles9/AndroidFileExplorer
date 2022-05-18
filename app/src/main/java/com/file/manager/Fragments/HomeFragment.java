@@ -80,12 +80,6 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
     private BookMarkAdapter bookMarkAdapter;
     private SharedPreferences preferences;
     private ArrayList<File>bookmarksArray=new ArrayList<>();
-    private ProgressBar videoProgress;
-    private ProgressBar photoProgress;
-    private ProgressBar appProgress;
-    private ProgressBar archiveProgress;
-    private ProgressBar docProgress;
-    private ProgressBar audioProgress;
     private TextView calculatingText;
     public HomeFragment(GlobalFileOperations globalFileOperations){
         FragmentID= UUID.randomUUID().hashCode();
@@ -102,12 +96,7 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
         preferences=getContext().getSharedPreferences("Bookmarks",Context.MODE_PRIVATE);
         final LinearLayout searchLayout=root.findViewById(R.id.searchLayout);
         final ToggleButton showRecent=root.findViewById(R.id.showRecent);
-        videoProgress=root.findViewById(R.id.videoProgress);
-        photoProgress=root.findViewById(R.id.photoProgress);
-        appProgress=root.findViewById(R.id.appProgress);
-        audioProgress=root.findViewById(R.id.audioProgress);
-        archiveProgress=root.findViewById(R.id.archiveProgress);
-        docProgress=root.findViewById(R.id.docProgress);
+
         calculatingText=root.findViewById(R.id.calculationText);
         bookMarkToggleLayout=root.findViewById(R.id.bookMarkToggleLayout);
         bookMarkLayout=root.findViewById(R.id.bookMarkLayout);
@@ -440,12 +429,13 @@ public class HomeFragment extends Fragment implements WindowState, IOnBackPresse
                         else
                             archiveSize += file.length();
                     }
-                    videoProgress.setProgress((int) (((float) videoSize / (float) storageSize) * 100) + 1);
-                    photoProgress.setProgress((int) (((float) photoSize / (float) storageSize) * 100) + 1);
-                    audioProgress.setProgress((int) (((float) audioSize / (float) storageSize) * 100) + 1);
-                    appProgress.setProgress((int) (((float) appSize / (float) storageSize) * 100) + 1);
-                    docProgress.setProgress((int) (((float) docSize / (float) storageSize) * 100) + 1);
-                    archiveProgress.setProgress((int) (((float) archiveSize / (float) storageSize) * 100) + 1);
+
+                    ((ProgressBar)root.findViewById(R.id.videoProgress)).setProgress((int) (((float) videoSize / (float) storageSize) * 100) + 1);
+                    ((ProgressBar)root.findViewById(R.id.photoProgress)).setProgress((int) (((float) photoSize / (float) storageSize) * 100) + 1);
+                    ((ProgressBar)root.findViewById(R.id.audioProgress)).setProgress((int) (((float) audioSize / (float) storageSize) * 100) + 1);
+                    ((ProgressBar)root.findViewById(R.id.appProgress)).setProgress((int) (((float) appSize / (float) storageSize) * 100) + 1);
+                    ((ProgressBar)root.findViewById(R.id.docProgress)).setProgress((int) (((float) docSize / (float) storageSize) * 100) + 1);
+                    ((ProgressBar)root.findViewById(R.id.archiveProgress)).setProgress((int) (((float) archiveSize / (float) storageSize) * 100) + 1);
                     ((TextView) root.findViewById(R.id.videoText)).setText("Video(" + DiskUtils.getInstance().getSize(videoSize) + ")");
                     ((TextView) root.findViewById(R.id.audioText)).setText("Audio(" + DiskUtils.getInstance().getSize(audioSize) + ")");
                     ((TextView) root.findViewById(R.id.androidText)).setText("App(" + DiskUtils.getInstance().getSize(appSize) + ")");
