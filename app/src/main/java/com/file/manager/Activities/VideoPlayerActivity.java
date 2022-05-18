@@ -20,7 +20,7 @@ import com.file.manager.R;
 import com.file.manager.TapGesture;
 import com.file.manager.ui.Adapters.VideoPagerAdapter;
 import com.file.manager.ui.Models.CustomFile;
-import com.file.manager.SortBy;
+import com.file.manager.Constants.SortBy;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileFilters;
 import com.file.manager.utils.FileHandleUtil;

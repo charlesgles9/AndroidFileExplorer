@@ -2,7 +2,7 @@ package com.file.manager.ui.Models;
 
 import android.content.Context;
 
-import com.file.manager.FilterType;
+import com.file.manager.Constants.FilterType;
 
 import java.io.Serializable;
 import java.util.HashMap;

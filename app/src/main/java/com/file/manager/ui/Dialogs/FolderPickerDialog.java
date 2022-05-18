@@ -24,7 +24,7 @@ import com.file.manager.ui.Adapters.StorageAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.DirectoryManager;
 import com.file.manager.ui.Models.Folder;
-import com.file.manager.FilterType;
+import com.file.manager.Constants.FilterType;
 import com.file.manager.utils.CopyHelper;
 import com.file.manager.utils.CopyUtility;
 import com.file.manager.utils.CutHelper;

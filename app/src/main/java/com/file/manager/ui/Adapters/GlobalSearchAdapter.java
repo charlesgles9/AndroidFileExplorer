@@ -14,7 +14,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.file.manager.Operations;
+import com.file.manager.Constants.Operations;
 import com.file.manager.R;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.utils.DiskUtils;

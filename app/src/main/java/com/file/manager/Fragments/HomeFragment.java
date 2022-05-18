@@ -43,7 +43,7 @@ import com.file.manager.ui.Adapters.SwitchWindowAdapter;
 import com.file.manager.ui.Models.CustomFile;
 import com.file.manager.ui.Models.WindowModel;
 import com.file.manager.ui.Dialogs.SwitchWindowDialog;
-import com.file.manager.FilterType;
+import com.file.manager.Constants.FilterType;
 import com.file.manager.ui.Models.RecentFilesContainer;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileFilters;

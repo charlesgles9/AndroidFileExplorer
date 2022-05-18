@@ -1,4 +1,4 @@
-package com.file.manager;
+package com.file.manager.Constants;
 
 public enum SortBy {
     AZ,

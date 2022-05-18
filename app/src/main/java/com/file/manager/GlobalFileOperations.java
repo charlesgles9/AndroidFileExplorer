@@ -1,5 +1,6 @@
 package com.file.manager;
 
+import com.file.manager.Constants.Operations;
 import com.file.manager.ui.Models.WindowModel;
 
 public interface GlobalFileOperations {

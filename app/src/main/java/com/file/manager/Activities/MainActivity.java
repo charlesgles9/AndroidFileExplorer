@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.file.manager.GlobalFileOperations;
 import com.file.manager.IOnBackPressed;
-import com.file.manager.Operations;
+import com.file.manager.Constants.Operations;
 import com.file.manager.R;
 import com.file.manager.Fragments.AppManagerFragment;
 import com.file.manager.Fragments.DuplicateFileFragment;
@@ -33,7 +33,7 @@ import com.file.manager.ui.Dialogs.FingerPrintAuthDialog;
 import com.file.manager.ui.Models.WindowModel;
 import com.file.manager.Fragments.GlobalSearchFragment;
 import com.file.manager.Fragments.HomeFragment;
-import com.file.manager.FilterType;
+import com.file.manager.Constants.FilterType;
 import com.file.manager.Fragments.StorageFragment;
 import com.file.manager.utils.DiskUtils;
 import com.file.manager.utils.FileHandleUtil;
