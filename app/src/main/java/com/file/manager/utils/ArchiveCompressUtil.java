@@ -1,5 +1,6 @@
 package com.file.manager.utils;
 ;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -41,6 +42,7 @@ public class ArchiveCompressUtil extends AsyncTask<String,Integer,String> {
     private CompressionLevel compressionLevel=CompressionLevel.MEDIUM_FAST;
     private long size;
     private Uri uriTree;
+    @SuppressLint("StaticFieldLeak")
     private Context context;
     private CompressionMethod method=CompressionMethod.DEFLATE;
     public ArchiveCompressUtil(Context context,Uri uriTree, ArrayList<File> files){
@@ -58,7 +60,7 @@ public class ArchiveCompressUtil extends AsyncTask<String,Integer,String> {
         this.password = password;
     }
 
-    public File compressFile() throws ZipException {
+    public void compressFile() throws ZipException {
         ZipParameters zipParameters=new ZipParameters();
         // set encryption
         zipParameters.setCompressionMethod(method);
@@ -78,10 +80,10 @@ public class ArchiveCompressUtil extends AsyncTask<String,Integer,String> {
 
         }
 
-       return zipFile.getFile();
+        zipFile.getFile();
     }
 
-    public File compressFileSAF() throws Exception,RuntimeException {
+    public void compressFileSAF() throws Exception,RuntimeException {
         ZipParameters zipParameters = buildZipParams(!password.equals(""));
         ZipOutputStream zipOutputStream=getZipOutputStream(zipParameters);
         int count;
@@ -96,7 +98,7 @@ public class ArchiveCompressUtil extends AsyncTask<String,Integer,String> {
             zipOutputStream.closeEntry();
         }
         zipOutputStream.close();
-        return zipFile.getFile();
+        zipFile.getFile();
     }
 
     private ZipOutputStream getZipOutputStream(ZipParameters zipParameters) throws Exception {
@@ -231,10 +233,6 @@ public class ArchiveCompressUtil extends AsyncTask<String,Integer,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-    }
-
-    public HashMap<String, String> getStats() {
-        return stats;
     }
 
     public interface OnCompressionCompleteCallback{
