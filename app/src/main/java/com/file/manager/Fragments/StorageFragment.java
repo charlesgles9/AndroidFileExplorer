@@ -1371,7 +1371,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                         break;
                     case R.id.openWith:
                         if(file.getExtension()!=null) {
-                            String type=MimeTypeMap.getSingleton().getMimeTypeFromExtension(file.getExtension());
+                            String type=MimeTypeMap.getSingleton().getMimeTypeFromExtension(file.getExtension().substring(1));
                             new MIMETypesHelper(getContext(), file).startNoDefaults(type);
                         }else{
                             openAsDialog= new OpenAsDialog(getContext(),file);
