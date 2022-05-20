@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -1335,10 +1336,12 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         popupWindow.showAsDropDown(anchor,0,0,Gravity.RIGHT);
         final RadioButton open=view.findViewById(R.id.open);
         final RadioButton openAs=view.findViewById(R.id.openAs);
+        final RadioButton openWith=view.findViewById(R.id.openWith);
         final RadioButton share=view.findViewById(R.id.share);
         final RadioButton compress=view.findViewById(R.id.compress);
         if(folder.getMultiSelectedFiles().size()>1){
             openAs.setEnabled(false);
+            openWith.setEnabled(false);
             share.setEnabled(false);
             open.setEnabled(false);
         }
@@ -1365,6 +1368,15 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                     case R.id.openAs:
                         OpenAsDialog openAsDialog= new OpenAsDialog(getContext(),file);
                         openAsDialog.show();
+                        break;
+                    case R.id.openWith:
+                        if(file.getExtension()!=null) {
+                            String type=MimeTypeMap.getSingleton().getMimeTypeFromExtension(file.getExtension());
+                            new MIMETypesHelper(getContext(), file).startNoDefaults(type);
+                        }else{
+                            openAsDialog= new OpenAsDialog(getContext(),file);
+                            openAsDialog.show();
+                        }
                         break;
                     case R.id.bookmark:
                         addFilesToBookMarks();
@@ -1395,6 +1407,7 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
         open.setOnClickListener(onClickListener);
         share.setOnClickListener(onClickListener);
         openAs.setOnClickListener(onClickListener);
+        openWith.setOnClickListener(onClickListener);
         compress.setOnClickListener(onClickListener);
 
     }

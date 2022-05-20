@@ -39,7 +39,7 @@
                     android:text=" Share"/>
 
                 <RadioButton
-                    android:id="@+id/openAs"
+                    android:id="@+id/openWith"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:button="@null"
@@ -48,9 +48,19 @@
                     android:drawableStart="@drawable/ic_open_as"
                     android:gravity="top"
                     android:textColor="?attr/normalTextColor"
-                    android:text=" Open As"/>
+                    android:text=" Open With"/>
 
-
+            <RadioButton
+                android:id="@+id/openAs"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:button="@null"
+                android:padding="5dp"
+                android:background="@drawable/drawable_highlight2"
+                android:drawableStart="@drawable/ic_open_as"
+                android:gravity="top"
+                android:textColor="?attr/normalTextColor"
+                android:text=" Open As"/>
             <RadioButton
                     android:id="@+id/compress"
                     android:layout_width="match_parent"
