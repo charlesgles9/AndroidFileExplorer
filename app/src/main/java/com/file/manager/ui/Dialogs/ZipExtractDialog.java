@@ -50,7 +50,7 @@ public class ZipExtractDialog extends Dialog {
         final long[]average={1};
         final long[] bytesCopied={1};
         final long[] pBytesCopied={1};
-        final String pFileName[]={""};
+        final String[] pFileName ={""};
         final ArchiveDecompressUtil.ExtractAllTask task= archiveDecompressUtil.extract();
         final Map<String, File>map= new HashMap<>();
         timer.setListener(new Timer.TimerListener() {
