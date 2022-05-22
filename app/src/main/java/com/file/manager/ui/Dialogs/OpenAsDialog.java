@@ -12,8 +12,10 @@ import com.file.manager.ui.Models.CustomFile;
 public class OpenAsDialog extends Dialog implements View.OnClickListener {
 
     private CustomFile file;
+    private Context context;
     public OpenAsDialog(Context context, CustomFile file){
         super(context);
+        this.context=context;
         this.file=file;
     }
     @Override
@@ -32,19 +34,19 @@ public class OpenAsDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.audio:
-                new MIMETypesHelper(getContext(),file).startNoDefaults("audio/*");
+                new MIMETypesHelper(context,file).startNoDefaults("audio/*");
                 break;
             case R.id.text:
-                new MIMETypesHelper(getContext(),file).startNoDefaults("text/csv");
+                new MIMETypesHelper(context,file).startNoDefaults("text/csv");
                 break;
             case R.id.video:
-                new MIMETypesHelper(getContext(),file).startNoDefaults("video/*");
+                new MIMETypesHelper(context,file).startNoDefaults("video/*");
                 break;
             case R.id.image:
-                new MIMETypesHelper(getContext(),file).startNoDefaults("image/*");
+                new MIMETypesHelper(context,file).startNoDefaults("image/*");
                 break;
             case R.id.other:
-                new MIMETypesHelper(getContext(),file).startNoDefaults("*/*");
+                new MIMETypesHelper(context,file).startNoDefaults("*/*");
                 break;
 
         }
