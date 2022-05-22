@@ -11,8 +11,5 @@ public enum FilterType {
     APPLICATION,
     FOLDERS,
     LARGEFILES,
-    HOME,
-    DUPLICATES,
-    INSTALLED
-
+    HOME
 }

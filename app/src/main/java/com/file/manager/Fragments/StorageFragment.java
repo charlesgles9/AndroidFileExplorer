@@ -1020,21 +1020,21 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
             exitSelectMode();
     }
 
-    private boolean pasteFiles(){
+    private void pasteFiles(){
         final ArrayList<CustomFile>data;
         if(!CopyHelper.getInstance().isEmpty()) {
             data = CopyHelper.getInstance().getData();
             if(CopyHelper.getInstance().contains(getFolder().getPath())){
                 exitSelectMode();
                 Toast.makeText(getContext(),"Choose different Directory!",Toast.LENGTH_SHORT).show();
-                return false;
+                return;
             }
         }else{
             data=CutHelper.getInstance().getData();
             if(CutHelper.getInstance().contains(getFolder().getPath())){
                 exitSelectMode();
                 Toast.makeText(getContext(),"Choose different Directory!"+getFolder().getPath(),Toast.LENGTH_SHORT).show();
-                return false;
+                return;
             }
 
         }
@@ -1049,11 +1049,9 @@ public class StorageFragment extends Fragment implements IOnBackPressed, WindowS
                 }
             });
             overWriteDialog.show();
-            return true;
         }else {
              pasteFiles(data);
         }
-        return false;
     }
 
     private void pasteFiles(ArrayList<CustomFile>data){

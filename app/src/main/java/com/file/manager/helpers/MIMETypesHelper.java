@@ -182,7 +182,6 @@ public class MIMETypesHelper {
       return chooserIntent;
     }
 
-
     private Intent OpenShareFile(Context context, Uri uri){
         String MimeType=getMimeType(file);
         // exit if completely unavailable exit
@@ -193,7 +192,6 @@ public class MIMETypesHelper {
         intent.putExtra(Intent.EXTRA_STREAM,uri);
         intent.setDataAndType(uri,MimeType);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
         return  Intent.createChooser(intent,"Share");
     }
 
