@@ -11,8 +11,6 @@ import com.file.manager.R;
 public class TaskDialogPrompt extends Dialog implements View.OnClickListener {
 
     private OnItemClickListener onItemClickListener;
-    private Button allow;
-    private Button dismiss;
     private ToggleButton remember;
     private boolean foreground=false;
     public TaskDialogPrompt(Context context){
@@ -24,8 +22,8 @@ public class TaskDialogPrompt extends Dialog implements View.OnClickListener {
         setCancelable(false);
         getWindow().setBackgroundDrawableResource(R.color.transparent);
         setContentView(R.layout.dialog_copy_prompt);
-        allow=findViewById(R.id.allow);
-        dismiss=findViewById(R.id.dismiss);
+        Button allow = findViewById(R.id.allow);
+        Button dismiss = findViewById(R.id.dismiss);
         remember=findViewById(R.id.remember);
         allow.setOnClickListener(this);
         dismiss.setOnClickListener(this);
