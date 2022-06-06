@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
             <RadioGroup
                 android:orientation="vertical"
-                android:background="@drawable/drawable_highlight6"
+                android:background="@drawable/drawable_highlight7"
                 android:foreground="@drawable/drawable_highlight7"
                 android:backgroundTint="?attr/background1"
                 android:layout_margin="10dp"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RadioButton
                     android:id="@+id/open"

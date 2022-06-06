@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
-            android:background="@drawable/drawable_highlight6"
+            android:background="@drawable/drawable_highlight7"
             android:foreground="@drawable/drawable_highlight7"
             android:backgroundTint="?attr/background1"
             android:layout_margin="10dp"
