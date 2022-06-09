@@ -295,23 +295,20 @@ public class VideoTabFragment extends Fragment {
     private void handleAspectRatio(){
         DisplayMetrics metrics= new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int sWidth=metrics.widthPixels;
-        int sHeight=metrics.heightPixels;
+        float sWidth=metrics.widthPixels;
+        float sHeight=metrics.heightPixels;
         float video_width=player.getVideoWidth();
         float video_height=player.getVideoHeight();
-        float ratio_width=sWidth/video_width;
-        float ratio_height=sHeight/video_height;
-        float aspect=video_width/video_height;
+        float ratio=video_width/video_height;
+        float aspect=sHeight/sWidth;
         ViewGroup.LayoutParams layoutParams=videoView.getLayoutParams();
 
         if(sWidth<sHeight) {
-            layoutParams.width = (int) (sWidth < video_width ? sWidth / ratio_width : sWidth);
-            layoutParams.height = (int) ( sHeight>video_height?sHeight/ratio_height:sHeight );
-            Toast.makeText(getContext(),"Width high",Toast.LENGTH_SHORT).show();
+            layoutParams.width=(int)(sWidth*aspect);
+            layoutParams.height=(int)(sHeight/ratio);
         }else {
-            layoutParams.width= (int)(sWidth>video_width?sWidth/ratio_width:sWidth*aspect);
-            layoutParams.height=(int)(sHeight<video_height?sHeight/ratio_height:sHeight*aspect);
-            Toast.makeText(getContext(),"Height high",Toast.LENGTH_SHORT).show();
+           layoutParams.width=(int)(sWidth*ratio);
+           layoutParams.height=(int)(sHeight/aspect);
         }
         videoView.setLayoutParams(layoutParams);
     }
