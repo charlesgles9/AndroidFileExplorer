@@ -193,6 +193,7 @@ public class VideoTabFragment extends Fragment {
             if(info.getTrackType()== MediaPlayer.TrackInfo.MEDIA_TRACK_TYPE_SUBTITLE){
                 final String mime=info.getFormat().getString(MediaFormat.KEY_MIME);
                 System.out.println("MIME "+mime);
+                Toast.makeText(getContext(),mime,Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -302,12 +303,15 @@ public class VideoTabFragment extends Fragment {
         float ratio_height=sHeight/video_height;
         float aspect=video_width/video_height;
         ViewGroup.LayoutParams layoutParams=videoView.getLayoutParams();
-        if(ratio_width>ratio_height){
-            layoutParams.width=(int)(sHeight*aspect);
-            layoutParams.height=(int)(sWidth*aspect);
-        }else{
-            layoutParams.width= (int)(sWidth*aspect);
-            layoutParams.height=(int)(sHeight/aspect);
+
+        if(sWidth<sHeight) {
+            layoutParams.width = (int) (sWidth < video_width ? sWidth / ratio_width : sWidth);
+            layoutParams.height = (int) ( sHeight>video_height?sHeight/ratio_height:sHeight );
+            Toast.makeText(getContext(),"Width high",Toast.LENGTH_SHORT).show();
+        }else {
+            layoutParams.width= (int)(sWidth>video_width?sWidth/ratio_width:sWidth*aspect);
+            layoutParams.height=(int)(sHeight<video_height?sHeight/ratio_height:sHeight*aspect);
+            Toast.makeText(getContext(),"Height high",Toast.LENGTH_SHORT).show();
         }
         videoView.setLayoutParams(layoutParams);
     }
