@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
+import android.media.SubtitleData;
+import android.media.TimedMetaData;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -20,6 +23,7 @@ import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.file.manager.R;
@@ -84,7 +88,7 @@ public class VideoTabFragment extends Fragment {
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
                    handleAspectRatio();
-
+             
             }
 
             @Override
@@ -95,7 +99,7 @@ public class VideoTabFragment extends Fragment {
         try {
             player.setDataSource(file.getPath());
             player.prepare();
-            fetchSubtitle();
+
         } catch (IOException e) {
             e.printStackTrace();
             getActivity().finish();
@@ -184,19 +188,8 @@ public class VideoTabFragment extends Fragment {
         return root;
     }
 
-    private void fetchSubtitle() throws IOException {
-        MediaPlayer player=new MediaPlayer();
-        player.setDataSource(file.getPath());
-        player.prepare();
-        final MediaPlayer.TrackInfo[]infos=player.getTrackInfo();
-        for (MediaPlayer.TrackInfo info : infos) {
-            if(info.getTrackType()== MediaPlayer.TrackInfo.MEDIA_TRACK_TYPE_SUBTITLE){
-                final String mime=info.getFormat().getString(MediaFormat.KEY_MIME);
-                System.out.println("MIME "+mime);
-                Toast.makeText(getContext(),mime,Toast.LENGTH_LONG).show();
-            }
-        }
-    }
+
+
     int tries=0;
     private long getVideoLength(){
         MediaMetadataRetriever retriever=new MediaMetadataRetriever();
@@ -299,17 +292,16 @@ public class VideoTabFragment extends Fragment {
         float sHeight=metrics.heightPixels;
         float video_width=player.getVideoWidth();
         float video_height=player.getVideoHeight();
-        float ratio=video_width/video_height;
-        float aspect=sHeight/sWidth;
         ViewGroup.LayoutParams layoutParams=videoView.getLayoutParams();
-
+        float ratio1=video_height/video_width;
         if(sWidth<sHeight) {
-            layoutParams.width=(int)(sWidth*aspect);
-            layoutParams.height=(int)(sHeight/ratio);
-        }else {
-           layoutParams.width=(int)(sWidth*ratio);
-           layoutParams.height=(int)(sHeight/aspect);
+            layoutParams.width = (int) (sWidth);
+            layoutParams.height = (int) (sHeight * ratio1);
+        }else{
+            layoutParams.width = (int) (sWidth/ratio1);
+            layoutParams.height = (int) (sHeight);
         }
+
         videoView.setLayoutParams(layoutParams);
     }
 }
