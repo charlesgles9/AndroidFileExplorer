@@ -34,7 +34,6 @@ public class VideoTabFragment extends Fragment {
 
     private VideoView videoView;
     private Activity activity;
-    private MediaPlayer player;
     private ToggleButton play;
     private Button subtitle;
     private Button rotate;
@@ -71,35 +70,11 @@ public class VideoTabFragment extends Fragment {
         controller=root.findViewById(R.id.controller);
         play.setChecked(executeOnStart);
         showPlayButton(executeOnStart);
-        player=new MediaPlayer();
-
-        videoView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceCreated(SurfaceHolder holder) {
-                player.setDisplay(holder);
-            }
-
-            @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
 
-            }
 
-            @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
-
-            }
-        });
-        try {
-            player.setDataSource(file.getPath());
-            player.prepare();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            getActivity().finish();
-        }
-
-         player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+         videoView.setVideoPath(file.getPath());
+         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 play.setChecked(false);
@@ -111,11 +86,11 @@ public class VideoTabFragment extends Fragment {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              if(!player.isPlaying()) {
+              if(!videoView.isPlaying()) {
                   playVideo();
                   timer.start();
               }else {
-                  player.pause();
+                  videoView.pause();
               }
 
             }
@@ -129,7 +104,7 @@ public class VideoTabFragment extends Fragment {
                 isControllerVisible=true;
                 //prevents the play video ui from being suddenly in other fragments
                 // since the tap gesture interface is shared
-               if(player.isPlaying())
+               if(videoView.isPlaying())
                 tapGesture.onClick();
                 timer.stop();
             }
@@ -141,9 +116,9 @@ public class VideoTabFragment extends Fragment {
             @Override
             public void calculate(long seconds) {
                endTime.setText(DateUtils.getDateStringHHMMSS(length));
-               currentTime.setText(DateUtils.getDateStringHHMMSS(player.getCurrentPosition()));
-                if(player.getCurrentPosition()<length){
-                seekTo.setProgress((int)((float)player.getCurrentPosition()/(float)length*100));
+               currentTime.setText(DateUtils.getDateStringHHMMSS(videoView.getCurrentPosition()));
+                if(videoView.getCurrentPosition()<length){
+                seekTo.setProgress((int)((float)videoView.getCurrentPosition()/(float)length*100));
                }else{
                 seekTo.setProgress(100);
                 videoViewUpdates.stop();
@@ -166,7 +141,7 @@ public class VideoTabFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 int stamp=(int)((float)length*(float)seekBar.getProgress()/100);
-                player.seekTo(stamp);
+                videoView.seekTo(stamp);
             }
         });
         rotate.setOnClickListener(new View.OnClickListener() {
@@ -202,8 +177,8 @@ public class VideoTabFragment extends Fragment {
     }
 
     public void pauseVideo(){
-        if(player!=null&&player.isPlaying()) {
-            player.pause();
+        if(videoView!=null&&videoView.isPlaying()) {
+            videoView.pause();
             videoViewUpdates.stop();
             showPlayButton(true);
             play.setChecked(false);
@@ -211,9 +186,9 @@ public class VideoTabFragment extends Fragment {
     }
 
     public void playVideo(){
-        if(player!=null&&!player.isPlaying()){
+        if(videoView!=null&&!videoView.isPlaying()){
             timer.start();
-            player.start();
+            videoView.start();
             videoViewUpdates.start();
         }
     }
@@ -231,8 +206,8 @@ public class VideoTabFragment extends Fragment {
     }
 
     public void skipFrames(int seconds){
-        int position=player.getCurrentPosition()+seconds*1000;
-        player.seekTo(position);
+        int position=videoView.getCurrentPosition()+seconds*1000;
+        videoView.seekTo(position);
     }
     public void setControllerVisible(boolean controllerVisible) {
         isControllerVisible = controllerVisible;
@@ -261,8 +236,8 @@ public class VideoTabFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if(paused) {
-            player.seekTo(stopPosition);
-            player.start();
+            videoView.seekTo(stopPosition);
+            videoView.start();
             videoViewUpdates.start();
             paused=false;
         }
@@ -271,31 +246,13 @@ public class VideoTabFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if(player.isPlaying()) {
-            player.pause();
+        if(videoView.isPlaying()) {
+            videoView.pause();
             videoViewUpdates.stop();
             paused=true;
-            stopPosition=player.getCurrentPosition();
+            stopPosition=videoView.getCurrentPosition();
         }
     }
 
-    private void handleAspectRatio(){
-        DisplayMetrics metrics= new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        float sWidth=metrics.widthPixels;
-        float sHeight=metrics.heightPixels;
-        float video_width=player.getVideoWidth();
-        float video_height=player.getVideoHeight();
-        ViewGroup.LayoutParams layoutParams=videoView.getLayoutParams();
-        float ratio1=video_height/video_width;
-        if(sWidth<sHeight) {
-            layoutParams.width = (int) (sWidth);
-            layoutParams.height = (int) (sHeight * ratio1);
-        }else{
-            layoutParams.width = (int) (sWidth/ratio1);
-            layoutParams.height = (int) (sHeight);
-        }
 
-        videoView.setLayoutParams(layoutParams);
-    }
 }
