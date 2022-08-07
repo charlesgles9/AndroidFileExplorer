@@ -1,12 +1,8 @@
 package com.file.manager.Fragments;
 
 import android.app.Activity;
-import android.media.MediaFormat;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
-import android.media.SubtitleData;
-import android.media.TimedMetaData;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -17,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+import androidx.annotation.Nullable;;
 import androidx.fragment.app.Fragment;
 
 import com.file.manager.R;
@@ -38,7 +32,7 @@ import java.io.IOException;
 public class VideoTabFragment extends Fragment {
 
 
-    private SurfaceView videoView;
+    private VideoView videoView;
     private Activity activity;
     private MediaPlayer player;
     private ToggleButton play;
@@ -87,8 +81,8 @@ public class VideoTabFragment extends Fragment {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-                   handleAspectRatio();
-             
+
+
             }
 
             @Override

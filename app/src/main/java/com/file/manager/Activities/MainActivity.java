@@ -344,12 +344,12 @@ public class MainActivity extends AppCompatActivity  {
 
                 @Override
                 public void onFailed(String message) {
-
+                  Toast.makeText(getApplicationContext(),"Failed try again!",Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void onError(String message) {
-
+                    Toast.makeText(getApplicationContext(),"Failed try again!",Toast.LENGTH_SHORT).show();
                 }
             });
             authDialog.show();

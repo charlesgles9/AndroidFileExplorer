@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SurfaceView
+    <VideoView
         android:id="@+id/video"
         android:backgroundTint="#090909"
         android:layout_centerHorizontal="true"
