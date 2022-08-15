@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,9 +22,8 @@ import com.file.manager.ui.TapGesture;
 import com.file.manager.Activities.VideoPlayerActivity;
 import com.file.manager.utils.DateUtils;
 import com.file.manager.utils.Timer;
-
 import java.io.File;
-import java.io.IOException;
+
 
 public class VideoTabFragment extends Fragment {
 
@@ -70,8 +66,6 @@ public class VideoTabFragment extends Fragment {
         controller=root.findViewById(R.id.controller);
         play.setChecked(executeOnStart);
         showPlayButton(executeOnStart);
-
-
 
          videoView.setVideoPath(file.getPath());
          videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
